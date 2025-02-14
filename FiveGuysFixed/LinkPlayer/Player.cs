@@ -27,13 +27,16 @@ namespace FiveGuysFixed.LinkPlayer
         public void move(Dir newDir) 
         {
             dir = newDir;
+            linkSprite.animate();
             isMoving = true;
             linkSprite.facingDirection(newDir);
         }
         public void idle() 
         {
-            
+            isMoving = false;
+            linkSprite.idle();
         }
+
         public void attack() { }
         public void switchItem() { }
         public void Draw(SpriteBatch _spriteBatch) 
@@ -44,13 +47,7 @@ namespace FiveGuysFixed.LinkPlayer
         {
             Vector2 newPos = position;
             if (isMoving)
-        {
-                timeElapsedMoving += gt.ElapsedGameTime.TotalSeconds;
-                if (timeElapsedMoving >= .00001)
-                {
-                    isMoving = !isMoving;
-                    timeElapsedMoving = 0;
-                }
+            {
                 if (dir == Dir.UP)
                 {
                     newPos.Y -= 5;

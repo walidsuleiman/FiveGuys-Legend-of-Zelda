@@ -61,9 +61,18 @@ namespace FiveGuysFixed.Animation
             }
         }
 
+        public void idle() 
+        {
+            isAnimated = false;
+        }
+        public void animate()
+        {
+            isAnimated = true;
+        }
+
         public LinkWalkAnimation()
         {
-            frameTime = 0.4;
+            frameTime = 0.2;
             totalFrames = 2;
             width = 16;
             height = 16;

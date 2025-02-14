@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using FiveGuys.Controls;
 using FiveGuysFixed.Animation;
+using FiveGuysFixed.Commands;
 using FiveGuysFixed.Common;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
@@ -30,27 +31,37 @@ namespace FiveGuysFixed.Controls
          
             currentState = Keyboard.GetState();
 
-            if (currentState.IsKeyDown(Keys.W))
+            // Array of keys we care about.
+            Keys[] movementKeys = { Keys.W, Keys.A, Keys.S, Keys.D };
+
+            // Process movement keys using a switch statement.
+            foreach (Keys key in movementKeys)
             {
-                //game.Player.moveUp();
-                game.Player.move(Dir.UP);
+                bool currentDown = currentState.IsKeyDown(key);
+                bool previousDown = previousState.IsKeyDown(key);
+
+                // Determine if the key was just pressed or just released.
+                if (currentDown && !previousDown || !currentDown && previousDown)
+                {
+                    bool isKeyDown = currentDown; // true if just pressed, false if just released
+                    switch (key)
+                    {
+                        case Keys.W:
+                            new MovementCommand(game, Dir.UP, isKeyDown).Execute();
+                            break;
+                        case Keys.A:
+                            new MovementCommand(game, Dir.LEFT, isKeyDown).Execute();
+                            break;
+                        case Keys.S:
+                            new MovementCommand(game, Dir.DOWN, isKeyDown).Execute();
+                            break;
+                        case Keys.D:
+                            new MovementCommand(game, Dir.RIGHT, isKeyDown).Execute();
+                            break;
+                    }
+                }
             }
-            else if (currentState.IsKeyDown(Keys.A))
-            {
-                //game.Player.moveLeft();
-                game.Player.move(Dir.LEFT);
-            }
-            else if (currentState.IsKeyDown(Keys.S))
-            {
-                //game.Player.moveDown();
-                game.Player.move(Dir.DOWN);
-            }
-            else if (currentState.IsKeyDown(Keys.D))
-            {
-                //game.Player.moveRight();
-                game.Player.move(Dir.RIGHT);
-            }
-            else if (currentState.IsKeyDown(Keys.N))
+            if (currentState.IsKeyDown(Keys.N))
             {
                 //useCurrentItem();
             }

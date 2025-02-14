@@ -23,6 +23,7 @@ namespace FiveGuysFixed.Animation
         protected double frameTime;
         protected double timeElapsed;
         protected bool facLeft;
+        protected bool isAnimated;
         public Texture2D texture { get; private set; }
         public Vector2 position { get; private set; }
         public Vector2 origin;
@@ -40,19 +41,20 @@ namespace FiveGuysFixed.Animation
 
         public void Update(GameTime gt)
         {
-
-            timeElapsed += gt.ElapsedGameTime.TotalSeconds;
-            if (timeElapsed >= frameTime)
+            if (isAnimated)
             {
-                timeElapsed -= frameTime;
-                currentFrame++;
-
-                if (currentFrame >= totalFrames)
+                timeElapsed += gt.ElapsedGameTime.TotalSeconds;
+                if (timeElapsed >= frameTime)
                 {
-                    currentFrame = 0;
+                    timeElapsed -= frameTime;
+                    currentFrame++;
+
+                    if (currentFrame >= totalFrames)
+                    {
+                        currentFrame = 0;
+                    }
                 }
             }
-
         }
 
         public void Draw(SpriteBatch _spriteBatch, Vector2 position)
@@ -79,7 +81,7 @@ namespace FiveGuysFixed.Animation
 
         public Sprite()
         {
-
+            isAnimated = false;
             timeElapsed = 0;
             currentFrame = 0;
         }
