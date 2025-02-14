@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using FiveGuysFixed.Common;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -12,7 +13,7 @@ namespace FiveGuysFixed.Animation
     {
 
         private Rectangle sourceRect;
-        //test
+        private Dir dir;
 
         public new void Draw(SpriteBatch _spriteBatch, Vector2 position)
         {
@@ -36,26 +37,28 @@ namespace FiveGuysFixed.Animation
             spriteLocationX = 212;
         }
 
-        public void facingRight()
+        public void facingDirection(Dir dir) 
         {
-            spriteLocationX = 34;
-            facLeft = false;
-        }
-
-        public void facingUp()
-        {
-            spriteLocationX = 68;
-        }
-
-        public void facingLeft()
-        {
-            spriteLocationX = 34;
-            facLeft = true;
-        }
-
-        public void facingDown()
-        {
-            spriteLocationX = 0;
+            switch (dir)
+            {
+                case Dir.UP:
+                    spriteLocationX = 68;
+                    break;
+                case Dir.DOWN:
+                    spriteLocationX = 0;
+                    break;
+                case Dir.LEFT:
+                    spriteLocationX = 34;
+                    facLeft = true;
+                    break;
+                case Dir.RIGHT:
+                    spriteLocationX = 34;
+                    facLeft = false;
+                    break;
+                default:
+                    // Optional: handle unexpected values.
+                    break;
+            }
         }
 
         public LinkWalkAnimation()

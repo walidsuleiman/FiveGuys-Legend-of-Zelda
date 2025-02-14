@@ -7,15 +7,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using FiveGuysFixed.Animation;
+using FiveGuysFixed.Common;
 
 namespace FiveGuysFixed.LinkPlayer
 {
     public interface IPlayer
     {
-        public void moveUp();
-        public void moveDown();
-        public void moveLeft();
-        public void moveRight();
+        public void move(Dir dir);
         public void attack();
         public void switchItem();
         public void Draw(SpriteBatch _spriteBatch);

@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using FiveGuys.Controls;
 using FiveGuysFixed.Animation;
+using FiveGuysFixed.Common;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 
@@ -31,19 +32,23 @@ namespace FiveGuysFixed.Controls
 
             if (currentState.IsKeyDown(Keys.W))
             {
-                game.Player.moveUp();
+                //game.Player.moveUp();
+                game.Player.move(Dir.UP);
             }
             else if (currentState.IsKeyDown(Keys.A))
             {
-                game.Player.moveLeft();
+                //game.Player.moveLeft();
+                game.Player.move(Dir.LEFT);
             }
             else if (currentState.IsKeyDown(Keys.S))
             {
-                game.Player.moveDown();
+                //game.Player.moveDown();
+                game.Player.move(Dir.DOWN);
             }
             else if (currentState.IsKeyDown(Keys.D))
             {
-                game.Player.moveRight();
+                //game.Player.moveRight();
+                game.Player.move(Dir.RIGHT);
             }
             else if (currentState.IsKeyDown(Keys.N))
             {

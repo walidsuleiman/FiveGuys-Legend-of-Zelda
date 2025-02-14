@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using FiveGuysFixed.Animation;
 using FiveGuysFixed.Commands;
+using FiveGuysFixed.Common;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
@@ -18,45 +19,20 @@ namespace FiveGuysFixed.LinkPlayer
     public class Player : IPlayer
     {
         private Vector2 position;
-        private Vector2 movement;
         private bool isMoving;
         private LinkWalkAnimation linkSprite;
         private double timeElapsedMoving;
-
-        private enum Dir 
-        {
-            UP, DOWN, RIGHT, LEFT
-        }
-
         private Dir dir;
 
-        public void moveUp()
+        public void move(Dir newDir) 
         {
-            //movement = new Vector2(0, -1);
-            dir = Dir.UP;
+            dir = newDir;
             isMoving = true;
-            linkSprite.facingUp();
+            linkSprite.facingDirection(newDir);
         }
-        public void moveDown() 
+        public void idle() 
         {
-            //movement = new Vector2(0, 1);
-            dir = Dir.DOWN;
-            isMoving = true;
-            linkSprite.facingDown();
-        }
-        public void moveLeft() 
-        {
-            //movement = new Vector2(-1, 0);
-            dir = Dir.LEFT;
-            isMoving = true;
-            linkSprite.facingLeft();
-        }
-        public void moveRight() 
-        {
-            //movement = new Vector2(1, 0);
-            dir = Dir.RIGHT;
-            isMoving = true;
-            linkSprite.facingRight();
+            
         }
         public void attack() { }
         public void switchItem() { }
@@ -69,8 +45,6 @@ namespace FiveGuysFixed.LinkPlayer
             Vector2 newPos = position;
             if (isMoving)
         {
-                //position += movement;
-                //isMoving = false;
                 timeElapsedMoving += gt.ElapsedGameTime.TotalSeconds;
                 if (timeElapsedMoving >= .00001)
                 {
@@ -100,7 +74,7 @@ namespace FiveGuysFixed.LinkPlayer
         public void LoadContent(ContentManager content)
         {
             linkSprite.LoadContent(content);
-            linkSprite.facingLeft();
+            linkSprite.facingDirection(dir);
         }
         public void Reset() 
         { 
@@ -114,8 +88,8 @@ namespace FiveGuysFixed.LinkPlayer
         {
             linkSprite = new LinkWalkAnimation();
             position = setPos;
-            movement = new Vector2(0, 0);
             isMoving = false;
+            dir = Dir.DOWN;
         }
 
     }
