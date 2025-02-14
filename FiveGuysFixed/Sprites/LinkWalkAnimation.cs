@@ -21,13 +21,13 @@ namespace FiveGuysFixed.Animation
             sourceRect = new Rectangle(spriteLocationX + gap * (currentFrame + 1) + width * currentFrame, spriteLocationY, width, height);
 
 
-            if (flipDirection)
+            if (facLeft)
             {
-                _spriteBatch.Draw(texture, destRect, sourceRect, Color.White, 0, new Vector2(spriteLocationX, spriteLocationY), SpriteEffects.FlipHorizontally, 0f);
+                _spriteBatch.Draw(texture, destRect, sourceRect, Color.White, 0, Vector2.Zero, SpriteEffects.FlipHorizontally, 0f);
             }
             else
             {
-                _spriteBatch.Draw(texture, destRect, sourceRect, Color.White, 0, new Vector2(spriteLocationX, spriteLocationY), SpriteEffects.None, 0f);
+                _spriteBatch.Draw(texture, destRect, sourceRect, Color.White, 0, Vector2.Zero, SpriteEffects.None, 0f);
             }
         }
 
@@ -39,6 +39,7 @@ namespace FiveGuysFixed.Animation
         public void facingRight()
         {
             spriteLocationX = 34;
+            facLeft = false;
         }
 
         public void facingUp()
@@ -49,7 +50,7 @@ namespace FiveGuysFixed.Animation
         public void facingLeft()
         {
             spriteLocationX = 34;
-            flipDirection = true;
+            facLeft = true;
         }
 
         public void facingDown()
@@ -66,7 +67,7 @@ namespace FiveGuysFixed.Animation
             gap = 1;
             spriteLocationX = 0;
             spriteLocationY = 11;
-            flipDirection = false;
+            facLeft = false;
         }
     }
 }

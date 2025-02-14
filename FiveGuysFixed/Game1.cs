@@ -1,4 +1,5 @@
-﻿using System.Security.Cryptography.X509Certificates;
+﻿using System;
+using System.Security.Cryptography.X509Certificates;
 using FiveGuysFixed.Animation;
 using FiveGuysFixed.Controls;
 using FiveGuysFixed.LinkPlayer;
@@ -19,7 +20,7 @@ namespace FiveGuysFixed
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
         private Vector2 position;
-        private LinkWalkAnimation linkSprite;
+        
         public Player Player { get; set; }
 
         public Game1()
@@ -37,7 +38,7 @@ namespace FiveGuysFixed
             //mouseController = new MouseController(this);
 
             position = new Vector2(GraphicsDevice.Viewport.Width / 2, GraphicsDevice.Viewport.Height / 2);
-            linkSprite = new LinkWalkAnimation();
+            
             Player = new Player(position);
             keyboardController = new KeyboardController(this);
 
@@ -47,8 +48,7 @@ namespace FiveGuysFixed
         protected override void LoadContent()
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
-            linkSprite.LoadContent(Content);
-            linkSprite.facingLeft();
+            Player.LoadContent(Content);
         }
         
 
@@ -57,8 +57,8 @@ namespace FiveGuysFixed
             //mouseController.Update();
 
             keyboardController.Update();
-            linkSprite.Update(gameTime);
-            Player.Update();
+            
+            Player.Update(gameTime);
 
             base.Update(gameTime);
         }
@@ -73,8 +73,7 @@ namespace FiveGuysFixed
         {
             GraphicsDevice.Clear(Color.LightGoldenrodYellow);
             _spriteBatch.Begin();
-            linkSprite.Draw(_spriteBatch, position);
-            Player.Draw(_spriteBatch, position);
+            Player.Draw(_spriteBatch);
             _spriteBatch.End();
 
             base.Draw(gameTime);

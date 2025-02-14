@@ -60,7 +60,7 @@ namespace FiveGuysFixed.Controls
             }
             else if (currentState.IsKeyDown(Keys.R))
             {
-                //game.Reset();
+                game.Player.Reset();
             }
 
 

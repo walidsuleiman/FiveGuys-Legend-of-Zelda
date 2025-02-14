@@ -22,7 +22,7 @@ namespace FiveGuysFixed.Animation
         protected int gap;
         protected double frameTime;
         protected double timeElapsed;
-        protected bool flipDirection;
+        protected bool facLeft;
         public Texture2D texture { get; private set; }
         public Vector2 position { get; private set; }
         public Vector2 origin;
@@ -62,7 +62,7 @@ namespace FiveGuysFixed.Animation
             //sourceRect = new Rectangle();
 
 
-            if (flipDirection)
+            if (facLeft)
             {
                 _spriteBatch.Draw(texture, destRect, sourceRect, Color.White, 0, new Vector2(spriteLocationX, spriteLocationY), SpriteEffects.FlipHorizontally, 0f);
             }
