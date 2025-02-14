@@ -14,9 +14,6 @@ namespace FiveGuysFixed.Controls
         private MouseState previousState;
         private MouseState currentState;
 
-        private int windowWidth;
-        private int windowHeight;
-
         public MouseController(Game1 game)
         {
             this.game = game;

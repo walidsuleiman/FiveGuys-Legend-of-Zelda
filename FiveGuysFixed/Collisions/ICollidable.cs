@@ -7,10 +7,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FiveGuysFixed
+namespace FiveGuysFixed.Collisions
 {
-  public interface ICollidable
-  {
-    bool isCollidable();
-  }
+    public interface ICollidable
+    {
+        bool isCollidable();
+    }
 }

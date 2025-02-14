@@ -7,6 +7,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 using System.Reflection.Metadata;
 using Microsoft.Xna.Framework.Content;
+using FiveGuysFixed.Sprites;
 
 namespace FiveGuysFixed.Animation
 {

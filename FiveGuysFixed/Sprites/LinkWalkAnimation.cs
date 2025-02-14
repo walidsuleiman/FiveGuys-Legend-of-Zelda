@@ -35,20 +35,25 @@ namespace FiveGuysFixed.Animation
             spriteLocationX = 212;
         }
 
-        public void right()
+        public void facingRight()
         {
             spriteLocationX = 34;
         }
 
-        public void up()
+        public void facingUp()
         {
             spriteLocationX = 68;
         }
 
-        public void left()
+        public void facingLeft()
         {
             spriteLocationX = 34;
             flipDirection = true;
+        }
+
+        public void facingDown()
+        {
+            spriteLocationX = 0;
         }
 
         public LinkWalkAnimation()

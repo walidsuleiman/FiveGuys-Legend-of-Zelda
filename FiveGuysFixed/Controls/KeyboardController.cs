@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using FiveGuys.Controls;
+using FiveGuysFixed.Animation;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 
@@ -30,40 +31,36 @@ namespace FiveGuysFixed.Controls
 
             if (currentState.IsKeyDown(Keys.W))
             {
-                //move up
+
             }
             else if (currentState.IsKeyDown(Keys.A))
             {
-                //move left
+                //linkMoveLeft();
             }
             else if (currentState.IsKeyDown(Keys.S))
             {
-                //move down
+                //linkMoveDown();
             }
             else if (currentState.IsKeyDown(Keys.D))
             {
-                //move right
+                //linkMoveRight();
             }
-            else if (currentState.IsKeyDown(Keys.Space))
+            else if (currentState.IsKeyDown(Keys.N))
             {
-                //attack
+                //useCurrentItem();
             }
-           //else if (currentState.IsKeyDown(Keys.Enter))
-           // {
-           //     //pause or menu
-           // }
-            else if (currentState.IsKeyDown(Keys.Q))
+            else if (currentState.IsKeyDown(Keys.M))
+            {
+                //switchItem();
+            }
+            else if (currentState.IsKeyDown(Keys.D0) || currentState.IsKeyDown(Keys.NumPad0))
             {
                 Console.WriteLine("Exiting Game");
                 game.Exit();
             }
             else if (currentState.IsKeyDown(Keys.R))
             {
-                //reset or restart
-            }
-            else if (currentState.IsKeyDown(Keys.E))
-            {
-                //interact or equip
+                //game.Reset();
             }
 
 

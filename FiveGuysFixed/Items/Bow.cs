@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 
-namespace FiveGuysFixed
+namespace FiveGuysFixed.Items
 {
     public class Bow : IItem
     {
@@ -16,7 +16,7 @@ namespace FiveGuysFixed
         public Bow(Texture2D texture, Vector2 position)
         {
             this.texture = texture;
-            this.Position = position;
+            Position = position;
         }
 
         public void Use()

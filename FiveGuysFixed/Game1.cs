@@ -40,7 +40,7 @@ namespace FiveGuysFixed
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
             linkSprite.LoadContent(Content);
-            linkSprite.left();
+            linkSprite.facingLeft();
         }
         
 

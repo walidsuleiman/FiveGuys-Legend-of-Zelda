@@ -6,34 +6,41 @@ using System.Threading.Tasks;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 
-namespace FiveGuysFixed
+namespace FiveGuysFixed.Items
 {
-    public class Sword : IItem
+    public class Potion : IItem
     {
         private Texture2D texture;
         public Vector2 Position { get; set; }
-        private Rectangle sourceRect;
+        private bool isUsed;
 
-        public Sword(Texture2D texture, Vector2 position)
+        public Potion(Texture2D texture, Vector2 position)
         {
             this.texture = texture;
-            this.Position = position;
-            this.sourceRect = new Rectangle(0, 0, 0, 0);
+            Position = position;
+            isUsed = false;
         }
 
         public void Use()
         {
-            //how to use sword
+            if (!isUsed)
+            {
+                // How to restore health
+                isUsed = true;
+            }
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(texture, Position, sourceRect, Color.White);
+            if (!isUsed)
+            {
+                spriteBatch.Draw(texture, Position, Color.White);
+            }
         }
 
         public void Update(GameTime gameTime)
         {
-            // update
+            // Update
         }
     }
 }

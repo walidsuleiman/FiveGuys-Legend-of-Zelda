@@ -7,10 +7,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FiveGuysFixed
+namespace FiveGuysFixed.Items
 {
-  public interface IBlock
-  {
-    bool IsCollidable();
-  }
+    public interface IProjectile
+    {
+        void Launch();
+    }
 }

@@ -7,11 +7,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FiveGuysFixed
+namespace FiveGuysFixed.Commands
 {
     public interface ICommand
     {
         void Execute();
-        void Undo();
     }
 }

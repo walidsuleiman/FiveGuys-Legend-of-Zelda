@@ -7,10 +7,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FiveGuysFixed
+namespace FiveGuysFixed.Enemies
 {
-  public interface IProjectile
-  {
-    void Launch();
-  }
+    public interface IEnemy
+    {
+        void MoveUp();
+        void MoveDown();
+        void MoveLeft();
+        void MoveRight();
+        void Attack();
+        void Damage(int damage);
+    }
 }
