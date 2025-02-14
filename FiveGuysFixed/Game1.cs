@@ -1,4 +1,10 @@
-﻿using FiveGuysFixed.Animation;
+﻿using System.Security.Cryptography.X509Certificates;
+using FiveGuysFixed.Animation;
+using FiveGuysFixed.Controls;
+using FiveGuysFixed.LinkPlayer;
+
+
+
 //using FiveGuys.Controls;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -9,11 +15,12 @@ namespace FiveGuysFixed
     public class Game1 : Game
     {
         //private MouseController mouseController;
-        //private KeyboardController keyboardController;
+        private KeyboardController keyboardController;
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
         private Vector2 position;
         private LinkWalkAnimation linkSprite;
+        public Player Player { get; set; }
 
         public Game1()
         {
@@ -30,8 +37,9 @@ namespace FiveGuysFixed
             //mouseController = new MouseController(this);
 
             position = new Vector2(GraphicsDevice.Viewport.Width / 2, GraphicsDevice.Viewport.Height / 2);
-
             linkSprite = new LinkWalkAnimation();
+            Player = new Player(position);
+            keyboardController = new KeyboardController(this);
 
             base.Initialize();
         }
@@ -47,21 +55,26 @@ namespace FiveGuysFixed
         protected override void Update(GameTime gameTime)
         {
             //mouseController.Update();
-            //keyboardController.Update();
 
+            keyboardController.Update();
             linkSprite.Update(gameTime);
+            Player.Update();
 
             base.Update(gameTime);
+        }
+
+        public void Reset()
+        {
+            position = new Vector2(GraphicsDevice.Viewport.Width / 2, GraphicsDevice.Viewport.Height / 2);
+
         }
 
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.LightGoldenrodYellow);
-
             _spriteBatch.Begin();
-
             linkSprite.Draw(_spriteBatch, position);
-
+            Player.Draw(_spriteBatch, position);
             _spriteBatch.End();
 
             base.Draw(gameTime);

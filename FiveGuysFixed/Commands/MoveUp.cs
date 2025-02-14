@@ -16,7 +16,7 @@ namespace FiveGuysFixed.Commands
         }
         public void Execute()
         {
-            //game.link.MoveUp();
+           
         }
     }
 }

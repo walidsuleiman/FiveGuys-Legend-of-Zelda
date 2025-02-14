@@ -31,19 +31,19 @@ namespace FiveGuysFixed.Controls
 
             if (currentState.IsKeyDown(Keys.W))
             {
-
+                game.Player.moveUp();
             }
             else if (currentState.IsKeyDown(Keys.A))
             {
-                //linkMoveLeft();
+                game.Player.moveLeft();
             }
             else if (currentState.IsKeyDown(Keys.S))
             {
-                //linkMoveDown();
+                game.Player.moveDown();
             }
             else if (currentState.IsKeyDown(Keys.D))
             {
-                //linkMoveRight();
+                game.Player.moveRight();
             }
             else if (currentState.IsKeyDown(Keys.N))
             {
