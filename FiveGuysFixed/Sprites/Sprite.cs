@@ -8,6 +8,7 @@ using Microsoft.Xna.Framework;
 using System.Reflection.Metadata;
 using Microsoft.Xna.Framework.Content;
 using FiveGuysFixed.Sprites;
+using FiveGuysFixed.GameStates;
 
 namespace FiveGuysFixed.Animation
 {
@@ -25,13 +26,12 @@ namespace FiveGuysFixed.Animation
         protected bool facLeft;
         protected bool isAnimated;
         public Texture2D texture { get; private set; }
-        public Vector2 position { get; private set; }
         public Vector2 origin;
         Rectangle sourceRect;
 
         public void setPosition(Vector2 newPos)
         {
-            position = newPos;
+            GameState.PlayerState.position = newPos;
         }
 
         public void updateSourceRect(Rectangle newSourceRect) 
@@ -57,20 +57,24 @@ namespace FiveGuysFixed.Animation
             }
         }
 
-        public void Draw(SpriteBatch _spriteBatch, Vector2 position)
+        public void Draw(SpriteBatch _spriteBatch, Vector2? origin)
         {
 
-            Rectangle destRect = new Rectangle((int)position.X, (int)position.Y, width, height);
-            //sourceRect = new Rectangle();
+            Rectangle destRect = new Rectangle((int)GameState.PlayerState.position.X, (int)GameState.PlayerState.position.Y, width, height);
+            //sourceRect
 
+            if (!origin.HasValue) 
+            { 
+                origin = new Vector2(width/2, height/2);
+            }
 
             if (facLeft)
             {
-                _spriteBatch.Draw(texture, destRect, sourceRect, Color.White, 0, new Vector2(spriteLocationX, spriteLocationY), SpriteEffects.FlipHorizontally, 0f);
+                _spriteBatch.Draw(texture, GameState.PlayerState.position, sourceRect, Color.White, 0, new Vector2(width / 2, height / 2), 4.0f, SpriteEffects.FlipHorizontally, 0f);
             }
             else
             {
-                _spriteBatch.Draw(texture, destRect, sourceRect, Color.White, 0, new Vector2(spriteLocationX, spriteLocationY), SpriteEffects.None, 0f);
+                _spriteBatch.Draw(texture, GameState.PlayerState.position, sourceRect, Color.White, 0, new Vector2(width / 2, height / 2), 4.0f, SpriteEffects.None, 0f);
             }
         }
 

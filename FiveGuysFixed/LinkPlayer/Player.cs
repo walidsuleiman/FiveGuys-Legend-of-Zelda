@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using FiveGuysFixed.Animation;
 using FiveGuysFixed.Commands;
 using FiveGuysFixed.Common;
+using FiveGuysFixed.GameStates;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
@@ -18,22 +19,18 @@ namespace FiveGuysFixed.LinkPlayer
 {
     public class Player : IPlayer
     {
-        private Vector2 position;
-        private bool isMoving;
         private LinkWalkAnimation linkSprite;
-        private double timeElapsedMoving;
-        private Dir dir;
 
         public void move(Dir newDir) 
         {
-            dir = newDir;
+            GameState.PlayerState.direction = newDir;
             linkSprite.animate();
-            isMoving = true;
+            GameState.PlayerState.isMoving = true;
             linkSprite.facingDirection(newDir);
         }
         public void idle() 
         {
-            isMoving = false;
+            GameState.PlayerState.isMoving = false;
             linkSprite.idle();
         }
 
@@ -41,52 +38,48 @@ namespace FiveGuysFixed.LinkPlayer
         public void switchItem() { }
         public void Draw(SpriteBatch _spriteBatch) 
         {
-            linkSprite.Draw(_spriteBatch, position);
+            linkSprite.Draw(_spriteBatch, null);
         }
         public void Update(GameTime gt)
         {
-            Vector2 newPos = position;
-            if (isMoving)
+            Vector2 newPos = GameState.PlayerState.position;
+            if (GameState.PlayerState.isMoving)
             {
-                if (dir == Dir.UP)
+                if (GameState.PlayerState.direction == Dir.UP)
                 {
                     newPos.Y -= 5;
                 }
-                else if (dir == Dir.DOWN)
+                else if (GameState.PlayerState.direction == Dir.DOWN)
                 {
                     newPos.Y += 5;
                 }
-                else if (dir == Dir.RIGHT)
+                else if (GameState.PlayerState.direction == Dir.RIGHT)
                 {
                     newPos.X += 5;
                 }
-                else if (dir == Dir.LEFT)
+                else if (GameState.PlayerState.direction == Dir.LEFT)
                 {
                     newPos.X -= 5;
                 }
             }
-            position = newPos;
+            GameState.PlayerState.position = newPos;
             linkSprite.Update(gt);
         }
         public void LoadContent(ContentManager content)
         {
             linkSprite.LoadContent(content);
-            linkSprite.facingDirection(dir);
         }
         public void Reset() 
         { 
-            position = new Vector2(100, 100);
-            isMoving = false;
+            GameState.PlayerState.position = new Vector2(100, 100);
+            GameState.PlayerState.isMoving = false;
         }
         public void takeDamage(int damage) { }
         public void gainHealth(int health) { }
 
-        public Player(Vector2 setPos)
+        public Player()
         {
             linkSprite = new LinkWalkAnimation();
-            position = setPos;
-            isMoving = false;
-            dir = Dir.DOWN;
         }
 
     }

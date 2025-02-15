@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using FiveGuysFixed.Animation;
 using FiveGuysFixed.Common;
+using FiveGuysFixed.GameStates;
 
 namespace FiveGuysFixed.LinkPlayer
 {

@@ -6,6 +6,12 @@ using System.Threading.Tasks;
 
 namespace FiveGuysFixed.Common
 {
+    public enum Equipment
+    {
+        NONE,
+        WOODSWORD,
+        WHITESWORD
+    }
     public enum Dir
     {
         UP, DOWN, LEFT, RIGHT
@@ -13,33 +19,33 @@ namespace FiveGuysFixed.Common
     public static class MovementCommandManager
     {
         // Using a Stack for key ordering.
-        private static readonly Stack<Dir> activeDirections = new Stack<Dir>();
+        private static readonly Stack<Dir> ActiveDirections = new Stack<Dir>();
 
         public static void AddDirection(Dir dir)
         {
             // Avoid adding duplicate on top
-            if (activeDirections.Count == 0 || activeDirections.Peek() != dir)
+            if (ActiveDirections.Count == 0 || ActiveDirections.Peek() != dir)
             {
-                if (!activeDirections.Contains(dir))
+                if (!ActiveDirections.Contains(dir))
                 {
-                    activeDirections.Push(dir);
+                    ActiveDirections.Push(dir);
                 }
             }
         }
 
         public static void RemoveDirection(Dir dir)
         {
-            if (activeDirections.Count > 0 && activeDirections.Peek() == dir)
+            if (ActiveDirections.Count > 0 && ActiveDirections.Peek() == dir)
             {
-                activeDirections.Pop();
+                ActiveDirections.Pop();
             }
             else
             {
                 // Remove from anywhere in the stack.
                 var tempStack = new Stack<Dir>();
-                while (activeDirections.Count > 0)
+                while (ActiveDirections.Count > 0)
                 {
-                    var d = activeDirections.Pop();
+                    var d = ActiveDirections.Pop();
                     if (d != dir)
                     {
                         tempStack.Push(d);
@@ -47,16 +53,16 @@ namespace FiveGuysFixed.Common
                 }
                 while (tempStack.Count > 0)
                 {
-                    activeDirections.Push(tempStack.Pop());
+                    ActiveDirections.Push(tempStack.Pop());
                 }
             }
         }
 
         public static Dir? GetCurrentDirection()
         {
-            if (activeDirections.Count > 0)
+            if (ActiveDirections.Count > 0)
             {
-                return activeDirections.Peek();
+                return ActiveDirections.Peek();
             }
             return null;
         }

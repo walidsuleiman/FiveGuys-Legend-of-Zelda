@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Linq.Expressions;
 using System.Security.Cryptography.X509Certificates;
 using FiveGuysFixed.Animation;
 using FiveGuysFixed.Controls;
+using FiveGuysFixed.GameStates;
 using FiveGuysFixed.LinkPlayer;
 
 
@@ -20,6 +22,7 @@ namespace FiveGuysFixed
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
         private Vector2 position;
+        private GameState gameState;
         
         public Player Player { get; set; }
 
@@ -37,9 +40,11 @@ namespace FiveGuysFixed
             //keyboardController = new KeyboardController(this);
             //mouseController = new MouseController(this);
 
-            position = new Vector2(GraphicsDevice.Viewport.Width / 2, GraphicsDevice.Viewport.Height / 2);
+            GameState.WindowWidth = GraphicsDevice.Viewport.Width;
+            GameState.WindowHeight = GraphicsDevice.Viewport.Height;
+            GameState.PlayerState = new PlayerState(new Vector2(GraphicsDevice.Viewport.Width / 2, GraphicsDevice.Viewport.Height / 2));
             
-            Player = new Player(position);
+            Player = new Player();
             keyboardController = new KeyboardController(this);
 
             base.Initialize();
@@ -72,7 +77,7 @@ namespace FiveGuysFixed
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.LightGoldenrodYellow);
-            _spriteBatch.Begin();
+            _spriteBatch.Begin(samplerState: SamplerState.PointClamp);
             Player.Draw(_spriteBatch);
             _spriteBatch.End();
 
