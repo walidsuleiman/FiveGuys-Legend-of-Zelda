@@ -10,6 +10,7 @@ using Microsoft.Xna.Framework.Content;
 using FiveGuysFixed.Sprites;
 using FiveGuysFixed.GameStates;
 
+
 namespace FiveGuysFixed.Animation
 {
     public class Sprite : ISprite
@@ -27,7 +28,24 @@ namespace FiveGuysFixed.Animation
         protected bool isAnimated;
         public Texture2D texture { get; private set; }
         public Vector2 origin;
+        public Texture2D Texture { get { return texture; } }
         Rectangle sourceRect;
+
+        public Sprite(Texture2D texture, int x, int y, int width, int height, int frames = 1)
+        {
+            this.texture = texture;
+            this.spriteLocationX = x;
+            this.spriteLocationY = y;
+            this.width = width;
+            this.height = height;
+            this.totalFrames = frames;
+            this.currentFrame = 0;
+            this.timeElapsed = 0;
+            this.frameTime = 0.1;  
+            this.isAnimated = frames > 1;
+            this.sourceRect = new Rectangle(spriteLocationX, spriteLocationY, width, height);
+        }
+
 
         public void setPosition(Vector2 newPos)
         {
@@ -50,9 +68,10 @@ namespace FiveGuysFixed.Animation
                     currentFrame++;
 
                     if (currentFrame >= totalFrames)
-                    {
                         currentFrame = 0;
-                    }
+
+                    // shift the sourceRect according to currentFrame
+                    sourceRect.X = spriteLocationX + (width * currentFrame);
                 }
             }
         }
