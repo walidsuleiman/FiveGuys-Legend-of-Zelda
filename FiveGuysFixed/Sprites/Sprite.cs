@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 using System.Reflection.Metadata;
 using Microsoft.Xna.Framework.Content;
-using FiveGuysFixed.Sprites;
+
 
 namespace FiveGuysFixed.Animation
 {
@@ -27,7 +27,24 @@ namespace FiveGuysFixed.Animation
         public Texture2D texture { get; private set; }
         public Vector2 position { get; private set; }
         public Vector2 origin;
+        public Texture2D Texture { get { return texture; } }
         Rectangle sourceRect;
+
+        public Sprite(Texture2D texture, int x, int y, int width, int height, int frames = 1)
+        {
+            this.texture = texture;
+            this.spriteLocationX = x;
+            this.spriteLocationY = y;
+            this.width = width;
+            this.height = height;
+            this.totalFrames = frames;
+            this.currentFrame = 0;
+            this.timeElapsed = 0;
+            this.frameTime = 0.1;  
+            this.isAnimated = frames > 1;
+            this.sourceRect = new Rectangle(spriteLocationX, spriteLocationY, width, height);
+        }
+
 
         public void setPosition(Vector2 newPos)
         {
@@ -50,15 +67,17 @@ namespace FiveGuysFixed.Animation
                     currentFrame++;
 
                     if (currentFrame >= totalFrames)
-                    {
                         currentFrame = 0;
-                    }
+
+                    // shift the sourceRect according to currentFrame
+                    sourceRect.X = spriteLocationX + (width * currentFrame);
                 }
             }
         }
 
         public void Draw(SpriteBatch _spriteBatch, Vector2 position)
         {
+
 
             Rectangle destRect = new Rectangle((int)position.X, (int)position.Y, width, height);
             //sourceRect = new Rectangle();
@@ -70,7 +89,11 @@ namespace FiveGuysFixed.Animation
             }
             else
             {
-                _spriteBatch.Draw(texture, destRect, sourceRect, Color.White, 0, new Vector2(spriteLocationX, spriteLocationY), SpriteEffects.None, 0f);
+                _spriteBatch.Draw(texture, destRect, sourceRect, Color.White,
+                  0, Vector2.Zero,
+                  SpriteEffects.None, 0f);
+
+
             }
         }
 
