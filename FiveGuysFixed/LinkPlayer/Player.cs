@@ -10,6 +10,7 @@ using FiveGuysFixed.Animation;
 using FiveGuysFixed.Commands;
 using FiveGuysFixed.Common;
 using FiveGuysFixed.GameStates;
+using FiveGuysFixed.Items;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
@@ -20,6 +21,7 @@ namespace FiveGuysFixed.LinkPlayer
     public class Player : IPlayer
     {
         private LinkWalkAnimation linkSprite;
+        private WoodSword woodSword;
         private int health;
 
         public Player()
@@ -40,11 +42,22 @@ namespace FiveGuysFixed.LinkPlayer
             linkSprite.idle();
         }
 
-        public void attack() { }
+        public void attack(WeaponType weapon) 
+        {
+
+            //if (GameState.PlayerState.heldWeapon == weapon) 
+            //{
+                if (weapon == WeaponType.WOODSWORD) 
+                {
+                    woodSword = new WoodSword(GameState.PlayerState.direction);
+                }
+            //}
+        }
         public void switchItem() { }
         public void Draw(SpriteBatch _spriteBatch) 
         {
             linkSprite.Draw(_spriteBatch, null);
+            woodSword.Draw(_spriteBatch);
         }
         public void Update(GameTime gt)
         {
@@ -70,6 +83,7 @@ namespace FiveGuysFixed.LinkPlayer
             }
             GameState.PlayerState.position = newPos;
             linkSprite.Update(gt);
+            woodSword.Update(gt);
         }
         public void LoadContent(ContentManager content)
         {

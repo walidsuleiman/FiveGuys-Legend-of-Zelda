@@ -16,7 +16,7 @@ namespace FiveGuysFixed.LinkPlayer
     {
         public void move(Dir dir);
         public void idle();
-        public void attack();
+        public void attack(WeaponType weapon);
         public void switchItem();
         public void Draw(SpriteBatch _spriteBatch);
         public void Update(GameTime gt);

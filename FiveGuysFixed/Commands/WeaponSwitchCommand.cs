@@ -4,6 +4,9 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using FiveGuysFixed.LinkPlayer;
+using FiveGuysFixed.Common;
+using FiveGuysFixed.GameStates;
 
 namespace FiveGuysFixed.Commands
 {
@@ -23,25 +26,15 @@ namespace FiveGuysFixed.Commands
 
             if (weaponNumber == 1)
             {
-                game.activeWeaponIndex = 1;
+                GameState.PlayerState.heldWeapon = WeaponType.WOODSWORD;
             }
             else if(weaponNumber == 2)
             {
-                game.activeWeaponIndex = 2;
+                GameState.PlayerState.heldWeapon = WeaponType.WHITESWORD;
             }
             else if (weaponNumber == 3)
             {
-                game.activeWeaponIndex = 3;
-            }
-
-
-            if (game.activeWeaponIndex > game.weapons.Count - 1)
-            {
-                game.activeWeaponIndex = 0;
-            }
-            else if (game.activeWeaponIndex < 0)
-            {
-                game.activeWeaponIndex = game.weapons.Count - 1;
+                //game.activeWeaponIndex = 3;
             }
         }
     }

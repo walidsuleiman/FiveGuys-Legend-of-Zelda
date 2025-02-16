@@ -14,19 +14,20 @@ namespace FiveGuysFixed.Sprites
 {
     public class AttackSprites
     {
-        private enum swordType {woodSword, whiteSword, magicalSword, magicalRod}
-        private swordType currentSword;
+        private WeaponType currentSword;
         private Dir currentDir;
 
-        public AttackSprites(Dir dir, Equipment equipment) 
+        public AttackSprites(Dir dir, WeaponType equipment) 
         {
-            if (equipment == Equipment.WOODSWORD)
+            this.currentDir = dir;
+
+            if (equipment == WeaponType.WOODSWORD)
             { 
-                this.currentSword = swordType.woodSword;
+                this.currentSword = WeaponType.WOODSWORD;
             }
-            else if (equipment == Equipment.WHITESWORD)
+            else if (equipment == WeaponType.WHITESWORD)
             {
-                this.currentSword = swordType.whiteSword;
+                this.currentSword = WeaponType.WHITESWORD;
             }
             //else if (currentSword.Equals("magic"))
             //{

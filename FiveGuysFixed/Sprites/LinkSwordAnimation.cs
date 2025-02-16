@@ -69,16 +69,16 @@ namespace FiveGuysFixed.Animation
             }
         }
 
-        public LinkSwordAnimation(Dir dir, Equipment weapon)
+        public LinkSwordAnimation(Dir dir, WeaponType weapon)
         {
             attackSprites = new AttackSprites(dir, weapon);
             frameTime = 0.3;
 
-            if (weapon == Equipment.WOODSWORD) 
+            if (weapon == WeaponType.WOODSWORD) 
             {
                 currentSprites = attackSprites.GetWoodSwordAttackSprites();
             }
-            if (weapon == Equipment.WHITESWORD)
+            if (weapon == WeaponType.WHITESWORD)
             {
                 currentSprites = attackSprites.GetWhiteSwordAttackSprites();
             }
