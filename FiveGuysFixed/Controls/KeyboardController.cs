@@ -96,15 +96,20 @@ namespace FiveGuysFixed.Controls
 
             foreach (Keys eKey in enemyKeys)
             {
-                if (currentState.IsKeyDown(eKey))
+                bool currentDown = currentState.IsKeyDown(eKey);
+                bool previousDown = previousState.IsKeyDown(eKey);
+
+                // Determine if the key was just pressed or just released.
+                if (!currentDown && previousDown)
                 {
+                    bool isKeyDown = currentDown; // true if just pressed, false if just released
                     switch (eKey)
                     {
-                        case Keys.O:
-                            //new EnemySwitchCommand(game, true).Execute();
-                            break;
                         case Keys.P:
-                            //new EnemySwitchCommand(game, false).Execute();
+                            new EnemySwitchCommand(game, true).Execute();
+                            break;
+                        case Keys.O:
+                            new EnemySwitchCommand(game, false).Execute();
                             break;
                     }
                 }

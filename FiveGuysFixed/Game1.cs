@@ -16,6 +16,7 @@ using FiveGuysFixed.Projectiles;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using System.Diagnostics;
 
 namespace FiveGuysFixed
 {
@@ -27,12 +28,10 @@ namespace FiveGuysFixed
         private SpriteBatch _spriteBatch;
         private Vector2 position;
         public List<IEnemy> enemies;
-        public List<IEnemy> Enemies => enemies;
-        private List<IProjectile> projectiles;// stores all active projectiles
+        public List<IProjectile> projectiles;// stores all active projectiles
         private Texture2D bossTexture;
         private Texture2D enemyTexture;
-        private int activeEnemyIndex;
-        public int ActiveEnemyIndex { get; set; }
+        public int activeEnemyIndex;
 
 
         private GameState gameState;
@@ -120,6 +119,9 @@ namespace FiveGuysFixed
 
 
             _spriteBatch.Begin();
+
+            Debug.WriteLine(activeEnemyIndex);
+
             if (enemies.Count > 0)
             {
                 enemies[activeEnemyIndex].Draw(_spriteBatch);
