@@ -5,35 +5,31 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
+using FiveGuysFixed.Animation;
+using FiveGuysFixed.Common;
 
 namespace FiveGuysFixed.Items
 {
-    public class WoodSword : IItem
+    public class WoodSword 
     {
-        private Texture2D texture;
-        public Vector2 Position { get; set; }
+        private Dir dir;
         private Rectangle sourceRect;
+        private LinkSwordAnimation swordAttack;
 
-        public WoodSword(Texture2D texture, Vector2 position)
+        public WoodSword(Dir dir)
         {
-            this.texture = texture;
-            Position = position;
-            sourceRect = new Rectangle(0, 0, 0, 0);
-        }
-
-        public void Use()
-        {
-            int damage = 10;
+            this.dir = dir;
+            swordAttack = new LinkSwordAnimation(dir, WeaponType.WOODSWORD);
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(texture, Position, sourceRect, Color.White);
+            swordAttack.Draw(spriteBatch, null);
         }
 
         public void Update(GameTime gameTime)
         {
-            // update
+            swordAttack.Update(gameTime);
         }
     }
 }
