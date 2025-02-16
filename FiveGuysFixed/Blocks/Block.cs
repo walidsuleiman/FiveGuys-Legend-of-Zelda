@@ -8,7 +8,7 @@ using FiveGuysFixed.Blocks;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace FiveGuysFixed.GameBlocks
+namespace FiveGuysFixed.Blocks
 {
     internal class Block : IBlock
     {

@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FiveGuysFixed.GameBlocks
+namespace FiveGuysFixed.Blocks
 {
     public interface IBlock
     {
