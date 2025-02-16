@@ -8,13 +8,13 @@ using Microsoft.Xna.Framework;
 
 namespace FiveGuysFixed.Items
 {
-    public class Sword : IItem
+    public class WoodSword : IItem
     {
         private Texture2D texture;
         public Vector2 Position { get; set; }
         private Rectangle sourceRect;
 
-        public Sword(Texture2D texture, Vector2 position)
+        public WoodSword(Texture2D texture, Vector2 position)
         {
             this.texture = texture;
             Position = position;
@@ -23,7 +23,7 @@ namespace FiveGuysFixed.Items
 
         public void Use()
         {
-            //how to use sword
+            int damage = 10;
         }
 
         public void Draw(SpriteBatch spriteBatch)
