@@ -114,9 +114,13 @@ namespace FiveGuysFixed
 
             Player.Update(gameTime);
 
-            if (enemies.Count > 0)
+            //if (enemies.Count > 0)
+            //{
+            //    enemies[activeEnemyIndex].Update(gameTime);
+            //}
+            foreach (var enemy in enemies)
             {
-                enemies[activeEnemyIndex].Update(gameTime);
+                enemy.Update(gameTime);
             }
 
             foreach (var proj in projectiles)
@@ -145,9 +149,14 @@ namespace FiveGuysFixed
 
             Debug.WriteLine(activeEnemyIndex);
 
-            if (enemies.Count > 0)
+            //if (enemies.Count > 0)
+            //{
+            //    enemies[activeEnemyIndex].Draw(_spriteBatch);
+            //}w
+
+            foreach (var enemy in enemies)
             {
-                enemies[activeEnemyIndex].Draw(_spriteBatch);
+                enemy.Draw(_spriteBatch);
             }
 
             foreach (var proj in projectiles)
