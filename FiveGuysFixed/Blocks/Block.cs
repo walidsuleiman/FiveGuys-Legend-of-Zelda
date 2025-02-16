@@ -5,7 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 using FiveGuysFixed.Animation;
 using FiveGuysFixed.Blocks;
-using FiveGuysFixed.Blocks;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 

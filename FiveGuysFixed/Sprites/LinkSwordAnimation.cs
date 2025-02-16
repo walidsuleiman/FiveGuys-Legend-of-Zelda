@@ -1,39 +1,91 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Drawing;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
-using FiveGuysFixed.Animation;
 using FiveGuysFixed.Common;
+using FiveGuysFixed.GameStates;
+using FiveGuysFixed.Sprites;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
-namespace FiveGuysFixed.Sprites
+namespace FiveGuysFixed.Animation
 {
     public class LinkSwordAnimation : Sprite
     {
 
-        public LinkSwordAnimation() 
+        private Rectangle sourceRect;
+        private Dir dir;
+        private AttackSprites attackSprites;
+        private List<Rectangle> currentSprites;
+        private int currentFrameIndex;
+
+        public new void Update(GameTime gt)
         {
-            
-        }
+            if (isAnimated)
+            {
+                timeElapsed += gt.ElapsedGameTime.TotalSeconds;
+                if (timeElapsed >= frameTime)
+                {
+                    timeElapsed -= frameTime;
+                    currentFrameIndex++;
 
-        public Rectangle woodSwordAttack(Dir dir)
-        {
-            switch (dir) {
+                    if (currentFrameIndex >= totalFrames)
+                        currentFrameIndex = 0;
 
-                case Dir.UP:
-                    return new Rectangle();
-                case Dir.LEFT:
-                    return new Rectangle();
-                case Dir.DOWN:
-                    return new Rectangle();
-                case Dir.RIGHT:
-                    return new Rectangle();
-                default:
-                    return new Rectangle();
-
+                }
             }
         }
 
+        public void Draw(SpriteBatch _spriteBatch, Vector2? origin)
+        {
+
+            Rectangle destRect = new Rectangle((int)GameState.PlayerState.position.X, (int)GameState.PlayerState.position.Y, width, height);
+            sourceRect = currentSprites[currentFrameIndex];
+
+            if (!origin.HasValue)
+            {
+                Point position = currentSprites[currentFrameIndex].Location;
+                int x = position.X; 
+                int y = position.Y;
+                if (dir == Dir.UP)
+                {
+                    origin = new Vector2(9, 117);
+                }
+                else
+                {
+                    origin = new Vector2(x+8, y+8);
+                }
+            }
+
+            if (facLeft)
+            {
+                _spriteBatch.Draw(texture, GameState.PlayerState.position, sourceRect, Color.White, 0, new Vector2(width / 2, height / 2), 1, SpriteEffects.FlipHorizontally, 0f);
+            }
+            else
+            {
+                _spriteBatch.Draw(texture, GameState.PlayerState.position, sourceRect, Color.White, 0, new Vector2(width / 2, height / 2), 1, SpriteEffects.None, 0f);
+            }
+        }
+
+        public LinkSwordAnimation(Dir dir, Equipment weapon)
+        {
+            attackSprites = new AttackSprites(dir, weapon);
+            frameTime = 0.3;
+
+            if (weapon == Equipment.WOODSWORD) 
+            {
+                currentSprites = attackSprites.GetWoodSwordAttackSprites();
+            }
+            if (weapon == Equipment.WHITESWORD)
+            {
+                currentSprites = attackSprites.GetWhiteSwordAttackSprites();
+            }
+
+            this.dir = dir;
+            totalFrames = currentSprites.Count;
+            facLeft = false;
+        }
     }
 }

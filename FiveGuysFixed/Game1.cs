@@ -80,7 +80,7 @@ namespace FiveGuysFixed
             Player.LoadContent(Content);
 
             enemyTexture = Content.Load<Texture2D>("Enemy_SpriteSheet");
-            Texture2D bossTexture = Content.Load<Texture2D>("Boss_SpriteSheet");
+            bossTexture = Content.Load<Texture2D>("Boss_SpriteSheet");
 
             blockTexture = Content.Load<Texture2D>("BlockSprite");
 
