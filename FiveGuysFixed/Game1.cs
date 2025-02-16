@@ -26,11 +26,13 @@ namespace FiveGuysFixed
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
         private Vector2 position;
-        private List<IEnemy> enemies;
+        public List<IEnemy> enemies;
+        public List<IEnemy> Enemies => enemies;
         private List<IProjectile> projectiles;// stores all active projectiles
         private Texture2D bossTexture;
         private Texture2D enemyTexture;
-
+        private int activeEnemyIndex;
+        public int ActiveEnemyIndex { get; set; }
 
 
         private GameState gameState;
@@ -48,8 +50,6 @@ namespace FiveGuysFixed
 
         protected override void Initialize()
         {
-            //keyboardController = new KeyboardController(this);
-            //mouseController = new MouseController(this);
 
             GameState.WindowWidth = GraphicsDevice.Viewport.Width;
             GameState.WindowHeight = GraphicsDevice.Viewport.Height;
@@ -59,6 +59,7 @@ namespace FiveGuysFixed
             keyboardController = new KeyboardController(this);
 
             enemies = new List<IEnemy>();
+            activeEnemyIndex = 0;
             projectiles = new List<IProjectile>();
 
             base.Initialize();
@@ -91,29 +92,15 @@ namespace FiveGuysFixed
             
             Player.Update(gameTime);
 
-            keyboardController.Update();
-            Player.Update(gameTime);
-
-            // Update all enemies
-            foreach (var enemy in enemies)
+            if (enemies.Count > 0)
             {
-                enemy.Update(gameTime);
+                enemies[activeEnemyIndex].Update(gameTime);
             }
+
             foreach (var proj in projectiles)
             {
                 proj.Update(gameTime);
             }
-
-            for (int i = 0; i < projectiles.Count; i++)
-            {
-                projectiles[i].Update(gameTime);
-                if (projectiles[i].IsFinished())
-                {
-                    projectiles.RemoveAt(i);
-                    i--;
-                }
-            }
-
 
             base.Update(gameTime);
         }
@@ -131,20 +118,17 @@ namespace FiveGuysFixed
             Player.Draw(_spriteBatch);
             _spriteBatch.End();
 
-            
-            _spriteBatch.Begin();
 
-            // draw Enemy
-            foreach (var enemy in enemies)
+            _spriteBatch.Begin();
+            if (enemies.Count > 0)
             {
-                enemy.Draw(_spriteBatch);
+                enemies[activeEnemyIndex].Draw(_spriteBatch);
             }
-            // draw all projectiles
+
             foreach (var proj in projectiles)
             {
                 proj.Draw(_spriteBatch);
             }
-
             _spriteBatch.End();
 
             base.Draw(gameTime);
