@@ -7,7 +7,7 @@ namespace FiveGuysFixed.Projectiles
 {
     public class Fireball : IProjectile
     {
-        private ISprite fireballSprite;
+        private Sprite fireballSprite;
         private Vector2 position;
         private Vector2 velocity;
         private bool isFinished;

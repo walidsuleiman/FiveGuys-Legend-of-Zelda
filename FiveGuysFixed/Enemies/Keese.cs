@@ -11,7 +11,7 @@ namespace FiveGuysFixed.Enemies
 {
     internal class Keese : IEnemy
     {
-        private ISprite keeseSprite;
+        private Sprite keeseSprite;
         private double x, y;
         private int currentTime;
         private const int flightTime = 15;

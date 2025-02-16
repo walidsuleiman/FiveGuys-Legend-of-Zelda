@@ -13,7 +13,7 @@ namespace FiveGuysFixed.Enemies
     internal class Gel : IEnemy
     {
         //private IPlayer.playerDirections direction
-        private ISprite gelSprite;
+        private Sprite gelSprite;
         private double x, y;
         private int currentTime;
         private const int flightTime = 15;

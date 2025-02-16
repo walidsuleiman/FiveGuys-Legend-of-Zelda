@@ -8,11 +8,11 @@ namespace FiveGuysFixed.Enemies
 {
     internal class Moblin : IEnemy
     {
-        private ISprite leftMoblinSprite;
-        private ISprite rightMoblinSprite;
-        private ISprite upMoblinSprite;
-        private ISprite downMoblinSprite;
-        private ISprite currentMoblin;
+        private Sprite leftMoblinSprite;
+        private Sprite rightMoblinSprite;
+        private Sprite upMoblinSprite;
+        private Sprite downMoblinSprite;
+        private Sprite currentMoblin;
 
         private double x, y;
         private int currentTime;

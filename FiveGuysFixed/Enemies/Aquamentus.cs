@@ -9,9 +9,9 @@ namespace FiveGuysFixed.Enemies
 {
     public class Aquamentus : IEnemy
     {
-        private ISprite aquamentusSprite;
-        private ISprite aquamentusAttackSprite;
-        private ISprite currentAquamentus;
+        private Sprite aquamentusSprite;
+        private Sprite aquamentusAttackSprite;
+        private Sprite currentAquamentus;
 
         private double x, y;
         private int currentTime;
