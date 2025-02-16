@@ -118,6 +118,7 @@ namespace FiveGuysFixed
             //{
             //    enemies[activeEnemyIndex].Update(gameTime);
             //}
+
             foreach (var enemy in enemies)
             {
                 enemy.Update(gameTime);
@@ -126,6 +127,16 @@ namespace FiveGuysFixed
             foreach (var proj in projectiles)
             {
                 proj.Update(gameTime);
+            }
+
+            for (int i = 0; i < projectiles.Count; i++)
+            {
+                projectiles[i].Update(gameTime);
+                if (projectiles[i].IsFinished())
+                {
+                    projectiles.RemoveAt(i);
+                    i--;
+                }
             }
 
             base.Update(gameTime);

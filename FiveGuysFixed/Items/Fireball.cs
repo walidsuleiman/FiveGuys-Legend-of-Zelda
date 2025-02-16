@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using FiveGuysFixed.Projectiles;    
 using FiveGuysFixed.Animation;
+using FiveGuysFixed.GameStates;
 
 namespace FiveGuysFixed.Projectiles
 {
@@ -22,6 +23,7 @@ namespace FiveGuysFixed.Projectiles
 
             this.position = new Vector2(startX, startY);
             this.velocity = velocity;
+            this.isFinished = false;
         }
 
         public void Update(GameTime gameTime)
@@ -30,11 +32,12 @@ namespace FiveGuysFixed.Projectiles
             {
                 position += velocity;
             }
-            else if (currentTime > flightTime + stillTime)
+            else if (currentTime >= flightTime + stillTime)
             {
                 isFinished = true;// mark fireball for removal
             }
             currentTime++;
+
 
             fireballSprite.Update(gameTime);
         }
