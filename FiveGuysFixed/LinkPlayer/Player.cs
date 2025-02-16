@@ -19,6 +19,7 @@ namespace FiveGuysFixed.LinkPlayer
     public class Player : IPlayer
     {
         private Vector2 position;
+        private Vector2 movement;
         private bool isMoving;
         private LinkWalkAnimation linkSprite;
         private double timeElapsedMoving;
