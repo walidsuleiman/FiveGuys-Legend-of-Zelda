@@ -144,6 +144,8 @@ namespace FiveGuysFixed
             {
                 proj.Draw(_spriteBatch);
             }
+            //draw object
+
 
             _spriteBatch.End();
 
