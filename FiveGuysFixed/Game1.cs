@@ -25,9 +25,9 @@ namespace FiveGuysFixed
         private KeyboardController keyboardController;
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
-        private Vector2 position;
-        private List<IEnemy> enemies;
-        private List<IProjectile> projectiles;// stores all active projectiles
+        public Vector2 position;
+        public List<IEnemy> enemies;
+        public List<IProjectile> projectiles;// stores all active projectiles
         private Texture2D bossTexture;
         private Texture2D enemyTexture;
 

@@ -1,13 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
 using FiveGuys.Controls;
 using FiveGuysFixed.Animation;
 using FiveGuysFixed.Commands;
 using FiveGuysFixed.Common;
+using FiveGuysFixed.GameStates;
+using FiveGuysFixed.LinkPlayer;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
 namespace FiveGuysFixed.Controls
@@ -28,23 +32,51 @@ namespace FiveGuysFixed.Controls
 
         public void Update()
         {
-         
+
             currentState = Keyboard.GetState();
 
             // Array of keys we care about.
             Keys[] movementKeys = { Keys.W, Keys.A, Keys.S, Keys.D };
+            Keys[] itemKeys = { Keys.U, Keys.I };
+            Keys[] weaponKeys = { Keys.D1, Keys.D2, Keys.D3 };
+            Keys[] enemyKeys = { Keys.O, Keys.P };
+            Keys[] gameKeys = { Keys.Q, Keys.R, Keys.Enter };
+
+            foreach(Keys gKey in gameKeys)
+            {
+                if (currentState.IsKeyDown(gKey))
+                {
+                    switch (gKey)
+                    {
+                        case Keys.Q:
+                            game.Exit();
+                            break;
+                        case Keys.R:
+                            game.Reset();
+                            game.Player.Reset();
+                            //game.Player.idle();
+                            //game.enemies.Clear();
+                            //game.projectiles.Clear();
+                            //GameState.PlayerState.direction = Dir.DOWN;
+                            break;
+                        case Keys.Enter:
+                            //Start Game
+                            break;
+                    }
+                }
+            }
 
             // Process movement keys using a switch statement.
-            foreach (Keys key in movementKeys)
+            foreach (Keys mKey in movementKeys)
             {
-                bool currentDown = currentState.IsKeyDown(key);
-                bool previousDown = previousState.IsKeyDown(key);
+                bool currentDown = currentState.IsKeyDown(mKey);
+                bool previousDown = previousState.IsKeyDown(mKey);
 
                 // Determine if the key was just pressed or just released.
                 if (currentDown && !previousDown || !currentDown && previousDown)
                 {
                     bool isKeyDown = currentDown; // true if just pressed, false if just released
-                    switch (key)
+                    switch (mKey)
                     {
                         case Keys.W:
                             new MovementCommand(game, Dir.UP, isKeyDown).Execute();
@@ -61,22 +93,57 @@ namespace FiveGuysFixed.Controls
                     }
                 }
             }
-            if (currentState.IsKeyDown(Keys.N))
+
+            foreach (Keys eKey in enemyKeys)
             {
-                //useCurrentItem();
+                if (currentState.IsKeyDown(eKey))
+                {
+                    switch (eKey)
+                    {
+                        case Keys.O:
+                            //new EnemySwitchCommand(game, true).Execute();
+                            break;
+                        case Keys.P:
+                            //new EnemySwitchCommand(game, false).Execute();
+                            break;
+                    }
+                }
+
             }
-            else if (currentState.IsKeyDown(Keys.M))
+   
+            foreach (Keys iKey in itemKeys)
             {
-                //switchItem();
+                if (currentState.IsKeyDown(iKey))
+                {
+                    switch (iKey)
+                    {
+                        case Keys.U:
+                            //new ItemSwitchCommand(game, true).Execute();
+                            break;
+                        case Keys.I:
+                            //new ItemSwitchCommand(game, false).Execute();
+                            break;
+                    }
+                }
             }
-            else if (currentState.IsKeyDown(Keys.D0) || currentState.IsKeyDown(Keys.NumPad0))
+
+            foreach (Keys wKey in weaponKeys)
             {
-                Console.WriteLine("Exiting Game");
-                game.Exit();
-            }
-            else if (currentState.IsKeyDown(Keys.R))
-            {
-                game.Player.Reset();
+                if (currentState.IsKeyDown(wKey))
+                {
+                    switch (wKey)
+                    {
+                        case Keys.D1:
+                            //new WeaponSwitchCommand(game, 1).Execute();
+                            break;
+                        case Keys.D2:
+                            //new WeaponSwitchCommand(game, 2).Execute();
+                            break;
+                        case Keys.D3:
+                            //new WeaponSwitchCommand(game, 3).Execute();
+                            break;
+                    }
+                }
             }
 
 
