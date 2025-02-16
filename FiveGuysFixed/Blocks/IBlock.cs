@@ -7,10 +7,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FiveGuysFixed.Block
+namespace FiveGuysFixed.Blocks
 {
     public interface IBlock
     {
         bool IsCollidable();
+        void Update(GameTime gameTime);
+        void Draw(SpriteBatch spriteBatch);
     }
 }

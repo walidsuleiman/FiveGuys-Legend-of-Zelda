@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using FiveGuysFixed.Block;
+using FiveGuysFixed.Animation;
+using FiveGuysFixed.Blocks;
+using FiveGuysFixed.Blocks;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -11,15 +13,17 @@ namespace FiveGuysFixed.Blocks
 {
     internal class Block : IBlock
     {
-        private Texture2D texture;
-        public Vector2 Position { get; set; }
-        private Rectangle boundingBox;
+        private Sprite blockSprite;
+        private double x, y;
+        private int currentTime;
 
-        public Block(Texture2D texture, Vector2 position)
+        public Block(Texture2D texture, int x, int y)
         {
-            this.texture = texture;
-            Position = position;
-            boundingBox = new Rectangle((int)position.X, (int)position.Y, texture.Width, texture.Height);
+            blockSprite = new Sprite(texture, 423, 223, 16, 16);
+
+            this.x = x;
+            this.y = y;
+            currentTime = 0;
         }
 
         public bool IsCollidable()
@@ -29,7 +33,13 @@ namespace FiveGuysFixed.Blocks
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(texture, Position, Color.White);
+            blockSprite.Draw(spriteBatch, new System.Numerics.Vector2((float)x, (float)y), null);
+        }
+
+        public void Update(GameTime gametime)
+        {
+            currentTime++;
+            blockSprite.Update(gametime);
         }
     }
 }
