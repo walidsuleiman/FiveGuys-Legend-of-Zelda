@@ -9,7 +9,7 @@ using FiveGuysFixed.Enemies;
 using FiveGuysFixed.Items;
 using FiveGuysFixed.LinkPlayer;
 using FiveGuysFixed.Projectiles;
-using FiveGuysFixed.Blocks;
+using FiveGuysFixed.GameBlocks;
 
 
 
@@ -31,13 +31,17 @@ namespace FiveGuysFixed
         public Vector2 position;
         public List<IBlock> blocks;
         public List<IEnemy> enemies;
+        public List<IItem> items;
+        public List<IItem> weapons;
         public List<IProjectile> projectiles;// stores all active projectiles
         private Texture2D bossTexture;
         private Texture2D enemyTexture;
         private Texture2D blockTexture;
 
-
+        public int activeWeaponIndex;
+        public int activeItemIndex;
         public int activeEnemyIndex;
+        public int activeBlockIndex;
 
 
         private GameState gameState;

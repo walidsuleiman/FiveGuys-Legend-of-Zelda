@@ -6,11 +6,20 @@ using System.Threading.Tasks;
 
 namespace FiveGuysFixed.Common
 {
-    public enum Equipment
+    public enum WeaponType
     {
         NONE,
         WOODSWORD,
-        WHITESWORD
+        WHITESWORD,
+        BOW,
+    }
+
+    public enum ItemType
+    {
+        NONE,
+        POTIONS,
+        HEARTS,
+        GEMS
     }
     public enum Dir
     {

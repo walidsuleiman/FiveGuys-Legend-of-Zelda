@@ -4,12 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using FiveGuysFixed.Animation;
-using FiveGuysFixed.Blocks;
-using FiveGuysFixed.Blocks;
+using FiveGuysFixed.GameBlocks;
+using FiveGuysFixed.GameBlocks;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace FiveGuysFixed.Blocks
+namespace FiveGuysFixed.GameBlocks
 {
     internal class Block : IBlock
     {

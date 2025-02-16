@@ -41,8 +41,9 @@ namespace FiveGuysFixed.Controls
             Keys[] weaponKeys = { Keys.D1, Keys.D2, Keys.D3 };
             Keys[] enemyKeys = { Keys.O, Keys.P };
             Keys[] gameKeys = { Keys.Q, Keys.R, Keys.Enter };
+            Keys[] blockKeys = { Keys.T, Keys.Y };
 
-            foreach(Keys gKey in gameKeys)
+            foreach (Keys gKey in gameKeys)
             {
                 if (currentState.IsKeyDown(gKey))
                 {
@@ -123,10 +124,10 @@ namespace FiveGuysFixed.Controls
                     switch (iKey)
                     {
                         case Keys.U:
-                            //new ItemSwitchCommand(game, true).Execute();
+                            new ItemSwitchCommand(game, true).Execute();
                             break;
                         case Keys.I:
-                            //new ItemSwitchCommand(game, false).Execute();
+                            new ItemSwitchCommand(game, false).Execute();
                             break;
                     }
                 }
@@ -139,20 +140,35 @@ namespace FiveGuysFixed.Controls
                     switch (wKey)
                     {
                         case Keys.D1:
-                            //new WeaponSwitchCommand(game, 1).Execute();
+                            new WeaponSwitchCommand(game, 1).Execute();
                             break;
                         case Keys.D2:
-                            //new WeaponSwitchCommand(game, 2).Execute();
+                            new WeaponSwitchCommand(game, 2).Execute();
                             break;
                         case Keys.D3:
-                            //new WeaponSwitchCommand(game, 3).Execute();
+                            new WeaponSwitchCommand(game, 3).Execute();
                             break;
                     }
                 }
             }
 
+            foreach (Keys bKey in blockKeys)
+            {
+                if (currentState.IsKeyDown(bKey))
+                {
+                    switch (bKey)
+                    {
+                        case Keys.T:
+                            new BlockSwitchCommand(game, true).Execute();
+                            break;
+                        case Keys.Y:
+                            new BlockSwitchCommand(game, false).Execute();
+                            break;
+                    }
+                }
 
-            previousState = currentState;
+            }
+                previousState = currentState;
         }
 
 
