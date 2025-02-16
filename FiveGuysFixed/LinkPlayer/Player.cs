@@ -20,7 +20,13 @@ namespace FiveGuysFixed.LinkPlayer
     public class Player : IPlayer
     {
         private LinkWalkAnimation linkSprite;
+        private int health;
 
+        public Player()
+        {
+            linkSprite = new LinkWalkAnimation();
+            health = 100;
+        }
         public void move(Dir newDir) 
         {
             GameState.PlayerState.direction = newDir;
@@ -73,14 +79,26 @@ namespace FiveGuysFixed.LinkPlayer
         { 
             GameState.PlayerState.position = new Vector2(100, 100);
             GameState.PlayerState.isMoving = false;
+            health = 100;
         }
-        public void takeDamage(int damage) { }
-        public void gainHealth(int health) { }
-
-        public Player()
+        public void takeDamage(int damage)
         {
-            linkSprite = new LinkWalkAnimation();
+            health -= damage;
+            if (health <= 0)
+            {
+               Reset();
+            }
         }
+        public void gainHealth(int health)
+        {
+            this.health += health;
+
+            if (this.health > 100)
+            {
+                this.health = 100;
+            }
+        }
+
 
     }
 }

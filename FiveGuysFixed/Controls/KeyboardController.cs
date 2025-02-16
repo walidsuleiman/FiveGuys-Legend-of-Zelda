@@ -42,7 +42,25 @@ namespace FiveGuysFixed.Controls
             Keys[] enemyKeys = { Keys.O, Keys.P };
             Keys[] gameKeys = { Keys.Q, Keys.R, Keys.Enter };
             Keys[] blockKeys = { Keys.T, Keys.Y };
+            Keys[] combatKeys = { Keys.N, Keys.E };
 
+          
+
+            foreach (Keys cKey in combatKeys)
+            {
+                if (currentState.IsKeyDown(cKey))
+                {
+                    switch (cKey)
+                    {
+                        case Keys.N:
+                            game.Player.attack(GameState.PlayerState.direction);
+                            break;
+                        case Keys.E:
+                            game.Player.takeDamage(15);
+                            break;
+                    }
+                }
+            }
             foreach (Keys gKey in gameKeys)
             {
                 if (currentState.IsKeyDown(gKey))
