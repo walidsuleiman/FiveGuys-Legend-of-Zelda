@@ -54,7 +54,7 @@ namespace FiveGuysFixed.Enemies
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            currentAquamentus.Draw(spriteBatch, new Vector2((float)x, (float)y));
+            currentAquamentus.Draw(spriteBatch, new Vector2((float)x, (float)y), null);
         }
 
         private void setAI()

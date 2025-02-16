@@ -41,7 +41,7 @@ namespace FiveGuysFixed.Projectiles
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            fireballSprite.Draw(spriteBatch, position);
+            fireballSprite.Draw(spriteBatch, position, null);
         }
 
         public bool IsFinished()

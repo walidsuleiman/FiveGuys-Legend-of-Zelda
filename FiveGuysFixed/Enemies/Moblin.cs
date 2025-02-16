@@ -83,7 +83,7 @@ namespace FiveGuysFixed.Enemies
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            currentMoblin.Draw(spriteBatch, new Vector2((float)x, (float)y));
+            currentMoblin.Draw(spriteBatch, new Vector2((float)x, (float)y), null);
         }
 
         public void Update(GameTime gameTime)

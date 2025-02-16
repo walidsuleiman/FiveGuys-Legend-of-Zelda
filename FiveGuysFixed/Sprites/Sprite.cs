@@ -76,11 +76,8 @@ namespace FiveGuysFixed.Animation
             }
         }
 
-        public void Draw(SpriteBatch _spriteBatch, Vector2? origin)
+        public void Draw(SpriteBatch _spriteBatch, Vector2 position, Vector2? origin)
         {
-
-            Rectangle destRect = new Rectangle((int)GameState.PlayerState.position.X, (int)GameState.PlayerState.position.Y, width, height);
-            //sourceRect
 
             if (!origin.HasValue) 
             { 
@@ -89,11 +86,11 @@ namespace FiveGuysFixed.Animation
 
             if (facLeft)
             {
-                _spriteBatch.Draw(texture, GameState.PlayerState.position, sourceRect, Color.White, 0, new Vector2(width / 2, height / 2), 4.0f, SpriteEffects.FlipHorizontally, 0f);
+                _spriteBatch.Draw(texture, position, sourceRect, Color.White, 0, origin.Value, 1, SpriteEffects.FlipHorizontally, 0f);
             }
             else
             {
-                _spriteBatch.Draw(texture, GameState.PlayerState.position, sourceRect, Color.White, 0, new Vector2(width / 2, height / 2), 4.0f, SpriteEffects.None, 0f);
+                _spriteBatch.Draw(texture, position, sourceRect, Color.White, 0, origin.Value, 1, SpriteEffects.None, 0f);
             }
         }
 

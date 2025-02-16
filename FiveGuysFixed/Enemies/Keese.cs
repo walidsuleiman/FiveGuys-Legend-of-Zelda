@@ -57,7 +57,7 @@ namespace FiveGuysFixed.Enemies
 
         public void Draw(SpriteBatch spritebatch)
         {
-            keeseSprite.Draw(spritebatch, new System.Numerics.Vector2((float)x, (float)y));
+            keeseSprite.Draw(spritebatch, new System.Numerics.Vector2((float)x, (float)y), null);
         }
 
         public void Update(GameTime gametime)

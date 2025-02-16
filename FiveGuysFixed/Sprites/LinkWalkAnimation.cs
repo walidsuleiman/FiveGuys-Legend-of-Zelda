@@ -29,11 +29,11 @@ namespace FiveGuysFixed.Animation
 
             if (facLeft)
             {
-                _spriteBatch.Draw(texture, GameState.PlayerState.position, sourceRect, Color.White, 0, new Vector2(width / 2, height / 2), 4.0f, SpriteEffects.FlipHorizontally, 0f);
+                _spriteBatch.Draw(texture, GameState.PlayerState.position, sourceRect, Color.White, 0, new Vector2(width / 2, height / 2), 1, SpriteEffects.FlipHorizontally, 0f);
             }
             else
             {
-                _spriteBatch.Draw(texture, GameState.PlayerState.position, sourceRect, Color.White, 0, new Vector2(width / 2, height / 2), 4.0f, SpriteEffects.None, 0f);
+                _spriteBatch.Draw(texture, GameState.PlayerState.position, sourceRect, Color.White, 0, new Vector2(width / 2, height / 2), 1, SpriteEffects.None, 0f);
             }
         }
 
