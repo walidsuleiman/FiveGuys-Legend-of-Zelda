@@ -38,11 +38,6 @@ namespace FiveGuysFixed.Animation
                 }
             }
         }
-        public new void LoadContent(ContentManager content)
-        {
-            texture = content.Load<Texture2D>("linkSheet");
-        }
-
 
         public void Draw(SpriteBatch _spriteBatch, Vector2? origin)
         {

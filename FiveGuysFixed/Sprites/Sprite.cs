@@ -26,9 +26,9 @@ namespace FiveGuysFixed.Animation
         protected double timeElapsed;
         protected bool facLeft;
         protected bool isAnimated;
-        public Texture2D texture; //{ get; private set; }
+        public Texture2D texture { get; private set; }
         public Vector2 origin;
-        public Texture2D Texture; //{ get { return texture; } }
+        public Texture2D Texture { get { return texture; } }
         Rectangle sourceRect;
 
         public Sprite(Texture2D texture, int x, int y, int width, int height, int frames = 1)

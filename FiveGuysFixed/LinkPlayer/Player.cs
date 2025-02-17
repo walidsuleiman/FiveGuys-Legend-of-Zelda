@@ -21,14 +21,12 @@ namespace FiveGuysFixed.LinkPlayer
     public class Player : IPlayer
     {
         private LinkWalkAnimation linkSprite;
-        private WoodSword woodSword;
         private int health;
 
         public Player()
         {
             linkSprite = new LinkWalkAnimation();
             health = 100;
-            woodSword = new WoodSword(GameState.PlayerState.direction);
 
         }
         public void move(Dir newDir) 
