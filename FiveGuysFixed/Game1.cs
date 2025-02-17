@@ -19,6 +19,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System.Diagnostics;
+using FiveGuysFixed.Weapons___Items;
 
 namespace FiveGuysFixed
 {
@@ -38,6 +39,9 @@ namespace FiveGuysFixed
         private Texture2D enemyTexture;
         private Texture2D blockTexture;
         private Texture2D yellowBlockTexture;
+        private Texture2D redPotionTexture;
+        private Texture2D bluePotionTexture;
+
 
         public int activeWeaponIndex;
         public int activeItemIndex;
@@ -73,6 +77,8 @@ namespace FiveGuysFixed
             projectiles = new List<IProjectile>();
             blocks = new List<IBlock>();
             activeBlockIndex = 0;
+            items = new List<IItem>();
+            activeItemIndex = 0;
 
             base.Initialize();
         }
@@ -91,6 +97,10 @@ namespace FiveGuysFixed
             blockTexture = Content.Load<Texture2D>("BlockSprite");
             yellowBlockTexture = Content.Load<Texture2D>("YellowBlockSprite");
 
+            redPotionTexture = Content.Load<Texture2D>("RedPotionSprite");
+            bluePotionTexture = Content.Load<Texture2D>("BluePotionSprite");
+
+
 
             // initialize enemies after texture is loaded
             enemies.Add(new Keese(enemyTexture, 100, 100));
@@ -100,6 +110,9 @@ namespace FiveGuysFixed
 
             blocks.Add(new Block(blockTexture, 100, 200));
             blocks.Add(new YellowBlock(yellowBlockTexture, 500, 500));
+
+            items.Add(new RedPotion(redPotionTexture, 1220, 50));
+            items.Add(new BluePotion(bluePotionTexture, 1220, 50));
 
 
         }
@@ -121,6 +134,11 @@ namespace FiveGuysFixed
             if (blocks.Count > 0)
             {
                 blocks[activeBlockIndex].Update(gameTime);
+            }
+
+            if (items.Count > 0)
+            {
+                items[activeBlockIndex].Update(gameTime);
             }
 
             foreach (var proj in projectiles)
@@ -173,6 +191,11 @@ namespace FiveGuysFixed
             if (blocks.Count > 0)
             {
                 blocks[activeBlockIndex].Draw(_spriteBatch);
+            }
+
+            if (items.Count > 0)
+            {
+                items[activeItemIndex].Draw(_spriteBatch);
             }
 
             _spriteBatch.End();

@@ -144,8 +144,12 @@ namespace FiveGuysFixed.Controls
    
             foreach (Keys iKey in itemKeys)
             {
-                if (currentState.IsKeyDown(iKey))
+                bool currentDown = currentState.IsKeyDown(iKey);
+                bool previousDown = previousState.IsKeyDown(iKey);
+
+                if (!currentDown && previousDown)
                 {
+                    bool isKeyDown = currentDown;
                     switch (iKey)
                     {
                         case Keys.U:
