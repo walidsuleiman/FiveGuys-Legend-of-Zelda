@@ -49,17 +49,16 @@ namespace FiveGuysFixed.LinkPlayer
 
             //if (GameState.PlayerState.heldWeapon == weapon) 
             //{
-                if (weapon == WeaponType.WOODSWORD) 
-                {
-                    woodSword = new WoodSword(GameState.PlayerState.direction);
-                }
+                //if (weapon == WeaponType.WOODSWORD) 
+                //{
+                //    woodSword = new WoodSword(GameState.PlayerState.direction);
+                //}
             //}
         }
         public void switchItem() { }
         public void Draw(SpriteBatch _spriteBatch) 
         {
             linkSprite.Draw(_spriteBatch, null);
-            woodSword.Draw(_spriteBatch);
         }
         public void Update(GameTime gt)
         {
@@ -85,17 +84,10 @@ namespace FiveGuysFixed.LinkPlayer
             }
             GameState.PlayerState.position = newPos;
             linkSprite.Update(gt);
-
-            if (woodSword != null)
-            {
-                woodSword.Update(gt);
-            }
-
         }
         public void LoadContent(ContentManager content)
         {
             linkSprite.LoadContent(content);
-            woodSword.LoadContent(content);
         }
         public void Reset() 
         { 
