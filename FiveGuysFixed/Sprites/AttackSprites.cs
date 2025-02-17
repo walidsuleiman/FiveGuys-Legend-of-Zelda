@@ -20,15 +20,10 @@ namespace FiveGuysFixed.Sprites
         public AttackSprites(Dir dir, WeaponType equipment) 
         {
             this.currentDir = dir;
-
-            if (equipment == WeaponType.WOODSWORD)
-            { 
-                this.currentSword = WeaponType.WOODSWORD;
-            }
-            else if (equipment == WeaponType.WHITESWORD)
-            {
-                this.currentSword = WeaponType.WHITESWORD;
-            }
+            this.currentSword = equipment;
+            this.currentSword = WeaponType.WHITESWORD;
+            this.currentSword = WeaponType.BOOMERANG;
+        
             //else if (currentSword.Equals("magic"))
             //{
             //    this.currentSword = swordType.magicalSword;

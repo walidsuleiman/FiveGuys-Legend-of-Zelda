@@ -12,6 +12,7 @@ namespace FiveGuysFixed.Common
         WOODSWORD,
         WHITESWORD,
         BOW,
+        BOOMERANG
     }
 
     public enum ItemType

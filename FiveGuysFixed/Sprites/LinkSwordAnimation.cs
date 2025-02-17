@@ -8,6 +8,7 @@ using FiveGuysFixed.Common;
 using FiveGuysFixed.GameStates;
 using FiveGuysFixed.Sprites;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace FiveGuysFixed.Animation
