@@ -44,7 +44,7 @@ namespace FiveGuysFixed
         private Texture2D greenBlockTexture;
         private Texture2D redPotionTexture;
         private Texture2D bluePotionTexture;
-
+        private Texture2D bombTexture;
 
         public int activeWeaponIndex;
         public int activeItemIndex;
@@ -106,6 +106,8 @@ namespace FiveGuysFixed
 
             redPotionTexture = Content.Load<Texture2D>("RedPotionSprite");
             bluePotionTexture = Content.Load<Texture2D>("BluePotionSprite");
+            bombTexture = Content.Load<Texture2D>("linkSheet");
+
 
 
 
@@ -125,6 +127,8 @@ namespace FiveGuysFixed
 
             items.Add(new RedPotion(redPotionTexture, 1000, 200));
             items.Add(new BluePotion(bluePotionTexture, 200, 600));
+            items.Add(new Bomb(bombTexture, 350, 150));
+
 
 
         }
