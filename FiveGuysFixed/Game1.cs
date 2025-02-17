@@ -37,6 +37,7 @@ namespace FiveGuysFixed
         private Texture2D bossTexture;
         private Texture2D enemyTexture;
         private Texture2D blockTexture;
+        private Texture2D yellowBlockTexture;
 
         public int activeWeaponIndex;
         public int activeItemIndex;
@@ -87,6 +88,7 @@ namespace FiveGuysFixed
             bossTexture = Content.Load<Texture2D>("Boss_SpriteSheet");
 
             blockTexture = Content.Load<Texture2D>("BlockSprite");
+            yellowBlockTexture = Content.Load<Texture2D>("YellowBlockSprite");
 
 
             // initialize enemies after texture is loaded
@@ -105,6 +107,8 @@ namespace FiveGuysFixed
                 blocks.Add(new Block(blockTexture, x, y));
 
             }
+
+            blocks.Add(new YellowBlock(yellowBlockTexture, 500, 500));
 
 
         }
