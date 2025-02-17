@@ -16,6 +16,7 @@ namespace FiveGuysFixed.Commands
             this.game = game;
             this.nextBlock = nextBlock;
         }
+
         public void Execute()
         {
             if (game.blocks.Count == 0) return;

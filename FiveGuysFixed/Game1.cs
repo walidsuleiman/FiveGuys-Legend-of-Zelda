@@ -72,6 +72,7 @@ namespace FiveGuysFixed
             activeEnemyIndex = 0;
             projectiles = new List<IProjectile>();
             blocks = new List<IBlock>();
+            activeBlockIndex = 0;
 
             base.Initialize();
         }
@@ -98,16 +99,6 @@ namespace FiveGuysFixed
             enemies.Add(new Aquamentus(bossTexture, 600, 500, projectiles));// pass projectile list
 
             blocks.Add(new Block(blockTexture, 100, 200));
-
-
-            for (int i = 0; i < 64; i = i + 16)
-            {
-                int x = 400 + i;
-                int y = 600;
-                blocks.Add(new Block(blockTexture, x, y));
-
-            }
-
             blocks.Add(new YellowBlock(yellowBlockTexture, 500, 500));
 
 
@@ -125,6 +116,11 @@ namespace FiveGuysFixed
             if (enemies.Count > 0)
             {
                 enemies[activeEnemyIndex].Update(gameTime);
+            }
+
+            if (blocks.Count > 0)
+            {
+                blocks[activeBlockIndex].Update(gameTime);
             }
 
             foreach (var proj in projectiles)
@@ -173,10 +169,10 @@ namespace FiveGuysFixed
                 proj.Draw(_spriteBatch);
             }
 
-            //draw object
-            foreach (var block in blocks)
+
+            if (blocks.Count > 0)
             {
-                block.Draw(_spriteBatch);
+                blocks[activeBlockIndex].Draw(_spriteBatch);
             }
 
             _spriteBatch.End();

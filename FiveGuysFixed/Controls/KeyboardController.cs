@@ -179,9 +179,13 @@ namespace FiveGuysFixed.Controls
 
             foreach (Keys bKey in blockKeys)
             {
-                if (currentState.IsKeyDown(bKey))
+                bool currentDown = currentState.IsKeyDown(bKey);
+                bool previousDown = previousState.IsKeyDown(bKey);
+
+                if (!currentDown && previousDown)
                 {
-                    switch (bKey)
+                    bool isKeyDown = currentDown;
+                    switch (bKey) 
                     {
                         case Keys.T:
                             new BlockSwitchCommand(game, true).Execute();
@@ -190,10 +194,11 @@ namespace FiveGuysFixed.Controls
                             new BlockSwitchCommand(game, false).Execute();
                             break;
                     }
+
                 }
 
             }
-                previousState = currentState;
+            previousState = currentState;
         }
 
 
