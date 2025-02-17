@@ -40,6 +40,8 @@ namespace FiveGuysFixed
         private Texture2D blockTexture;
         private Texture2D yellowBlockTexture;
         private Texture2D treeBlockTexture;
+        private Texture2D whiteBlockTexture;
+        private Texture2D greenBlockTexture;
         private Texture2D redPotionTexture;
         private Texture2D bluePotionTexture;
 
@@ -98,6 +100,8 @@ namespace FiveGuysFixed
             blockTexture = Content.Load<Texture2D>("BlockSprite");
             yellowBlockTexture = Content.Load<Texture2D>("YellowBlockSprite");
             treeBlockTexture = Content.Load<Texture2D>("TreeBlockSprite");
+            whiteBlockTexture = Content.Load<Texture2D>("WhiteBlockSprite");
+            greenBlockTexture = Content.Load<Texture2D>("GreenBlockSprite");
 
 
             redPotionTexture = Content.Load<Texture2D>("RedPotionSprite");
@@ -115,6 +119,7 @@ namespace FiveGuysFixed
             blocks.Add(new YellowBlock(yellowBlockTexture, 500, 650));
             blocks.Add(new Block(blockTexture, 100, 200));
             blocks.Add(new TreeBlock(treeBlockTexture, 550, 150));
+            blocks.Add(new WhiteBlock(whiteBlockTexture, 750, 250));
 
 
             items.Add(new RedPotion(redPotionTexture, 1000, 200));
