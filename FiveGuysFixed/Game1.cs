@@ -120,6 +120,7 @@ namespace FiveGuysFixed
             blocks.Add(new Block(blockTexture, 100, 200));
             blocks.Add(new TreeBlock(treeBlockTexture, 550, 150));
             blocks.Add(new WhiteBlock(whiteBlockTexture, 750, 250));
+            blocks.Add(new GreenBlock(greenBlockTexture, 1050, 650));
 
 
             items.Add(new RedPotion(redPotionTexture, 1000, 200));
