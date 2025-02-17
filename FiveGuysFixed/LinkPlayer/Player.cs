@@ -28,6 +28,8 @@ namespace FiveGuysFixed.LinkPlayer
         {
             linkSprite = new LinkWalkAnimation();
             health = 100;
+            woodSword = new WoodSword(GameState.PlayerState.direction);
+
         }
         public void move(Dir newDir) 
         {
@@ -83,11 +85,17 @@ namespace FiveGuysFixed.LinkPlayer
             }
             GameState.PlayerState.position = newPos;
             linkSprite.Update(gt);
-            woodSword.Update(gt);
+
+            if (woodSword != null)
+            {
+                woodSword.Update(gt);
+            }
+
         }
         public void LoadContent(ContentManager content)
         {
             linkSprite.LoadContent(content);
+            woodSword.LoadContent(content);
         }
         public void Reset() 
         { 

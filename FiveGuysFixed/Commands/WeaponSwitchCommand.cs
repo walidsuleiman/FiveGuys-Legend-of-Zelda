@@ -22,7 +22,7 @@ namespace FiveGuysFixed.Commands
         }
         public void Execute()
         {
-            if (game.weapons.Count == 0) return;
+            //if (game.weapons.Count == 0) return;
 
             if (weaponNumber == 1)
             {
@@ -34,7 +34,7 @@ namespace FiveGuysFixed.Commands
             }
             else if (weaponNumber == 3)
             {
-                //game.activeWeaponIndex = 3;
+                GameState.PlayerState.heldWeapon = WeaponType.NONE;
             }
         }
     }

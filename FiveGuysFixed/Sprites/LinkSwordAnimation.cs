@@ -8,6 +8,7 @@ using FiveGuysFixed.Common;
 using FiveGuysFixed.GameStates;
 using FiveGuysFixed.Sprites;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace FiveGuysFixed.Animation
@@ -37,6 +38,11 @@ namespace FiveGuysFixed.Animation
                 }
             }
         }
+        public new void LoadContent(ContentManager content)
+        {
+            texture = content.Load<Texture2D>("linkSheet");
+        }
+
 
         public void Draw(SpriteBatch _spriteBatch, Vector2? origin)
         {

@@ -22,7 +22,7 @@ namespace FiveGuysFixed.LinkPlayer
         {
             this.position = position;
             this.isMoving = false;
-            this.heldWeapon = WeaponType.NONE;
+            this.heldWeapon = WeaponType.WOODSWORD;
             this.direction = Dir.DOWN;
         }
     }

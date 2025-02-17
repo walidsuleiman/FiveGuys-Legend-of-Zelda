@@ -44,16 +44,22 @@ namespace FiveGuysFixed.Controls
             Keys[] blockKeys = { Keys.T, Keys.Y };
             Keys[] combatKeys = { Keys.N, Keys.E };
 
-          
+
 
             foreach (Keys cKey in combatKeys)
             {
-                if (currentState.IsKeyDown(cKey))
+                bool currentDown = currentState.IsKeyDown(cKey);
+                bool previousDown = previousState.IsKeyDown(cKey);
+
+                // Determine if the key was just pressed or just released.
+                if (!currentDown && previousDown)
                 {
+                    bool isKeyDown = currentDown;
+
                     switch (cKey)
                     {
                         case Keys.N:
-                            game.Player.attack(GameState.PlayerState.direction);
+                            game.Player.attack(GameState.PlayerState.heldWeapon);
                             break;
                         case Keys.E:
                             game.Player.takeDamage(15);
@@ -61,6 +67,7 @@ namespace FiveGuysFixed.Controls
                     }
                 }
             }
+            
             foreach (Keys gKey in gameKeys)
             {
                 if (currentState.IsKeyDown(gKey))

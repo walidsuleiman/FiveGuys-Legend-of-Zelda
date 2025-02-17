@@ -7,6 +7,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 using FiveGuysFixed.Animation;
 using FiveGuysFixed.Common;
+using Microsoft.Xna.Framework.Content;
 
 namespace FiveGuysFixed.Items
 {
@@ -30,6 +31,11 @@ namespace FiveGuysFixed.Items
         public void Update(GameTime gameTime)
         {
             swordAttack.Update(gameTime);
+        }
+
+        public void LoadContent(ContentManager content)
+        {
+            swordAttack.LoadContent(content);
         }
     }
 }
