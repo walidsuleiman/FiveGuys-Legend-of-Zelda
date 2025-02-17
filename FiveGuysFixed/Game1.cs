@@ -39,6 +39,7 @@ namespace FiveGuysFixed
         private Texture2D enemyTexture;
         private Texture2D blockTexture;
         private Texture2D yellowBlockTexture;
+        private Texture2D redBlockTexture;
         private Texture2D redPotionTexture;
         private Texture2D bluePotionTexture;
 
@@ -96,6 +97,8 @@ namespace FiveGuysFixed
 
             blockTexture = Content.Load<Texture2D>("BlockSprite");
             yellowBlockTexture = Content.Load<Texture2D>("YellowBlockSprite");
+           // redBlockTexture = yellowBlockTexture;
+
 
             redPotionTexture = Content.Load<Texture2D>("RedPotionSprite");
             bluePotionTexture = Content.Load<Texture2D>("BluePotionSprite");
@@ -108,11 +111,13 @@ namespace FiveGuysFixed
             enemies.Add(new Gel(enemyTexture, 500, 300));
             enemies.Add(new Aquamentus(bossTexture, 600, 500, projectiles));// pass projectile list
 
+            blocks.Add(new RedBlock(yellowBlockTexture, 900, 350));
+            blocks.Add(new YellowBlock(yellowBlockTexture, 500, 650));
             blocks.Add(new Block(blockTexture, 100, 200));
-            blocks.Add(new YellowBlock(yellowBlockTexture, 500, 500));
 
-            items.Add(new RedPotion(redPotionTexture, 1220, 50));
-            items.Add(new BluePotion(bluePotionTexture, 1220, 50));
+
+            items.Add(new RedPotion(redPotionTexture, 1000, 200));
+            items.Add(new BluePotion(bluePotionTexture, 200, 600));
 
 
         }
@@ -138,7 +143,7 @@ namespace FiveGuysFixed
 
             if (items.Count > 0)
             {
-                items[activeBlockIndex].Update(gameTime);
+                items[activeItemIndex].Update(gameTime);
             }
 
             foreach (var proj in projectiles)
