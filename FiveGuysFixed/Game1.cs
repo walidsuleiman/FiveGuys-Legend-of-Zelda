@@ -191,12 +191,8 @@ namespace FiveGuysFixed
             GraphicsDevice.Clear(Color.LightGoldenrodYellow);
             _spriteBatch.Begin(samplerState: SamplerState.PointClamp);
             Player.Draw(_spriteBatch);
-            _spriteBatch.End();
 
-
-            _spriteBatch.Begin();
-
-            Debug.WriteLine(activeEnemyIndex);
+            
 
             if (enemies.Count > 0)
             {

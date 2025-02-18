@@ -17,12 +17,14 @@ namespace FiveGuysFixed.LinkPlayer
         public bool isMoving;
         public WeaponType heldWeapon;
         public Dir direction;
+        public bool isAttacking;
 
         public PlayerState(Vector2 position) 
         {
             this.position = position;
             this.isMoving = false;
-            this.heldWeapon = WeaponType.WOODSWORD;
+            this.isAttacking = false;
+            this.heldWeapon = WeaponType.NONE;
             this.direction = Dir.DOWN;
         }
     }

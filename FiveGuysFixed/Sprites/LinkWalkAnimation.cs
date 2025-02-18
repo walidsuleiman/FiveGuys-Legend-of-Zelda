@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using FiveGuysFixed.Common;
 using FiveGuysFixed.GameStates;
+using FiveGuysFixed.Sprites;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -16,20 +17,23 @@ namespace FiveGuysFixed.Animation
         private Rectangle sourceRect;
         private Dir dir;
 
-        public new void Draw(SpriteBatch _spriteBatch, Vector2? origin)
+        public void Draw(SpriteBatch _spriteBatch, Vector2? origin)
         {
 
             Rectangle destRect = new Rectangle((int)GameState.PlayerState.position.X, (int)GameState.PlayerState.position.Y, width, height);
-            sourceRect = new Rectangle(spriteLocationX + gap * (currentFrame + 1) + width * currentFrame, spriteLocationY, width, height);
 
-            if (!origin.HasValue)
-            {
-                origin = new Vector2(width/2, height/2);
-            }
+           
+                sourceRect = new Rectangle(spriteLocationX + gap * (currentFrame + 1) + width * currentFrame, spriteLocationY, width, height);
+
+
+            //if (!origin.HasValue)
+            //{
+            //    origin = new Vector2(spriteLocationX + 8, spriteLocationY + 8);
+            //}
 
             if (facLeft)
             {
-                _spriteBatch.Draw(texture, GameState.PlayerState.position, sourceRect, Color.White, 0, new Vector2(width / 2, height / 2), 1, SpriteEffects.FlipHorizontally, 0f);
+                _spriteBatch.Draw(texture, GameState.PlayerState.position, sourceRect, Color.White, 0, new Vector2(width/2, height/2), 1, SpriteEffects.FlipHorizontally, 0f);
             }
             else
             {
@@ -37,10 +41,25 @@ namespace FiveGuysFixed.Animation
             }
         }
 
-        public void pickUp()
+        public new void Update(GameTime gt)
         {
-            spriteLocationX = 212;
+            if (isAnimated)
+            {
+                    timeElapsed += gt.ElapsedGameTime.TotalSeconds;
+                    if (timeElapsed >= frameTime)
+                    {
+                        timeElapsed -= frameTime;
+                        currentFrame++;
+
+                        if (currentFrame >= totalFrames)
+                            currentFrame = 0;
+
+                        // shift the sourceRect according to currentFrame
+                        sourceRect.X = spriteLocationX + (width * currentFrame);
+                    }
+            }
         }
+
 
         public void facingDirection(Dir dir) 
         {

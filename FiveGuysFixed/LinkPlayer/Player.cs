@@ -21,11 +21,13 @@ namespace FiveGuysFixed.LinkPlayer
     public class Player : IPlayer
     {
         private LinkWalkAnimation linkSprite;
+        private LinkSwordAnimation swordAnimation;
         private int health;
 
         public Player()
         {
             linkSprite = new LinkWalkAnimation();
+            swordAnimation = new LinkSwordAnimation();
             health = 100;
 
         }
@@ -42,21 +44,26 @@ namespace FiveGuysFixed.LinkPlayer
             linkSprite.idle();
         }
 
-        public void attack(WeaponType weapon) 
+        public void attack() 
         {
-
-            //if (GameState.PlayerState.heldWeapon == weapon) 
-            //{
-                //if (weapon == WeaponType.WOODSWORD) 
-                //{
-                //    woodSword = new WoodSword(GameState.PlayerState.direction);
-                //}
-            //}
+            if(GameState.PlayerState.heldWeapon != WeaponType.NONE)
+            {
+                GameState.PlayerState.isAttacking = true;
+            }
         }
         public void switchItem() { }
         public void Draw(SpriteBatch _spriteBatch) 
         {
-            linkSprite.Draw(_spriteBatch, null);
+            if (GameState.PlayerState.isAttacking)
+            {
+                //Add switchcase for other weapons
+                swordAnimation.Draw(_spriteBatch);
+
+            }
+            else{
+                linkSprite.Draw(_spriteBatch, null);
+            }
+
         }
         public void Update(GameTime gt)
         {
@@ -81,11 +88,20 @@ namespace FiveGuysFixed.LinkPlayer
                 }
             }
             GameState.PlayerState.position = newPos;
-            linkSprite.Update(gt);
+            if (GameState.PlayerState.isAttacking)
+            {
+                swordAnimation.Update(gt);
+            } else
+            {
+                linkSprite.Update(gt);
+            }
+                
+            
         }
         public void LoadContent(ContentManager content)
         {
             linkSprite.LoadContent(content);
+            swordAnimation.LoadContent(content);
         }
         public void Reset() 
         { 

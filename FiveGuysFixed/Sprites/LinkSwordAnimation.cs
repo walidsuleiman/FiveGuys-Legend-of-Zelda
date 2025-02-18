@@ -1,15 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
+using System.Diagnostics;
 using FiveGuysFixed.Common;
 using FiveGuysFixed.GameStates;
-using FiveGuysFixed.Sprites;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
+using Color = Microsoft.Xna.Framework.Color;
+using Rectangle = Microsoft.Xna.Framework.Rectangle;
 
 namespace FiveGuysFixed.Animation
 {
@@ -17,76 +14,149 @@ namespace FiveGuysFixed.Animation
     {
 
         private Rectangle sourceRect;
-        private Dir dir;
-        private AttackSprites attackSprites;
-        private List<Rectangle> currentSprites;
+        //private Rectangle[][][] woodenSprites = {
+        //    //Direction up
+        //    [
+        //        [new Rectangle(1, 109, 16, 16)],
+        //        [new Rectangle(18, 109, 16, 16), new Rectangle(21, 97, 8, 12)],
+        //        [new Rectangle(35, 109, 16, 16), new Rectangle(39, 98, 8, 11)],
+        //        [new Rectangle(52, 109, 16, 16), new Rectangle(56, 106, 8, 3)]
+        //    ]
+        //};
         private int currentFrameIndex;
 
         public new void Update(GameTime gt)
         {
-            if (isAnimated)
+
+            timeElapsed += gt.ElapsedGameTime.TotalSeconds;
+            if (timeElapsed >= frameTime)
             {
-                timeElapsed += gt.ElapsedGameTime.TotalSeconds;
-                if (timeElapsed >= frameTime)
+
+                timeElapsed -= frameTime;
+                currentFrameIndex++;
+
+                if (currentFrameIndex >= totalFrames)
                 {
-                    timeElapsed -= frameTime;
-                    currentFrameIndex++;
-
-                    if (currentFrameIndex >= totalFrames)
-                        currentFrameIndex = 0;
-
+                    GameState.PlayerState.isAttacking = false;
+                    currentFrameIndex = 0;
                 }
             }
         }
 
-        public void Draw(SpriteBatch _spriteBatch, Vector2? origin)
+        public void Draw(SpriteBatch _spriteBatch)
         {
+            //_spriteBatch.Draw(texture, GameState.PlayerState.position, sourceRect, Microsoft.Xna.Framework.Color.White, 0, new Vector2(0, 0), 1, SpriteEffects.None, 0f);
 
-            Rectangle destRect = new Rectangle((int)GameState.PlayerState.position.X, (int)GameState.PlayerState.position.Y, width, height);
-            sourceRect = currentSprites[currentFrameIndex];
-
-            if (!origin.HasValue)
+            List<Rectangle> swordSprites;
+            if (GameState.PlayerState.heldWeapon == WeaponType.WOODSWORD)
             {
-                Point position = currentSprites[currentFrameIndex].Location;
-                int x = position.X; 
-                int y = position.Y;
-                if (dir == Dir.UP)
-                {
-                    origin = new Vector2(9, 117);
-                }
-                else
-                {
-                    origin = new Vector2(x+8, y+8);
-                }
+                swordSprites = GetWoodSwordAttackSprites(GameState.PlayerState.direction);
             }
-
-            if (facLeft)
+            else if (GameState.PlayerState.heldWeapon == WeaponType.WHITESWORD)
             {
-                _spriteBatch.Draw(texture, GameState.PlayerState.position, sourceRect, Color.White, 0, new Vector2(width / 2, height / 2), 1, SpriteEffects.FlipHorizontally, 0f);
+                swordSprites = GetWhiteSwordAttackSprites(GameState.PlayerState.direction);
             }
             else
             {
-                _spriteBatch.Draw(texture, GameState.PlayerState.position, sourceRect, Color.White, 0, new Vector2(width / 2, height / 2), 1, SpriteEffects.None, 0f);
+                throw new Exception("Impossible");
+            }
+
+            Debug.WriteLine("Swdadwadsd:" + currentFrameIndex);
+            Rectangle rectangle = swordSprites[currentFrameIndex];
+            sourceRect = rectangle;
+            Rectangle destRect = new Rectangle((int)GameState.PlayerState.position.X, (int)GameState.PlayerState.position.Y, rectangle.Width, rectangle.Height);
+            if (GameState.PlayerState.direction == Dir.LEFT)
+            {
+                _spriteBatch.Draw(texture, GameState.PlayerState.position, sourceRect, Color.White, 0, new Vector2(rectangle.Width / 2, rectangle.Height / 2), 1, SpriteEffects.FlipHorizontally, 0f);
+            }
+            else
+            {
+                _spriteBatch.Draw(texture, GameState.PlayerState.position, sourceRect, Color.White, 0, new Vector2(rectangle.Width / 2, rectangle.Height / 2), 1, SpriteEffects.None, 0f);
             }
         }
 
-        public LinkSwordAnimation(Dir dir, WeaponType weapon)
+        public List<Rectangle> GetWoodSwordAttackSprites(Dir currentDir)
         {
-            attackSprites = new AttackSprites(dir, weapon);
+            var spritesReturnable = new List<Rectangle>();
+            if (currentDir == Dir.RIGHT)
+            {
+                spritesReturnable.Add(new Rectangle(1, 77, 16, 16));
+                spritesReturnable.Add(new Rectangle(18, 77, 27, 17));
+                spritesReturnable.Add(new Rectangle(46, 77, 23, 17));
+                spritesReturnable.Add(new Rectangle(70, 77, 19, 17));
+
+            }
+            else if (currentDir == Dir.LEFT)
+            {
+                spritesReturnable.Add(new Rectangle(1, 77, 16, 16));
+                spritesReturnable.Add(new Rectangle(18, 77, 27, 17));
+                spritesReturnable.Add(new Rectangle(46, 77, 23, 17));
+                spritesReturnable.Add(new Rectangle(70, 77, 19, 17));
+            }
+            else if (currentDir == Dir.UP)
+            {
+                spritesReturnable.Add(new Rectangle(1, 109, 16, 16));
+                spritesReturnable.Add(new Rectangle(18, 97, 16, 28));
+                spritesReturnable.Add(new Rectangle(35, 98, 16, 27));
+                spritesReturnable.Add(new Rectangle(52, 106, 16, 19));
+            }
+            else if (currentDir == Dir.DOWN)
+            {
+                spritesReturnable.Add(new Rectangle(1, 47, 16, 16));
+                spritesReturnable.Add(new Rectangle(18, 47, 16, 27));
+                spritesReturnable.Add(new Rectangle(35, 47, 16, 23));
+                spritesReturnable.Add(new Rectangle(52, 47, 16, 19));
+            }
+            return spritesReturnable;
+        }
+
+        public List<Rectangle> GetWhiteSwordAttackSprites(Dir currentDir)
+        {
+            var spritesReturnable = new List<Rectangle>();
+            if (currentDir == Dir.RIGHT)
+            {
+                spritesReturnable.Add(new Rectangle(1 + 93, 77, 16, 16));
+                spritesReturnable.Add(new Rectangle(18 + 93, 77, 27, 17));
+                spritesReturnable.Add(new Rectangle(46 + 93, 77, 23, 17));
+                spritesReturnable.Add(new Rectangle(70 + 93, 77, 19, 17));
+            }
+            else if (currentDir == Dir.LEFT)
+            {
+                spritesReturnable.Add(new Rectangle(1 + 93, 77, 16, 16));
+                spritesReturnable.Add(new Rectangle(18 + 93, 77, 27, 17));
+                spritesReturnable.Add(new Rectangle(46 + 93, 77, 23, 17));
+                spritesReturnable.Add(new Rectangle(70 + 93, 77, 19, 17));
+            }
+            else if (currentDir == Dir.UP)
+            {
+                spritesReturnable.Add(new Rectangle(1 + 93, 109, 16, 16));
+                spritesReturnable.Add(new Rectangle(18 + 93, 97, 16, 28));
+                spritesReturnable.Add(new Rectangle(35 + 93, 98, 16, 27));
+                spritesReturnable.Add(new Rectangle(52 + 93, 106, 16, 19));
+            }
+            else if (currentDir == Dir.DOWN)
+            {
+                spritesReturnable.Add(new Rectangle(1 + 93, 47, 16, 16));
+                spritesReturnable.Add(new Rectangle(18 + 93, 47, 16, 27));
+                spritesReturnable.Add(new Rectangle(35 + 93, 47, 16, 23));
+                spritesReturnable.Add(new Rectangle(52 + 93, 47, 16, 19));
+            }
+            return spritesReturnable;
+        }
+
+        //public void animate()
+        //{
+        //    isAnimated = true;
+        //}
+        //public void idle()
+        //{
+        //    isAnimated = false;
+        //}
+        public LinkSwordAnimation()
+        {
+            currentFrameIndex = 0;
             frameTime = 0.3;
-
-            if (weapon == WeaponType.WOODSWORD) 
-            {
-                currentSprites = attackSprites.GetWoodSwordAttackSprites();
-            }
-            if (weapon == WeaponType.WHITESWORD)
-            {
-                currentSprites = attackSprites.GetWhiteSwordAttackSprites();
-            }
-
-            this.dir = dir;
-            totalFrames = currentSprites.Count;
-            facLeft = false;
+            totalFrames = 4;
         }
     }
 }

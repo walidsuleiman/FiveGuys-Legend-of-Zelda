@@ -20,12 +20,12 @@ namespace FiveGuysFixed.Items
         public WoodSword(Dir dir)
         {
             this.dir = dir;
-            swordAttack = new LinkSwordAnimation(dir, WeaponType.WOODSWORD);
+            //swordAttack = new LinkSwordAnimation(dir, WeaponType.WOODSWORD);
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            swordAttack.Draw(spriteBatch, null);
+            //swordAttack.Draw(spriteBatch, null);
         }
 
         public void Update(GameTime gameTime)
