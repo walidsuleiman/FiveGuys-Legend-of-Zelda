@@ -11,6 +11,8 @@ namespace FiveGuysFixed.Collisions
 {
     public interface ICollidable
     {
-        bool isCollidable();
+        double Rad { get; set; }
+        Vector2 position { get; set; }
+        void onCollision(ICollidable a, ICollidable b);
     }
 }
