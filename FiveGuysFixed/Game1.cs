@@ -10,6 +10,7 @@ using FiveGuysFixed.Items;
 using FiveGuysFixed.LinkPlayer;
 using FiveGuysFixed.Projectiles;
 using FiveGuysFixed.Blocks;
+using FiveGuysFixed.Collisions;
 
 
 
@@ -46,6 +47,7 @@ namespace FiveGuysFixed
         private Texture2D bluePotionTexture;
         private Texture2D bombTexture;
         private Texture2D foodTexture;
+        private CollisionManager collisionManager;
 
 
         public int activeWeaponIndex;
@@ -65,6 +67,7 @@ namespace FiveGuysFixed
             IsMouseVisible = true;
             this._graphics.PreferredBackBufferHeight = 720;
             this._graphics.PreferredBackBufferWidth = 1280;
+            collisionManager = new CollisionManager();
         }
 
         protected override void Initialize()
@@ -176,6 +179,9 @@ namespace FiveGuysFixed
                     i--;
                 }
             }
+
+            //call detectCollision
+            collisionManager.DetectCollision();
 
             base.Update(gameTime);
         }
