@@ -27,12 +27,12 @@ namespace FiveGuysFixed.Controls
 
             if (currentState.LeftButton == ButtonState.Pressed)
             {
-                // Method call to handle left click
+                //Go to the previous room
             }
 
             else if (currentState.RightButton == ButtonState.Pressed)
             {
-                // Method call to handle right click
+                // Go to the next room
                 //This is a test to see if mouse input works:
                 Console.WriteLine("Right Click");
                 game.Exit();

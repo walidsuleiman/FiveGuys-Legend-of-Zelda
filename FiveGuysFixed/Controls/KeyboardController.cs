@@ -36,7 +36,7 @@ namespace FiveGuysFixed.Controls
             currentState = Keyboard.GetState();
 
             // Array of keys we care about.
-            Keys[] movementKeys = { Keys.W, Keys.A, Keys.S, Keys.D };
+            Keys[] movementKeys = { Keys.W, Keys.A, Keys.S, Keys.D, Keys.Up, Keys.Down, Keys.Left, Keys.Right };
             Keys[] itemKeys = { Keys.U, Keys.I };
             Keys[] weaponKeys = { Keys.D1, Keys.D2, Keys.D3 };
             Keys[] enemyKeys = { Keys.O, Keys.P };
@@ -105,15 +105,19 @@ namespace FiveGuysFixed.Controls
                     switch (mKey)
                     {
                         case Keys.W:
+                        case Keys.Up:
                             new MovementCommand(game, Dir.UP, isKeyDown).Execute();
                             break;
                         case Keys.A:
+                        case Keys.Left:
                             new MovementCommand(game, Dir.LEFT, isKeyDown).Execute();
                             break;
                         case Keys.S:
+                        case Keys.Down:
                             new MovementCommand(game, Dir.DOWN, isKeyDown).Execute();
                             break;
                         case Keys.D:
+                        case Keys.Right:
                             new MovementCommand(game, Dir.RIGHT, isKeyDown).Execute();
                             break;
                     }
