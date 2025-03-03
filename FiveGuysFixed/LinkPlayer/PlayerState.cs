@@ -18,6 +18,7 @@ namespace FiveGuysFixed.LinkPlayer
         public WeaponType heldWeapon;
         public Dir direction;
         public bool isAttacking;
+        public int health;
 
         public PlayerState(Vector2 position) 
         {
@@ -26,6 +27,7 @@ namespace FiveGuysFixed.LinkPlayer
             this.isAttacking = false;
             this.heldWeapon = WeaponType.NONE;
             this.direction = Dir.DOWN;
+            this.health = 100;
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,6 +9,8 @@ using FiveGuysFixed.GameStates;
 using FiveGuysFixed.Sprites;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Rectangle = Microsoft.Xna.Framework.Rectangle;
+using Color = Microsoft.Xna.Framework.Color;
 
 namespace FiveGuysFixed.Animation
 {
@@ -16,6 +19,7 @@ namespace FiveGuysFixed.Animation
 
         private Rectangle sourceRect;
         private Dir dir;
+        private double dmgTTL;
 
         public void Draw(SpriteBatch _spriteBatch, Vector2? origin)
         {
@@ -25,19 +29,13 @@ namespace FiveGuysFixed.Animation
            
                 sourceRect = new Rectangle(spriteLocationX + gap * (currentFrame + 1) + width * currentFrame, spriteLocationY, width, height);
 
-
-            //if (!origin.HasValue)
-            //{
-            //    origin = new Vector2(spriteLocationX + 8, spriteLocationY + 8);
-            //}
-
             if (facLeft)
             {
-                _spriteBatch.Draw(texture, GameState.PlayerState.position, sourceRect, Color.White, 0, new Vector2(width/2, height/2), 1, SpriteEffects.FlipHorizontally, 0f);
+                _spriteBatch.Draw(texture, GameState.PlayerState.position, sourceRect, (dmgTTL > 0) ? Color.Red : Color.White, 0, new Vector2(width / 2, height / 2), 1, SpriteEffects.FlipHorizontally, 0f);
             }
             else
             {
-                _spriteBatch.Draw(texture, GameState.PlayerState.position, sourceRect, Color.White, 0, new Vector2(width / 2, height / 2), 1, SpriteEffects.None, 0f);
+                _spriteBatch.Draw(texture, GameState.PlayerState.position, sourceRect, (dmgTTL > 0) ? Color.Red : Color.White, 0, new Vector2(width / 2, height / 2), 1, SpriteEffects.None, 0f);
             }
         }
 
@@ -57,6 +55,10 @@ namespace FiveGuysFixed.Animation
                         // shift the sourceRect according to currentFrame
                         sourceRect.X = spriteLocationX + (width * currentFrame);
                     }
+            }
+            if (dmgTTL > 0)
+            {
+                dmgTTL -= gt.ElapsedGameTime.TotalSeconds;
             }
         }
 
@@ -93,6 +95,10 @@ namespace FiveGuysFixed.Animation
         {
             isAnimated = true;
         }
+        public void takeDamage() 
+        {
+            dmgTTL = 0.5;
+        }
 
         public LinkWalkAnimation()
         {
@@ -104,6 +110,7 @@ namespace FiveGuysFixed.Animation
             spriteLocationX = 0;
             spriteLocationY = 11;
             facLeft = false;
+            this.dmgTTL = 0;
         }
     }
 }
