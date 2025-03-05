@@ -21,6 +21,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System.Diagnostics;
 using FiveGuysFixed.Weapons___Items;
+using FiveGuysFixed.Config;
 
 namespace FiveGuysFixed
 {
@@ -48,6 +49,7 @@ namespace FiveGuysFixed
         private Texture2D bombTexture;
         private Texture2D foodTexture;
         private CollisionManager collisionManager;
+        private LoadItems loadItems;
 
 
         public int activeWeaponIndex;
@@ -99,6 +101,7 @@ namespace FiveGuysFixed
             _spriteBatch = new SpriteBatch(GraphicsDevice);
             Player.LoadContent(Content);
 
+            Texture2D itemTexture = Content.Load<Texture2D>("linkSheet");
             enemyTexture = Content.Load<Texture2D>("Enemy_SpriteSheet");
             bossTexture = Content.Load<Texture2D>("Boss_SpriteSheet");
 
@@ -119,10 +122,18 @@ namespace FiveGuysFixed
 
 
             // initialize enemies after texture is loaded
-            enemies.Add(new Keese(enemyTexture, 100, 100));
-            enemies.Add(new Moblin(enemyTexture, 300, 200));
-            enemies.Add(new Gel(enemyTexture, 500, 300));
-            enemies.Add(new Aquamentus(bossTexture, 600, 500, projectiles));// pass projectile list
+            loadItems = new LoadItems(itemTexture, enemyTexture, bossTexture);
+
+            projectiles = new List<IProjectile>();
+            enemies = new List<IEnemy>();
+
+            enemies.Add(new Keese(loadItems, 100, 100));
+            enemies.Add(new Gel(loadItems, 500, 300));
+            enemies.Add(new Aquamentus(loadItems, 600, 500, projectiles));
+            enemies.Add(new Goriya(loadItems, 700, 150, projectiles));
+            enemies.Add(new Octorok(loadItems, 800, 250));
+            enemies.Add(new Stalfos(loadItems, 900, 350));
+            enemies.Add(new Tektike(loadItems, 1000, 450));
 
             blocks.Add(new RedBlock(yellowBlockTexture, 900, 350));
             blocks.Add(new YellowBlock(yellowBlockTexture, 500, 650));
@@ -136,8 +147,6 @@ namespace FiveGuysFixed
             items.Add(new BluePotion(bluePotionTexture, 200, 600));
             items.Add(new Bomb(bombTexture, 350, 150));
             items.Add(new Food(foodTexture, 800, 500));
-
-
 
         }
 

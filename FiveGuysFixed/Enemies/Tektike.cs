@@ -6,26 +6,28 @@ using FiveGuysFixed.Sprites;
 
 namespace FiveGuysFixed.Enemies
 {
-    public class Keese : IEnemy
+    public class Tektike : IEnemy
     {
-        private ISprite keeseSprite;
+        private ISprite tektikeSprite;
         private double x, y;
         private int currentTime;
         private const int flightTime = 15, stillTime = 30;
         private double xAdjust, yAdjust;
 
-        public Keese(LoadItems items, int x, int y)
+        public Tektike(LoadItems items, int x, int y)
         {
-            keeseSprite = items.getNewItem(items.keese);
+            // If you have "public ItemData tektike;" in LoadItems
+            // tektikeSprite = items.getNewItem(items.tektike);
+            // If not, pick any placeholder for now:
+            tektikeSprite = items.getNewItem(items.gel);
+
             this.x = x;
             this.y = y;
             currentTime = 0;
-            SetAI(); // Initialize movement on creation
         }
 
         public void Update(GameTime gameTime)
         {
-            // Move the Keese
             if (currentTime < flightTime)
             {
                 x += xAdjust;
@@ -38,32 +40,30 @@ namespace FiveGuysFixed.Enemies
             }
 
             currentTime++;
-
-            // This is important - this will update the animation frame
-            keeseSprite.Update(gameTime);
+            tektikeSprite.Update(gameTime);
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            keeseSprite.Draw(spriteBatch, new Vector2((float)x, (float)y), null);
+            tektikeSprite.Draw(spriteBatch, new Vector2((float)x, (float)y), null);
         }
 
         private void SetAI()
         {
-            Random rnd = new Random();
+            var rnd = new Random();
             int decide = rnd.Next(1, 5);
-
             switch (decide)
             {
-                case 1:
-                    xAdjust = 0; yAdjust = 1; break;
-                case 2:
-                    xAdjust = 0; yAdjust = -1; break;
-                case 3:
-                    xAdjust = 1; yAdjust = 0; break;
-                case 4:
-                    xAdjust = -1; yAdjust = 0; break;
+                case 1: xAdjust = 0; yAdjust = 1; break;
+                case 2: xAdjust = 0; yAdjust = -1; break;
+                case 3: xAdjust = 1; yAdjust = 0; break;
+                case 4: xAdjust = -1; yAdjust = 0; break;
             }
+        }
+
+        public void Attack()
+        {
+            // Tektike might jump or do something else
         }
     }
 }

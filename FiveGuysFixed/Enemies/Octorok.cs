@@ -6,20 +6,28 @@ using FiveGuysFixed.Sprites;
 
 namespace FiveGuysFixed.Enemies
 {
-    public class Gel : IEnemy
+    public class Octorok : IEnemy
     {
-        private ISprite gelSprite;
+        private ISprite octorokSprite;
         private double x, y;
         private int currentTime;
         private const int flightTime = 15, stillTime = 30;
         private double xAdjust, yAdjust;
 
-        public Gel(LoadItems items, int x, int y)
+        public Octorok(LoadItems items, int x, int y)
         {
-            gelSprite = items.getNewItem(items.gel);
+            // Make sure your LoadItems has "public ItemData octorok;"
+            // Then do:
+            // octorokSprite = items.getNewItem(items.octorok);
+            // or if you only have Single-Direction Octorok for now, something else.
+
+            // For demonstration, let's say:
+            octorokSprite = items.getNewItem(items.stalfos);
+            // ^ Replace with items.octorok once you add it to LoadItems!
+
             this.x = x;
             this.y = y;
-            currentTime = 0;
+            this.currentTime = 0;
         }
 
         public void Update(GameTime gameTime)
@@ -36,12 +44,12 @@ namespace FiveGuysFixed.Enemies
             }
 
             currentTime++;
-            gelSprite.Update(gameTime);
+            octorokSprite.Update(gameTime);
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            gelSprite.Draw(spriteBatch, new Vector2((float)x, (float)y), null);
+            octorokSprite.Draw(spriteBatch, new Vector2((float)x, (float)y), null);
         }
 
         private void SetAI()
@@ -55,6 +63,11 @@ namespace FiveGuysFixed.Enemies
                 case 3: xAdjust = 1; yAdjust = 0; break;
                 case 4: xAdjust = -1; yAdjust = 0; break;
             }
+        }
+
+        public void Attack()
+        {
+            // Octorok might spit rock projectiles if you wish
         }
     }
 }

@@ -6,26 +6,24 @@ using FiveGuysFixed.Sprites;
 
 namespace FiveGuysFixed.Enemies
 {
-    public class Keese : IEnemy
+    public class Stalfos : IEnemy
     {
-        private ISprite keeseSprite;
+        private ISprite stalfosSprite;
         private double x, y;
         private int currentTime;
         private const int flightTime = 15, stillTime = 30;
         private double xAdjust, yAdjust;
 
-        public Keese(LoadItems items, int x, int y)
+        public Stalfos(LoadItems items, int x, int y)
         {
-            keeseSprite = items.getNewItem(items.keese);
+            stalfosSprite = items.getNewItem(items.stalfos);
             this.x = x;
             this.y = y;
             currentTime = 0;
-            SetAI(); // Initialize movement on creation
         }
 
         public void Update(GameTime gameTime)
         {
-            // Move the Keese
             if (currentTime < flightTime)
             {
                 x += xAdjust;
@@ -38,32 +36,30 @@ namespace FiveGuysFixed.Enemies
             }
 
             currentTime++;
-
-            // This is important - this will update the animation frame
-            keeseSprite.Update(gameTime);
+            stalfosSprite.Update(gameTime);
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            keeseSprite.Draw(spriteBatch, new Vector2((float)x, (float)y), null);
+            stalfosSprite.Draw(spriteBatch, new Vector2((float)x, (float)y), null);
         }
 
         private void SetAI()
         {
-            Random rnd = new Random();
+            var rnd = new Random();
             int decide = rnd.Next(1, 5);
-
             switch (decide)
             {
-                case 1:
-                    xAdjust = 0; yAdjust = 1; break;
-                case 2:
-                    xAdjust = 0; yAdjust = -1; break;
-                case 3:
-                    xAdjust = 1; yAdjust = 0; break;
-                case 4:
-                    xAdjust = -1; yAdjust = 0; break;
+                case 1: xAdjust = 0; yAdjust = 1; break;
+                case 2: xAdjust = 0; yAdjust = -1; break;
+                case 3: xAdjust = 1; yAdjust = 0; break;
+                case 4: xAdjust = -1; yAdjust = 0; break;
             }
+        }
+
+        public void Attack()
+        {
+            // Stalfos might not attack
         }
     }
 }
