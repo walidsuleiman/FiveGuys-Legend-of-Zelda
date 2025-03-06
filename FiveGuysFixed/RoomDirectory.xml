@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Rooms>
+	<Room id="1">
+		<Neighbor direction="left" id="2"/>
+		<Objects>
+			
+		</Objects>
+	</Room>
+
+	<Room id="2">
+		<Neighbor direction="right" id="1"/>
+		<Objects>
+			<Enemy type="Aquamentus" x="300" y="300"/>
+		</Objects>
+	</Room>
+</Rooms>
