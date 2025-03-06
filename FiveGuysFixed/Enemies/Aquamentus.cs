@@ -7,7 +7,7 @@ using FiveGuysFixed.Animation;
 
 namespace FiveGuysFixed.Enemies
 {
-    public class Aquamentus : IEnemy
+    public class Aquamentus : Enemy
     {
         private Sprite aquamentusSprite;
         private Sprite aquamentusAttackSprite;
@@ -35,12 +35,11 @@ namespace FiveGuysFixed.Enemies
             this.projectiles = projectiles;// reference to projectiles list in game1
         }
 
-        public void Update(GameTime gameTime)
+        public override void Update(GameTime gameTime)
         {
             if (currentTime < flightTime)
             {
-                x += xAdjust;
-                y += yAdjust;
+                Position += new Vector2((float)xAdjust, (float)yAdjust);
             }
             else if (currentTime > flightTime + stillTime)
             {
