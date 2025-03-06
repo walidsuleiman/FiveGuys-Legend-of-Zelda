@@ -48,6 +48,7 @@ namespace FiveGuysFixed
         private Texture2D bluePotionTexture;
         private Texture2D bombTexture;
         private Texture2D foodTexture;
+        private Texture2D rupeeTexture;
         private CollisionManager collisionManager;
         private LoadItems loadItems;
 
@@ -116,6 +117,7 @@ namespace FiveGuysFixed
             bluePotionTexture = Content.Load<Texture2D>("BluePotionSprite");
             bombTexture = Content.Load<Texture2D>("linkSheet");
             foodTexture = Content.Load<Texture2D>("linkSheet");
+            rupeeTexture = Content.Load<Texture2D>("rupeeSprite");
 
 
 
@@ -147,6 +149,8 @@ namespace FiveGuysFixed
             items.Add(new BluePotion(bluePotionTexture, 200, 600));
             items.Add(new Bomb(bombTexture, 350, 150));
             items.Add(new Food(foodTexture, 800, 500));
+            items.Add(new GreenRupee(rupeeTexture, 100, 100));
+            items.Add(new RedRupee(rupeeTexture, 200, 300));
 
         }
 
