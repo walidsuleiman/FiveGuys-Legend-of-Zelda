@@ -35,6 +35,7 @@ namespace FiveGuysFixed.Blocks
 
         public void Draw(SpriteBatch spriteBatch)
         {
+            int scale = 5;
             // Build the source rectangle
             Rectangle sourceRect = new Rectangle(spriteX, spriteY, srcWidth, srcHeight);
 

@@ -67,11 +67,11 @@ namespace FiveGuysFixed.Animation
             Rectangle destRect = new Rectangle((int)GameState.PlayerState.position.X, (int)GameState.PlayerState.position.Y, rectangle.Width, rectangle.Height);
             if (GameState.PlayerState.direction == Dir.LEFT)
             {
-                _spriteBatch.Draw(texture, GameState.PlayerState.position, sourceRect, Color.White, 0, new Vector2(rectangle.Width / 2, rectangle.Height / 2), 1, SpriteEffects.FlipHorizontally, 0f);
+                _spriteBatch.Draw(texture, GameState.PlayerState.position, sourceRect, Color.White, 0, new Vector2(rectangle.Width / 2, rectangle.Height / 2), 2, SpriteEffects.FlipHorizontally, 0f);
             }
             else
             {
-                _spriteBatch.Draw(texture, GameState.PlayerState.position, sourceRect, Color.White, 0, new Vector2(rectangle.Width / 2, rectangle.Height / 2), 1, SpriteEffects.None, 0f);
+                _spriteBatch.Draw(texture, GameState.PlayerState.position, sourceRect, Color.White, 0, new Vector2(rectangle.Width / 2, rectangle.Height / 2), 2, SpriteEffects.None, 0f);
             }
         }
 
