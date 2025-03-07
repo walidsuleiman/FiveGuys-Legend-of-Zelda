@@ -23,6 +23,7 @@ using FiveGuysFixed.Weapons___Items;
 using FiveGuysFixed.Config;
 using FiveGuysFixed.RoomHandling;
 using Microsoft.Xna.Framework.Content;
+using System.IO;
 
 namespace FiveGuysFixed
 {
@@ -171,9 +172,9 @@ namespace FiveGuysFixed
             //items.Add(new RedRupee(rupeeTexture, 200, 300));
 
 
+            string path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Content", "RoomDirectory.xml");
 
-
-            GameState.roomManager.LoadRoomsFromXML("C:\\Users\\kanir\\source\\repos\\walidsuleiman\\FiveGuys-Legend-of-Zelda\\FiveGuysFixed\\RoomDirectory.xml");
+            GameState.roomManager.LoadRoomsFromXML(path);
             
         }
 
