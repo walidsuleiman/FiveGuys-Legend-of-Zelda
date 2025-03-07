@@ -13,8 +13,6 @@ using FiveGuysFixed.Blocks;
 using FiveGuysFixed.Collisions;
 
 
-
-
 //using FiveGuys.Controls;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -22,12 +20,14 @@ using Microsoft.Xna.Framework.Input;
 using System.Diagnostics;
 using FiveGuysFixed.Weapons___Items;
 using FiveGuysFixed.Config;
+using FiveGuysFixed.RoomHandling;
+using Microsoft.Xna.Framework.Content;
 
 namespace FiveGuysFixed
 {
     public class Game1 : Game
     {
-        //private MouseController mouseController;
+        private MouseController mouseController;
         private KeyboardController keyboardController;
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
@@ -49,7 +49,6 @@ namespace FiveGuysFixed
         private Texture2D bombTexture;
         private Texture2D foodTexture;
         private CollisionManager collisionManager;
-        private LoadItems loadItems;
 
 
         public int activeWeaponIndex;
@@ -78,9 +77,14 @@ namespace FiveGuysFixed
             GameState.WindowWidth = GraphicsDevice.Viewport.Width;
             GameState.WindowHeight = GraphicsDevice.Viewport.Height;
             GameState.PlayerState = new PlayerState(new Vector2(GraphicsDevice.Viewport.Width / 2, GraphicsDevice.Viewport.Height / 2));
+            GameState.roomManager = new RoomManager();
+            GameState.currentRoomContents = new CurrentRoomContents();
+            GameState.contentLoader = new ContentLoader();
+
 
             Player = new Player();
             keyboardController = new KeyboardController(this);
+            mouseController = new MouseController(this);
 
             enemies = new List<IEnemy>();
             activeEnemyIndex = 0;
@@ -101,10 +105,9 @@ namespace FiveGuysFixed
             _spriteBatch = new SpriteBatch(GraphicsDevice);
             Player.LoadContent(Content);
 
-            Texture2D itemTexture = Content.Load<Texture2D>("linkSheet");
             enemyTexture = Content.Load<Texture2D>("Enemy_SpriteSheet");
-            bossTexture = Content.Load<Texture2D>("Boss_SpriteSheet");
-
+            //bossTexture = Content.Load<Texture2D>("Boss_SpriteSheet");
+            GameState.contentLoader.LoadContent(Content);
             blockTexture = Content.Load<Texture2D>("BlockSprite");
             yellowBlockTexture = Content.Load<Texture2D>("YellowBlockSprite");
             treeBlockTexture = Content.Load<Texture2D>("TreeBlockSprite");
@@ -122,18 +125,18 @@ namespace FiveGuysFixed
 
 
             // initialize enemies after texture is loaded
-            loadItems = new LoadItems(itemTexture, enemyTexture, bossTexture);
+            //enemies.Add(new Keese(enemyTexture, 100, 100));
+            //enemies.Add(new Moblin(enemyTexture, 300, 200));
+            //enemies.Add(new Gel(enemyTexture, 500, 300));
+            //enemies.Add(new Aquamentus(bossTexture, 600, 500, projectiles));// pass projectile list
 
-            projectiles = new List<IProjectile>();
-            enemies = new List<IEnemy>();
-
-            enemies.Add(new Keese(loadItems, 100, 100));
-            enemies.Add(new Gel(loadItems, 500, 300));
-            enemies.Add(new Aquamentus(loadItems, 600, 500, projectiles));
-            enemies.Add(new Goriya(loadItems, 700, 150, projectiles));
-            enemies.Add(new Octorok(loadItems, 800, 250));
-            enemies.Add(new Stalfos(loadItems, 900, 350));
-            enemies.Add(new Tektike(loadItems, 1000, 450));
+            //enemies.Add(new Keese(loadItems, 100, 100));
+            //enemies.Add(new Gel(loadItems, 500, 300));
+            ////enemies.Add(new Aquamentus(loadItems, 600, 500, projectiles));
+            //enemies.Add(new Goriya(loadItems, 700, 150, projectiles));
+            //enemies.Add(new Octorok(loadItems, 800, 250));
+            //enemies.Add(new Stalfos(loadItems, 900, 350));
+            //enemies.Add(new Tektike(loadItems, 1000, 450));
 
             blocks.Add(new RedBlock(yellowBlockTexture, 900, 350));
             blocks.Add(new YellowBlock(yellowBlockTexture, 500, 650));
@@ -148,16 +151,23 @@ namespace FiveGuysFixed
             items.Add(new Bomb(bombTexture, 350, 150));
             items.Add(new Food(foodTexture, 800, 500));
 
+
+
+
+            GameState.roomManager.LoadRoomsFromXML("C:\\Users\\kanir\\source\\repos\\walidsuleiman\\FiveGuys-Legend-of-Zelda\\FiveGuysFixed\\RoomDirectory.xml");
+            GameState.roomManager.SwitchRoom(1);
         }
 
 
         protected override void Update(GameTime gameTime)
         {
-            //mouseController.Update();
+            mouseController.Update();
 
             keyboardController.Update();
 
             Player.Update(gameTime);
+
+            RoomRenderer.update(gameTime);
 
             if (enemies.Count > 0)
             {
@@ -207,28 +217,28 @@ namespace FiveGuysFixed
             _spriteBatch.Begin(samplerState: SamplerState.PointClamp);
             Player.Draw(_spriteBatch);
 
-            
+            RoomRenderer.Draw(_spriteBatch);
 
-            if (enemies.Count > 0)
-            {
-                enemies[activeEnemyIndex].Draw(_spriteBatch);
-            }
+            //if (enemies.Count > 0)
+            //{
+            //    enemies[activeEnemyIndex].Draw(_spriteBatch);
+            //}
 
-            foreach (var proj in projectiles)
-            {
-                proj.Draw(_spriteBatch);
-            }
+            //foreach (var proj in projectiles)
+            //{
+            //    proj.Draw(_spriteBatch);
+            //}
 
 
-            if (blocks.Count > 0)
-            {
-                blocks[activeBlockIndex].Draw(_spriteBatch);
-            }
+            //if (blocks.Count > 0)
+            //{
+            //    blocks[activeBlockIndex].Draw(_spriteBatch);
+            //}
 
-            if (items.Count > 0)
-            {
-                items[activeItemIndex].Draw(_spriteBatch);
-            }
+            //if (items.Count > 0)
+            //{
+            //    items[activeItemIndex].Draw(_spriteBatch);
+            //}
 
             _spriteBatch.End();
 

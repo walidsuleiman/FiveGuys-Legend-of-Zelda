@@ -7,36 +7,27 @@ using FiveGuysFixed.Config;
 
 namespace FiveGuysFixed.Enemies
 {
-    public class Aquamentus : IEnemy
+    public class Aquamentus : Enemy
     {
-        private ISprite aquamentusSprite;
         private ISprite aquamentusAttackSprite;
-        private ISprite currentSprite;
-
-        private double x, y;
         private int currentTime;
         private const int flightTime = 15, stillTime = 30;
         private double xAdjust, yAdjust;
         private List<IProjectile> projectiles;
 
-        public Aquamentus(LoadItems items, int x, int y, List<IProjectile> projectiles)
+        public Aquamentus(Vector2 position, ISprite sprite, ISprite attackSprite, List<IProjectile> projectiles)
+            : base(position, sprite)
         {
-            aquamentusSprite = items.getNewItem(items.Aquamentus);
-            aquamentusAttackSprite = items.getNewItem(items.AquamentusAttack);
-            currentSprite = aquamentusSprite;
-
-            this.x = x;
-            this.y = y;
+            this.aquamentusAttackSprite = attackSprite;
             this.projectiles = projectiles;
             this.currentTime = 0;
         }
 
-        public void Update(GameTime gameTime)
+        public override void Update(GameTime gameTime)
         {
             if (currentTime < flightTime)
             {
-                x += xAdjust;
-                y += yAdjust;
+                Position += new Vector2((float)xAdjust, (float)yAdjust);
             }
             else if (currentTime > flightTime + stillTime)
             {
@@ -45,12 +36,7 @@ namespace FiveGuysFixed.Enemies
             }
 
             currentTime++;
-            currentSprite.Update(gameTime);
-        }
-
-        public void Draw(SpriteBatch spriteBatch)
-        {
-            currentSprite.Draw(spriteBatch, new Vector2((float)x, (float)y), null);
+            sprite.Update(gameTime);
         }
 
         private void SetAI()
@@ -61,15 +47,12 @@ namespace FiveGuysFixed.Enemies
             {
                 case 1:
                     xAdjust = 0; yAdjust = 1;
-                    currentSprite = aquamentusSprite;
                     break;
                 case 2:
                     xAdjust = 0; yAdjust = -1;
-                    currentSprite = aquamentusSprite;
                     break;
                 case 3:
                     xAdjust = 0; yAdjust = 0;
-                    currentSprite = aquamentusAttackSprite;
                     Attack();
                     break;
             }
@@ -77,10 +60,9 @@ namespace FiveGuysFixed.Enemies
 
         private void Attack()
         {
-            // Must ensure aquamentusAttackSprite.Texture is valid
-            projectiles.Add(new Fireball(aquamentusAttackSprite.Texture, (float)x, (float)y - 20, new Vector2(-2, 0)));
-            projectiles.Add(new Fireball(aquamentusAttackSprite.Texture, (float)x, (float)y, new Vector2(-2, 0)));
-            projectiles.Add(new Fireball(aquamentusAttackSprite.Texture, (float)x, (float)y + 20, new Vector2(-2, 0)));
+            projectiles.Add(new Fireball(aquamentusAttackSprite.Texture, Position.X, Position.Y - 20, new Vector2(-2, 0)));
+            projectiles.Add(new Fireball(aquamentusAttackSprite.Texture, Position.X, Position.Y, new Vector2(-2, 0)));
+            projectiles.Add(new Fireball(aquamentusAttackSprite.Texture, Position.X, Position.Y + 20, new Vector2(-2, 0)));
         }
     }
 }
