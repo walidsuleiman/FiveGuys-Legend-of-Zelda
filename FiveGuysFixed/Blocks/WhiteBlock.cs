@@ -5,27 +5,16 @@ using System.Text;
 using System.Threading.Tasks;
 using FiveGuysFixed.Animation;
 using FiveGuysFixed.Blocks;
-using FiveGuysFixed.Collisions;
-using FiveGuysFixed.Common;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace FiveGuysFixed.Blocks
 {
-    internal class WhiteBlock : IBlock, ICollidable
+    internal class WhiteBlock : IBlock
     {
         private Sprite whiteBlockSprite;
         private double x, y;
         private int currentTime;
-
-        public int Height { get { return this.Height; } }
-        public int Width { get { return this.Width; } }
-
-        public double Rad { get { return Math.Max(whiteBlockSprite.Height, whiteBlockSprite.Width); } }
-
-        public Vector2 position => this.position;
-
-        public CollisionType type => CollisionType.BLOCK;
 
         public WhiteBlock(Texture2D texture, int x, int y)
         {
@@ -53,9 +42,17 @@ namespace FiveGuysFixed.Blocks
             whiteBlockSprite.Update(gametime);
         }
 
-        public void onCollision(ICollidable a, ICollidable b)
+        public Rectangle BoundingBox
         {
-            
+            get
+            {
+                return new Rectangle((int)x, (int)y, 32, 32);
+            }
+            set
+            {
+                x = value.X;
+                y = value.Y;
+            }
         }
     }
 }

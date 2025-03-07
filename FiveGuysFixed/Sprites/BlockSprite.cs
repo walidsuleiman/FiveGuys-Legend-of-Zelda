@@ -16,6 +16,8 @@ namespace FiveGuysFixed.Blocks
         public int Height { get { return this.Height; } }
         public int Width { get { return this.Width; } }
 
+        public Rectangle BoundingBox { get; set; }
+
         public BlockSprite(Texture2D texture,
                            int x, int y,        // source x,y on the sprite sheet
                            int w, int h,        // source width,height
@@ -28,6 +30,7 @@ namespace FiveGuysFixed.Blocks
             srcHeight = h;
             posX = px;
             posY = py;
+            BoundingBox = new Rectangle(posX, posY, srcWidth, srcHeight);
         }
 
         public void Update(GameTime gameTime)

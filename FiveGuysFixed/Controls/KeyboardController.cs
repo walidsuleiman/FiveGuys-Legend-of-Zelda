@@ -59,7 +59,7 @@ namespace FiveGuysFixed.Controls
                     switch (cKey)
                     {
                         case Keys.N:
-                            game.Player.attack();
+                            GameState.Player.attack();
                             break;
                         case Keys.E:
                             game.Player.takeDamage(1);
@@ -78,8 +78,7 @@ namespace FiveGuysFixed.Controls
                             game.Exit();
                             break;
                         case Keys.R:
-                            game.Reset();
-                            game.Player.Reset();
+                            GameState.Player.Reset();
                             //game.Player.idle();
                             //game.enemies.Clear();
                             //game.projectiles.Clear();

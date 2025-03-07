@@ -84,10 +84,10 @@ namespace FiveGuysFixed.Controls
                     switch (aButton)
                     {
                         case Buttons.A:
-                            game.Player.attack();
+                            GameState.Player.attack();
                             break;
                         case Buttons.B:
-                            game.Player.takeDamage(1);
+                            GameState.Player.takeDamage(15);
                             break;
                         case Buttons.X:
                             new ItemSwitchCommand(game, true).Execute();

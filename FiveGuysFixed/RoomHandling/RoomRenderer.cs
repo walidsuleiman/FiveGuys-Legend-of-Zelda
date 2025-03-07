@@ -13,6 +13,7 @@ namespace FiveGuysFixed.RoomHandling
 {
     public class RoomRenderer
     {
+        private static CollisionHandler collisionHandler = new CollisionHandler();
 
         public static void Draw(SpriteBatch spriteBatch)
         {
@@ -22,6 +23,7 @@ namespace FiveGuysFixed.RoomHandling
             foreach (var block in GameState.currentRoomContents.Blocks)
             {
                 block.Draw(spriteBatch);
+                collisionHandler.HandlePlayerBlockCollision(GameState.Player, block);
             }
 
             // Draw Enemies
