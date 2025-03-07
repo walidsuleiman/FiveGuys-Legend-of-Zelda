@@ -5,16 +5,26 @@ using System.Text;
 using System.Threading.Tasks;
 using FiveGuysFixed.Animation;
 using FiveGuysFixed.Blocks;
+using FiveGuysFixed.Collisions;
+using FiveGuysFixed.Common;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace FiveGuysFixed.Blocks
 {
-    internal class YellowBlock : IBlock
+    internal class YellowBlock : IBlock, ICollidable
     {
         private Sprite yellowBlockSprite;
         private double x, y;
         private int currentTime;
+        public int Height { get { return this.Height; } }
+        public int Width { get { return this.Width; } }
+
+        public double Rad { get { return Math.Max(yellowBlockSprite.Height, yellowBlockSprite.Width); } }
+
+        public Vector2 position => this.position;
+
+        public CollisionType type => CollisionType.BLOCK;
 
         public YellowBlock(Texture2D texture, int x, int y)
         {
@@ -40,6 +50,11 @@ namespace FiveGuysFixed.Blocks
         {
             currentTime++;
             yellowBlockSprite.Update(gametime);
+        }
+
+        public void onCollision(ICollidable a, ICollidable b)
+        {
+            
         }
     }
 }

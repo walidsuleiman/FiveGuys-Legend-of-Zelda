@@ -26,6 +26,12 @@ namespace FiveGuysFixed.Common
     {
         UP, DOWN, LEFT, RIGHT
     }
+    public enum CollisionType
+    {
+        PLAYER,
+        ENEMY,
+        BLOCK
+    }
     public static class MovementCommandManager
     {
         // Using a Stack for key ordering.

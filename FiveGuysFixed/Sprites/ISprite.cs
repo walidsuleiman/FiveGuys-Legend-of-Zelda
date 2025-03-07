@@ -10,5 +10,7 @@ namespace FiveGuysFixed.Sprites
         void LoadContent(ContentManager content);
         void Update(GameTime gameTime);
         void Draw(SpriteBatch spriteBatch, Vector2 position, Vector2? origin);
+        int Height { get; }
+        int Width { get; }
     }
 }

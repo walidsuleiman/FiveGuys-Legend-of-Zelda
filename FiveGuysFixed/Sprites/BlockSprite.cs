@@ -13,6 +13,8 @@ namespace FiveGuysFixed.Blocks
 
         // On-screen position
         private int posX, posY;
+        public int Height { get { return this.Height; } }
+        public int Width { get { return this.Width; } }
 
         public BlockSprite(Texture2D texture,
                            int x, int y,        // source x,y on the sprite sheet

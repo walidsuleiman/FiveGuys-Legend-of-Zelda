@@ -30,6 +30,12 @@ namespace FiveGuysFixed.RoomHandling
                 enemy.Draw(spriteBatch);
             }
 
+            // Draw Enemies
+            foreach (var item in GameState.currentRoomContents.Enemies)
+            {
+                item.Draw(spriteBatch);
+            }
+
             // Draw Items
             //foreach (var item in gameState.CurrentRoomContents.Items)
             //{
@@ -45,6 +51,12 @@ namespace FiveGuysFixed.RoomHandling
             {
                 enemy.Update(gameTime);
             }
+
+            foreach (var item in GameState.currentRoomContents.Enemies)
+            {
+                item.Update(gameTime);
+            }
+
             // Update Items
             //foreach (var item in gameState.CurrentRoomContents.Items)
             //{
