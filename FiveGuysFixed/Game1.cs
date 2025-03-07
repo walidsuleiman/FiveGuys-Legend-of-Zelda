@@ -10,6 +10,7 @@ using FiveGuysFixed.Items;
 using FiveGuysFixed.LinkPlayer;
 using FiveGuysFixed.Projectiles;
 using FiveGuysFixed.Blocks;
+using FiveGuysFixed.HUD;
 using FiveGuysFixed.Collisions;
 
 
@@ -33,6 +34,7 @@ namespace FiveGuysFixed
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
         public Vector2 position;
+        public List<IHUD> hearts;
         public List<IBlock> blocks;
         public List<IEnemy> enemies;
         public List<IItem> items;
@@ -83,6 +85,7 @@ namespace FiveGuysFixed
             GameState.roomManager = new RoomManager();
             GameState.currentRoomContents = new CurrentRoomContents();
             GameState.contentLoader = new ContentLoader();
+            GameState.currentRoomID = 1;
 
 
             Player = new Player();
@@ -94,6 +97,7 @@ namespace FiveGuysFixed
             activeEnemyIndex = 0;
             projectiles = new List<IProjectile>();
             blocks = new List<IBlock>();
+            hearts = new List<IHUD>();
             activeBlockIndex = 0;
             items = new List<IItem>();
             activeItemIndex = 0;
@@ -144,9 +148,9 @@ namespace FiveGuysFixed
             //enemies.Add(new Stalfos(loadItems, 900, 350));
             //enemies.Add(new Tektike(loadItems, 1000, 450));
 
-            blocks.Add(new Heart(heartTexture, 1150, 30));
-            blocks.Add(new Heart(heartTexture, 1100, 30));
-            blocks.Add(new Heart(heartTexture, 1050, 30));
+            blocks.Add(new Hearts(heartTexture, 1150, 30));
+            blocks.Add(new Hearts(heartTexture, 1100, 30));
+            blocks.Add(new Hearts(heartTexture, 1050, 30));
 
             //blocks.Add(new RedBlock(yellowBlockTexture, 900, 350));
             //blocks.Add(new YellowBlock(yellowBlockTexture, 500, 650));
@@ -166,8 +170,8 @@ namespace FiveGuysFixed
 
 
 
-            GameState.roomManager.LoadRoomsFromXML("C:\\Users\\kanir\\source\\repos\\walidsuleiman\\FiveGuys-Legend-of-Zelda\\FiveGuysFixed\\RoomDirectory.xml");
-            GameState.roomManager.SwitchRoom(1);
+            GameState.roomManager.LoadRoomsFromXML("C:\\Users\\walid\\Source\\Repos\\FiveGuys-Legend-of-Zelda\\FiveGuysFixed\\RoomDirectory.xml");
+            
         }
 
 
@@ -181,7 +185,7 @@ namespace FiveGuysFixed
 
 
             Player.Update(gameTime);
-
+            GameState.roomManager.SwitchRoom(GameState.currentRoomID);
             RoomRenderer.update(gameTime);
 
             if (enemies.Count > 0)
@@ -244,6 +248,7 @@ namespace FiveGuysFixed
             //    proj.Draw(_spriteBatch);
             //}
 
+            //Create a SpriteSheet where 3 full hearts, 2.5 hearts, 2 hearts, 1.5 hearts, 1 heart, 0.5 hearts, and 0 hearts are drawn.
 
             if (blocks.Count > 0)
             {

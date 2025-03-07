@@ -15,13 +15,16 @@ namespace FiveGuysFixed.Commands
         public void Next()
         {
             Debug.WriteLine("Switched to next");
-            GameState.roomManager.SwitchRoom(2); // Move to Room 2
+            GameState.currentRoomID++; // Move to Room 2
         }
 
         public void Previous()
         {
-            GameState.roomManager.SwitchRoom(1); // Move to Room 1
-        }
+            if (GameState.currentRoomID > 1)
+            {
+                GameState.currentRoomID--; // Move to Room 1
+            }
 
+        }
     }
 }

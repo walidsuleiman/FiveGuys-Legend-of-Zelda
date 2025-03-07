@@ -8,21 +8,19 @@ using FiveGuysFixed.Blocks;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace FiveGuysFixed.Blocks
+namespace FiveGuysFixed.HUD
 {
-    internal class Heart : IBlock
+    internal class Hearts : IBlock
     {
         private Sprite blockSprite;
         private double x, y;
-        private int currentTime;
 
-        public Heart(Texture2D texture, int x, int y)
+        public Hearts(Texture2D texture, int x, int y)
         {
             blockSprite = new Sprite(texture, 0, 0, 300, 300);
 
             this.x = x;
             this.y = y;
-            currentTime = 0;
         }
 
         public bool IsCollidable()
@@ -38,7 +36,6 @@ namespace FiveGuysFixed.Blocks
 
         public void Update(GameTime gametime)
         {
-            currentTime++;
             blockSprite.Update(gametime);
         }
     }
