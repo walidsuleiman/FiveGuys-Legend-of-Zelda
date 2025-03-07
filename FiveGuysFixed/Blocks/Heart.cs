@@ -10,15 +10,15 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace FiveGuysFixed.Blocks
 {
-    internal class TreeBlock : IBlock
+    internal class Heart : IBlock
     {
-        private Sprite treeBlockSprite;
+        private Sprite blockSprite;
         private double x, y;
         private int currentTime;
 
-        public TreeBlock(Texture2D texture, int x, int y)
+        public Heart(Texture2D texture, int x, int y)
         {
-            treeBlockSprite = new Sprite(texture, 820, 774, 16, 16);
+            blockSprite = new Sprite(texture, 0, 0, 300, 300);
 
             this.x = x;
             this.y = y;
@@ -32,14 +32,14 @@ namespace FiveGuysFixed.Blocks
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            float scale = 2;
-            treeBlockSprite.Draw(spriteBatch, new System.Numerics.Vector2((float)x, (float)y), null, scale);
+            float scale = 0.15f;
+            blockSprite.Draw(spriteBatch, new System.Numerics.Vector2((float)x, (float)y), null, scale);
         }
 
         public void Update(GameTime gametime)
         {
             currentTime++;
-            treeBlockSprite.Update(gametime);
+            blockSprite.Update(gametime);
         }
     }
 }

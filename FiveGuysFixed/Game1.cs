@@ -50,6 +50,7 @@ namespace FiveGuysFixed
         private Texture2D bombTexture;
         private Texture2D foodTexture;
         private Texture2D rupeeTexture;
+        private Texture2D heartTexture;
         private CollisionManager collisionManager;
 
 
@@ -123,6 +124,7 @@ namespace FiveGuysFixed
             bombTexture = Content.Load<Texture2D>("linkSheet");
             foodTexture = Content.Load<Texture2D>("linkSheet");
             rupeeTexture = Content.Load<Texture2D>("rupeeSprite");
+            heartTexture = Content.Load<Texture2D>("heart");
 
 
 
@@ -141,6 +143,10 @@ namespace FiveGuysFixed
             //enemies.Add(new Octorok(loadItems, 800, 250));
             //enemies.Add(new Stalfos(loadItems, 900, 350));
             //enemies.Add(new Tektike(loadItems, 1000, 450));
+
+            blocks.Add(new Heart(heartTexture, 1150, 30));
+            blocks.Add(new Heart(heartTexture, 1100, 30));
+            blocks.Add(new Heart(heartTexture, 1050, 30));
 
             //blocks.Add(new RedBlock(yellowBlockTexture, 900, 350));
             //blocks.Add(new YellowBlock(yellowBlockTexture, 500, 650));
@@ -239,10 +245,10 @@ namespace FiveGuysFixed
             //}
 
 
-            //if (blocks.Count > 0)
-            //{
-            //    blocks[activeBlockIndex].Draw(_spriteBatch);
-            //}
+            if (blocks.Count > 0)
+            {
+                blocks[activeBlockIndex].Draw(_spriteBatch);
+            }
 
             //if (items.Count > 0)
             //{
