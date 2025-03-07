@@ -62,7 +62,7 @@ namespace FiveGuysFixed.Controls
                             GameState.Player.attack();
                             break;
                         case Keys.E:
-                            game.Player.takeDamage(1);
+                            GameState.Player.takeDamage(1);
                             break;
                     }
                 }
