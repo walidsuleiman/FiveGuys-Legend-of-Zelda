@@ -138,7 +138,7 @@
 	</Room>
 
 	<Room id="2">
-		<Neighbor direction="right" id="1"/>
+		<Neighbor direction="right" id="3"/>
 		<Objects>
 			<Enemy type="Aquamentus" x="330" y="350"/>
 			
@@ -269,7 +269,7 @@
 	</Room>
 
 	<Room id="3">
-		<Neighbor direction="right" id="2"/>as
+		<Neighbor direction="right" id="4"/>as
 		<Objects>
 			<Block type="GreenBlock" x="296" y="50"></Block>
 		</Objects>
@@ -277,7 +277,7 @@
 			
 			
 	<Room id="4">
-		<Neighbor direction="right" id="3"/>as
+		<Neighbor direction="right" id="5"/>as
 		<Objects>
 			<Enemy type="Aquamentus" x="330" y="350"/>
 
