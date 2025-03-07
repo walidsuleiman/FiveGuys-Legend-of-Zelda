@@ -29,6 +29,7 @@ namespace FiveGuysFixed
     {
         private MouseController mouseController;
         private KeyboardController keyboardController;
+        private GamepadController gamepadController;
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
         public Vector2 position;
@@ -86,6 +87,7 @@ namespace FiveGuysFixed
             Player = new Player();
             keyboardController = new KeyboardController(this);
             mouseController = new MouseController(this);
+            gamepadController = new GamepadController(this);
 
             enemies = new List<IEnemy>();
             activeEnemyIndex = 0;
@@ -140,20 +142,20 @@ namespace FiveGuysFixed
             //enemies.Add(new Stalfos(loadItems, 900, 350));
             //enemies.Add(new Tektike(loadItems, 1000, 450));
 
-            blocks.Add(new RedBlock(yellowBlockTexture, 900, 350));
-            blocks.Add(new YellowBlock(yellowBlockTexture, 500, 650));
-            blocks.Add(new Block(blockTexture, 100, 200));
-            blocks.Add(new TreeBlock(treeBlockTexture, 550, 150));
-            blocks.Add(new WhiteBlock(whiteBlockTexture, 750, 250));
-            blocks.Add(new GreenBlock(greenBlockTexture, 1050, 650));
+            //blocks.Add(new RedBlock(yellowBlockTexture, 900, 350));
+            //blocks.Add(new YellowBlock(yellowBlockTexture, 500, 650));
+            //blocks.Add(new Block(blockTexture, 100, 200));
+            //blocks.Add(new TreeBlock(treeBlockTexture, 550, 150));
+            //blocks.Add(new WhiteBlock(whiteBlockTexture, 750, 250));
+            //blocks.Add(new GreenBlock(greenBlockTexture, 1050, 650));
 
 
-            items.Add(new RedPotion(redPotionTexture, 1000, 200));
-            items.Add(new BluePotion(bluePotionTexture, 200, 600));
-            items.Add(new Bomb(bombTexture, 350, 150));
-            items.Add(new Food(foodTexture, 800, 500));
-            items.Add(new GreenRupee(rupeeTexture, 100, 100));
-            items.Add(new RedRupee(rupeeTexture, 200, 300));
+            //items.Add(new RedPotion(redPotionTexture, 1000, 200));
+            //items.Add(new BluePotion(bluePotionTexture, 200, 600));
+            //items.Add(new Bomb(bombTexture, 350, 150));
+            //items.Add(new Food(foodTexture, 800, 500));
+            //items.Add(new GreenRupee(rupeeTexture, 100, 100));
+            //items.Add(new RedRupee(rupeeTexture, 200, 300));
 
 
 
@@ -168,6 +170,9 @@ namespace FiveGuysFixed
             mouseController.Update();
 
             keyboardController.Update();
+
+            //gamepadController.Update();
+
 
             Player.Update(gameTime);
 
