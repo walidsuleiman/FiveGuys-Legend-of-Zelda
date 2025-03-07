@@ -155,7 +155,7 @@ namespace FiveGuysFixed.Animation
         public LinkSwordAnimation()
         {
             currentFrameIndex = 0;
-            frameTime = 0.3;
+            frameTime = 0.1;
             totalFrames = 4;
         }
     }

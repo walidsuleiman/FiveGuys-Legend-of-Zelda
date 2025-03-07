@@ -11,7 +11,6 @@ namespace FiveGuysFixed.HUD
 {
     public interface IHUD
     {
-        bool IsCollidable();
         void Update(GameTime gameTime);
         void Draw(SpriteBatch spriteBatch);
     }

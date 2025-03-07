@@ -27,7 +27,7 @@ namespace FiveGuysFixed.LinkPlayer
             this.isAttacking = false;
             this.heldWeapon = WeaponType.NONE;
             this.direction = Dir.DOWN;
-            this.health = 100;
+            this.health = 6;
         }
     }
 }

@@ -27,7 +27,7 @@ namespace FiveGuysFixed.LinkPlayer
         {
             linkSprite = new LinkWalkAnimation();
             swordAnimation = new LinkSwordAnimation();
-            GameState.PlayerState.health = 100;
+            GameState.PlayerState.health = 6;
 
         }
         public void move(Dir newDir) 
@@ -106,7 +106,7 @@ namespace FiveGuysFixed.LinkPlayer
         { 
             GameState.PlayerState.position = new Vector2(100, 100);
             GameState.PlayerState.isMoving = false;
-            GameState.PlayerState.health = 100;
+            GameState.PlayerState.health = 6;
         }
         public void takeDamage(int damage)
         {
@@ -121,9 +121,9 @@ namespace FiveGuysFixed.LinkPlayer
         {
             GameState.PlayerState.health += health;
 
-            if (GameState.PlayerState.health > 100)
+            if (GameState.PlayerState.health > 6)
             {
-                GameState.PlayerState.health = 100;
+                GameState.PlayerState.health = 6;
             }
         }
 

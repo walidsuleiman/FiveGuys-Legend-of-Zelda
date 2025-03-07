@@ -1,42 +1,65 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using FiveGuysFixed.Animation;
-using FiveGuysFixed.Blocks;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using FiveGuysFixed.GameStates;
+using System.Diagnostics;
 
 namespace FiveGuysFixed.HUD
 {
-    internal class Hearts : IBlock
+    public class Hearts : IHUD
     {
-        private Sprite blockSprite;
-        private double x, y;
+        private Rectangle fullHeartRectangle = new Rectangle(645, 117, 8, 8);
+        private Rectangle halfHeartRectangle = new Rectangle(636, 117, 8, 8);
+        private Rectangle emptyHeartRectangle = new Rectangle(627, 117, 8, 8);
+        Vector2 heart1Pos = new Vector2(1200, 10);
+        Vector2 heart2Pos = new Vector2(1216, 10);
+        Vector2 heart3Pos = new Vector2(1232, 10);
 
-        public Hearts(Texture2D texture, int x, int y)
-        {
-            blockSprite = new Sprite(texture, 0, 0, 300, 300);
-
-            this.x = x;
-            this.y = y;
-        }
-
-        public bool IsCollidable()
-        {
-            return false;
-        }
+        public Hearts() { }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            float scale = 0.15f;
-            blockSprite.Draw(spriteBatch, new System.Numerics.Vector2((float)x, (float)y), null, scale);
+
+            switch (GameState.PlayerState.health)
+            {
+                case 6: // Full health
+                    spriteBatch.Draw(GameState.contentLoader.HudTexture, heart1Pos, fullHeartRectangle, Color.White, 0, new Vector2(0, 0), 2, SpriteEffects.None, 0f);
+                    spriteBatch.Draw(GameState.contentLoader.HudTexture, heart2Pos, fullHeartRectangle, Color.White, 0, new Vector2(0, 0), 2, SpriteEffects.None, 0f);
+                    spriteBatch.Draw(GameState.contentLoader.HudTexture, heart3Pos, fullHeartRectangle, Color.White, 0, new Vector2(0, 0), 2, SpriteEffects.None, 0f);
+                    break;
+                case 5: // 5 health
+                    spriteBatch.Draw(GameState.contentLoader.HudTexture, heart1Pos, fullHeartRectangle, Color.White, 0, new Vector2(0, 0), 2, SpriteEffects.None, 0f);
+                    spriteBatch.Draw(GameState.contentLoader.HudTexture, heart2Pos, fullHeartRectangle, Color.White, 0, new Vector2(0, 0), 2, SpriteEffects.None, 0f);
+                    spriteBatch.Draw(GameState.contentLoader.HudTexture, heart3Pos, halfHeartRectangle, Color.White, 0, new Vector2(0, 0), 2, SpriteEffects.None, 0f);
+                    break;
+                case 4: // 4 health
+                    spriteBatch.Draw(GameState.contentLoader.HudTexture, heart1Pos, fullHeartRectangle, Color.White, 0, new Vector2(0, 0), 2, SpriteEffects.None, 0f);
+                    spriteBatch.Draw(GameState.contentLoader.HudTexture, heart2Pos, fullHeartRectangle, Color.White, 0, new Vector2(0, 0), 2, SpriteEffects.None, 0f);
+                    spriteBatch.Draw(GameState.contentLoader.HudTexture, heart3Pos, emptyHeartRectangle, Color.White, 0, new Vector2(0, 0), 2, SpriteEffects.None, 0f);
+                    break;
+                case 3: // 3 health
+                    spriteBatch.Draw(GameState.contentLoader.HudTexture, heart1Pos, fullHeartRectangle, Color.White, 0, new Vector2(0, 0), 2, SpriteEffects.None, 0f);
+                    spriteBatch.Draw(GameState.contentLoader.HudTexture, heart2Pos, halfHeartRectangle, Color.White, 0, new Vector2(0, 0), 2, SpriteEffects.None, 0f);
+                    spriteBatch.Draw(GameState.contentLoader.HudTexture, heart3Pos, emptyHeartRectangle, Color.White, 0, new Vector2(0, 0), 2, SpriteEffects.None, 0f);
+                    break;
+                case 2: // 2 health
+                    spriteBatch.Draw(GameState.contentLoader.HudTexture, heart1Pos, fullHeartRectangle, Color.White, 0, new Vector2(0, 0), 2, SpriteEffects.None, 0f);
+                    spriteBatch.Draw(GameState.contentLoader.HudTexture, heart2Pos, emptyHeartRectangle, Color.White, 0, new Vector2(0, 0), 2, SpriteEffects.None, 0f);
+                    spriteBatch.Draw(GameState.contentLoader.HudTexture, heart3Pos, emptyHeartRectangle, Color.White, 0, new Vector2(0, 0), 2, SpriteEffects.None, 0f);
+                    break;
+                case 1: // 1 health
+                    spriteBatch.Draw(GameState.contentLoader.HudTexture, heart1Pos, halfHeartRectangle, Color.White, 0, new Vector2(0, 0), 2, SpriteEffects.None, 0f);
+                    spriteBatch.Draw(GameState.contentLoader.HudTexture, heart2Pos, emptyHeartRectangle, Color.White, 0, new Vector2(0, 0), 2, SpriteEffects.None, 0f);
+                    spriteBatch.Draw(GameState.contentLoader.HudTexture, heart3Pos, emptyHeartRectangle, Color.White, 0, new Vector2(0, 0), 2, SpriteEffects.None, 0f);
+                    break;
+
+            }
+
         }
 
         public void Update(GameTime gametime)
         {
-            blockSprite.Update(gametime);
+            // No need to update anything for now.
         }
     }
 }

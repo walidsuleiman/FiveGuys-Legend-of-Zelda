@@ -25,6 +25,7 @@ namespace FiveGuysFixed.GameStates
         public Texture2D bombTexture;
         public Texture2D foodTexture;
         public Texture2D rupeeTexture;
+        public Texture2D HudTexture;
         public void LoadContent(ContentManager content)
         {
             //LinkTexture = content.Load<Texture2D>("linkSheet");
@@ -43,6 +44,9 @@ namespace FiveGuysFixed.GameStates
             bombTexture = content.Load<Texture2D>("linkSheet");
             foodTexture = content.Load<Texture2D>("linkSheet");
             rupeeTexture = content.Load<Texture2D>("rupeeSprite");
+
+            //HUD
+            HudTexture = content.Load<Texture2D>("HUD");
         }
 
         public ContentLoader() { }
