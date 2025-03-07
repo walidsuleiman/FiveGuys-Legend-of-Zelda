@@ -41,8 +41,8 @@ namespace FiveGuysFixed.GameStates
 
             redPotionTexture = content.Load<Texture2D>("RedPotionSprite");
             bluePotionTexture = content.Load<Texture2D>("BluePotionSprite");
-            bombTexture = content.Load<Texture2D>("linkSheet");
-            foodTexture = content.Load<Texture2D>("linkSheet");
+            bombTexture = content.Load<Texture2D>("linkSprite");
+            foodTexture = content.Load<Texture2D>("linkSprite");
             rupeeTexture = content.Load<Texture2D>("rupeeSprite");
 
             //HUD
