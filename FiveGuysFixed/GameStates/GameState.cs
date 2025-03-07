@@ -20,6 +20,7 @@ namespace FiveGuysFixed.GameStates
         //add block state
         public static int WindowHeight;
         public static int WindowWidth;
+        public static int currentRoomID;
         public static RoomManager roomManager;
         public static int RoomID;
         public static CurrentRoomContents currentRoomContents;  // Global RoomContents
