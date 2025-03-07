@@ -166,7 +166,7 @@ namespace FiveGuysFixed
 
 
 
-            GameState.roomManager.LoadRoomsFromXML("C:\\Users\\guipq\\Source\\Repos\\FiveGuys-Legend-of-Zelda\\FiveGuysFixed\\RoomDirectory.xml");
+            GameState.roomManager.LoadRoomsFromXML("C:\\Users\\kanir\\source\\repos\\walidsuleiman\\FiveGuys-Legend-of-Zelda\\FiveGuysFixed\\RoomDirectory.xml");
             GameState.roomManager.SwitchRoom(1);
         }
 
