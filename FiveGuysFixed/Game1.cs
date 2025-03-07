@@ -33,7 +33,7 @@ namespace FiveGuysFixed
         private GamepadController gamepadController;
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
-        public Vector2 position;
+        public Vector2 centreScreen;
         public Hearts hearts;
         public List<IBlock> blocks;
         public List<IEnemy> enemies;

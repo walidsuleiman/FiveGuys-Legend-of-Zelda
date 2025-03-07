@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using FiveGuys.Controls;
-using FiveGuysFixed.Commands;
 using Microsoft.Xna.Framework.Input;
+using FiveGuysFixed.Commands;
+using FiveGuys.Controls;
 
 namespace FiveGuysFixed.Controls
 {
@@ -15,10 +11,11 @@ namespace FiveGuysFixed.Controls
         private Game1 game;
         private MouseState previousState;
         private MouseState currentState;
+
         public MouseController(Game1 game)
         {
             this.game = game;
-            this.currentState = Mouse.GetState();
+            this.previousState = Mouse.GetState();
         }
 
         public void Update()
@@ -29,17 +26,17 @@ namespace FiveGuysFixed.Controls
 
             Debug.WriteLine("Mouse Controller Update");
 
-            if (currentState.LeftButton == ButtonState.Pressed)
+            // Check for a left mouse click (debounced)
+            if (previousState.LeftButton == ButtonState.Released && currentState.LeftButton == ButtonState.Pressed)
             {
                 roomSwitch.Next();
             }
 
-            else if (currentState.RightButton == ButtonState.Pressed)
+            // Check for a right mouse click (debounced)
+            else if (previousState.RightButton == ButtonState.Released && currentState.RightButton == ButtonState.Pressed)
             {
                 roomSwitch.Previous();
             }
-
         }
-
     }
 }
