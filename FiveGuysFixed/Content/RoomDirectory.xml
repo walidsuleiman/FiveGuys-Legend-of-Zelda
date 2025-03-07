@@ -3,6 +3,9 @@
 	<Room id="1">
 		<Neighbor direction="left" id="2"/>
 		<Objects>
+
+			<Item type="Bomb" x="20" y="50"/>
+
 			<Block type="YellowBlock" x="200" y="50"/>
 			<Block type="YellowBlock" x="232" y="50"/>
 			<Block type="YellowBlock" x="264" y="50"/>
@@ -141,7 +144,7 @@
 		<Neighbor direction="right" id="3"/>
 		<Objects>
 			<Enemy type="Aquamentus" x="330" y="350"/>
-			
+
 			<Block type="GreenBlock" x="200" y="50"/>
 			<Block type="GreenBlock" x="232" y="50"/>
 			<Block type="GreenBlock" x="264" y="50"/>
@@ -274,8 +277,8 @@
 			<Block type="GreenBlock" x="296" y="50"></Block>
 		</Objects>
 	</Room>
-			
-			
+
+
 	<Room id="4">
 		<Neighbor direction="right" id="5"/>as
 		<Objects>
@@ -406,5 +409,5 @@
 			<Block type="GreenBlock" x="808" y="498"/>
 		</Objects>
 	</Room>
-	
+
 </Rooms>
