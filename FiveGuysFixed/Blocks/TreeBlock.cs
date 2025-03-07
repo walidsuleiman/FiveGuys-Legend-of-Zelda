@@ -5,16 +5,27 @@ using System.Text;
 using System.Threading.Tasks;
 using FiveGuysFixed.Animation;
 using FiveGuysFixed.Blocks;
+using FiveGuysFixed.Collisions;
+using FiveGuysFixed.Common;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace FiveGuysFixed.Blocks
 {
-    internal class TreeBlock : IBlock
+    internal class TreeBlock : IBlock, ICollidable
     {
         private Sprite treeBlockSprite;
         private double x, y;
         private int currentTime;
+
+        public int Height { get { return this.Height; } }
+        public int Width { get { return this.Width; } }
+
+        public double Rad { get { return Math.Max(treeBlockSprite.Height, treeBlockSprite.Width); } }
+
+        public Vector2 position => this.position;
+
+        public CollisionType type => CollisionType.BLOCK;
 
         public TreeBlock(Texture2D texture, int x, int y)
         {
@@ -40,6 +51,11 @@ namespace FiveGuysFixed.Blocks
         {
             currentTime++;
             treeBlockSprite.Update(gametime);
+        }
+
+        public void onCollision(ICollidable a, ICollidable b)
+        {
+            
         }
     }
 }

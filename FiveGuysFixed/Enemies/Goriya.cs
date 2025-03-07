@@ -5,10 +5,12 @@ using FiveGuysFixed.Config;
 using FiveGuysFixed.Sprites;
 using FiveGuysFixed.Projectiles;
 using System.Collections.Generic;
+using FiveGuysFixed.Collisions;
+using FiveGuysFixed.Common;
 
 namespace FiveGuysFixed.Enemies
 {
-    public class Goriya : IEnemy
+    public class Goriya : IEnemy, ICollidable
     {
         private ISprite currentSprite;
         private ISprite leftGoriyaSprite;
@@ -25,6 +27,12 @@ namespace FiveGuysFixed.Enemies
         private const int attackCooldownMax = 120; // 2 seconds at 60 fps
         private Random rnd;
         private Texture2D linkTexture; // Reference to the texture with boomerang sprite
+
+        public double Rad { get { return Math.Max(currentSprite.Height, currentSprite.Width); } }
+
+        public Vector2 position { get { return new Vector2((float)x, (float)y); } }
+
+        CollisionType ICollidable.type => CollisionType.ENEMY;
 
         private enum Direction
         {
@@ -147,6 +155,11 @@ namespace FiveGuysFixed.Enemies
 
             // Create a boomerang projectile using the correct sprite from linkTexture
             projectiles.Add(new Boomerang(linkTexture, (float)x, (float)y, projectileVelocity, this));
+        }
+
+        public void onCollision(ICollidable a, ICollidable b)
+        {
+            
         }
     }
 }

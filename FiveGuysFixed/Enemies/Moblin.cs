@@ -3,10 +3,12 @@ using Microsoft.Xna.Framework.Graphics;
 using System;
 using FiveGuysFixed.Config;
 using FiveGuysFixed.Sprites;
+using FiveGuysFixed.Collisions;
+using FiveGuysFixed.Common;
 
 namespace FiveGuysFixed.Enemies
 {
-    public class Moblin : IEnemy
+    public class Moblin : IEnemy, ICollidable
     {
         private ISprite currentSprite;
         private ISprite leftMoblinSprite;
@@ -18,6 +20,12 @@ namespace FiveGuysFixed.Enemies
         private int currentTime;
         private const int flightTime = 15, stillTime = 30;
         private double xAdjust, yAdjust;
+
+        public double Rad { get { return Math.Max(currentSprite.Height, currentSprite.Width); } }
+
+        public Vector2 position { get { return new Vector2((float)x, (float)y); } }
+
+        CollisionType ICollidable.type => CollisionType.ENEMY;
 
         public Moblin(LoadItems items, int x, int y)
         {
@@ -78,6 +86,11 @@ namespace FiveGuysFixed.Enemies
                     currentSprite = leftMoblinSprite;
                     break;
             }
+        }
+
+        public void onCollision(ICollidable a, ICollidable b)
+        {
+            
         }
     }
 }
