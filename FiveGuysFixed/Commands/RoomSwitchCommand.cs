@@ -15,7 +15,7 @@ namespace FiveGuysFixed.Commands
     {
         public void Next()
         {
-            if(GameState.currentRoomID < 4)
+            if(GameState.currentRoomID < 5)
             {
                 Debug.WriteLine("Switched to next: " + GameState.currentRoomID);
                 GameState.currentRoomID++; // Move to Room 2
