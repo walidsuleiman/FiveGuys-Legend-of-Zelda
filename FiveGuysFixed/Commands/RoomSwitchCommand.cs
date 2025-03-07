@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using FiveGuysFixed.GameStates;
 using FiveGuysFixed.RoomHandling;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 
 namespace FiveGuysFixed.Commands
@@ -16,8 +17,10 @@ namespace FiveGuysFixed.Commands
         {
             if(GameState.currentRoomID < 4)
             {
-                Debug.WriteLine("Switched to next");
+                Debug.WriteLine("Switched to next: " + GameState.currentRoomID);
                 GameState.currentRoomID++; // Move to Room 2
+                GameState.PlayerState.position = new Vector2(GameState.WindowWidth / 2, GameState.WindowHeight / 2);
+
             }
         }
 
@@ -25,7 +28,10 @@ namespace FiveGuysFixed.Commands
         {
             if (GameState.currentRoomID > 1)
             {
+                Debug.WriteLine("Switched to previous: " + GameState.currentRoomID);
                 GameState.currentRoomID--; // Move to Room 1
+                GameState.PlayerState.position = new Vector2(GameState.WindowWidth / 2, GameState.WindowHeight / 2);
+
             }
 
         }

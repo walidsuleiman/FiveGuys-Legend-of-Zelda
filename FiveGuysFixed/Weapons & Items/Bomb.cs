@@ -29,7 +29,7 @@ namespace FiveGuysFixed.Weapons___Items
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            bombSprite.Draw(spriteBatch, new System.Numerics.Vector2((float)x, (float)y), null);
+            bombSprite.Draw(spriteBatch, new System.Numerics.Vector2((float)x, (float)y), null, scale);
         }
 
         public void Update(GameTime gametime)
