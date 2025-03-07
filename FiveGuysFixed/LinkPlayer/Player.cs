@@ -16,11 +16,10 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Vector2 = Microsoft.Xna.Framework.Vector2;
-using FiveGuysFixed.Collisions;
 
 namespace FiveGuysFixed.LinkPlayer
 {
-    public class Player : IPlayer, ICollidable
+    public class Player : IPlayer
     {
         private LinkWalkAnimation linkSprite;
         private LinkSwordAnimation swordAnimation;
@@ -28,7 +27,7 @@ namespace FiveGuysFixed.LinkPlayer
         public double Rad { get { return Math.Max(linkSprite.Height, linkSprite.Width); } }
         public Vector2 position { get { return GameState.PlayerState.position; } }
 
-        CollisionType ICollidable.type => CollisionType.PLAYER;
+
 
 
         public Player()
@@ -132,37 +131,6 @@ namespace FiveGuysFixed.LinkPlayer
             if (GameState.PlayerState.health > 6)
             {
                 GameState.PlayerState.health = 6;
-            }
-        }
-
-        public void onCollision(ICollidable a, ICollidable b)
-        {
-            if (a.type == CollisionType.ENEMY || b.type == CollisionType.ENEMY)
-            {
-                takeDamage(15);
-            }
-            if (a.type == CollisionType.ENEMY || b.type == CollisionType.ENEMY)
-            {
-                Vector2 previousPosition = GameState.PlayerState.position;
-
-                if (GameState.PlayerState.direction == Dir.UP)
-                {
-                    previousPosition.Y += 5;
-                }
-                else if (GameState.PlayerState.direction == Dir.DOWN)
-                {
-                    previousPosition.Y -= 5;
-                }
-                else if (GameState.PlayerState.direction == Dir.LEFT)
-                {
-                    previousPosition.X += 5;
-                }
-                else if (GameState.PlayerState.direction == Dir.RIGHT)
-                {
-                    previousPosition.X -= 5;
-                }
-
-                GameState.PlayerState.position = previousPosition;
             }
         }
     }

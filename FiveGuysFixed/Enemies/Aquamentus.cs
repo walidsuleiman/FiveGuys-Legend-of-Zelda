@@ -4,25 +4,16 @@ using System.Collections.Generic;
 using FiveGuysFixed.Projectiles;
 using FiveGuysFixed.Sprites;
 using FiveGuysFixed.Config;
-using FiveGuysFixed.Collisions;
-using FiveGuysFixed.Common;
-using System;
 
 namespace FiveGuysFixed.Enemies
 {
-    public class Aquamentus : Enemy, ICollidable
+    public class Aquamentus : Enemy
     {
         private ISprite aquamentusAttackSprite;
         private int currentTime;
         private const int flightTime = 15, stillTime = 30;
         private double xAdjust, yAdjust;
         private List<IProjectile> projectiles;
-
-        public double Rad { get { return Math.Max(aquamentusAttackSprite.Height, aquamentusAttackSprite.Width); } }
-
-        public Vector2 position { get { return new Vector2((float)xAdjust, (float)yAdjust); } }
-
-        CollisionType ICollidable.type => CollisionType.ENEMY;
 
         public Aquamentus(Vector2 position, ISprite sprite, ISprite attackSprite, List<IProjectile> projectiles)
             : base(position, sprite)
@@ -66,17 +57,11 @@ namespace FiveGuysFixed.Enemies
                     break;
             }
         }
-
         private void Attack()
         {
             projectiles.Add(new Fireball(aquamentusAttackSprite.Texture, Position.X, Position.Y - 20, new Vector2(-2, 0)));
             projectiles.Add(new Fireball(aquamentusAttackSprite.Texture, Position.X, Position.Y, new Vector2(-2, 0)));
             projectiles.Add(new Fireball(aquamentusAttackSprite.Texture, Position.X, Position.Y + 20, new Vector2(-2, 0)));
-        }
-
-        public void onCollision(ICollidable a, ICollidable b)
-        {
-            
         }
     }
 }

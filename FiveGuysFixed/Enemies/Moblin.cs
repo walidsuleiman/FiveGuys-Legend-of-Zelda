@@ -8,7 +8,7 @@ using FiveGuysFixed.Common;
 
 namespace FiveGuysFixed.Enemies
 {
-    public class Moblin : IEnemy, ICollidable
+    public class Moblin : IEnemy
     {
         private ISprite currentSprite;
         private ISprite leftMoblinSprite;
@@ -24,8 +24,6 @@ namespace FiveGuysFixed.Enemies
         public double Rad { get { return Math.Max(currentSprite.Height, currentSprite.Width); } }
 
         public Vector2 position { get { return new Vector2((float)x, (float)y); } }
-
-        CollisionType ICollidable.type => CollisionType.ENEMY;
 
         public Moblin(LoadItems items, int x, int y)
         {
@@ -86,11 +84,6 @@ namespace FiveGuysFixed.Enemies
                     currentSprite = leftMoblinSprite;
                     break;
             }
-        }
-
-        public void onCollision(ICollidable a, ICollidable b)
-        {
-            
         }
     }
 }
