@@ -3,16 +3,24 @@ using Microsoft.Xna.Framework.Graphics;
 using System;
 using FiveGuysFixed.Config;
 using FiveGuysFixed.Sprites;
+using FiveGuysFixed.Collisions;
+using FiveGuysFixed.Common;
 
 namespace FiveGuysFixed.Enemies
 {
-    public class Keese : IEnemy
+    public class Keese : IEnemy, ICollidable
     {
         private ISprite keeseSprite;
         private double x, y;
         private int currentTime;
         private const int flightTime = 15, stillTime = 30;
         private double xAdjust, yAdjust;
+
+        public double Rad { get { return Math.Max(keeseSprite.Height, keeseSprite.Width); } }
+
+        public Vector2 position { get { return new Vector2((float)x, (float)y); } }
+
+        CollisionType ICollidable.type => CollisionType.ENEMY;
 
         public Keese(LoadItems items, int x, int y)
         {
@@ -64,6 +72,11 @@ namespace FiveGuysFixed.Enemies
                 case 4:
                     xAdjust = -1; yAdjust = 0; break;
             }
+        }
+
+        public void onCollision(ICollidable a, ICollidable b)
+        {
+            
         }
     }
 }

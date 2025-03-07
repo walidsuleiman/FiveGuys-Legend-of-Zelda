@@ -13,6 +13,8 @@ namespace FiveGuysFixed.Blocks
 
         // On-screen position
         private int posX, posY;
+        public int Height { get { return this.Height; } }
+        public int Width { get { return this.Width; } }
 
         public Rectangle BoundingBox { get; set; }
 

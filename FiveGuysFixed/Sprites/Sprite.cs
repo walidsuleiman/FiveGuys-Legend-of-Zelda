@@ -20,6 +20,8 @@ namespace FiveGuysFixed.Animation
         protected bool facLeft;
         protected bool isAnimated;
         public float Scale { get; set; } = 1.0f;
+        public int Height { get { return this.height; } }
+        public int Width { get { return this.width; } }
         public Texture2D texture { get; private set; }
         public Vector2 origin;
         public Texture2D Texture => texture;

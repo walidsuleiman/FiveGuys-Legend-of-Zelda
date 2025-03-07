@@ -9,6 +9,7 @@ using FiveGuysFixed.Blocks;
 using FiveGuysFixed.Enemies;
 using FiveGuysFixed.GameStates;
 using FiveGuysFixed.Projectiles;
+using FiveGuysFixed.Weapons___Items;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
@@ -46,6 +47,59 @@ namespace FiveGuysFixed.RoomHandling
 
             // Clear current room contents
             GameState.currentRoomContents.Clear();
+
+            // Load Items
+            XmlNodeList itemNodes = roomNode.SelectNodes("Objects/Item");
+            foreach (XmlNode itemNode in itemNodes)
+            {
+
+                string type = itemNode.Attributes["type"].Value;
+                int x = int.Parse(itemNode.Attributes["x"].Value);
+                int y = int.Parse(itemNode.Attributes["y"].Value);
+
+                if (type == "BluePotion")
+                {
+                    GameState.currentRoomContents.Items.Add(
+                        new BluePotion(GameState.contentLoader.blockTexture, x, y)
+                    );
+                }
+
+                if (type == "Bomb")
+                {
+                    GameState.currentRoomContents.Items.Add(
+                        new Bomb(GameState.contentLoader.blockTexture, x, y)
+                    );
+                }
+
+                if (type == "Food")
+                {
+                    GameState.currentRoomContents.Items.Add(
+                        new Food(GameState.contentLoader.blockTexture, x, y)
+                    );
+                }
+
+                if (type == "GreenRupee")
+                {
+                    GameState.currentRoomContents.Items.Add(
+                        new GreenRupee(GameState.contentLoader.blockTexture, x, y)
+                    );
+                }
+
+                if (type == "RedPotion")
+                {
+                    GameState.currentRoomContents.Items.Add(
+                        new RedPotion(GameState.contentLoader.blockTexture, x, y)
+                    );
+                }
+
+                if (type == "RedRupee")
+                {
+                    GameState.currentRoomContents.Items.Add(
+                        new RedRupee(GameState.contentLoader.blockTexture, x, y)
+                    );
+                }
+            }
+
 
             // Load Blocks
             XmlNodeList blockNodes = roomNode.SelectNodes("Objects/Block");

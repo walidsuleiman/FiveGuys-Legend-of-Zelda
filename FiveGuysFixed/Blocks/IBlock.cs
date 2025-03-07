@@ -16,5 +16,7 @@ namespace FiveGuysFixed.Blocks
         bool IsCollidable();
         void Update(GameTime gameTime);
         void Draw(SpriteBatch spriteBatch);
+        int Height { get; }
+        int Width { get; }
     }
 }
