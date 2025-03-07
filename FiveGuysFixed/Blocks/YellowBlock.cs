@@ -18,7 +18,7 @@ namespace FiveGuysFixed.Blocks
 
         public YellowBlock(Texture2D texture, int x, int y)
         {
-            yellowBlockSprite = new Sprite(texture, 353, 80, 18, 18);
+            yellowBlockSprite = new Sprite(texture, 354, 81, 16, 16);
 
             this.x = x;
             this.y = y;
@@ -32,7 +32,8 @@ namespace FiveGuysFixed.Blocks
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            yellowBlockSprite.Draw(spriteBatch, new System.Numerics.Vector2((float)x, (float)y), null);
+            float scale = 2;
+            yellowBlockSprite.Draw(spriteBatch, new System.Numerics.Vector2((float)x, (float)y), null, scale);
         }
 
         public void Update(GameTime gametime)

@@ -18,7 +18,7 @@ namespace FiveGuysFixed.Blocks
 
         public TreeBlock(Texture2D texture, int x, int y)
         {
-            treeBlockSprite = new Sprite(texture, 820, 774, 17, 15);
+            treeBlockSprite = new Sprite(texture, 820, 774, 16, 16);
 
             this.x = x;
             this.y = y;
@@ -32,7 +32,8 @@ namespace FiveGuysFixed.Blocks
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            treeBlockSprite.Draw(spriteBatch, new System.Numerics.Vector2((float)x, (float)y), null);
+            float scale = 2;
+            treeBlockSprite.Draw(spriteBatch, new System.Numerics.Vector2((float)x, (float)y), null, scale);
         }
 
         public void Update(GameTime gametime)

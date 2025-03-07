@@ -18,7 +18,7 @@ namespace FiveGuysFixed.Blocks
 
         public GreenBlock(Texture2D texture, int x, int y)
         {
-            greenBlockSprite = new Sprite(texture, 321, 64, 17, 17);
+            greenBlockSprite = new Sprite(texture, 322, 65, 16, 16);
 
             this.x = x;
             this.y = y;
@@ -32,7 +32,8 @@ namespace FiveGuysFixed.Blocks
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            greenBlockSprite.Draw(spriteBatch, new System.Numerics.Vector2((float)x, (float)y), null);
+            float scale = 2;
+            greenBlockSprite.Draw(spriteBatch, new System.Numerics.Vector2((float)x, (float)y), null, scale);
         }
 
         public void Update(GameTime gametime)

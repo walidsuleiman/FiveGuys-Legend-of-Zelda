@@ -113,5 +113,42 @@ namespace FiveGuysFixed.Animation
                 );
             }
         }
+
+        public void Draw(SpriteBatch _spriteBatch, Vector2 position, Vector2? origin, float scale)
+        {
+            if (!origin.HasValue)
+            {
+                origin = new Vector2(width / 2, height / 2);
+            }
+
+            if (facLeft)
+            {
+                _spriteBatch.Draw(
+                    texture,
+                    position,
+                    sourceRect,
+                    Color.White,
+                    0f,
+                    origin.Value,
+                    scale,
+                    SpriteEffects.FlipHorizontally,
+                    0f
+                );
+            }
+            else
+            {
+                _spriteBatch.Draw(
+                    texture,
+                    position,
+                    sourceRect,
+                    Color.White,
+                    0f,
+                    origin.Value,
+                    scale,
+                    SpriteEffects.None,
+                    0f
+                );
+            }
+        }
     }
 }
