@@ -14,6 +14,8 @@ namespace FiveGuysFixed.HUD
     {
         private Sprite blockSprite;
         private double x, y;
+        public int Height { get { return this.Height; } }
+        public int Width { get { return this.Width; } }
 
         public Hearts(Texture2D texture, int x, int y)
         {
