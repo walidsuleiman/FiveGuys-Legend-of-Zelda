@@ -3,7 +3,7 @@
 	<Room id="1">
 		<Neighbor direction="left" id="2"/>
 		<Objects>
-			
+			<Block type="GreenBlock" x="200" y="100"/>
 		</Objects>
 	</Room>
 

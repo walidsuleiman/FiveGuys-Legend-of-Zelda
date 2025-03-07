@@ -12,10 +12,12 @@ namespace FiveGuysFixed.GameStates
     {
         public Texture2D LinkTexture;
         public Texture2D BossTexture;
+        public Texture2D blockTexture;
         public void LoadContent(ContentManager content)
         {
             //LinkTexture = content.Load<Texture2D>("linkSheet");
             BossTexture = content.Load<Texture2D>("Boss_SpriteSheet");
+            blockTexture = content.Load<Texture2D>("GreenBlockSprite");
         }
 
         public ContentLoader() { }

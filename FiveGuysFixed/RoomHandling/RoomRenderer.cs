@@ -18,10 +18,11 @@ namespace FiveGuysFixed.RoomHandling
         {
             //Debug.WriteLine(GameState.currentRoomContents.Enemies.Count);
             // Draw Blocks
-            //foreach (var block in gameState.CurrentRoomContents.Blocks)
-            //{
-            //    spriteBatch.Draw(block.Texture, new Vector2(block.X, block.Y), Color.White);
-            //}
+
+            foreach (var block in GameState.currentRoomContents.Blocks)
+            {
+                block.Draw(spriteBatch);
+            }
 
             // Draw Enemies
             foreach (var enemy in GameState.currentRoomContents.Enemies)

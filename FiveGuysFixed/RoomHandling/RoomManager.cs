@@ -5,12 +5,14 @@ using System.Reflection.Metadata;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
+using FiveGuysFixed.Blocks;
 using FiveGuysFixed.Enemies;
 using FiveGuysFixed.GameStates;
 using FiveGuysFixed.Projectiles;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
+
 
 namespace FiveGuysFixed.RoomHandling
 {
@@ -46,13 +48,22 @@ namespace FiveGuysFixed.RoomHandling
             GameState.currentRoomContents.Clear();
 
             // Load Blocks
-            //XmlNodeList blockNodes = roomNode.SelectNodes("Objects/Block");
-            //foreach (XmlNode blockNode in blockNodes)
-            //{
-            //    int x = int.Parse(blockNode.Attributes["x"].Value);
-            //    int y = int.Parse(blockNode.Attributes["y"].Value);
-            //    gameState.CurrentRoomContents.Blocks.Add(new GameObject("Block", x, y));
-            //}
+            XmlNodeList blockNodes = roomNode.SelectNodes("Objects/Block");
+            foreach (XmlNode blockNode in blockNodes)
+            {
+
+                string type = blockNode.Attributes["type"].Value;
+                int x = int.Parse(blockNode.Attributes["x"].Value);
+                int y = int.Parse(blockNode.Attributes["y"].Value);
+
+
+                if (type == "GreenBlock")
+                {
+                    GameState.currentRoomContents.Blocks.Add(
+                        new GreenBlock(GameState.contentLoader.blockTexture, x, y)
+                    );
+                }
+            }
 
             // Load Enemies
             XmlNodeList enemyNodes = roomNode.SelectNodes("Objects/Enemy");
