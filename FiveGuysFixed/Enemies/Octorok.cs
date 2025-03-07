@@ -8,7 +8,7 @@ using FiveGuysFixed.Common;
 
 namespace FiveGuysFixed.Enemies
 {
-    public class Octorok : IEnemy, ICollidable
+    public class Octorok : IEnemy
     {
         private ISprite octorokSprite;
         private double x, y;
@@ -19,8 +19,6 @@ namespace FiveGuysFixed.Enemies
         public double Rad { get { return Math.Max(octorokSprite.Height, octorokSprite.Width); } }
 
         public Vector2 position { get { return new Vector2((float)x, (float)y); } }
-
-        CollisionType ICollidable.type => CollisionType.ENEMY;
 
         public Octorok(LoadItems items, int x, int y)
         {
@@ -76,11 +74,6 @@ namespace FiveGuysFixed.Enemies
         public void Attack()
         {
             // Octorok might spit rock projectiles if you wish
-        }
-
-        public void onCollision(ICollidable a, ICollidable b)
-        {
-            
         }
     }
 }

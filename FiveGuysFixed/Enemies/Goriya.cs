@@ -10,7 +10,7 @@ using FiveGuysFixed.Common;
 
 namespace FiveGuysFixed.Enemies
 {
-    public class Goriya : IEnemy, ICollidable
+    public class Goriya : IEnemy
     {
         private ISprite currentSprite;
         private ISprite leftGoriyaSprite;
@@ -32,7 +32,6 @@ namespace FiveGuysFixed.Enemies
 
         public Vector2 position { get { return new Vector2((float)x, (float)y); } }
 
-        CollisionType ICollidable.type => CollisionType.ENEMY;
 
         private enum Direction
         {
@@ -155,11 +154,6 @@ namespace FiveGuysFixed.Enemies
 
             // Create a boomerang projectile using the correct sprite from linkTexture
             projectiles.Add(new Boomerang(linkTexture, (float)x, (float)y, projectileVelocity, this));
-        }
-
-        public void onCollision(ICollidable a, ICollidable b)
-        {
-            
         }
     }
 }

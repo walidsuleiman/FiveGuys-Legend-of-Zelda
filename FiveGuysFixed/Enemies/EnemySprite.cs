@@ -7,6 +7,6 @@ namespace FiveGuysFixed.Enemies
     {
         public EnemySprite(Texture2D texture, int sourceX, int sourceY, int width, int height, int frames = 1)
             : base(texture, sourceX, sourceY, width, height, frames)
-        {}
+        { }
     }
 }

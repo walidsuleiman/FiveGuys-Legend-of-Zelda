@@ -8,7 +8,7 @@ using FiveGuysFixed.Common;
 
 namespace FiveGuysFixed.Enemies
 {
-    public class Stalfos : IEnemy, ICollidable
+    public class Stalfos : IEnemy
     {
         private ISprite stalfosSprite;
         private double x, y;
@@ -19,8 +19,6 @@ namespace FiveGuysFixed.Enemies
         public double Rad { get { return Math.Max(stalfosSprite.Height, stalfosSprite.Width); } }
 
         public Vector2 position { get { return new Vector2((float)x, (float)y); } }
-
-        CollisionType ICollidable.type => CollisionType.ENEMY;
 
         public Stalfos(LoadItems items, int x, int y)
         {
@@ -70,9 +68,5 @@ namespace FiveGuysFixed.Enemies
             // Stalfos might not attack
         }
 
-        public void onCollision(ICollidable a, ICollidable b)
-        {
-            
-        }
     }
 }

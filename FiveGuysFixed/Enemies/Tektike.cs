@@ -8,7 +8,7 @@ using FiveGuysFixed.Common;
 
 namespace FiveGuysFixed.Enemies
 {
-    public class Tektike : IEnemy, ICollidable
+    public class Tektike : IEnemy
     {
         private ISprite tektikeSprite;
         private double x, y;
@@ -20,7 +20,6 @@ namespace FiveGuysFixed.Enemies
 
         public Vector2 position { get { return new Vector2((float)x, (float)y); } }
 
-        CollisionType ICollidable.type => CollisionType.ENEMY;
 
         public Tektike(LoadItems items, int x, int y)
         {
@@ -72,11 +71,6 @@ namespace FiveGuysFixed.Enemies
         public void Attack()
         {
             // Tektike might jump or do something else
-        }
-
-        public void onCollision(ICollidable a, ICollidable b)
-        {
-            
         }
     }
 }

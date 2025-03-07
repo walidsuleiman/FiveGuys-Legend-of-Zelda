@@ -8,7 +8,7 @@ using FiveGuysFixed.Common;
 
 namespace FiveGuysFixed.Enemies
 {
-    public class Gel : IEnemy, ICollidable
+    public class Gel : IEnemy
     {
         private ISprite gelSprite;
         private double x, y;
@@ -20,7 +20,6 @@ namespace FiveGuysFixed.Enemies
 
         public Vector2 position { get { return new Vector2((float)x, (float)y); } }
 
-        CollisionType ICollidable.type => CollisionType.ENEMY;
 
         public Gel(LoadItems items, int x, int y)
         {
@@ -65,9 +64,5 @@ namespace FiveGuysFixed.Enemies
             }
         }
 
-        public void onCollision(ICollidable a, ICollidable b)
-        {
-            
-        }
     }
 }
