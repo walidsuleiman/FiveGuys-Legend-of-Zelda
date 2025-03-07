@@ -1,79 +1,79 @@
-﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using System;
-using FiveGuysFixed.Config;
-using FiveGuysFixed.Sprites;
-using FiveGuysFixed.Collisions;
-using FiveGuysFixed.Common;
+﻿//using Microsoft.Xna.Framework;
+//using Microsoft.Xna.Framework.Graphics;
+//using System;
+//using FiveGuysFixed.Config;
+//using FiveGuysFixed.Sprites;
+//using FiveGuysFixed.Collisions;
+//using FiveGuysFixed.Common;
 
-namespace FiveGuysFixed.Enemies
-{
-    public class Octorok : IEnemy
-    {
-        private ISprite octorokSprite;
-        private double x, y;
-        private int currentTime;
-        private const int flightTime = 15, stillTime = 30;
-        private double xAdjust, yAdjust;
+//namespace FiveGuysFixed.Enemies
+//{
+//    public class Octorok : IEnemy
+//    {
+//        private ISprite octorokSprite;
+//        private double x, y;
+//        private int currentTime;
+//        private const int flightTime = 15, stillTime = 30;
+//        private double xAdjust, yAdjust;
 
-        public double Rad { get { return Math.Max(octorokSprite.Height, octorokSprite.Width); } }
+//        public double Rad { get { return Math.Max(octorokSprite.Height, octorokSprite.Width); } }
 
-        public Vector2 position { get { return new Vector2((float)x, (float)y); } }
+//        public Vector2 position { get { return new Vector2((float)x, (float)y); } }
 
-        public Octorok(LoadItems items, int x, int y)
-        {
-            // Make sure your LoadItems has "public ItemData octorok;"
-            // Then do:
-            // octorokSprite = items.getNewItem(items.octorok);
-            // or if you only have Single-Direction Octorok for now, something else.
+//        public Octorok(LoadItems items, int x, int y)
+//        {
+//            // Make sure your LoadItems has "public ItemData octorok;"
+//            // Then do:
+//            // octorokSprite = items.getNewItem(items.octorok);
+//            // or if you only have Single-Direction Octorok for now, something else.
 
-            // For demonstration, let's say:
-            octorokSprite = items.getNewItem(items.stalfos);
-            // ^ Replace with items.octorok once you add it to LoadItems!
+//            // For demonstration, let's say:
+//            octorokSprite = items.getNewItem(items.stalfos);
+//            // ^ Replace with items.octorok once you add it to LoadItems!
 
-            this.x = x;
-            this.y = y;
-            this.currentTime = 0;
-        }
+//            this.x = x;
+//            this.y = y;
+//            this.currentTime = 0;
+//        }
 
-        public void Update(GameTime gameTime)
-        {
-            if (currentTime < flightTime)
-            {
-                x += xAdjust;
-                y += yAdjust;
-            }
-            else if (currentTime > flightTime + stillTime)
-            {
-                currentTime = -1;
-                SetAI();
-            }
+//        public void Update(GameTime gameTime)
+//        {
+//            if (currentTime < flightTime)
+//            {
+//                x += xAdjust;
+//                y += yAdjust;
+//            }
+//            else if (currentTime > flightTime + stillTime)
+//            {
+//                currentTime = -1;
+//                SetAI();
+//            }
 
-            currentTime++;
-            octorokSprite.Update(gameTime);
-        }
+//            currentTime++;
+//            octorokSprite.Update(gameTime);
+//        }
 
-        public void Draw(SpriteBatch spriteBatch)
-        {
-            octorokSprite.Draw(spriteBatch, new Vector2((float)x, (float)y), null);
-        }
+//        public void Draw(SpriteBatch spriteBatch)
+//        {
+//            octorokSprite.Draw(spriteBatch, new Vector2((float)x, (float)y), null);
+//        }
 
-        private void SetAI()
-        {
-            Random rnd = new Random();
-            int decide = rnd.Next(1, 5);
-            switch (decide)
-            {
-                case 1: xAdjust = 0; yAdjust = 1; break;
-                case 2: xAdjust = 0; yAdjust = -1; break;
-                case 3: xAdjust = 1; yAdjust = 0; break;
-                case 4: xAdjust = -1; yAdjust = 0; break;
-            }
-        }
+//        private void SetAI()
+//        {
+//            Random rnd = new Random();
+//            int decide = rnd.Next(1, 5);
+//            switch (decide)
+//            {
+//                case 1: xAdjust = 0; yAdjust = 1; break;
+//                case 2: xAdjust = 0; yAdjust = -1; break;
+//                case 3: xAdjust = 1; yAdjust = 0; break;
+//                case 4: xAdjust = -1; yAdjust = 0; break;
+//            }
+//        }
 
-        public void Attack()
-        {
-            // Octorok might spit rock projectiles if you wish
-        }
-    }
-}
+//        public void Attack()
+//        {
+//            // Octorok might spit rock projectiles if you wish
+//        }
+//    }
+//}

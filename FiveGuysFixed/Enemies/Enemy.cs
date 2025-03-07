@@ -9,10 +9,13 @@ namespace FiveGuysFixed.Enemies
     {
         public Vector2 Position { get; protected set; }
         protected ISprite sprite;
+        int x, y;
 
         public Enemy(Vector2 position, ISprite sprite)
         {
             this.Position = position;
+            this.x = (int) position.X;
+            this.y = (int) position.Y;
             this.sprite = sprite;
         }
 
@@ -24,6 +27,19 @@ namespace FiveGuysFixed.Enemies
         public virtual void Draw(SpriteBatch spriteBatch)
         {
             sprite.Draw(spriteBatch, Position, null);
+        }
+
+        public Rectangle BoundingBox
+        {
+            get
+            {
+                return new Rectangle((int) x, (int) y, 32, 32);
+            }
+            set
+            {
+                x = value.X;
+                y = value.Y;
+            }
         }
     }
 }

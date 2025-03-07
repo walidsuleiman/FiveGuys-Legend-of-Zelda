@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using FiveGuysFixed.Blocks;
 using FiveGuysFixed.GameStates;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -30,6 +31,7 @@ namespace FiveGuysFixed.RoomHandling
             foreach (var enemy in GameState.currentRoomContents.Enemies)
             {
                 enemy.Draw(spriteBatch);
+                collisionHandler.HandlePlayerEnemyCollision(GameState.Player, enemy);
             }
 
             // Draw Enemies

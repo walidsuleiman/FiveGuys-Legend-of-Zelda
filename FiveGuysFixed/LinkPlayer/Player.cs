@@ -27,9 +27,6 @@ namespace FiveGuysFixed.LinkPlayer
         public double Rad { get { return Math.Max(linkSprite.Height, linkSprite.Width); } }
         public Vector2 position { get { return GameState.PlayerState.position; } }
 
-
-
-
         public Player()
         {
             linkSprite = new LinkWalkAnimation();

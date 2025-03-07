@@ -7,5 +7,8 @@ namespace FiveGuysFixed.Enemies
     {
         void Update(GameTime gameTime);
         void Draw(SpriteBatch spriteBatch);
+
+        Rectangle BoundingBox { get; }
+
     }
 }

@@ -1,8 +1,10 @@
 ﻿using FiveGuysFixed.Blocks;
 using FiveGuysFixed.Collisions;
+using FiveGuysFixed.Enemies;
 using FiveGuysFixed.GameStates;
 using FiveGuysFixed.LinkPlayer;
 using Microsoft.Xna.Framework;
+using FiveGuysFixed.Common;
 
 public class CollisionHandler
 {
@@ -41,5 +43,51 @@ public class CollisionHandler
             }
         }
     }
+
+    public void HandlePlayerEnemyCollision(IPlayer player, IEnemy enemy)
+    {
+        // Compute the bounding boxes for both player and enemy.
+        Rectangle playerRect = player.GetBoundingBox(32, 32);
+        Rectangle enemyRect = enemy.BoundingBox;
+
+        if (playerRect.Intersects(enemyRect))
+        {
+            GameState.Player.takeDamage(1);
+            
+            switch (GameState.PlayerState.direction)
+            {
+                case Dir.UP:
+                    GameState.PlayerState.position.Y += 35;
+                    break;
+                case Dir.DOWN:
+                    GameState.PlayerState.position.Y -= 35;
+                    break;
+                case Dir.LEFT:
+                    GameState.PlayerState.position.X += 35;
+                    break;
+                case Dir.RIGHT:
+                    GameState.PlayerState.position.X -= 35;
+                    break;
+            }
+
+            // Calculate the intersection rectangle
+            Rectangle intersection = Rectangle.Intersect(playerRect, enemyRect);
+            // Resolve collision by moving player out along the smallest penetration axis
+            if (intersection.Width < intersection.Height)
+            {
+                if (playerRect.Center.X < enemyRect.Center.X)
+                    GameState.PlayerState.position.X -= intersection.Width;
+                else
+                    GameState.PlayerState.position.X += intersection.Width;
+            }
+            else
+            {
+                if (playerRect.Center.Y < enemyRect.Center.Y)
+                    GameState.PlayerState.position.Y -= intersection.Height;
+                else
+                    GameState.PlayerState.position.Y += intersection.Height;
+            }
+        }
     }
+}
 

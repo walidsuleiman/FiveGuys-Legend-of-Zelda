@@ -161,6 +161,7 @@ namespace FiveGuysFixed.RoomHandling
                             new Vector2(x, y),
                             new EnemySprite(GameState.contentLoader.BossTexture, 0, 0, 32, 32, 2), // Example sprite
                             new EnemySprite(GameState.contentLoader.BossTexture, 32, 0, 32, 32, 2), // Example attack sprite
+
                             new List<IProjectile>()  // Empty projectile list for now
                         )
                     );

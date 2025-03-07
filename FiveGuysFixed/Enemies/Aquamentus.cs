@@ -63,5 +63,6 @@ namespace FiveGuysFixed.Enemies
             projectiles.Add(new Fireball(aquamentusAttackSprite.Texture, Position.X, Position.Y, new Vector2(-2, 0)));
             projectiles.Add(new Fireball(aquamentusAttackSprite.Texture, Position.X, Position.Y + 20, new Vector2(-2, 0)));
         }
+       
     }
 }
