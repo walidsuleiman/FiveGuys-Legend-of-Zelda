@@ -56,11 +56,38 @@ namespace FiveGuysFixed.RoomHandling
                 int x = int.Parse(blockNode.Attributes["x"].Value);
                 int y = int.Parse(blockNode.Attributes["y"].Value);
 
+                if (type == "Block")
+                {
+                    GameState.currentRoomContents.Blocks.Add(
+                        new Block(GameState.contentLoader.blockTexture, x, y)
+                    );
+                }
 
                 if (type == "GreenBlock")
                 {
                     GameState.currentRoomContents.Blocks.Add(
-                        new GreenBlock(GameState.contentLoader.blockTexture, x, y)
+                        new GreenBlock(GameState.contentLoader.greenBlockTexture, x, y)
+                    );
+                }
+
+                if (type == "TreeBlock")
+                {
+                    GameState.currentRoomContents.Blocks.Add(
+                        new TreeBlock(GameState.contentLoader.treeBlockTexture, x, y)
+                    );
+                }
+
+                if (type == "WhiteBlock")
+                {
+                    GameState.currentRoomContents.Blocks.Add(
+                        new WhiteBlock(GameState.contentLoader.whiteBlockTexture, x, y)
+                    );
+                }
+
+                if (type == "YellowBlock")
+                {
+                    GameState.currentRoomContents.Blocks.Add(
+                        new YellowBlock(GameState.contentLoader.yellowBlockTexture, x, y)
                     );
                 }
             }

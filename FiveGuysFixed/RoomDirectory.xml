@@ -4,6 +4,8 @@
 		<Neighbor direction="left" id="2"/>
 		<Objects>
 			<Block type="GreenBlock" x="200" y="100"/>
+			<Block type="TreeBlock" x="300" y="100"/>
+
 		</Objects>
 	</Room>
 
