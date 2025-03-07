@@ -33,7 +33,7 @@ namespace FiveGuysFixed
         private GamepadController gamepadController;
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
-        public Vector2 position;
+        public Vector2 centreScreen;
         public List<IHUD> hearts;
         public List<IBlock> blocks;
         public List<IEnemy> enemies;
@@ -53,7 +53,8 @@ namespace FiveGuysFixed
         private Texture2D foodTexture;
         private Texture2D rupeeTexture;
         private Texture2D heartTexture;
-        private CollisionManager collisionManager;
+        private CollisionDetector collisionDetector;
+        private CollisionHandler collisionHandler;
 
 
         public int activeWeaponIndex;
@@ -73,11 +74,14 @@ namespace FiveGuysFixed
             IsMouseVisible = true;
             this._graphics.PreferredBackBufferHeight = 720;
             this._graphics.PreferredBackBufferWidth = 1280;
-            collisionManager = new CollisionManager();
+            collisionDetector = new CollisionDetector();
+            collisionHandler = new CollisionHandler();
         }
 
         protected override void Initialize()
         {
+
+            centreScreen = new Vector2(GraphicsDevice.Viewport.Width / 2, GraphicsDevice.Viewport.Height / 2);
 
             GameState.WindowWidth = GraphicsDevice.Viewport.Width;
             GameState.WindowHeight = GraphicsDevice.Viewport.Height;
@@ -86,9 +90,8 @@ namespace FiveGuysFixed
             GameState.currentRoomContents = new CurrentRoomContents();
             GameState.contentLoader = new ContentLoader();
             GameState.currentRoomID = 1;
+            GameState.Player = new Player();
 
-
-            Player = new Player();
             keyboardController = new KeyboardController(this);
             mouseController = new MouseController(this);
             gamepadController = new GamepadController(this);
@@ -108,10 +111,10 @@ namespace FiveGuysFixed
         protected override void LoadContent()
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
-            Player.LoadContent(Content);
+            GameState.Player.LoadContent(Content);
 
             _spriteBatch = new SpriteBatch(GraphicsDevice);
-            Player.LoadContent(Content);
+            GameState.Player.LoadContent(Content);
 
             enemyTexture = Content.Load<Texture2D>("Enemy_SpriteSheet");
             //bossTexture = Content.Load<Texture2D>("Boss_SpriteSheet");
@@ -184,7 +187,7 @@ namespace FiveGuysFixed
             //gamepadController.Update();
 
 
-            Player.Update(gameTime);
+            GameState.Player.Update(gameTime);
             GameState.roomManager.SwitchRoom(GameState.currentRoomID);
             RoomRenderer.update(gameTime);
 
@@ -219,22 +222,16 @@ namespace FiveGuysFixed
             }
 
             //call detectCollision
-            collisionManager.DetectCollision();
+            //collisionDetector.IsColliding(Player,);
 
             base.Update(gameTime);
-        }
-
-        public void Reset()
-        {
-            position = new Vector2(GraphicsDevice.Viewport.Width / 2, GraphicsDevice.Viewport.Height / 2);
-
         }
 
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.LightGoldenrodYellow);
             _spriteBatch.Begin(samplerState: SamplerState.PointClamp);
-            Player.Draw(_spriteBatch);
+            GameState.Player.Draw(_spriteBatch);
 
             RoomRenderer.Draw(_spriteBatch);
 
@@ -248,7 +245,6 @@ namespace FiveGuysFixed
             //    proj.Draw(_spriteBatch);
             //}
 
-            //Create a SpriteSheet where 3 full hearts, 2.5 hearts, 2 hearts, 1.5 hearts, 1 heart, 0.5 hearts, and 0 hearts are drawn.
 
             if (blocks.Count > 0)
             {

@@ -104,7 +104,7 @@ namespace FiveGuysFixed.LinkPlayer
         }
         public void Reset() 
         { 
-            GameState.PlayerState.position = new Vector2(100, 100);
+            GameState.PlayerState.position = new Vector2(GameState.WindowWidth / 2, GameState.WindowHeight / 2);
             GameState.PlayerState.isMoving = false;
             GameState.PlayerState.health = 100;
         }

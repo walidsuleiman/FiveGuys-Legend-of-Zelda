@@ -1,50 +1,45 @@
-﻿using System;
-using System.Collections.Generic;
-using Microsoft.Xna.Framework;
-using FiveGuysFixed.Weapons___Items;
-using FiveGuysFixed.Blocks;
-using FiveGuysFixed.Enemies;
+﻿using FiveGuysFixed.Blocks;
+using FiveGuysFixed.Collisions;
+using FiveGuysFixed.GameStates;
 using FiveGuysFixed.LinkPlayer;
-using FiveGuysFixed.Items;
+using Microsoft.Xna.Framework;
 
-namespace FiveGuysFixed.Collisions
+public class CollisionHandler
 {
-    internal class CollisionHandler
+    private CollisionDetector collisionDetector;
+
+    public CollisionHandler()
     {
-        public void HandleCollision(ICollidable a, ICollidable b)
-        {
+        collisionDetector = new CollisionDetector();
+    }
 
-            if (a is IPlayer && b is IEnemy)
+    public void HandlePlayerBlockCollision(IPlayer player, IBlock block)
+    {
+        // Compute the bounding boxes for both player and block.
+        Rectangle playerRect = player.GetBoundingBox(32, 32);
+        Rectangle blockRect = block.BoundingBox; // Provided by IBlock
+
+        if (playerRect.Intersects(blockRect))
+        {
+            // Calculate the intersection rectangle
+            Rectangle intersection = Rectangle.Intersect(playerRect, blockRect);
+
+            // Resolve collision by moving player out along the smallest penetration axis
+            if (intersection.Width < intersection.Height)
             {
-            
-                HandleEnemyPlayerCollision((IEnemy)b, (IPlayer)a);
-
+                if (playerRect.Center.X < blockRect.Center.X)
+                    GameState.PlayerState.position.X -= intersection.Width;
+                else
+                    GameState.PlayerState.position.X += intersection.Width;
             }
-            else if (a is IPlayer && b is IBlock)
+            else
             {
-                HandleBlockPlayerCollision((IBlock)b, (IPlayer)a);
+                if (playerRect.Center.Y < blockRect.Center.Y)
+                    GameState.PlayerState.position.Y -= intersection.Height;
+                else
+                    GameState.PlayerState.position.Y += intersection.Height;
             }
-
-            else if (a is IPlayer && b is IItem)
-            {
-                HandleItemPlayerCollision((IItem)b, (IPlayer)a);
-            }
-            // Add more collision handling as needed
-        }
-
-        private void HandleEnemyPlayerCollision(IEnemy enemy, IPlayer player)
-        {
-            // Link taking damage
-        }
-
-        private void HandleBlockPlayerCollision(IBlock block, IPlayer player)
-        {
-            //Link Stop Moving
-        }
-
-        private void HandleItemPlayerCollision(IItem item, IPlayer player)
-        {
-            //Link picking up item
         }
     }
-}
+    }
+

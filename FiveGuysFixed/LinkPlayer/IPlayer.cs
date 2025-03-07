@@ -14,6 +14,7 @@ namespace FiveGuysFixed.LinkPlayer
 {
     public interface IPlayer
     {
+
         public void move(Dir dir);
         public void idle();
         public void attack();

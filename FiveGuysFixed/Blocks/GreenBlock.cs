@@ -41,5 +41,18 @@ namespace FiveGuysFixed.Blocks
             currentTime++;
             greenBlockSprite.Update(gametime);
         }
+
+        public Rectangle BoundingBox
+        {
+            get
+            {
+                return new Rectangle((int)x, (int)y, 32, 32);
+            }
+            set
+            {
+                x = value.X;
+                y = value.Y;
+            }
+        }
     }
 }

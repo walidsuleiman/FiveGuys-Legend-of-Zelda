@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using FiveGuysFixed.Common;
+using FiveGuysFixed.GameStates;
 
 namespace FiveGuysFixed.Commands
 {
@@ -38,12 +39,12 @@ namespace FiveGuysFixed.Commands
 
             if (currentDir.HasValue)
             {
-                game.Player.move(currentDir.Value);
+                GameState.Player.move(currentDir.Value);
             }
             else
             {
                 // If no keys are pressed, stop movement.
-                game.Player.idle();
+                GameState.Player.idle();
             }
         }
     }

@@ -38,5 +38,18 @@ namespace FiveGuysFixed.HUD
         {
             blockSprite.Update(gametime);
         }
+
+        public Rectangle BoundingBox
+        {
+            get
+            {
+                return new Rectangle((int)x, (int)y, (int)(blockSprite.Texture.Width * 0.15f), (int)(blockSprite.Texture.Height * 0.15f));
+            }
+            set
+            {
+                x = value.X;
+                y = value.Y;
+            }
+        }
     }
 }

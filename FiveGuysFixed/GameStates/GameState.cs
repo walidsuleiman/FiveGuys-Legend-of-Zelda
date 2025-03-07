@@ -18,6 +18,7 @@ namespace FiveGuysFixed.GameStates
         //add game screen state (paused, titlescreen ect)
         //add enemy state
         //add block state
+        public static Player Player;
         public static int WindowHeight;
         public static int WindowWidth;
         public static int currentRoomID;
