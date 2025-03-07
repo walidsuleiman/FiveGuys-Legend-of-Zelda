@@ -60,42 +60,42 @@ namespace FiveGuysFixed.RoomHandling
                 if (type == "BluePotion")
                 {
                     GameState.currentRoomContents.Items.Add(
-                        new BluePotion(GameState.contentLoader.blockTexture, x, y)
+                        new BluePotion(GameState.contentLoader.bluePotionTexture, x, y)
                     );
                 }
 
                 if (type == "Bomb")
                 {
                     GameState.currentRoomContents.Items.Add(
-                        new Bomb(GameState.contentLoader.blockTexture, x, y)
+                        new Bomb(GameState.contentLoader.bombTexture, x, y)
                     );
                 }
 
                 if (type == "Food")
                 {
                     GameState.currentRoomContents.Items.Add(
-                        new Food(GameState.contentLoader.blockTexture, x, y)
+                        new Food(GameState.contentLoader.foodTexture, x, y)
                     );
                 }
 
                 if (type == "GreenRupee")
                 {
                     GameState.currentRoomContents.Items.Add(
-                        new GreenRupee(GameState.contentLoader.blockTexture, x, y)
+                        new GreenRupee(GameState.contentLoader.rupeeTexture, x, y)
                     );
                 }
 
                 if (type == "RedPotion")
                 {
                     GameState.currentRoomContents.Items.Add(
-                        new RedPotion(GameState.contentLoader.blockTexture, x, y)
+                        new RedPotion(GameState.contentLoader.redPotionTexture, x, y)
                     );
                 }
 
                 if (type == "RedRupee")
                 {
                     GameState.currentRoomContents.Items.Add(
-                        new RedRupee(GameState.contentLoader.blockTexture, x, y)
+                        new RedRupee(GameState.contentLoader.rupeeTexture, x, y)
                     );
                 }
             }

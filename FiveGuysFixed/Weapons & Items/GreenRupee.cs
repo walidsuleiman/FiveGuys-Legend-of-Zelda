@@ -15,6 +15,7 @@ namespace FiveGuysFixed.Weapons___Items
         private Sprite greenRupeeSprite;
         private double x, y;
         private int currentTime;
+        private float scale;
 
         public GreenRupee(Texture2D texture, int x, int y)
         {
@@ -23,11 +24,12 @@ namespace FiveGuysFixed.Weapons___Items
             this.x = x;
             this.y = y;
             currentTime = 0;
+            scale = 1.5f;
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            greenRupeeSprite.Draw(spriteBatch, new System.Numerics.Vector2((float)x, (float)y), null);
+            greenRupeeSprite.Draw(spriteBatch, new System.Numerics.Vector2((float)x, (float)y), null, scale);
         }
 
         public void Update(GameTime gametime)
