@@ -11,7 +11,7 @@ using Microsoft.Xna.Framework.Content;
 
 namespace FiveGuysFixed.Items
 {
-    public class WoodSword 
+    public class WoodSword
     {
         private Dir dir;
         private Rectangle sourceRect;
@@ -37,5 +37,6 @@ namespace FiveGuysFixed.Items
         {
             swordAttack.LoadContent(content);
         }
+
     }
 }

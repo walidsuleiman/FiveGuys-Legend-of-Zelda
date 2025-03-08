@@ -45,5 +45,19 @@ namespace FiveGuysFixed.Weapons___Items
         {
             GameState.PlayerState.health--;
         }
+
+        public Rectangle BoundingBox
+        {
+            get
+            {
+                return new Rectangle((int)x, (int)y, 16, 32);
+            }
+            set
+            {
+                x = value.X;
+                y = value.Y;
+            }
+        }
+
     }
 }
