@@ -16,6 +16,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Vector2 = Microsoft.Xna.Framework.Vector2;
+using Microsoft.Xna.Framework.Audio;
 
 namespace FiveGuysFixed.LinkPlayer
 {
@@ -23,6 +24,9 @@ namespace FiveGuysFixed.LinkPlayer
     {
         private LinkWalkAnimation linkSprite;
         private LinkSwordAnimation swordAnimation;
+
+        private SoundEffect harmedSound; // harmed sound
+        private SoundEffect hitSound;    // hit sound
 
         public double Rad { get { return Math.Max(linkSprite.Height, linkSprite.Width); } }
         public Vector2 position { get { return GameState.PlayerState.position; } }
@@ -34,28 +38,29 @@ namespace FiveGuysFixed.LinkPlayer
             GameState.PlayerState.health = 6;
 
         }
-        public void move(Dir newDir) 
+        public void move(Dir newDir)
         {
             GameState.PlayerState.direction = newDir;
             linkSprite.animate();
             GameState.PlayerState.isMoving = true;
             linkSprite.facingDirection(newDir);
         }
-        public void idle() 
+        public void idle()
         {
             GameState.PlayerState.isMoving = false;
             linkSprite.idle();
         }
 
-        public void attack() 
+        public void attack()
         {
-            if(GameState.PlayerState.heldWeapon != WeaponType.NONE)
+            if (GameState.PlayerState.heldWeapon != WeaponType.NONE)
             {
                 GameState.PlayerState.isAttacking = true;
+                hitSound.Play();
             }
         }
         public void switchItem() { }
-        public void Draw(SpriteBatch _spriteBatch) 
+        public void Draw(SpriteBatch _spriteBatch)
         {
             if (GameState.PlayerState.isAttacking)
             {
@@ -63,7 +68,8 @@ namespace FiveGuysFixed.LinkPlayer
                 swordAnimation.Draw(_spriteBatch);
 
             }
-            else{
+            else
+            {
                 linkSprite.Draw(_spriteBatch, null);
             }
 
@@ -94,20 +100,23 @@ namespace FiveGuysFixed.LinkPlayer
             if (GameState.PlayerState.isAttacking)
             {
                 swordAnimation.Update(gt);
-            } else
+            }
+            else
             {
                 linkSprite.Update(gt);
             }
-                
-            
+
+
         }
         public void LoadContent(ContentManager content)
         {
             linkSprite.LoadContent(content);
             swordAnimation.LoadContent(content);
+            harmedSound = content.Load<SoundEffect>("harmed");
+            hitSound = content.Load<SoundEffect>("hit");
         }
-        public void Reset() 
-        { 
+        public void Reset()
+        {
             GameState.PlayerState.position = new Vector2(GameState.WindowWidth / 2, GameState.WindowHeight / 2);
             GameState.PlayerState.isMoving = false;
             GameState.PlayerState.health = 6;
@@ -116,9 +125,10 @@ namespace FiveGuysFixed.LinkPlayer
         {
             linkSprite.takeDamage();
             GameState.PlayerState.health -= damage;
+            harmedSound.Play();
             if (GameState.PlayerState.health <= 0)
             {
-               Reset();
+                Reset();
             }
         }
         public void heal(int healing)
@@ -140,5 +150,5 @@ namespace FiveGuysFixed.LinkPlayer
             }
         }
     }
-    
+
 }

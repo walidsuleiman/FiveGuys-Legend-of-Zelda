@@ -4,8 +4,10 @@
 		<Neighbor direction="left" id="2"/>
 		<Objects>
 			
-			<Enemy type="Keese" x="500" y="600"/>
-			
+			<Enemy type="Keese" x="330" y="350"/>
+			<Enemy type="Gel" x="430" y="450"/>
+
+
 			<Item type="Bomb" x="1000" y="114"/>
 			<Item type="Bomb" x="840" y="594"/>
 			<Item type="GreenRupee" x="360" y="562"/>
@@ -164,6 +166,7 @@
 			<Enemy type="Aquamentus" x="330" y="350"/>
 			<Enemy type="Stalfos" x="700" y="300"/>
 
+
 			<Item type="BluePotion" x="1000" y="274"/>
 			<Item type="RedPotion" x="402" y="594"/>
 			<Item type="RedRupee" x="520" y="306"/>
@@ -313,6 +316,7 @@
 		<Objects>
 			<Enemy type="Aquamentus" x="330" y="350"/>
 			<Enemy type="Goriya" x="600" y="400"/>
+
 
 			<Item type="Food" x="968" y="498"/>
 			<Item type="Bomb" x="370" y="242"/>
@@ -625,7 +629,15 @@
 	<Room id="5">
 		<Neighbor direction="right" id="6"/>as
 		<Objects>
-			<Enemy type="Aquamentus" x="330" y="350"/>
+			<Enemy type="Aquamentus" x="330" y="150"/>
+			<Enemy type="Gel" x="330" y="350"/>
+			<Enemy type="Goriya" x="330" y="500"/>
+			<Enemy type="Keese" x="1000" y="150"/>
+			<Enemy type="Moblin" x="1000" y="350"/>
+			<Enemy type="Octorok" x="1000" y="500"/>
+			<Enemy type="Stalfos" x="700" y="150"/>
+			<Enemy type="Tektike" x="700" y="700"/>
+
 
 			<Item type="Food" x="968" y="242"/>
 			<Item type="Bomb" x="370" y="498"/>

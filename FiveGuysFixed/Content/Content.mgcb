@@ -73,6 +73,12 @@
 /processorParam:TextureFormat=Color
 /build:GreenBlockSprite.png
 
+#begin harmed.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:harmed.wav
+
 #begin heart.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -84,6 +90,12 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:heart.png
+
+#begin hit.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:hit.wav
 
 #begin HUD.png
 /importer:TextureImporter
@@ -192,4 +204,10 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:YellowBlockSprite.png
+
+#begin Zelda_Bgm.ogg
+/importer:OggImporter
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:Zelda_Bgm.ogg
 

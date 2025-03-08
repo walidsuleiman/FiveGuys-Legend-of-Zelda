@@ -23,6 +23,8 @@ using FiveGuysFixed.Weapons___Items;
 using FiveGuysFixed.Config;
 using FiveGuysFixed.RoomHandling;
 using Microsoft.Xna.Framework.Content;
+using Microsoft.Xna.Framework.Audio;
+using Microsoft.Xna.Framework.Media;
 using System.IO;
 using FiveGuysFixed.GUI;
 
@@ -71,6 +73,9 @@ namespace FiveGuysFixed
         private GameState gameState;
 
         public Player Player { get; set; }
+
+        private Song backgroundMusic;
+        private bool isMuted = false; //mute background music
 
         public Game1()
         {
@@ -191,6 +196,14 @@ namespace FiveGuysFixed
             GameState.roomManager.LoadRoomsFromXML(path);
             GameState.roomManager.SwitchRoom(GameState.currentRoomID);
 
+            _spriteBatch = new SpriteBatch(GraphicsDevice);
+
+            // backgroundMusic
+            backgroundMusic = Content.Load<Song>("Zelda_Bgm");
+
+            MediaPlayer.IsRepeating = true;
+            MediaPlayer.Volume = 0.5f;
+            MediaPlayer.Play(backgroundMusic);
         }
 
 
@@ -245,8 +258,14 @@ namespace FiveGuysFixed
                 }
             }
 
-            //call detectCollision
-            //collisionDetector.IsColliding(Player,);
+            KeyboardState keyboardState = Keyboard.GetState();
+
+            // Mute background music
+            if (keyboardState.IsKeyDown(Keys.B))
+            {
+                isMuted = !isMuted;
+                MediaPlayer.Volume = isMuted ? 0f : 0.5f;
+            }
 
             base.Update(gameTime);
         }
@@ -256,7 +275,7 @@ namespace FiveGuysFixed
             GraphicsDevice.Clear(Color.LightGoldenrodYellow);
             _spriteBatch.Begin(samplerState: SamplerState.PointClamp);
             GameState.Player.Draw(_spriteBatch);
-            
+
 
             RoomRenderer.Draw(_spriteBatch);
             hearts.Draw(_spriteBatch);
