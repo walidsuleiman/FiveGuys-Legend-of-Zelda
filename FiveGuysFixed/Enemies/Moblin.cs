@@ -1,23 +1,21 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
-using FiveGuysFixed.Sprites;
-using FiveGuysFixed.Common;
+using FiveGuysFixed.Animation;
 using FiveGuysFixed.GameStates;
 
 namespace FiveGuysFixed.Enemies
 {
     public class Moblin : Enemy
     {
-        private ISprite moblinSprite;
         private int currentTime;
         private const int flightTime = 15, stillTime = 30;
         private Vector2 velocity;
         private Random rnd;
 
-        public Moblin(Vector2 position, Texture2D enemyTexture) : base(position, new EnemySprite(enemyTexture, 16, 320, 16, 2))
+        public Moblin(Vector2 position, Texture2D enemyTexture)
+            : base(position, new EnemySprite(enemyTexture, 16, 12, 16, 16, 2))
         {
-            moblinSprite = new EnemySprite(enemyTexture, 16, 320, 16, 2); // Default down sprite
             currentTime = 0;
             rnd = new Random();
             SetAI();
@@ -34,16 +32,10 @@ namespace FiveGuysFixed.Enemies
                 currentTime = -1;
                 SetAI();
             }
-
             currentTime++;
             x = (int)Position.X;
             y = (int)Position.Y;
-            moblinSprite.Update(gameTime);
-        }
-
-        public override void Draw(SpriteBatch spriteBatch)
-        {
-            moblinSprite.Draw(spriteBatch, Position, null);
+            sprite.Update(gameTime);
         }
 
         private void SetAI()
@@ -53,19 +45,19 @@ namespace FiveGuysFixed.Enemies
             {
                 case 1:
                     velocity = new Vector2(0, 1);
-                    moblinSprite = new EnemySprite(GameState.contentLoader.enemyTexture, 16, 320, 16, 2); // Down
+                    sprite = new EnemySprite(GameState.contentLoader.enemyTexture, 16, 112, 16, 16, 2); // Down
                     break;
                 case 2:
                     velocity = new Vector2(0, -1);
-                    moblinSprite = new EnemySprite(GameState.contentLoader.enemyTexture, 112, 320, 16, 2); // Up
+                    sprite = new EnemySprite(GameState.contentLoader.enemyTexture, 112, 112, 16, 16, 2); // Up
                     break;
                 case 3:
                     velocity = new Vector2(1, 0);
-                    moblinSprite = new EnemySprite(GameState.contentLoader.enemyTexture, 48, 320, 16, 2); // Right
+                    sprite = new EnemySprite(GameState.contentLoader.enemyTexture, 48, 112, 16, 16, 2); // Right
                     break;
                 case 4:
                     velocity = new Vector2(-1, 0);
-                    moblinSprite = new EnemySprite(GameState.contentLoader.enemyTexture, 80, 320, 16, 2); // Left
+                    sprite = new EnemySprite(GameState.contentLoader.enemyTexture, 80, 112, 16, 16, 2); // Left
                     break;
             }
         }

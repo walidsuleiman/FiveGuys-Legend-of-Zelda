@@ -107,9 +107,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:linkSprite.png;linkSheet.png
+/build:linkSprite.png
 
-#begin linkSprite.png
+#begin Minimap1.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -119,7 +119,7 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:linkSprite.png
+/build:Minimap1.png
 
 #begin RedPotionSprite.png
 /importer:TextureImporter

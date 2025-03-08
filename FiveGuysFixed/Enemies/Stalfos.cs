@@ -16,7 +16,7 @@ namespace FiveGuysFixed.Enemies
 
         public Stalfos(Vector2 position, Texture2D enemyTexture) : base(position, new EnemySprite(enemyTexture, 16, 96, 16, 2))
         {
-            stalfosSprite = new EnemySprite(enemyTexture, 16, 96, 16, 2); // Default sprite
+            stalfosSprite = new EnemySprite(enemyTexture, 16, 80, 16,16, 2); // Default sprite
             currentTime = 0;
             rnd = new Random();
             SetAI();

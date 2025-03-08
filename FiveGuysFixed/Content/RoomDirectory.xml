@@ -162,6 +162,7 @@
 		<Neighbor direction="right" id="3"/>
 		<Objects>
 			<Enemy type="Aquamentus" x="330" y="350"/>
+			<Enemy type="Stalfos" x="700" y="300"/>
 
 			<Item type="BluePotion" x="1000" y="274"/>
 			<Item type="RedPotion" x="402" y="594"/>
@@ -311,6 +312,7 @@
 		<Neighbor direction="right" id="4"/>as
 		<Objects>
 			<Enemy type="Aquamentus" x="330" y="350"/>
+			<Enemy type="Goriya" x="600" y="400"/>
 
 			<Item type="Food" x="968" y="498"/>
 			<Item type="Bomb" x="370" y="242"/>
@@ -463,6 +465,7 @@
 		<Neighbor direction="right" id="5"/>as
 		<Objects>
 			<Enemy type="Aquamentus" x="330" y="350"/>
+			<Enemy type="Gel" x="400" y="500"/>
 
 			<Item type="Food" x="968" y="242"/>
 			<Item type="Bomb" x="370" y="498"/>

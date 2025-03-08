@@ -50,12 +50,12 @@ namespace FiveGuysFixed.Config
 
             keese = new ItemData(enemy, 16, 32, 16, 2);    
             stalfos = new ItemData(enemy, 16, 96, 16, 2);  
-            gel = new ItemData(enemy, 16, 0, 16, 2);      
+            gel = new ItemData(enemy, 16, 0, 16, 2);
 
-            leftMoblin = new ItemData(enemy, 80, 320, 16, 2);   
-            rightMoblin = new ItemData(enemy, 48, 320, 16, 2);  
-            downMoblin = new ItemData(enemy, 16, 320, 16, 2);  
-            upMoblin = new ItemData(enemy, 112, 320, 16, 2);    
+            leftMoblin = new ItemData(enemy, 80, 112, 16, 2);
+            rightMoblin = new ItemData(enemy, 48, 112, 16, 2);
+            downMoblin = new ItemData(enemy, 16, 112, 16, 2);
+            upMoblin = new ItemData(enemy, 112, 112, 16, 2);
 
             leftGoriya = new ItemData(enemy, 80, 48, 16, 2);
             rightGoriya = new ItemData(enemy, 48, 48, 16, 2);

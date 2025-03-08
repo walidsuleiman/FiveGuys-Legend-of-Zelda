@@ -24,6 +24,7 @@ using FiveGuysFixed.Config;
 using FiveGuysFixed.RoomHandling;
 using Microsoft.Xna.Framework.Content;
 using System.IO;
+using FiveGuysFixed.GUI;
 
 namespace FiveGuysFixed
 {
@@ -57,6 +58,8 @@ namespace FiveGuysFixed
         private Texture2D heartTexture;
         private CollisionDetector collisionDetector;
         private CollisionHandler collisionHandler;
+        private MiniMap miniMap;
+        private Texture2D miniMapTexture;
 
 
         public int activeWeaponIndex;
@@ -131,9 +134,18 @@ namespace FiveGuysFixed
 
             redPotionTexture = Content.Load<Texture2D>("RedPotionSprite");
             bluePotionTexture = Content.Load<Texture2D>("BluePotionSprite");
-            bombTexture = Content.Load<Texture2D>("linkSheet");
-            foodTexture = Content.Load<Texture2D>("linkSheet");
+            bombTexture = Content.Load<Texture2D>("linkSprite");
+            foodTexture = Content.Load<Texture2D>("linkSprite");
             rupeeTexture = Content.Load<Texture2D>("rupeeSprite");
+
+            miniMapTexture = Content.Load<Texture2D>("Minimap1");
+            miniMap = new MiniMap(
+                miniMapTexture,
+                new Vector2(GameState.WindowWidth - 180, 110), // Position in top-right
+                160, // Width
+                160, // Height
+                GraphicsDevice
+            );
             //heartTexture = Content.Load<Texture2D>("heart");
 
 
@@ -244,10 +256,12 @@ namespace FiveGuysFixed
             GraphicsDevice.Clear(Color.LightGoldenrodYellow);
             _spriteBatch.Begin(samplerState: SamplerState.PointClamp);
             GameState.Player.Draw(_spriteBatch);
+            
 
             RoomRenderer.Draw(_spriteBatch);
             hearts.Draw(_spriteBatch);
             rupees.Draw(_spriteBatch);
+            miniMap.Draw(_spriteBatch);
 
             //if (enemies.Count > 0)
             //{

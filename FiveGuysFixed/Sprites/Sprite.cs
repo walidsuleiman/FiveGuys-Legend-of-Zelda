@@ -51,7 +51,7 @@ namespace FiveGuysFixed.Animation
 
         public void LoadContent(ContentManager content)
         {
-            texture = content.Load<Texture2D>("linkSheet");
+            texture = content.Load<Texture2D>("linkSprite");
         }
 
         public void setPosition(Vector2 newPos)

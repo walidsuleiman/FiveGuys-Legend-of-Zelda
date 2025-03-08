@@ -1,22 +1,20 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
-using FiveGuysFixed.Sprites;
-using FiveGuysFixed.Common;
+using FiveGuysFixed.Animation;
 
 namespace FiveGuysFixed.Enemies
 {
     public class Keese : Enemy
     {
-        private ISprite keeseSprite;
         private int currentTime;
         private const int flightTime = 15, stillTime = 30;
         private Vector2 velocity;
         private Random rnd;
 
-        public Keese(Vector2 position, Texture2D enemyTexture) : base(position, new EnemySprite(enemyTexture, 16, 32, 16, 2))
+        public Keese(Vector2 position, Texture2D enemyTexture)
+            : base(position, new EnemySprite(enemyTexture, 16, 32, 16, 16, 2))
         {
-            keeseSprite = new EnemySprite(enemyTexture, 16, 32, 16, 2);
             currentTime = 0;
             rnd = new Random();
             SetAI();
@@ -37,12 +35,7 @@ namespace FiveGuysFixed.Enemies
             currentTime++;
             x = (int)Position.X;
             y = (int)Position.Y;
-            keeseSprite.Update(gameTime);
-        }
-
-        public override void Draw(SpriteBatch spriteBatch)
-        {
-            keeseSprite.Draw(spriteBatch, Position, null);
+            sprite.Update(gameTime);
         }
 
         private void SetAI()

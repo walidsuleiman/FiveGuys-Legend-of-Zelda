@@ -2,16 +2,14 @@
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
-using FiveGuysFixed.Sprites;
+using FiveGuysFixed.Animation;
 using FiveGuysFixed.Projectiles;
-using FiveGuysFixed.Common;
 using FiveGuysFixed.GameStates;
 
 namespace FiveGuysFixed.Enemies
 {
     public class Goriya : Enemy
     {
-        private ISprite goriyaSprite;
         private int currentTime;
         private const int flightTime = 15, stillTime = 30;
         private Vector2 velocity;
@@ -21,9 +19,9 @@ namespace FiveGuysFixed.Enemies
         private Random rnd;
         private Texture2D boomerangTexture;
 
-        public Goriya(Vector2 position, Texture2D enemyTexture, Texture2D boomerangTexture, List<IProjectile> projectiles) : base(position, new EnemySprite(enemyTexture, 16, 48, 16, 2))
+        public Goriya(Vector2 position, Texture2D enemyTexture, Texture2D boomerangTexture, List<IProjectile> projectiles)
+            : base(position, new EnemySprite(enemyTexture, 16, 48, 16, 16, 2))
         {
-            goriyaSprite = new EnemySprite(enemyTexture, 16, 48, 16, 2); // Down sprite by default
             this.boomerangTexture = boomerangTexture;
             this.projectiles = projectiles;
             currentTime = 0;
@@ -43,26 +41,19 @@ namespace FiveGuysFixed.Enemies
                 currentTime = -1;
                 SetAI();
             }
-
             currentTime++;
             x = (int)Position.X;
             y = (int)Position.Y;
 
             if (attackCooldown > 0)
                 attackCooldown--;
-
             if (attackCooldown <= 0 && projectiles != null && rnd.Next(100) < 1)
             {
                 Attack();
                 attackCooldown = attackCooldownMax;
             }
 
-            goriyaSprite.Update(gameTime);
-        }
-
-        public override void Draw(SpriteBatch spriteBatch)
-        {
-            goriyaSprite.Draw(spriteBatch, Position, null);
+            sprite.Update(gameTime);
         }
 
         private void SetAI()
@@ -72,19 +63,19 @@ namespace FiveGuysFixed.Enemies
             {
                 case 1:
                     velocity = new Vector2(0, 1);
-                    goriyaSprite = new EnemySprite(GameState.contentLoader.enemyTexture, 16, 48, 16, 2); // Down
+                    sprite = new EnemySprite(GameState.contentLoader.enemyTexture, 16, 48, 16, 16, 2); // Down
                     break;
                 case 2:
                     velocity = new Vector2(0, -1);
-                    goriyaSprite = new EnemySprite(GameState.contentLoader.enemyTexture, 112, 48, 16, 2); // Up
+                    sprite = new EnemySprite(GameState.contentLoader.enemyTexture, 112, 48, 16, 16, 2); // Up
                     break;
                 case 3:
                     velocity = new Vector2(1, 0);
-                    goriyaSprite = new EnemySprite(GameState.contentLoader.enemyTexture, 48, 48, 16, 2); // Right
+                    sprite = new EnemySprite(GameState.contentLoader.enemyTexture, 48, 48, 16, 16, 2); // Right
                     break;
                 case 4:
                     velocity = new Vector2(-1, 0);
-                    goriyaSprite = new EnemySprite(GameState.contentLoader.enemyTexture, 80, 48, 16, 2); // Left
+                    sprite = new EnemySprite(GameState.contentLoader.enemyTexture, 80, 48, 16, 16, 2); // Left
                     break;
             }
         }
@@ -93,7 +84,6 @@ namespace FiveGuysFixed.Enemies
         {
             if (projectiles == null || boomerangTexture == null)
                 return;
-
             //projectiles.Add(new Boomerang(boomerangTexture, Position.X, Position.Y, new Vector2(-3, 0), this));
         }
     }

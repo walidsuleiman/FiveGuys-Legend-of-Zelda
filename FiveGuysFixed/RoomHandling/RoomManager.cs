@@ -170,10 +170,12 @@ namespace FiveGuysFixed.RoomHandling
                     GameState.currentRoomContents.Enemies.Add(
                         new Gel(
                             new Vector2(x, y),
-                            new EnemySprite(GameState.contentLoader.enemyTexture, 16, 0, 16, 16, 2) // Example sprite
+                            GameState.contentLoader.enemyTexture // Pass texture directly
                         )
                     );
                 }
+
+
                 if (type == "Goriya")
                 {
                     GameState.currentRoomContents.Enemies.Add(
