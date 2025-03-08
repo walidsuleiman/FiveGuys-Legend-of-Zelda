@@ -7,6 +7,7 @@ using FiveGuysFixed.Animation;
 using FiveGuysFixed.Items;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
+using FiveGuysFixed.GameStates;
 
 namespace FiveGuysFixed.Weapons___Items
 {
@@ -40,7 +41,7 @@ namespace FiveGuysFixed.Weapons___Items
 
         public void Use()
         {
-            int heal = -10;
+            GameState.PlayerState.health--;
         }
 
         public Rectangle BoundingBox
