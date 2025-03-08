@@ -36,6 +36,7 @@ namespace FiveGuysFixed
         private SpriteBatch _spriteBatch;
         public Vector2 centreScreen;
         public Hearts hearts;
+        public RupeeCount rupees;
         public List<IBlock> blocks;
         public List<IEnemy> enemies;
         public List<IItem> items;
@@ -102,6 +103,7 @@ namespace FiveGuysFixed
             projectiles = new List<IProjectile>();
             blocks = new List<IBlock>();
             hearts = new Hearts();
+            rupees = new RupeeCount();
             activeBlockIndex = 0;
             items = new List<IItem>();
             activeItemIndex = 0;
@@ -192,6 +194,8 @@ namespace FiveGuysFixed
             GameState.roomManager.SwitchRoom(GameState.currentRoomID);
             RoomRenderer.update(gameTime);
 
+            rupees.Update(gameTime);
+
             if (enemies.Count > 0)
             {
                 enemies[activeEnemyIndex].Update(gameTime);
@@ -236,6 +240,7 @@ namespace FiveGuysFixed
 
             RoomRenderer.Draw(_spriteBatch);
             hearts.Draw(_spriteBatch);
+            rupees.Draw(_spriteBatch);
 
             //if (enemies.Count > 0)
             //{

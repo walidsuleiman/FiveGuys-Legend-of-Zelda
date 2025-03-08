@@ -18,9 +18,7 @@ namespace FiveGuysFixed.RoomHandling
 
         public static void Draw(SpriteBatch spriteBatch)
         {
-            //Debug.WriteLine(GameState.currentRoomContents.Enemies.Count);
             // Draw Blocks
-
             foreach (var block in GameState.currentRoomContents.Blocks)
             {
                 block.Draw(spriteBatch);
@@ -34,18 +32,11 @@ namespace FiveGuysFixed.RoomHandling
                 collisionHandler.HandlePlayerEnemyCollision(GameState.Player, enemy);
             }
 
-            // Draw Enemies
+            // Draw Items
             foreach (var item in GameState.currentRoomContents.Items)
             {
                 item.Draw(spriteBatch);
             }
-
-            // Draw Items
-            //foreach (var item in gameState.CurrentRoomContents.Items)
-            //{
-            //    spriteBatch.Draw(item.Texture, new Vector2(item.X, item.Y), Color.White);
-            //}
-
         }
 
         public static void update(GameTime gameTime)
@@ -56,16 +47,12 @@ namespace FiveGuysFixed.RoomHandling
                 enemy.Update(gameTime);
             }
 
+            //Update Items
             foreach (var item in GameState.currentRoomContents.Items)
             {
                 item.Update(gameTime);
             }
 
-            // Update Items
-            //foreach (var item in gameState.CurrentRoomContents.Items)
-            //{
-            //    item.Update(gameTime);
-            //}
         }
     }
 }
