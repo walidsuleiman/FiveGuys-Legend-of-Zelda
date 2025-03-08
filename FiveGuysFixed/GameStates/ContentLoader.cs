@@ -30,8 +30,8 @@ namespace FiveGuysFixed.GameStates
         {
             //LinkTexture = content.Load<Texture2D>("linkSheet");
             BossTexture = content.Load<Texture2D>("Boss_SpriteSheet");
-
             enemyTexture = content.Load<Texture2D>("Enemy_SpriteSheet");
+            
             blockTexture = content.Load<Texture2D>("BlockSprite");
             yellowBlockTexture = content.Load<Texture2D>("YellowBlockSprite");
             treeBlockTexture = content.Load<Texture2D>("TreeBlockSprite");

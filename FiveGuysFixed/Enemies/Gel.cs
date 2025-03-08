@@ -1,68 +1,59 @@
-﻿//using Microsoft.Xna.Framework;
-//using Microsoft.Xna.Framework.Graphics;
-//using System;
-//using FiveGuysFixed.Config;
-//using FiveGuysFixed.Sprites;
-//using FiveGuysFixed.Collisions;
-//using FiveGuysFixed.Common;
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using System;
+using FiveGuysFixed.Sprites;
+using FiveGuysFixed.Common;
 
-//namespace FiveGuysFixed.Enemies
-//{
-//    public class Gel : Enemy
-//    {
-//        private ISprite gelSprite;
-//        private double x, y;
-//        private int currentTime;
-//        private const int flightTime = 15, stillTime = 30;
-//        private double xAdjust, yAdjust;
+namespace FiveGuysFixed.Enemies
+{
+    public class Gel : Enemy
+    {
+        private ISprite gelSprite;
+        private int currentTime;
+        private const int flightTime = 15, stillTime = 30;
+        private Vector2 velocity;
 
-//        public double Rad { get { return Math.Max(gelSprite.Height, gelSprite.Width); } }
+        public Gel(Vector2 position, ISprite sprite) : base(position, sprite)
+        {
+            gelSprite = sprite;
+            currentTime = 0;
+            SetAI();
+        }
 
-//        public Vector2 position { get { return new Vector2((float)x, (float)y); } }
+        public override void Update(GameTime gameTime)
+        {
+            if (currentTime < flightTime)
+            {
+                Position += velocity;
+            }
+            else if (currentTime > flightTime + stillTime)
+            {
+                currentTime = -1;
+                SetAI();
+            }
 
+            currentTime++;
+            x = (int)Position.X;
+            y = (int)Position.Y;
+            sprite.Update(gameTime);
+        }
 
-//        public Gel(LoadItems items, int x, int y)
-//        {
-//            gelSprite = items.getNewItem(items.gel);
-//            this.x = x;
-//            this.y = y;
-//            currentTime = 0;
-//        }
+        //public override void Draw(SpriteBatch spriteBatch)
+        //{
+        //    sprite.Draw(spriteBatch, Position, null);
+        //}
 
-//        public void Update(GameTime gameTime)
-//        {
-//            if (currentTime < flightTime)
-//            {
-//                x += xAdjust;
-//                y += yAdjust;
-//            }
-//            else if (currentTime > flightTime + stillTime)
-//            {
-//                currentTime = -1;
-//                SetAI();
-//            }
-
-//            currentTime++;
-//            gelSprite.Update(gameTime);
-//        }
-
-//        public void Draw(SpriteBatch spriteBatch)
-//        {
-//            gelSprite.Draw(spriteBatch, new Vector2((float)x, (float)y), null);
-//        }
-
-//        private void SetAI()
-//        {
-//            Random rnd = new Random();
-//            int decide = rnd.Next(1, 5);
-//            switch (decide)
-//            {
-//                case 1: xAdjust = 0; yAdjust = 1; break;
-//                case 2: xAdjust = 0; yAdjust = -1; break;
-//                case 3: xAdjust = 1; yAdjust = 0; break;
-//                case 4: xAdjust = -1; yAdjust = 0; break;
-//            }
-//        }
-
-//    }
-//}
+        private void SetAI()
+        {
+            Random rnd = new Random();
+            int decide = rnd.Next(1, 5);
+            switch (decide)
+            {
+                case 1: velocity = new Vector2(0, 1); break;
+                case 2: velocity = new Vector2(0, -1); break;
+                case 3: velocity = new Vector2(1, 0); break;
+                case 4: velocity = new Vector2(-1, 0); break;
+            }
+        }
+    }
+}

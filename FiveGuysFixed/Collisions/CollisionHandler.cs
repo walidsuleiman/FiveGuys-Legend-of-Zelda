@@ -95,7 +95,7 @@ public class CollisionHandler
         }
     }
 
-    public void HandleEnemyBlockCollision(IEnemy enemy, IBlock block)
+    public void HandleEnemyBlockCollision(Enemy enemy, IBlock block)
     {
         // Compute the bounding boxes for both enemy and block.
         Rectangle enemyRect = enemy.BoundingBox;
@@ -104,8 +104,7 @@ public class CollisionHandler
         {
 
             Rectangle intersection = Rectangle.Intersect(enemyRect, blockRect);
-
-            Vector2 enemyPosition = GameState.roomManager.aquamentus.Position;
+            Vector2 enemyPosition = enemy.Position;
             if (intersection.Width < intersection.Height)
             {
                 if (enemyRect.Center.X < blockRect.Center.X)
@@ -120,7 +119,7 @@ public class CollisionHandler
                 else
                     enemyPosition.Y += intersection.Height;
             }
-            GameState.roomManager.aquamentus.Position = enemyPosition;
+            enemy.Position = enemyPosition;
         }
     }
 }

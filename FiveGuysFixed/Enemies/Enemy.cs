@@ -13,7 +13,7 @@ namespace FiveGuysFixed.Enemies
 
         public Enemy(Vector2 position, ISprite sprite)
         {
-            this.Position = position;
+            Position = position;
             this.x = (int) position.X;
             this.y = (int) position.Y;
             this.sprite = sprite;

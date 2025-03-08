@@ -1,75 +1,60 @@
-﻿//using Microsoft.Xna.Framework;
-//using Microsoft.Xna.Framework.Graphics;
-//using System;
-//using FiveGuysFixed.Config;
-//using FiveGuysFixed.Sprites;
-//using FiveGuysFixed.Collisions;
-//using FiveGuysFixed.Common;
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using System;
+using FiveGuysFixed.Sprites;
+using FiveGuysFixed.Common;
 
-//namespace FiveGuysFixed.Enemies
-//{
-//    public class Keese : IEnemy
-//    {
-//        private ISprite keeseSprite;
-//        private double x, y;
-//        private int currentTime;
-//        private const int flightTime = 15, stillTime = 30;
-//        private double xAdjust, yAdjust;
+namespace FiveGuysFixed.Enemies
+{
+    public class Keese : Enemy
+    {
+        private ISprite keeseSprite;
+        private int currentTime;
+        private const int flightTime = 15, stillTime = 30;
+        private Vector2 velocity;
+        private Random rnd;
 
-//        public double Rad { get { return Math.Max(keeseSprite.Height, keeseSprite.Width); } }
+        public Keese(Vector2 position, Texture2D enemyTexture) : base(position, new EnemySprite(enemyTexture, 16, 32, 16, 2))
+        {
+            keeseSprite = new EnemySprite(enemyTexture, 16, 32, 16, 2);
+            currentTime = 0;
+            rnd = new Random();
+            SetAI();
+        }
 
-//        public Vector2 position { get { return new Vector2((float)x, (float)y); } }
+        public override void Update(GameTime gameTime)
+        {
+            if (currentTime < flightTime)
+            {
+                Position += velocity;
+            }
+            else if (currentTime > flightTime + stillTime)
+            {
+                currentTime = -1;
+                SetAI();
+            }
 
-//        public Keese(LoadItems items, int x, int y)
-//        {
-//            keeseSprite = items.getNewItem(items.keese);
-//            this.x = x;
-//            this.y = y;
-//            currentTime = 0;
-//            SetAI(); // Initialize movement on creation
-//        }
+            currentTime++;
+            x = (int)Position.X;
+            y = (int)Position.Y;
+            keeseSprite.Update(gameTime);
+        }
 
-//        public void Update(GameTime gameTime)
-//        {
-//            // Move the Keese
-//            if (currentTime < flightTime)
-//            {
-//                x += xAdjust;
-//                y += yAdjust;
-//            }
-//            else if (currentTime > flightTime + stillTime)
-//            {
-//                currentTime = -1;
-//                SetAI();
-//            }
+        public override void Draw(SpriteBatch spriteBatch)
+        {
+            keeseSprite.Draw(spriteBatch, Position, null);
+        }
 
-//            currentTime++;
-
-//            // This is important - this will update the animation frame
-//            keeseSprite.Update(gameTime);
-//        }
-
-//        public void Draw(SpriteBatch spriteBatch)
-//        {
-//            keeseSprite.Draw(spriteBatch, new Vector2((float)x, (float)y), null);
-//        }
-
-//        private void SetAI()
-//        {
-//            Random rnd = new Random();
-//            int decide = rnd.Next(1, 5);
-
-//            switch (decide)
-//            {
-//                case 1:
-//                    xAdjust = 0; yAdjust = 1; break;
-//                case 2:
-//                    xAdjust = 0; yAdjust = -1; break;
-//                case 3:
-//                    xAdjust = 1; yAdjust = 0; break;
-//                case 4:
-//                    xAdjust = -1; yAdjust = 0; break;
-//            }
-//        }
-//    }
-//}
+        private void SetAI()
+        {
+            int decide = rnd.Next(1, 5);
+            switch (decide)
+            {
+                case 1: velocity = new Vector2(0, 1); break;
+                case 2: velocity = new Vector2(0, -1); break;
+                case 3: velocity = new Vector2(1, 0); break;
+                case 4: velocity = new Vector2(-1, 0); break;
+            }
+        }
+    }
+}

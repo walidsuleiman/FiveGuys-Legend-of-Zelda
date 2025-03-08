@@ -3,7 +3,9 @@
 	<Room id="1">
 		<Neighbor direction="left" id="2"/>
 		<Objects>
-
+			
+			<Enemy type="Keese" x="500" y="600"/>
+			
 			<Item type="Bomb" x="1000" y="114"/>
 			<Item type="Bomb" x="840" y="594"/>
 			<Item type="GreenRupee" x="360" y="562"/>

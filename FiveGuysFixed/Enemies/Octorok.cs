@@ -1,79 +1,60 @@
-﻿//using Microsoft.Xna.Framework;
-//using Microsoft.Xna.Framework.Graphics;
-//using System;
-//using FiveGuysFixed.Config;
-//using FiveGuysFixed.Sprites;
-//using FiveGuysFixed.Collisions;
-//using FiveGuysFixed.Common;
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using System;
+using FiveGuysFixed.Sprites;
+using FiveGuysFixed.Common;
 
-//namespace FiveGuysFixed.Enemies
-//{
-//    public class Octorok : IEnemy
-//    {
-//        private ISprite octorokSprite;
-//        private double x, y;
-//        private int currentTime;
-//        private const int flightTime = 15, stillTime = 30;
-//        private double xAdjust, yAdjust;
+namespace FiveGuysFixed.Enemies
+{
+    public class Octorok : Enemy
+    {
+        private ISprite octorokSprite;
+        private int currentTime;
+        private const int flightTime = 15, stillTime = 30;
+        private Vector2 velocity;
+        private Random rnd;
 
-//        public double Rad { get { return Math.Max(octorokSprite.Height, octorokSprite.Width); } }
+        public Octorok(Vector2 position, Texture2D enemyTexture) : base(position, new EnemySprite(enemyTexture, 16, 96, 16, 2))
+        {
+            octorokSprite = new EnemySprite(enemyTexture, 16, 96, 16, 2); // Default sprite
+            currentTime = 0;
+            rnd = new Random();
+            SetAI();
+        }
 
-//        public Vector2 position { get { return new Vector2((float)x, (float)y); } }
+        public override void Update(GameTime gameTime)
+        {
+            if (currentTime < flightTime)
+            {
+                Position += velocity;
+            }
+            else if (currentTime > flightTime + stillTime)
+            {
+                currentTime = -1;
+                SetAI();
+            }
 
-//        public Octorok(LoadItems items, int x, int y)
-//        {
-//            // Make sure your LoadItems has "public ItemData octorok;"
-//            // Then do:
-//            // octorokSprite = items.getNewItem(items.octorok);
-//            // or if you only have Single-Direction Octorok for now, something else.
+            currentTime++;
+            x = (int)Position.X;
+            y = (int)Position.Y;
+            octorokSprite.Update(gameTime);
+        }
 
-//            // For demonstration, let's say:
-//            octorokSprite = items.getNewItem(items.stalfos);
-//            // ^ Replace with items.octorok once you add it to LoadItems!
+        public override void Draw(SpriteBatch spriteBatch)
+        {
+            octorokSprite.Draw(spriteBatch, Position, null);
+        }
 
-//            this.x = x;
-//            this.y = y;
-//            this.currentTime = 0;
-//        }
-
-//        public void Update(GameTime gameTime)
-//        {
-//            if (currentTime < flightTime)
-//            {
-//                x += xAdjust;
-//                y += yAdjust;
-//            }
-//            else if (currentTime > flightTime + stillTime)
-//            {
-//                currentTime = -1;
-//                SetAI();
-//            }
-
-//            currentTime++;
-//            octorokSprite.Update(gameTime);
-//        }
-
-//        public void Draw(SpriteBatch spriteBatch)
-//        {
-//            octorokSprite.Draw(spriteBatch, new Vector2((float)x, (float)y), null);
-//        }
-
-//        private void SetAI()
-//        {
-//            Random rnd = new Random();
-//            int decide = rnd.Next(1, 5);
-//            switch (decide)
-//            {
-//                case 1: xAdjust = 0; yAdjust = 1; break;
-//                case 2: xAdjust = 0; yAdjust = -1; break;
-//                case 3: xAdjust = 1; yAdjust = 0; break;
-//                case 4: xAdjust = -1; yAdjust = 0; break;
-//            }
-//        }
-
-//        public void Attack()
-//        {
-//            // Octorok might spit rock projectiles if you wish
-//        }
-//    }
-//}
+        private void SetAI()
+        {
+            int decide = rnd.Next(1, 5);
+            switch (decide)
+            {
+                case 1: velocity = new Vector2(0, 1); break;
+                case 2: velocity = new Vector2(0, -1); break;
+                case 3: velocity = new Vector2(1, 0); break;
+                case 4: velocity = new Vector2(-1, 0); break;
+            }
+        }
+    }
+}

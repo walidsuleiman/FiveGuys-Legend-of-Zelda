@@ -54,7 +54,7 @@ namespace FiveGuysFixed.RoomHandling
             // Update Enemies
             for (int i = GameState.currentRoomContents.Enemies.Count - 1; i >= 0; i--)
             {
-                IEnemy enemy = GameState.currentRoomContents.Enemies[i];
+                Enemy enemy = GameState.currentRoomContents.Enemies[i];
                 enemy.Update(gameTime);
                 collisionHandler.HandlePlayerEnemyCollision(GameState.Player, enemy);
                 

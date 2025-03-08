@@ -10,5 +10,6 @@ namespace FiveGuysFixed.Enemies
 
         Rectangle BoundingBox { get; }
 
+
     }
 }

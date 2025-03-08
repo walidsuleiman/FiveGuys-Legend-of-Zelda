@@ -165,17 +165,77 @@ namespace FiveGuysFixed.RoomHandling
                     );
                     GameState.currentRoomContents.Enemies.Add(aquamentus);
                 }
-            }
+                if (type == "Gel")
+                {
+                    GameState.currentRoomContents.Enemies.Add(
+                        new Gel(
+                            new Vector2(x, y),
+                            new EnemySprite(GameState.contentLoader.enemyTexture, 16, 0, 16, 16, 2) // Example sprite
+                        )
+                    );
+                }
+                if (type == "Goriya")
+                {
+                    GameState.currentRoomContents.Enemies.Add(
+                        new Goriya(
+                            new Vector2(x, y),
+                            GameState.contentLoader.enemyTexture, // Uses the same enemy texture as Gel
+                            GameState.contentLoader.rupeeTexture, // Boomerang attack texture
+                            new List<IProjectile>() // Empty projectile list for now
+                        )
+                    );
+                }
+                if (type == "Keese")
+                {
+                    GameState.currentRoomContents.Enemies.Add(
+                        new Keese(
+                            new Vector2(x, y),
+                            GameState.contentLoader.enemyTexture // Uses the enemy sprite sheet
+                        )
+                    );
+                }
+                if (type == "Moblin")
+                {
+                    GameState.currentRoomContents.Enemies.Add(
+                        new Moblin(
+                            new Vector2(x, y),
+                            GameState.contentLoader.enemyTexture // Uses the enemy sprite sheet
+                        )
+                    );
+                }
+                if (type == "Octorok")
+                {
+                    GameState.currentRoomContents.Enemies.Add(
+                        new Octorok(
+                            new Vector2(x, y),
+                            GameState.contentLoader.enemyTexture // Uses the enemy sprite sheet
+                        )
+                    );
+                }
+                if (type == "Stalfos")
+                {
+                    GameState.currentRoomContents.Enemies.Add(
+                        new Stalfos(
+                            new Vector2(x, y),
+                            GameState.contentLoader.enemyTexture // Uses the enemy sprite sheet
+                        )
+                    );
+                }
+                if (type == "Tektike")
+                {
+                    GameState.currentRoomContents.Enemies.Add(
+                        new Tektike(
+                            new Vector2(x, y),
+                            GameState.contentLoader.enemyTexture // Uses the enemy sprite sheet
+                        )
+                    );
+                }
 
-            // Load Items
-            //XmlNodeList itemNodes = roomNode.SelectNodes("Objects/Item");
-            //foreach (XmlNode itemNode in itemNodes)
-            //{
-            //    string type = itemNode.Attributes["type"].Value;
-            //    int x = int.Parse(itemNode.Attributes["x"].Value);
-            //    int y = int.Parse(itemNode.Attributes["y"].Value);
-            //    gameState.CurrentRoomContents.Items.Add(new Item(type, x, y));
-            //}
+
+
+
+
+            }
         }
     }
 

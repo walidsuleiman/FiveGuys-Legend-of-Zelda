@@ -1,76 +1,60 @@
-﻿//using Microsoft.Xna.Framework;
-//using Microsoft.Xna.Framework.Graphics;
-//using System;
-//using FiveGuysFixed.Config;
-//using FiveGuysFixed.Sprites;
-//using FiveGuysFixed.Collisions;
-//using FiveGuysFixed.Common;
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using System;
+using FiveGuysFixed.Sprites;
+using FiveGuysFixed.Common;
 
-//namespace FiveGuysFixed.Enemies
-//{
-//    public class Tektike : IEnemy
-//    {
-//        private ISprite tektikeSprite;
-//        private double x, y;
-//        private int currentTime;
-//        private const int flightTime = 15, stillTime = 30;
-//        private double xAdjust, yAdjust;
+namespace FiveGuysFixed.Enemies
+{
+    public class Tektike : Enemy
+    {
+        private ISprite tektikeSprite;
+        private int currentTime;
+        private const int flightTime = 15, stillTime = 30;
+        private Vector2 velocity;
+        private Random rnd;
 
-//        public double Rad { get { return Math.Max(tektikeSprite.Height, tektikeSprite.Width); } }
+        public Tektike(Vector2 position, Texture2D enemyTexture) : base(position, new EnemySprite(enemyTexture, 16, 0, 16, 2))
+        {
+            tektikeSprite = new EnemySprite(enemyTexture, 16, 0, 16, 2); // Default sprite
+            currentTime = 0;
+            rnd = new Random();
+            SetAI();
+        }
 
-//        public Vector2 position { get { return new Vector2((float)x, (float)y); } }
+        public override void Update(GameTime gameTime)
+        {
+            if (currentTime < flightTime)
+            {
+                Position += velocity;
+            }
+            else if (currentTime > flightTime + stillTime)
+            {
+                currentTime = -1;
+                SetAI();
+            }
 
+            currentTime++;
+            x = (int)Position.X;
+            y = (int)Position.Y;
+            tektikeSprite.Update(gameTime);
+        }
 
-//        public Tektike(LoadItems items, int x, int y)
-//        {
-//            // If you have "public ItemData tektike;" in LoadItems
-//            // tektikeSprite = items.getNewItem(items.tektike);
-//            // If not, pick any placeholder for now:
-//            tektikeSprite = items.getNewItem(items.gel);
+        public override void Draw(SpriteBatch spriteBatch)
+        {
+            tektikeSprite.Draw(spriteBatch, Position, null);
+        }
 
-//            this.x = x;
-//            this.y = y;
-//            currentTime = 0;
-//        }
-
-//        public void Update(GameTime gameTime)
-//        {
-//            if (currentTime < flightTime)
-//            {
-//                x += xAdjust;
-//                y += yAdjust;
-//            }
-//            else if (currentTime > flightTime + stillTime)
-//            {
-//                currentTime = -1;
-//                SetAI();
-//            }
-
-//            currentTime++;
-//            tektikeSprite.Update(gameTime);
-//        }
-
-//        public void Draw(SpriteBatch spriteBatch)
-//        {
-//            tektikeSprite.Draw(spriteBatch, new Vector2((float)x, (float)y), null);
-//        }
-
-//        private void SetAI()
-//        {
-//            var rnd = new Random();
-//            int decide = rnd.Next(1, 5);
-//            switch (decide)
-//            {
-//                case 1: xAdjust = 0; yAdjust = 1; break;
-//                case 2: xAdjust = 0; yAdjust = -1; break;
-//                case 3: xAdjust = 1; yAdjust = 0; break;
-//                case 4: xAdjust = -1; yAdjust = 0; break;
-//            }
-//        }
-
-//        public void Attack()
-//        {
-//            // Tektike might jump or do something else
-//        }
-//    }
-//}
+        private void SetAI()
+        {
+            int decide = rnd.Next(1, 5);
+            switch (decide)
+            {
+                case 1: velocity = new Vector2(0, 1); break;
+                case 2: velocity = new Vector2(0, -1); break;
+                case 3: velocity = new Vector2(1, 0); break;
+                case 4: velocity = new Vector2(-1, 0); break;
+            }
+        }
+    }
+}

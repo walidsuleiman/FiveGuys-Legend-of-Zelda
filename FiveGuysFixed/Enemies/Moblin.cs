@@ -1,89 +1,73 @@
-﻿//using Microsoft.Xna.Framework;
-//using Microsoft.Xna.Framework.Graphics;
-//using System;
-//using FiveGuysFixed.Config;
-//using FiveGuysFixed.Sprites;
-//using FiveGuysFixed.Collisions;
-//using FiveGuysFixed.Common;
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using System;
+using FiveGuysFixed.Sprites;
+using FiveGuysFixed.Common;
+using FiveGuysFixed.GameStates;
 
-//namespace FiveGuysFixed.Enemies
-//{
-//    public class Moblin : IEnemy
-//    {
-//        private ISprite currentSprite;
-//        private ISprite leftMoblinSprite;
-//        private ISprite rightMoblinSprite;
-//        private ISprite upMoblinSprite;
-//        private ISprite downMoblinSprite;
+namespace FiveGuysFixed.Enemies
+{
+    public class Moblin : Enemy
+    {
+        private ISprite moblinSprite;
+        private int currentTime;
+        private const int flightTime = 15, stillTime = 30;
+        private Vector2 velocity;
+        private Random rnd;
 
-//        private double x, y;
-//        private int currentTime;
-//        private const int flightTime = 15, stillTime = 30;
-//        private double xAdjust, yAdjust;
+        public Moblin(Vector2 position, Texture2D enemyTexture) : base(position, new EnemySprite(enemyTexture, 16, 320, 16, 2))
+        {
+            moblinSprite = new EnemySprite(enemyTexture, 16, 320, 16, 2); // Default down sprite
+            currentTime = 0;
+            rnd = new Random();
+            SetAI();
+        }
 
-//        public double Rad { get { return Math.Max(currentSprite.Height, currentSprite.Width); } }
+        public override void Update(GameTime gameTime)
+        {
+            if (currentTime < flightTime)
+            {
+                Position += velocity;
+            }
+            else if (currentTime > flightTime + stillTime)
+            {
+                currentTime = -1;
+                SetAI();
+            }
 
-//        public Vector2 position { get { return new Vector2((float)x, (float)y); } }
+            currentTime++;
+            x = (int)Position.X;
+            y = (int)Position.Y;
+            moblinSprite.Update(gameTime);
+        }
 
-//        public Moblin(LoadItems items, int x, int y)
-//        {
-//            leftMoblinSprite = items.getNewItem(items.leftMoblin);
-//            rightMoblinSprite = items.getNewItem(items.rightMoblin);
-//            upMoblinSprite = items.getNewItem(items.upMoblin);
-//            downMoblinSprite = items.getNewItem(items.downMoblin);
+        public override void Draw(SpriteBatch spriteBatch)
+        {
+            moblinSprite.Draw(spriteBatch, Position, null);
+        }
 
-//            currentSprite = downMoblinSprite;
-//            this.x = x;
-//            this.y = y;
-//            currentTime = 0;
-//        }
-
-//        public void Update(GameTime gameTime)
-//        {
-//            if (currentTime < flightTime)
-//            {
-//                x += xAdjust;
-//                y += yAdjust;
-//            }
-//            else if (currentTime > flightTime + stillTime)
-//            {
-//                currentTime = -1;
-//                SetAI();
-//            }
-
-//            currentTime++;
-//            currentSprite.Update(gameTime);
-//        }
-
-//        public void Draw(SpriteBatch spriteBatch)
-//        {
-//            currentSprite.Draw(spriteBatch, new Vector2((float)x, (float)y), null);
-//        }
-
-//        private void SetAI()
-//        {
-//            Random rnd = new Random();
-//            int decide = rnd.Next(1, 5);
-
-//            switch (decide)
-//            {
-//                case 1:
-//                    xAdjust = 0; yAdjust = 1;
-//                    currentSprite = downMoblinSprite;
-//                    break;
-//                case 2:
-//                    xAdjust = 0; yAdjust = -1;
-//                    currentSprite = upMoblinSprite;
-//                    break;
-//                case 3:
-//                    xAdjust = 1; yAdjust = 0;
-//                    currentSprite = rightMoblinSprite;
-//                    break;
-//                case 4:
-//                    xAdjust = -1; yAdjust = 0;
-//                    currentSprite = leftMoblinSprite;
-//                    break;
-//            }
-//        }
-//    }
-//}
+        private void SetAI()
+        {
+            int decide = rnd.Next(1, 5);
+            switch (decide)
+            {
+                case 1:
+                    velocity = new Vector2(0, 1);
+                    moblinSprite = new EnemySprite(GameState.contentLoader.enemyTexture, 16, 320, 16, 2); // Down
+                    break;
+                case 2:
+                    velocity = new Vector2(0, -1);
+                    moblinSprite = new EnemySprite(GameState.contentLoader.enemyTexture, 112, 320, 16, 2); // Up
+                    break;
+                case 3:
+                    velocity = new Vector2(1, 0);
+                    moblinSprite = new EnemySprite(GameState.contentLoader.enemyTexture, 48, 320, 16, 2); // Right
+                    break;
+                case 4:
+                    velocity = new Vector2(-1, 0);
+                    moblinSprite = new EnemySprite(GameState.contentLoader.enemyTexture, 80, 320, 16, 2); // Left
+                    break;
+            }
+        }
+    }
+}
