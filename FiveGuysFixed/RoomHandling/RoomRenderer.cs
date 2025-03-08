@@ -57,7 +57,14 @@ namespace FiveGuysFixed.RoomHandling
                 IEnemy enemy = GameState.currentRoomContents.Enemies[i];
                 enemy.Update(gameTime);
                 collisionHandler.HandlePlayerEnemyCollision(GameState.Player, enemy);
+                
+                foreach (var block in GameState.currentRoomContents.Blocks)
+                {
+                    block.Update(gameTime);
+                    collisionHandler.HandleEnemyBlockCollision(enemy, block);
+                }
             }
+
 
             //Update Items
             for (int i = GameState.currentRoomContents.Items.Count - 1; i >= 0; i--)
@@ -73,8 +80,6 @@ namespace FiveGuysFixed.RoomHandling
                 GameState.currentRoomContents.Items.Remove(item);
             }
             GameState.itemsToRemove.Clear();
-
-
 
 
         }

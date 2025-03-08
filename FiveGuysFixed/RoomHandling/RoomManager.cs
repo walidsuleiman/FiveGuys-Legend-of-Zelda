@@ -20,6 +20,7 @@ namespace FiveGuysFixed.RoomHandling
     public class RoomManager
     {
         private Dictionary<int, XmlNode> roomData; // Store XML data for each room
+        public Aquamentus aquamentus;
 
         public RoomManager()
         {
@@ -156,15 +157,13 @@ namespace FiveGuysFixed.RoomHandling
 
                 if (type == "Aquamentus")
                 {
-                    GameState.currentRoomContents.Enemies.Add(
-                        new Aquamentus(
-                            new Vector2(x, y),
-                            new EnemySprite(GameState.contentLoader.BossTexture, 0, 0, 32, 32, 2), // Example sprite
-                            new EnemySprite(GameState.contentLoader.BossTexture, 32, 0, 32, 32, 2), // Example attack sprite
-
-                            new List<IProjectile>()  // Empty projectile list for now
-                        )
+                    aquamentus = new Aquamentus(
+                        new Vector2(x, y),
+                        new EnemySprite(GameState.contentLoader.BossTexture, 0, 0, 32, 32, 2), // Example sprite
+                        new EnemySprite(GameState.contentLoader.BossTexture, 32, 0, 32, 32, 2), // Example attack sprite
+                        new List<IProjectile>()  // Empty projectile list for now
                     );
+                    GameState.currentRoomContents.Enemies.Add(aquamentus);
                 }
             }
 

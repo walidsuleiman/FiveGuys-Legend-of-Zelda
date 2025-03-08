@@ -36,11 +36,16 @@ namespace FiveGuysFixed.Enemies
             }
 
             currentTime++;
+            x = (int)Position.X;
+            y = (int)Position.Y;
             sprite.Update(gameTime);
         }
 
+
+
         private void SetAI()
         {
+
             var rnd = new System.Random();
             int decide = rnd.Next(1, 4);
             switch (decide)

@@ -7,9 +7,9 @@ namespace FiveGuysFixed.Enemies
 {
     public abstract class Enemy : IEnemy
     {
-        public Vector2 Position { get; protected set; }
+        public Vector2 Position { get; set; }
         protected ISprite sprite;
-        int x, y;
+        public int x, y;
 
         public Enemy(Vector2 position, ISprite sprite)
         {
