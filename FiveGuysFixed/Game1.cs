@@ -131,8 +131,8 @@ namespace FiveGuysFixed
 
             redPotionTexture = Content.Load<Texture2D>("RedPotionSprite");
             bluePotionTexture = Content.Load<Texture2D>("BluePotionSprite");
-            bombTexture = Content.Load<Texture2D>("linkSheet");
-            foodTexture = Content.Load<Texture2D>("linkSheet");
+            bombTexture = Content.Load<Texture2D>("linkSprite");
+            foodTexture = Content.Load<Texture2D>("linkSprite");
             rupeeTexture = Content.Load<Texture2D>("rupeeSprite");
             //heartTexture = Content.Load<Texture2D>("heart");
 
