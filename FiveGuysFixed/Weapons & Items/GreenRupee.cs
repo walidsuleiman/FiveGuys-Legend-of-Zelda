@@ -7,6 +7,7 @@ using FiveGuysFixed.Animation;
 using FiveGuysFixed.Items;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
+using FiveGuysFixed.GameStates;
 
 namespace FiveGuysFixed.Weapons___Items
 {
@@ -42,7 +43,7 @@ namespace FiveGuysFixed.Weapons___Items
 
         public void Use()
         {
-            int rupee = 1;
+            GameState.PlayerState.greenRupees++;
         }
 
         public Rectangle BoundingBox

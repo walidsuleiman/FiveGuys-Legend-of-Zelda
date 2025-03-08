@@ -121,6 +121,15 @@ namespace FiveGuysFixed.LinkPlayer
                Reset();
             }
         }
+        public void heal(int healing)
+        {
+            linkSprite.heal();
+            GameState.PlayerState.health += healing;
+            if (GameState.PlayerState.health >= 6)
+            {
+                GameState.PlayerState.health = 6;
+            }
+        }
         public void gainHealth(int health)
         {
             GameState.PlayerState.health += health;

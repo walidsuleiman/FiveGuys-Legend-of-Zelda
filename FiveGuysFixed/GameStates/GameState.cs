@@ -27,7 +27,11 @@ namespace FiveGuysFixed.GameStates
         public static int RoomID;
         public static CurrentRoomContents currentRoomContents;  // Global RoomContents
         public static ContentLoader contentLoader;  // Global Loader
+
+        public static bool ShouldSwitchRoom = false; // Default: No switch
         public static List<IItem> itemsToRemove = new List<IItem>();
+        public static HashSet<IItem> collectedItems = new HashSet<IItem>();
+
 
     }
 }

@@ -49,10 +49,10 @@ namespace FiveGuysFixed.HUD
 					spriteBatch.Draw(GameState.contentLoader.HudTexture, digitOnePosGreen, zeroRectangle, Color.White, 0, new Vector2(0, 0), 2, SpriteEffects.None, 0f);
 					break;
 				case 1:
-					spriteBatch.Draw(GameState.contentLoader.rupeeTexture, greenRupeePos, greenRupeeRectangle, Color.White, 0, new Vector2(0, 0), 0.75f, SpriteEffects.None, 0f);
-					spriteBatch.Draw(GameState.contentLoader.HudTexture, xPosGreen, xRectangle, Color.White, 0, new Vector2(0, 0), 2, SpriteEffects.None, 0f);
-					spriteBatch.Draw(GameState.contentLoader.HudTexture, digitOnePosGreen, oneRectangle, Color.White, 0, new Vector2(0, 0), 2, SpriteEffects.None, 0f);
-					break;
+                    spriteBatch.Draw(GameState.contentLoader.rupeeTexture, greenRupeePos, greenRupeeRectangle, Color.White, 0, new Vector2(0, 0), 0.75f, SpriteEffects.None, 0f);
+                    spriteBatch.Draw(GameState.contentLoader.HudTexture, xPosGreen, xRectangle, Color.White, 0, new Vector2(0, 0), 2, SpriteEffects.None, 0f);
+                    spriteBatch.Draw(GameState.contentLoader.HudTexture, digitOnePosGreen, oneRectangle, Color.White, 0, new Vector2(0, 0), 2, SpriteEffects.None, 0f);
+                    break;
 				case 2:
 					spriteBatch.Draw(GameState.contentLoader.rupeeTexture, greenRupeePos, greenRupeeRectangle, Color.White, 0, new Vector2(0, 0), 0.75f, SpriteEffects.None, 0f);
 					spriteBatch.Draw(GameState.contentLoader.HudTexture, xPosGreen, xRectangle, Color.White, 0, new Vector2(0, 0), 2, SpriteEffects.None, 0f);

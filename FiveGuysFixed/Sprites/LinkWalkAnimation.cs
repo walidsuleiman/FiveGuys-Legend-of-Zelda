@@ -20,6 +20,7 @@ namespace FiveGuysFixed.Animation
         private Rectangle sourceRect;
         private Dir dir;
         private double dmgTTL;
+        private double healTTL;
 
         public void Draw(SpriteBatch _spriteBatch, Vector2? origin)
         {
@@ -28,14 +29,17 @@ namespace FiveGuysFixed.Animation
 
            
                 sourceRect = new Rectangle(spriteLocationX + gap * (currentFrame + 1) + width * currentFrame, spriteLocationY, width, height);
+            
+            Color color = Color.White;
+            if (dmgTTL > 0) { color = Color.Red; } else if (healTTL > 0) { color = Color.SkyBlue; }
 
             if (facLeft)
             {
-                _spriteBatch.Draw(texture, GameState.PlayerState.position, sourceRect, (dmgTTL > 0) ? Color.Red : Color.White, 0, new Vector2(width / 2, height / 2), 2, SpriteEffects.FlipHorizontally, 0f);
+                _spriteBatch.Draw(texture, GameState.PlayerState.position, sourceRect, color, 0, new Vector2(width / 2, height / 2), 2, SpriteEffects.FlipHorizontally, 0f);
             }
             else
             {
-                _spriteBatch.Draw(texture, GameState.PlayerState.position, sourceRect, (dmgTTL > 0) ? Color.Red : Color.White, 0, new Vector2(width / 2, height / 2), 2, SpriteEffects.None, 0f);
+                _spriteBatch.Draw(texture, GameState.PlayerState.position, sourceRect, color, 0, new Vector2(width / 2, height / 2), 2, SpriteEffects.None, 0f);
             }
         }
 
@@ -59,6 +63,10 @@ namespace FiveGuysFixed.Animation
             if (dmgTTL > 0)
             {
                 dmgTTL -= gt.ElapsedGameTime.TotalSeconds;
+            }
+            if (healTTL > 0)
+            {
+                healTTL -= gt.ElapsedGameTime.TotalSeconds;
             }
         }
 
@@ -98,6 +106,11 @@ namespace FiveGuysFixed.Animation
         public void takeDamage() 
         {
             dmgTTL = 0.5;
+        }
+
+        public void heal()
+        {
+            healTTL = 0.5;
         }
 
         public LinkWalkAnimation()

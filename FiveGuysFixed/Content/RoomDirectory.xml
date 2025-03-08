@@ -7,6 +7,9 @@
 			<Item type="Bomb" x="1000" y="114"/>
 			<Item type="Bomb" x="840" y="594"/>
 			<Item type="GreenRupee" x="360" y="562"/>
+			<Item type="GreenRupee" x="390" y="562"/>
+			<Item type="GreenRupee" x="360" y="592"/>
+			<Item type="GreenRupee" x="390" y="592"/>
 			<Item type="RedPotion" x="424" y="114"/>
 			
 			<Block type="YellowBlock" x="520" y="306"/>

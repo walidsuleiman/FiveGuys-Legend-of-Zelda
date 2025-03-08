@@ -177,7 +177,8 @@ namespace FiveGuysFixed
             string path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Content", "RoomDirectory.xml");
 
             GameState.roomManager.LoadRoomsFromXML(path);
-            
+            GameState.roomManager.SwitchRoom(GameState.currentRoomID);
+
         }
 
 
@@ -191,7 +192,13 @@ namespace FiveGuysFixed
 
 
             GameState.Player.Update(gameTime);
-            GameState.roomManager.SwitchRoom(GameState.currentRoomID);
+
+            if (GameState.ShouldSwitchRoom) // New flag to track room switching
+            {
+                GameState.roomManager.SwitchRoom(GameState.currentRoomID);
+                GameState.ShouldSwitchRoom = false; // Reset flag after switching
+            }
+
             RoomRenderer.Update(gameTime);
 
             rupees.Update(gameTime);

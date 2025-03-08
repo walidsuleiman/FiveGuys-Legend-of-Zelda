@@ -83,16 +83,19 @@ public class CollisionHandler
         Rectangle playerRect = player.GetBoundingBox(32, 32);
         Rectangle itemRect = item.BoundingBox;
 
-        if (playerRect.Intersects(itemRect))
+        // Ensure item is only collected once per room load
+        if (playerRect.Intersects(itemRect) && !GameState.collectedItems.Contains(item))
         {
-
             Debug.WriteLine("Item Collected");
-            //item.Use();
+
+            item.Use();
+
+            GameState.collectedItems.Add(item);
             GameState.itemsToRemove.Add(item);
-
         }
-
-
     }
+
+
+
 }
 

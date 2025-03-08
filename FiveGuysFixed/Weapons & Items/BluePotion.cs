@@ -41,7 +41,7 @@ namespace FiveGuysFixed.Weapons___Items
 
         public void Use()
         {
-            GameState.PlayerState.health++;
+            GameState.Player.heal(1);
         }
 
         public Rectangle BoundingBox
