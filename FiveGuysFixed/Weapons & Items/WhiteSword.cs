@@ -8,7 +8,7 @@ using Microsoft.Xna.Framework;
 
 namespace FiveGuysFixed.Items
 {
-    public class WhiteSword : IItem
+    public class WhiteSword
     {
         private Texture2D texture;
         public Vector2 Position { get; set; }

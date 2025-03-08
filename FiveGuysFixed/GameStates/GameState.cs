@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using FiveGuysFixed.Common;
+using FiveGuysFixed.Items;
 using FiveGuysFixed.LinkPlayer;
 using FiveGuysFixed.RoomHandling;
 using Microsoft.Xna.Framework;
@@ -26,6 +27,7 @@ namespace FiveGuysFixed.GameStates
         public static int RoomID;
         public static CurrentRoomContents currentRoomContents;  // Global RoomContents
         public static ContentLoader contentLoader;  // Global Loader
+        public static List<IItem> itemsToRemove = new List<IItem>();
 
     }
 }

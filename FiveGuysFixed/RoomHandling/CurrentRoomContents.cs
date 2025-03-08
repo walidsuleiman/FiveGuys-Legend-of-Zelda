@@ -13,7 +13,7 @@ namespace FiveGuysFixed.RoomHandling
     {
         public List<IBlock> Blocks { get; private set; }
         public List<Enemy> Enemies { get; private set; }
-        public List<IItem> Items { get; private set; }
+        public List<IItem> Items { get; set; }
 
         public CurrentRoomContents()
         {
