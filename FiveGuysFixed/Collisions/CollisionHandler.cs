@@ -5,6 +5,11 @@ using FiveGuysFixed.GameStates;
 using FiveGuysFixed.LinkPlayer;
 using Microsoft.Xna.Framework;
 using FiveGuysFixed.Common;
+using FiveGuysFixed.Items;
+using FiveGuysFixed.Weapons___Items;
+using FiveGuysFixed.Commands;
+using FiveGuysFixed.RoomHandling;
+using System.Diagnostics;
 
 public class CollisionHandler
 {
@@ -53,7 +58,7 @@ public class CollisionHandler
         if (playerRect.Intersects(enemyRect))
         {
             GameState.Player.takeDamage(1);
-            
+
             switch (GameState.PlayerState.direction)
             {
                 case Dir.UP:
@@ -70,24 +75,24 @@ public class CollisionHandler
                     break;
             }
 
-            // Calculate the intersection rectangle
-            Rectangle intersection = Rectangle.Intersect(playerRect, enemyRect);
-            // Resolve collision by moving player out along the smallest penetration axis
-            if (intersection.Width < intersection.Height)
-            {
-                if (playerRect.Center.X < enemyRect.Center.X)
-                    GameState.PlayerState.position.X -= intersection.Width;
-                else
-                    GameState.PlayerState.position.X += intersection.Width;
-            }
-            else
-            {
-                if (playerRect.Center.Y < enemyRect.Center.Y)
-                    GameState.PlayerState.position.Y -= intersection.Height;
-                else
-                    GameState.PlayerState.position.Y += intersection.Height;
-            }
         }
+    }
+
+    public void HandlePlayerItemCollision(IPlayer player, IItem item)
+    {
+        Rectangle playerRect = player.GetBoundingBox(32, 32);
+        Rectangle itemRect = item.BoundingBox;
+
+        if (playerRect.Intersects(itemRect))
+        {
+
+            Debug.WriteLine("Item Collected");
+            //item.Use();
+            GameState.itemsToRemove.Add(item);
+
+        }
+
+
     }
 }
 

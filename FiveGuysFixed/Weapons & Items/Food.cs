@@ -44,5 +44,18 @@ namespace FiveGuysFixed.Weapons___Items
         {
             int heal = 30;
         }
+
+        public Rectangle BoundingBox
+        {
+            get
+            {
+                return new Rectangle((int)x, (int)y, 16, 32);
+            }
+            set
+            {
+                x = value.X;
+                y = value.Y;
+            }
+        }
     }
 }

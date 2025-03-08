@@ -44,5 +44,19 @@ namespace FiveGuysFixed.Weapons___Items
         {
             int rupee = 1;
         }
+
+        public Rectangle BoundingBox
+        {
+            get
+            {
+                return new Rectangle((int)x, (int)y, 21, 39);
+            }
+            set
+            {
+                x = value.X;
+                y = value.Y;
+            }
+        }
+
     }
 }

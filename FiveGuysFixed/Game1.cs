@@ -190,7 +190,7 @@ namespace FiveGuysFixed
 
             GameState.Player.Update(gameTime);
             GameState.roomManager.SwitchRoom(GameState.currentRoomID);
-            RoomRenderer.update(gameTime);
+            RoomRenderer.Update(gameTime);
 
             if (enemies.Count > 0)
             {

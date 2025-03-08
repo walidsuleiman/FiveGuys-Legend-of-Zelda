@@ -24,8 +24,6 @@ namespace FiveGuysFixed.Controls
             previousState = currentState;
             currentState = Mouse.GetState();
 
-            Debug.WriteLine("Mouse Controller Update");
-
             // Check for a left mouse click (debounced)
             if (previousState.LeftButton == ButtonState.Released && currentState.LeftButton == ButtonState.Pressed)
             {

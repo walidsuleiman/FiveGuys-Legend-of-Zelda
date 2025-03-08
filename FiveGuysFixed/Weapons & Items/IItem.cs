@@ -11,6 +11,7 @@ namespace FiveGuysFixed.Items
 {
     public interface IItem
     {
+        Rectangle BoundingBox { get; set; }
         void Use();
         void Draw(SpriteBatch spriteBatch);
         void Update(GameTime gameTime);

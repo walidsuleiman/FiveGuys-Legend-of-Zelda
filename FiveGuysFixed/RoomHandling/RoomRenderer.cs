@@ -5,7 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using FiveGuysFixed.Blocks;
+using FiveGuysFixed.Enemies;
 using FiveGuysFixed.GameStates;
+using FiveGuysFixed.Items;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -34,21 +36,34 @@ namespace FiveGuysFixed.RoomHandling
                 collisionHandler.HandlePlayerEnemyCollision(GameState.Player, enemy);
             }
 
-            // Draw Enemies
-            foreach (var item in GameState.currentRoomContents.Items)
+            // Draw Item
+            foreach (var item in GameState.currentRoomContents.Items.ToList())
             {
                 item.Draw(spriteBatch);
+                collisionHandler.HandlePlayerItemCollision(GameState.Player, item);
             }
 
+            foreach (var item in GameState.itemsToRemove)
+            {
+                if (GameState.currentRoomContents.Items.Contains(item))
+                {
+                    Debug.WriteLine("Item found and removed.");
+                    GameState.currentRoomContents.Items.Remove(item);
+                }
+                else
+                {
+                    Debug.WriteLine("Item not found.");
+                }
+            }
+            GameState.itemsToRemove.Clear();
+        }
             // Draw Items
             //foreach (var item in gameState.CurrentRoomContents.Items)
             //{
             //    spriteBatch.Draw(item.Texture, new Vector2(item.X, item.Y), Color.White);
             //}
 
-        }
-
-        public static void update(GameTime gameTime)
+        public static void Update(GameTime gameTime)
         {
             // Update Enemies
             foreach (var enemy in GameState.currentRoomContents.Enemies)
