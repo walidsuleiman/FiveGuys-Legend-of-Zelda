@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using FiveGuysFixed.Animation;
+using FiveGuysFixed.GameStates;
 using FiveGuysFixed.Items;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -42,7 +43,7 @@ namespace FiveGuysFixed.Weapons___Items
 
         public void Use()
         {
-            int heal = 30;
+            GameState.PlayerState.health++;
         }
     }
 }
