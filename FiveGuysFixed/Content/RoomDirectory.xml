@@ -799,4 +799,33 @@
 		</Objects>
 	</Room>
 
+	<Room id="6">
+		<Neighbor direction="right" id="7"/>as
+		<Objects>
+			<Item type="Bomb" x="400" y="300"/>
+			<Item type="BluePotion" x="500" y="300"/>
+			<Item type="RedPotion" x="600" y="300"/>
+			<Item type="GreenRupee" x="700" y="300"/>
+			<Item type="RedRupee" x="800" y="300"/>
+			<Item type="Food" x="900" y="300"/>
+
+			<Block type="TreeBlock" x="400" y="450"/>
+			<Block type="GreenBlock" x="500" y="450"/>
+			<Block type="Block" x="600" y="450"/>
+			<Block type="WhiteBlock" x="700" y="450"/>
+			<Block type="YellowBlock" x="800" y="450"/>
+
+
+			<Enemy type="Aquamentus" x="400" y="550"/>
+			<Enemy type="Gel" x="500" y="550"/>
+			<Enemy type="Goriya" x="600" y="550"/>
+			<Enemy type="Keese" x="700" y="550"/>
+			<Enemy type="Moblin" x="800" y="550"/>
+			<Enemy type="Octorok" x="900" y="550"/>
+			<Enemy type="Stalfos" x="1000" y="550"/>
+			<Enemy type="Tektike" x="1100" y="550"/>
+		</Objects>
+	</Room>
+
+
 </Rooms>
