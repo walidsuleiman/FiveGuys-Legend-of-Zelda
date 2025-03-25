@@ -16,7 +16,7 @@ namespace FiveGuysFixed.GameStates
         public void Update(GameTime gameTime)
         {
             var currentState = Keyboard.GetState();
-            if (currentState.IsKeyDown(Keys.Enter))
+            if (currentState.IsKeyDown(Keys.R))
             {
                 GameState.Player.Reset();
                 GameStateManager.SetState(new GamePlayState(game));
@@ -30,7 +30,7 @@ namespace FiveGuysFixed.GameStates
 
             spriteBatch.DrawString(
                 GameState.contentLoader.DefaultFont,
-                "        Game Over!\nPress Enter to Restart",
+                "        Game Over!\nPress R to Restart",
                 new Vector2(450, 150),
                 Color.Red
             );
