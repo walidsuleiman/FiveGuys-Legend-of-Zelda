@@ -74,8 +74,8 @@ namespace FiveGuysFixed
 
         public Player Player { get; set; }
 
-        private Song backgroundMusic;
-        private bool isMuted = false; //mute background music
+        public Song backgroundMusic;
+        public bool isMuted = false; //mute background music
 
         public Game1()
         {
@@ -100,7 +100,7 @@ namespace FiveGuysFixed
             GameState.currentRoomContents = new CurrentRoomContents();
             GameState.contentLoader = new ContentLoader();
             GameState.currentRoomID = 1;
-            GameState.Player = new Player();
+            GameState.Player = new Player(this);
 
             keyboardController = new KeyboardController(this);
             mouseController = new MouseController(this);
@@ -115,6 +115,8 @@ namespace FiveGuysFixed
             activeBlockIndex = 0;
             items = new List<IItem>();
             activeItemIndex = 0;
+
+            GameStateManager.SetState(new GamePlayState(this));
 
             base.Initialize();
         }
@@ -209,44 +211,36 @@ namespace FiveGuysFixed
 
         protected override void Update(GameTime gameTime)
         {
+            GameStateManager.Update(gameTime);
+            base.Update(gameTime);
+        }
+        public void GameUpdateLogic(GameTime gameTime)
+        {
             mouseController.Update();
-
             keyboardController.Update();
-
-            //gamepadController.Update();
-
 
             GameState.Player.Update(gameTime);
 
-            if (GameState.ShouldSwitchRoom) // New flag to track room switching
+            if (GameState.ShouldSwitchRoom)
             {
                 GameState.roomManager.SwitchRoom(GameState.currentRoomID);
-                GameState.ShouldSwitchRoom = false; // Reset flag after switching
+                GameState.ShouldSwitchRoom = false;
             }
 
             RoomRenderer.Update(gameTime);
-
             rupees.Update(gameTime);
 
             if (enemies.Count > 0)
-            {
                 enemies[activeEnemyIndex].Update(gameTime);
-            }
 
             if (blocks.Count > 0)
-            {
                 blocks[activeBlockIndex].Update(gameTime);
-            }
 
             if (items.Count > 0)
-            {
                 items[activeItemIndex].Update(gameTime);
-            }
 
             foreach (var proj in projectiles)
-            {
                 proj.Update(gameTime);
-            }
 
             for (int i = 0; i < projectiles.Count; i++)
             {
@@ -257,55 +251,29 @@ namespace FiveGuysFixed
                     i--;
                 }
             }
-
-            KeyboardState keyboardState = Keyboard.GetState();
-
-            // Mute background music
-            if (keyboardState.IsKeyDown(Keys.B))
-            {
-                isMuted = !isMuted;
-                MediaPlayer.Volume = isMuted ? 0f : 0.5f;
-            }
-
-            base.Update(gameTime);
         }
 
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.LightGoldenrodYellow);
+
             _spriteBatch.Begin(samplerState: SamplerState.PointClamp);
-            GameState.Player.Draw(_spriteBatch);
-
-
-            RoomRenderer.Draw(_spriteBatch);
-            hearts.Draw(_spriteBatch);
-            rupees.Draw(_spriteBatch);
-            miniMap.Draw(_spriteBatch);
-
-            //if (enemies.Count > 0)
-            //{
-            //    enemies[activeEnemyIndex].Draw(_spriteBatch);
-            //}
-
-            //foreach (var proj in projectiles)
-            //{
-            //    proj.Draw(_spriteBatch);
-            //}
-
-
-            if (blocks.Count > 0)
-            {
-                blocks[activeBlockIndex].Draw(_spriteBatch);
-            }
-
-            //if (items.Count > 0)
-            //{
-            //    items[activeItemIndex].Draw(_spriteBatch);
-            //}
-
+            GameStateManager.Draw(_spriteBatch);
             _spriteBatch.End();
 
             base.Draw(gameTime);
+        }
+
+        public void GameDrawLogic(SpriteBatch spriteBatch)
+        {
+            GameState.Player.Draw(spriteBatch);
+            RoomRenderer.Draw(spriteBatch);
+            hearts.Draw(spriteBatch);
+            rupees.Draw(spriteBatch);
+            miniMap.Draw(spriteBatch);
+
+            if (blocks.Count > 0)
+                blocks[activeBlockIndex].Draw(spriteBatch);
         }
     }
 }

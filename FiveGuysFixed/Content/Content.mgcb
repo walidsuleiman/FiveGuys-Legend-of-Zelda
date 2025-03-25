@@ -49,6 +49,13 @@
 /processorParam:TextureFormat=Color
 /build:Boss_SpriteSheet.png
 
+#begin DefaultFont.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:PremultiplyAlpha=True
+/processorParam:TextureFormat=Compressed
+/build:DefaultFont.spritefont
+
 #begin Enemy_SpriteSheet.png
 /importer:TextureImporter
 /processor:TextureProcessor

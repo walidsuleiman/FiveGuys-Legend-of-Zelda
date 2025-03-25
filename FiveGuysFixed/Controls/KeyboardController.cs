@@ -13,6 +13,7 @@ using FiveGuysFixed.LinkPlayer;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Media;
 
 namespace FiveGuysFixed.Controls
 {
@@ -43,6 +44,7 @@ namespace FiveGuysFixed.Controls
             Keys[] gameKeys = { Keys.Q, Keys.R, Keys.Enter };
             Keys[] blockKeys = { Keys.T, Keys.Y };
             Keys[] combatKeys = { Keys.N, Keys.E };
+            Keys[] audioKeys = { Keys.B };
 
 
 
@@ -70,7 +72,7 @@ namespace FiveGuysFixed.Controls
             
             foreach (Keys gKey in gameKeys)
             {
-                if (currentState.IsKeyDown(gKey))
+                if (currentState.IsKeyDown(gKey) && !previousState.IsKeyDown(gKey))
                 {
                     switch (gKey)
                     {
@@ -85,7 +87,10 @@ namespace FiveGuysFixed.Controls
                             //GameState.PlayerState.direction = Dir.DOWN;
                             break;
                         case Keys.Enter:
-                            //Start Game
+                            if (GameStateManager.CurrentState is GamePlayState)
+                                GameStateManager.SetState(new PauseState(game));
+                            else if (GameStateManager.CurrentState is PauseState)
+                                GameStateManager.SetState(new GamePlayState(game));
                             break;
                     }
                 }
@@ -205,7 +210,36 @@ namespace FiveGuysFixed.Controls
                 }
 
             }
-            previousState = currentState;
+
+            foreach (Keys audioKey in audioKeys)
+            {
+                bool currentDown = currentState.IsKeyDown(audioKey);
+                bool previousDown = previousState.IsKeyDown(audioKey);
+
+                if (currentDown && !previousDown)
+                {
+                    switch (audioKey)
+                    {
+                        case Keys.B:
+                            game.isMuted = !game.isMuted;
+                            if (game.isMuted)
+                            {
+                                //mute
+                                MediaPlayer.Volume = 0f;
+                            }
+                            else
+                            {
+                                MediaPlayer.Volume = 0.5f;
+                                if (MediaPlayer.State != MediaState.Playing)
+                                {
+                                    MediaPlayer.Play(game.backgroundMusic);
+                                }
+                            }
+                            break;
+                    }
+                }
+            }
+                previousState = currentState;
         }
 
 

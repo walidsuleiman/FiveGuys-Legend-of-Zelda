@@ -31,8 +31,10 @@ namespace FiveGuysFixed.LinkPlayer
         public double Rad { get { return Math.Max(linkSprite.Height, linkSprite.Width); } }
         public Vector2 position { get { return GameState.PlayerState.position; } }
 
-        public Player()
+        private Game1 game;
+        public Player(Game1 game)
         {
+            this.game = game;
             linkSprite = new LinkWalkAnimation();
             swordAnimation = new LinkSwordAnimation();
             GameState.PlayerState.health = 6;
@@ -128,7 +130,7 @@ namespace FiveGuysFixed.LinkPlayer
             harmedSound.Play();
             if (GameState.PlayerState.health <= 0)
             {
-                Reset();
+                GameStateManager.SetState(new GameOverState(game));
             }
         }
         public void heal(int healing)
