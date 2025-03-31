@@ -35,6 +35,12 @@ namespace FiveGuysFixed.Blocks
             float scale = 2;
             treeBlockSprite.Draw(spriteBatch, new System.Numerics.Vector2((float)x, (float)y), null, scale);
         }
+        public void Draw(SpriteBatch spriteBatch, Vector2 offset)
+        {
+            float scale = 2;
+            var drawPos = new System.Numerics.Vector2((float)x + offset.X, (float)y + offset.Y);
+            treeBlockSprite.Draw(spriteBatch, drawPos, null, scale);
+        }
 
         public void Update(GameTime gametime)
         {

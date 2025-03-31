@@ -72,10 +72,12 @@ namespace FiveGuysFixed.LinkPlayer
             }
             else
             {
-                linkSprite.Draw(_spriteBatch, null);
+                Vector2 drawPos = GameState.PlayerState.position + GameState.PlayerState.transitionOffset;
+                linkSprite.Draw(_spriteBatch, drawPos);
             }
 
         }
+
         public void Update(GameTime gt)
         {
             Vector2 newPos = GameState.PlayerState.position;

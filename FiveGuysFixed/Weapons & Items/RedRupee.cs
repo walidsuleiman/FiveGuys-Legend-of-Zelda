@@ -30,8 +30,15 @@ namespace FiveGuysFixed.Weapons___Items
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            redRupeeSprite.Draw(spriteBatch, new System.Numerics.Vector2((float)x, (float)y), null, scale);
+            Draw(spriteBatch, Vector2.Zero);
         }
+
+        public void Draw(SpriteBatch spriteBatch, Vector2 offset)
+        {
+            var drawPos = new System.Numerics.Vector2((float)x + offset.X, (float)y + offset.Y);
+            redRupeeSprite.Draw(spriteBatch, drawPos, null);
+        }
+
 
         public void Update(GameTime gametime)
         {

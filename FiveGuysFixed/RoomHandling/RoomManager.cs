@@ -252,5 +252,18 @@ namespace FiveGuysFixed.RoomHandling
                 GameState.currentRoomID = neighborId;
             }
         }
+        public bool TryGetNeighborRoomID(int currentRoomID, Dir dir, out int neighborRoomID)
+        {
+            neighborRoomID = -1;
+
+            if (roomData.ContainsKey(currentRoomID) &&
+                roomData[currentRoomID].Neighbors.TryGetValue(dir, out neighborRoomID))
+            {
+                return true;
+            }
+
+            return false;
+        }
+
     }
 }

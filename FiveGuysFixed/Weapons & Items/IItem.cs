@@ -14,6 +14,7 @@ namespace FiveGuysFixed.Items
         Rectangle BoundingBox { get; set; }
         void Use();
         void Draw(SpriteBatch spriteBatch);
+        void Draw(SpriteBatch spriteBatch, Vector2 offset);
         void Update(GameTime gameTime);
         Vector2 Position { get; set; }
 
