@@ -6,7 +6,7 @@ namespace FiveGuysFixed.RoomHandling
 {
     public class TransitionManager
     {
-        private const float TRANSITION_DURATION = 0.75f; // Duration in seconds
+        private const float TRANSITION_DURATION = 1.5f; // Duration in seconds
         private float timer = 0f;
         private bool active = false;
         private int destinationRoomId;
@@ -52,7 +52,10 @@ namespace FiveGuysFixed.RoomHandling
             GameState.transitionX = 0f;
             active = false;
 
-            GameState.currentRoomID = destinationRoomId; // ✅ critical!
+            GameState.currentRoomID = destinationRoomId;
+            GameState.PlayerState.position += GameState.PlayerState.transitionOffset;
+            GameState.PlayerState.transitionOffset = Vector2.Zero;
+
         }
 
     }

@@ -22,26 +22,30 @@ namespace FiveGuysFixed.Animation
         private double dmgTTL;
         private double healTTL;
 
-        public void Draw(SpriteBatch _spriteBatch, Vector2? origin)
+        public void Draw(SpriteBatch _spriteBatch, Vector2? OverridePosition)
         {
+            this.sourceRect = new Rectangle(spriteLocationX + gap * (currentFrame + 1) + width * currentFrame, spriteLocationY, width, height);
 
-            Rectangle destRect = new Rectangle((int)GameState.PlayerState.position.X, (int)GameState.PlayerState.position.Y, width, height);
-
-           
-                sourceRect = new Rectangle(spriteLocationX + gap * (currentFrame + 1) + width * currentFrame, spriteLocationY, width, height);
-            
             Color color = Color.White;
-            if (dmgTTL > 0) { color = Color.Red; } else if (healTTL > 0) { color = Color.SkyBlue; }
+            if (dmgTTL > 0) { color = Color.Red; }
+            else if (healTTL > 0) { color = Color.SkyBlue; }
+
+            Vector2 position = GameState.PlayerState.position;
+            if (OverridePosition.HasValue)
+            {
+                position = OverridePosition.Value;
+            }
 
             if (facLeft)
             {
-                _spriteBatch.Draw(texture, GameState.PlayerState.position, sourceRect, color, 0, new Vector2(width / 2, height / 2), 2, SpriteEffects.FlipHorizontally, 0f);
+                _spriteBatch.Draw(texture, position, sourceRect, color, 0, new Vector2(width / 2, height / 2), 2, SpriteEffects.FlipHorizontally, 0f);
             }
             else
             {
-                _spriteBatch.Draw(texture, GameState.PlayerState.position, sourceRect, color, 0, new Vector2(width / 2, height / 2), 2, SpriteEffects.None, 0f);
+                _spriteBatch.Draw(texture, position, sourceRect, color, 0, new Vector2(width / 2, height / 2), 2, SpriteEffects.None, 0f);
             }
         }
+
 
         public new void Update(GameTime gt)
         {

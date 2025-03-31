@@ -26,7 +26,7 @@ namespace FiveGuysFixed.RoomHandling
             {
                 if (GameState.roomManager.TryGetNeighborRoomID(currentRoomId, Dir.LEFT, out int neighborId))
                 {
-                    GameState.PlayerState.position = new Vector2(roomWidth - buffer - 1, pos.Y);
+                    //GameState.PlayerState.position = new Vector2(roomWidth - buffer - 1, pos.Y);
                     GameState.transitionManager.Start(neighborId, Dir.LEFT);
                 }
             }
@@ -34,7 +34,7 @@ namespace FiveGuysFixed.RoomHandling
             {
                 if (GameState.roomManager.TryGetNeighborRoomID(currentRoomId, Dir.RIGHT, out int neighborId))
                 {
-                    GameState.PlayerState.position = new Vector2(buffer + 1, pos.Y);
+                    //GameState.PlayerState.position = new Vector2(buffer + 1, pos.Y);
                     GameState.transitionManager.Start(neighborId, Dir.RIGHT);
                 }
             }
@@ -42,7 +42,7 @@ namespace FiveGuysFixed.RoomHandling
             {
                 if (GameState.roomManager.TryGetNeighborRoomID(currentRoomId, Dir.UP, out int neighborId))
                 {
-                    GameState.PlayerState.position = new Vector2(pos.X, roomHeight - buffer - 1);
+                    //GameState.PlayerState.position = new Vector2(pos.X, roomHeight - buffer - 1);
                     GameState.transitionManager.Start(neighborId, Dir.UP);
                 }
             }
@@ -50,7 +50,7 @@ namespace FiveGuysFixed.RoomHandling
             {
                 if (GameState.roomManager.TryGetNeighborRoomID(currentRoomId, Dir.DOWN, out int neighborId))
                 {
-                    GameState.PlayerState.position = new Vector2(pos.X, buffer + 1);
+                    //GameState.PlayerState.position = new Vector2(pos.X, buffer + 1);
                     GameState.transitionManager.Start(neighborId, Dir.DOWN);
                 }
             }

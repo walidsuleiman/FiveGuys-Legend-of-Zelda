@@ -22,6 +22,8 @@ namespace FiveGuysFixed.LinkPlayer
         public int greenRupees;
         public int redRupees;
 
+        public Vector2 transitionOffset;
+
         public PlayerState(Vector2 position) 
         {
             this.position = position;
@@ -32,6 +34,8 @@ namespace FiveGuysFixed.LinkPlayer
             this.health = 6;
             this.greenRupees = 0;
             this.redRupees = 0;
+
+            this.transitionOffset = Vector2.Zero;
         }
     }
 }

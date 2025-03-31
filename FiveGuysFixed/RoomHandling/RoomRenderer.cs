@@ -62,6 +62,44 @@ namespace FiveGuysFixed.RoomHandling
 
             DrawRoomContents(spriteBatch, GameState.previousRoomContents, prevPos);
             DrawRoomContents(spriteBatch, GameState.currentRoomContents, currPos);
+
+            if (GameState.IsTransitioning)
+            {
+                float progress = GameState.transitionX;
+
+                Vector2 offset = Vector2.Zero;
+
+                //Rename variable
+                int moveLink = 0; 
+
+                switch (GameState.transitionDir)
+                {
+                    case Dir.LEFT:
+                        offset = new Vector2(progress * (screenWidth - moveLink), 0);
+                        break;
+                    case Dir.RIGHT:
+                        offset = new Vector2(-progress * (screenWidth - moveLink), 0);
+                        break;
+                    case Dir.UP:
+                        offset = new Vector2(0, progress * (screenHeight - moveLink));
+                        break;
+                    case Dir.DOWN:
+                        offset = new Vector2(0, -progress * (screenHeight - moveLink));
+                        break;
+                }
+
+                System.Diagnostics.Debug.WriteLine("Progress: " + progress);
+                System.Diagnostics.Debug.WriteLine("Offset: " + offset);
+
+                GameState.PlayerState.transitionOffset = offset;
+            }
+            else
+            {
+                GameState.PlayerState.transitionOffset = Vector2.Zero;
+            }
+
+            GameState.Player.Draw(spriteBatch);
+
         }
 
 
