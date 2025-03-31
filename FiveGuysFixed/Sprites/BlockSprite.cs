@@ -50,6 +50,20 @@ namespace FiveGuysFixed.Blocks
             spriteBatch.Draw(Texture, destRect, sourceRect, Color.White);
         }
 
+        public void Draw(SpriteBatch spriteBatch, Vector2 offset)
+        {
+            int scale = 5;
+            Rectangle sourceRect = new Rectangle(spriteX, spriteY, srcWidth, srcHeight);
+
+            // Add offset to on-screen position
+            int offsetX = (int)offset.X;
+            int offsetY = (int)offset.Y;
+            Rectangle destRect = new Rectangle(posX + offsetX, posY + offsetY, srcWidth, srcHeight);
+
+            spriteBatch.Draw(Texture, destRect, sourceRect, Color.White);
+        }
+
+
         public bool IsCollidable()
         {
             throw new System.NotImplementedException();

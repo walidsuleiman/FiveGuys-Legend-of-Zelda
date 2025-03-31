@@ -28,7 +28,13 @@ namespace FiveGuysFixed.Weapons___Items
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            bluePotionSprite.Draw(spriteBatch, new System.Numerics.Vector2((float)x, (float)y), null);
+            Draw(spriteBatch, Vector2.Zero);
+        }
+
+        public void Draw(SpriteBatch spriteBatch, Vector2 offset)
+        {
+            var drawPos = new System.Numerics.Vector2((float)x + offset.X, (float)y + offset.Y);
+            bluePotionSprite.Draw(spriteBatch, drawPos, null);
         }
 
         public void Update(GameTime gametime)

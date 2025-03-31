@@ -36,6 +36,13 @@ namespace FiveGuysFixed.Blocks
             blockSprite.Draw(spriteBatch, new System.Numerics.Vector2((float)x, (float)y), null, scale);
         }
 
+        public void Draw(SpriteBatch spriteBatch, Vector2 offset)
+        {
+            float scale = 2;
+            var drawPos = new System.Numerics.Vector2((float)x, (float)y) + new System.Numerics.Vector2(offset.X, offset.Y);
+            blockSprite.Draw(spriteBatch, drawPos, null, scale);
+        }
+
         public void Update(GameTime gametime)
         {
             currentTime++;

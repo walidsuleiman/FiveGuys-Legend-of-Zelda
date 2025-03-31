@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using FiveGuysFixed.Blocks;
+using FiveGuysFixed.Common;
 using FiveGuysFixed.Enemies;
 using FiveGuysFixed.GameStates;
 using FiveGuysFixed.Items;
@@ -20,27 +21,63 @@ namespace FiveGuysFixed.RoomHandling
 
         public static void Draw(SpriteBatch spriteBatch)
         {
-            // Draw Blocks
-            foreach (var block in GameState.currentRoomContents.Blocks)
+            int screenWidth = GameState.WindowWidth;
+            int screenHeight = GameState.WindowHeight;
+
+            if (!GameState.IsTransitioning)
             {
-                block.Draw(spriteBatch);
-                //collisionHandler.HandlePlayerBlockCollision(GameState.Player, block);
+                DrawRoomContents(spriteBatch, GameState.currentRoomContents, Vector2.Zero);
+                return;
             }
 
-            // Draw Enemies
-            foreach (var enemy in GameState.currentRoomContents.Enemies)
+            float x = GameState.transitionX;
+            int dx = (int)(x * screenWidth);
+            int dy = (int)(x * screenHeight);
+
+            Vector2 prevPos = Vector2.Zero;
+            Vector2 currPos = Vector2.Zero;
+
+            switch (GameState.transitionDir)
             {
-                enemy.Draw(spriteBatch);
-                //collisionHandler.HandlePlayerEnemyCollision(GameState.Player, enemy);
+                case Dir.LEFT:
+                    prevPos = new Vector2(dx, 0);
+                    currPos = new Vector2(dx - screenWidth, 0);
+                    break;
+
+                case Dir.RIGHT:
+                    prevPos = new Vector2(-dx, 0);
+                    currPos = new Vector2(screenWidth - dx, 0);
+                    break;
+
+                case Dir.UP:
+                    prevPos = new Vector2(0, dy);
+                    currPos = new Vector2(0, dy - screenHeight);
+                    break;
+
+                case Dir.DOWN:
+                    prevPos = new Vector2(0, -dy);
+                    currPos = new Vector2(0, screenHeight - dy);
+                    break;
             }
 
-            // Draw Item
-            foreach (var item in GameState.currentRoomContents.Items.ToList())
-            {
-                item.Draw(spriteBatch);
-                //collisionHandler.HandlePlayerItemCollision(GameState.Player, item);
-            }
+            DrawRoomContents(spriteBatch, GameState.previousRoomContents, prevPos);
+            DrawRoomContents(spriteBatch, GameState.currentRoomContents, currPos);
         }
+
+
+
+        private static void DrawRoomContents(SpriteBatch spriteBatch, CurrentRoomContents contents, Vector2 offset)
+        {
+            foreach (var block in contents.Blocks)
+                block.Draw(spriteBatch, offset);
+
+            foreach (var enemy in contents.Enemies)
+                enemy.Draw(spriteBatch, offset);
+
+            foreach (var item in contents.Items)
+                item.Draw(spriteBatch, offset);
+        }
+
 
         public static void Update(GameTime gameTime)
         {

@@ -26,7 +26,13 @@ namespace FiveGuysFixed.Enemies
 
         public virtual void Draw(SpriteBatch spriteBatch)
         {
-            sprite.Draw(spriteBatch, Position, null);
+            Draw(spriteBatch, Vector2.Zero);
+        }
+
+        public virtual void Draw(SpriteBatch spriteBatch, Vector2 offset)
+        {
+            Vector2 drawPos = Position + offset;
+            sprite.Draw(spriteBatch, drawPos, null);
         }
 
         public Rectangle BoundingBox

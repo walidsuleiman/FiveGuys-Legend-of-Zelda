@@ -102,6 +102,8 @@ namespace FiveGuysFixed
             GameState.currentRoomID = 1;
             GameState.Player = new Player(this);
 
+            GameState.transitionManager = new TransitionManager();
+
             keyboardController = new KeyboardController(this);
             mouseController = new MouseController(this);
             gamepadController = new GamepadController(this);
@@ -211,15 +213,29 @@ namespace FiveGuysFixed
 
         protected override void Update(GameTime gameTime)
         {
+            if (GameState.IsTransitioning)
+            {
+                GameState.transitionManager.Update(gameTime);
+                base.Update(gameTime);
+                return;
+            }
+
             GameStateManager.Update(gameTime);
             base.Update(gameTime);
         }
+
         public void GameUpdateLogic(GameTime gameTime)
         {
             mouseController.Update();
             keyboardController.Update();
 
             GameState.Player.Update(gameTime);
+
+            if (GameState.IsTransitioning)
+            {
+                GameState.transitionManager.Update(gameTime);
+                return; // Skip input and logic updates
+            }
 
             CheckTransition.CheckRoomExit();
 
