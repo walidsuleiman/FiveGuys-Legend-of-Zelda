@@ -1,31 +1,26 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection.Metadata;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using System.Xml;
-using FiveGuysFixed.Blocks;
-using FiveGuysFixed.Enemies;
-using FiveGuysFixed.GameStates;
-using FiveGuysFixed.Projectiles;
-using FiveGuysFixed.Weapons___Items;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Content;
-using Microsoft.Xna.Framework.Graphics;
-
+using FiveGuysFixed.GameStates;
+using FiveGuysFixed.Enemies;
+using FiveGuysFixed.Weapons___Items;
+using FiveGuysFixed.Blocks;
+using System;
+using FiveGuysFixed.Common;
+using FiveGuysFixed.Projectiles;
 
 namespace FiveGuysFixed.RoomHandling
 {
     public class RoomManager
     {
-        private Dictionary<int, XmlNode> roomData; // Store XML data for each room
+        private Dictionary<int, ParsedRoom> roomData = new();
         public Aquamentus aquamentus;
 
-        public RoomManager()
-        {
-            roomData = new Dictionary<int, XmlNode>();
-        }
+        public class ParsedRoom
+    {
+        public XmlNode RoomNode;
+        public Dictionary<Dir, int> Neighbors = new();
+    }
 
         public void LoadRoomsFromXML(string filePath)
         {
@@ -36,20 +31,30 @@ namespace FiveGuysFixed.RoomHandling
             foreach (XmlNode roomNode in roomNodes)
             {
                 int roomId = int.Parse(roomNode.Attributes["id"].Value);
-                roomData[roomId] = roomNode;
+                ParsedRoom parsedRoom = new ParsedRoom { RoomNode = roomNode };
+
+                XmlNodeList neighborNodes = roomNode.SelectNodes("Neighbor");
+                foreach (XmlNode neighbor in neighborNodes)
+                {
+                    string dirStr = neighbor.Attributes["direction"].Value;
+                    int neighborId = int.Parse(neighbor.Attributes["id"].Value);
+
+                    if (Enum.TryParse(dirStr, true, out Dir dir))
+                    {
+                        parsedRoom.Neighbors[dir] = neighborId;
+                    }
+                }
+
+                roomData[roomId] = parsedRoom;
             }
         }
 
         public void SwitchRoom(int newRoomID)
         {
             if (!roomData.ContainsKey(newRoomID)) return;
-
-            XmlNode roomNode = roomData[newRoomID];
-
-            // Clear current room contents
+            XmlNode roomNode = roomData[newRoomID].RoomNode;
             GameState.currentRoomContents.Clear();
 
-            // Load Items
             XmlNodeList itemNodes = roomNode.SelectNodes("Objects/Item");
             foreach (XmlNode itemNode in itemNodes)
             {
@@ -232,15 +237,20 @@ namespace FiveGuysFixed.RoomHandling
                         )
                     );
                 }
+            }
+        }
 
+        public void TrySwitchRoom(Dir dir)
+        {
+            int currentId = GameState.currentRoomID;
+            if (!roomData.ContainsKey(currentId)) return;
 
-
-
-
+            ParsedRoom currentRoom = roomData[currentId];
+            if (currentRoom.Neighbors.TryGetValue(dir, out int neighborId))
+            {
+                SwitchRoom(neighborId);
+                GameState.currentRoomID = neighborId;
             }
         }
     }
-
-
-
 }

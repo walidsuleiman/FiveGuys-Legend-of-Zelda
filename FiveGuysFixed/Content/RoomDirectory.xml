@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Rooms>
 	<Room id="1">
-		<Neighbor direction="left" id="2"/>
+		<Neighbor direction="left" id="5"/>
 		<Objects>
-			
-			<Enemy type="Keese" x="330" y="350"/>
+
+			<Enemy type="Goriya" x="330" y="350"/>
 			<Enemy type="Gel" x="430" y="450"/>
 
 
@@ -12,10 +12,10 @@
 			<Item type="Bomb" x="840" y="594"/>
 			<Item type="GreenRupee" x="360" y="562"/>
 			<Item type="GreenRupee" x="390" y="562"/>
-			<Item type="GreenRupee" x="360" y="592"/>
-			<Item type="GreenRupee" x="390" y="592"/>
+			<Item type="RedRupee" x="360" y="592"/>
+			<Item type="RedRupee" x="390" y="592"/>
 			<Item type="RedPotion" x="424" y="114"/>
-			
+
 			<Block type="YellowBlock" x="520" y="306"/>
 			<Block type="YellowBlock" x="520" y="338"/>
 			<Block type="YellowBlock" x="520" y="370"/>
@@ -161,10 +161,10 @@
 	</Room>
 
 	<Room id="2">
-		<Neighbor direction="right" id="3"/>
+		<Neighbor direction="right" id="5"/>
 		<Objects>
 			<Enemy type="Aquamentus" x="330" y="350"/>
-			<Enemy type="Stalfos" x="700" y="300"/>
+			<Enemy type="Goriya" x="1000" y="350"/>
 
 
 			<Item type="BluePotion" x="1000" y="274"/>
@@ -312,10 +312,10 @@
 	</Room>
 
 	<Room id="3">
-		<Neighbor direction="right" id="4"/>as
+		<Neighbor direction="up" id="5"/>as
 		<Objects>
-			<Enemy type="Aquamentus" x="330" y="350"/>
-			<Enemy type="Goriya" x="600" y="400"/>
+			<Enemy type="Moblin" x="330" y="350"/>
+			<Enemy type="Octorok" x="1000" y="350"/>
 
 
 			<Item type="Food" x="968" y="498"/>
@@ -466,10 +466,10 @@
 	</Room>
 
 	<Room id="4">
-		<Neighbor direction="right" id="5"/>as
+		<Neighbor direction="down" id="5"/>as
 		<Objects>
-			<Enemy type="Aquamentus" x="330" y="350"/>
-			<Enemy type="Gel" x="400" y="500"/>
+			<Enemy type="Stalfos" x="330" y="350"/>
+			<Enemy type="Tektike" x="1000" y="350"/>
 
 			<Item type="Food" x="968" y="242"/>
 			<Item type="Bomb" x="370" y="498"/>
@@ -627,7 +627,10 @@
 	</Room>
 
 	<Room id="5">
-		<Neighbor direction="right" id="6"/>as
+		<Neighbor direction="right" id="1"/>as
+		<Neighbor direction="left" id="2"/>as
+		<Neighbor direction="down" id="3"/>as
+		<Neighbor direction="up" id="4"/>as
 		<Objects>
 			<Enemy type="Aquamentus" x="330" y="150"/>
 			<Enemy type="Gel" x="330" y="350"/>
