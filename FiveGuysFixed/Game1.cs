@@ -221,6 +221,8 @@ namespace FiveGuysFixed
 
             GameState.Player.Update(gameTime);
 
+            CheckTransition.CheckRoomExit();
+
             if (GameState.ShouldSwitchRoom)
             {
                 GameState.roomManager.SwitchRoom(GameState.currentRoomID);
