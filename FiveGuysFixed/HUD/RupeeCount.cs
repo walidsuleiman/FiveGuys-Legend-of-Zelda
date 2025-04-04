@@ -9,9 +9,6 @@ namespace FiveGuysFixed.HUD
 {
     public class RupeeCount : IHUDElement
     {
-        private int greenRupeeCount;
-		private int redRupeeCount;
-		//private List<Rectangle> rupeeRectangles = new List<Rectangle>();
 
 		private Rectangle greenRupeeRectangle = new Rectangle(35, 2, 14, 26);
 		private Rectangle redRupeeRectangle = new Rectangle(35, 58, 14, 26);
@@ -44,7 +41,7 @@ namespace FiveGuysFixed.HUD
 
         public void Draw(SpriteBatch spriteBatch)
         {
-			switch (GameState.PlayerState.greenRupees = greenRupeeCount)
+			switch (GameState.PlayerState.greenRupees)
 			{
 				case 0:
 					spriteBatch.Draw(GameState.contentLoader.rupeeTexture, greenRupeePos, greenRupeeRectangle, Color.White, 0, new Vector2(0, 0), 0.75f, SpriteEffects.None, 0f);
@@ -57,7 +54,7 @@ namespace FiveGuysFixed.HUD
                     spriteBatch.Draw(GameState.contentLoader.HudTexture, digitOnePosGreen, oneRectangle, Color.White, 0, new Vector2(0, 0), 2, SpriteEffects.None, 0f);
                     break;
 				case 2:
-					spriteBatch.Draw(GameState.contentLoader.rupeeTexture, greenRupeePos, greenRupeeRectangle, Color.White, 0, new Vector2(0, 0), 0.75f, SpriteEffects.None, 0f);
+                    spriteBatch.Draw(GameState.contentLoader.rupeeTexture, greenRupeePos, greenRupeeRectangle, Color.White, 0, new Vector2(0, 0), 0.75f, SpriteEffects.None, 0f);
 					spriteBatch.Draw(GameState.contentLoader.HudTexture, xPosGreen, xRectangle, Color.White, 0, new Vector2(0, 0), 2, SpriteEffects.None, 0f);
 					spriteBatch.Draw(GameState.contentLoader.HudTexture, digitOnePosGreen, twoRectangle, Color.White, 0, new Vector2(0, 0), 2, SpriteEffects.None, 0f);
 					break;
@@ -98,7 +95,7 @@ namespace FiveGuysFixed.HUD
 					break;
 			}
 
-			switch (GameState.PlayerState.redRupees = redRupeeCount)
+			switch (GameState.PlayerState.redRupees)
 			{
 				case 0:
 					spriteBatch.Draw(GameState.contentLoader.rupeeTexture, redRupeePos, redRupeeRectangle, Color.White, 0, new Vector2(0, 0), 0.75f, SpriteEffects.None, 0f);
@@ -156,8 +153,7 @@ namespace FiveGuysFixed.HUD
 
         public void Update(GameTime gametime)
         {
-			greenRupeeCount = GameState.PlayerState.greenRupees;
-			redRupeeCount = GameState.PlayerState.redRupees;
+			
 		}
 
 	}
