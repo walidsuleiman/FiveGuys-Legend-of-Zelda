@@ -27,6 +27,7 @@ namespace FiveGuysFixed.GameStates
         public Texture2D rupeeTexture;
         public Texture2D HudTexture;
         public SpriteFont DefaultFont;
+        public Texture2D miniMapTexture;
         public void LoadContent(ContentManager content)
         {
             //LinkTexture = content.Load<Texture2D>("linkSheet");
@@ -48,6 +49,8 @@ namespace FiveGuysFixed.GameStates
 
             //HUD
             HudTexture = content.Load<Texture2D>("HUD");
+            miniMapTexture = content.Load<Texture2D>("Minimap1");
+
             //Default Font
             DefaultFont = content.Load<SpriteFont>("DefaultFont");
         }

@@ -6,7 +6,7 @@ namespace FiveGuysFixed.RoomHandling
 {
     public class TransitionManager
     {
-        private const float TRANSITION_DURATION = 1.5f; // Duration in seconds
+        private const float TRANSITION_DURATION = 1.75f; // Duration in seconds
         private float timer = 0f;
         private bool active = false;
         private int destinationRoomId;

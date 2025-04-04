@@ -7,6 +7,7 @@ using FiveGuysFixed.Common;
 using FiveGuysFixed.Items;
 using FiveGuysFixed.LinkPlayer;
 using FiveGuysFixed.RoomHandling;
+using FiveGuysFixed.HUD;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
@@ -38,6 +39,7 @@ namespace FiveGuysFixed.GameStates
         public static List<IItem> itemsToRemove = new List<IItem>();
         public static HashSet<IItem> collectedItems = new HashSet<IItem>();
 
+        public static HUD.HUD HUD = new HUD.HUD(); // Global HUD
 
     }
 }

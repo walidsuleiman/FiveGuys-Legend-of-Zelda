@@ -7,7 +7,7 @@ using System.Collections.Generic;
 
 namespace FiveGuysFixed.HUD
 {
-    public class RupeeCount : IHUD
+    public class RupeeCount : IHUDElement
     {
         private int greenRupeeCount;
 		private int redRupeeCount;
@@ -28,14 +28,17 @@ namespace FiveGuysFixed.HUD
 		private Rectangle eightRectangle = new Rectangle(519 + (9 * 9), 117, 8, 8);
 		private Rectangle nineRectangle = new Rectangle(519 + (9 * 10), 117, 8, 8);
 		
-		Vector2 greenRupeePos = new Vector2(1200, 40);
-		Vector2 xPosGreen = new Vector2(1216, 43);
-        Vector2 digitOnePosGreen = new Vector2(1232, 43);
-		//Vector2 digitTwoPos = new Vector2(1248, 40);
+		private static int rupeePositionX = 1200;
+        private static int greenRupeePositionY = 770;
+        private static int redRupeePositionY = 810;
 
-		Vector2 redRupeePos = new Vector2(1200, 80);
-		Vector2 xPosRed = new Vector2(1216, 83);
-		Vector2 digitOnePosRed = new Vector2(1232, 83);
+        Vector2 greenRupeePos = new Vector2(rupeePositionX, greenRupeePositionY);
+		Vector2 xPosGreen = new Vector2(rupeePositionX + 16, greenRupeePositionY + 3);
+        Vector2 digitOnePosGreen = new Vector2(rupeePositionX + 32, greenRupeePositionY + 3);
+
+		Vector2 redRupeePos = new Vector2(rupeePositionX, redRupeePositionY);
+		Vector2 xPosRed = new Vector2(rupeePositionX + 16, redRupeePositionY + 3);
+		Vector2 digitOnePosRed = new Vector2(rupeePositionX + 32, redRupeePositionY + 3);
 
 		public RupeeCount() {}
 

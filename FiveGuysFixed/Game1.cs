@@ -38,8 +38,6 @@ namespace FiveGuysFixed
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
         public Vector2 centreScreen;
-        public Hearts hearts;
-        public RupeeCount rupees;
         public List<IBlock> blocks;
         public List<IEnemy> enemies;
         public List<IItem> items;
@@ -60,8 +58,7 @@ namespace FiveGuysFixed
         private Texture2D heartTexture;
         private CollisionDetector collisionDetector;
         private CollisionHandler collisionHandler;
-        private MiniMap miniMap;
-        private Texture2D miniMapTexture;
+        
 
 
         public int activeWeaponIndex;
@@ -82,7 +79,7 @@ namespace FiveGuysFixed
             _graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
-            this._graphics.PreferredBackBufferHeight = 720;
+            this._graphics.PreferredBackBufferHeight = 940;
             this._graphics.PreferredBackBufferWidth = 1280;
             collisionDetector = new CollisionDetector();
             collisionHandler = new CollisionHandler();
@@ -94,8 +91,8 @@ namespace FiveGuysFixed
             centreScreen = new Vector2(GraphicsDevice.Viewport.Width / 2, GraphicsDevice.Viewport.Height / 2);
 
             GameState.WindowWidth = GraphicsDevice.Viewport.Width;
-            GameState.WindowHeight = GraphicsDevice.Viewport.Height;
-            GameState.PlayerState = new PlayerState(new Vector2(GraphicsDevice.Viewport.Width / 2, GraphicsDevice.Viewport.Height / 2));
+            GameState.WindowHeight = 720;
+            GameState.PlayerState = new PlayerState(new Vector2(GameState.WindowWidth / 2, GameState.WindowHeight / 2));
             GameState.roomManager = new RoomManager();
             GameState.currentRoomContents = new CurrentRoomContents();
             GameState.contentLoader = new ContentLoader();
@@ -112,8 +109,7 @@ namespace FiveGuysFixed
             activeEnemyIndex = 0;
             projectiles = new List<IProjectile>();
             blocks = new List<IBlock>();
-            hearts = new Hearts();
-            rupees = new RupeeCount();
+            
             activeBlockIndex = 0;
             items = new List<IItem>();
             activeItemIndex = 0;
@@ -147,14 +143,7 @@ namespace FiveGuysFixed
             foodTexture = Content.Load<Texture2D>("linkSprite");
             rupeeTexture = Content.Load<Texture2D>("rupeeSprite");
 
-            miniMapTexture = Content.Load<Texture2D>("Minimap1");
-            miniMap = new MiniMap(
-                miniMapTexture,
-                new Vector2(GameState.WindowWidth - 180, 110), // Position in top-right
-                160, // Width
-                160, // Height
-                GraphicsDevice
-            );
+            
             //heartTexture = Content.Load<Texture2D>("heart");
 
 
@@ -246,7 +235,6 @@ namespace FiveGuysFixed
             }
 
             RoomRenderer.Update(gameTime);
-            rupees.Update(gameTime);
 
             if (enemies.Count > 0)
                 enemies[activeEnemyIndex].Update(gameTime);
@@ -286,9 +274,9 @@ namespace FiveGuysFixed
         {
             GameState.Player.Draw(spriteBatch);
             RoomRenderer.Draw(spriteBatch);
-            hearts.Draw(spriteBatch);
-            rupees.Draw(spriteBatch);
-            miniMap.Draw(spriteBatch);
+            GameState.HUD.Draw(spriteBatch);
+
+            
 
             if (blocks.Count > 0)
                 blocks[activeBlockIndex].Draw(spriteBatch);
