@@ -123,7 +123,11 @@ namespace FiveGuysFixed.LinkPlayer
         {
             GameState.PlayerState.position = new Vector2(GameState.WindowWidth / 2, GameState.WindowHeight / 2);
             GameState.PlayerState.isMoving = false;
+            GameState.PlayerState.isAttacking = false;
             GameState.PlayerState.health = 6;
+            GameState.PlayerState.greenRupees = 0;
+            GameState.PlayerState.redRupees = 0;
+            GameState.roomManager.SwitchRoom(GameState.currentRoomID);
         }
         public void takeDamage(int damage)
         {

@@ -41,7 +41,7 @@ namespace FiveGuysFixed.Controls
             Keys[] itemKeys = { Keys.U, Keys.I };
             Keys[] weaponKeys = { Keys.D1, Keys.D2, Keys.D3 };
             Keys[] enemyKeys = { Keys.O, Keys.P };
-            Keys[] gameKeys = { Keys.Q, Keys.R, Keys.Enter };
+            Keys[] gameKeys = { Keys.Q, Keys.R, Keys.Enter, Keys.C};
             Keys[] blockKeys = { Keys.T, Keys.Y };
             Keys[] combatKeys = { Keys.N, Keys.E };
             Keys[] audioKeys = { Keys.B };
@@ -91,6 +91,16 @@ namespace FiveGuysFixed.Controls
                                 GameStateManager.SetState(new PauseState(game));
                             else if (GameStateManager.CurrentState is PauseState)
                                 GameStateManager.SetState(new GamePlayState(game));
+                            break;
+                        case Keys.C:
+                            if (GameStateManager.CurrentState is GamePlayState)
+                            {
+                                GameStateManager.SetState(new Inventory(game));
+                            }
+                            else if (GameStateManager.CurrentState is Inventory)
+                            {
+                                GameStateManager.SetState(new GamePlayState(game));
+                            }
                             break;
                     }
                 }

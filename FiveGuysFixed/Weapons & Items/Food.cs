@@ -49,6 +49,11 @@ namespace FiveGuysFixed.Weapons___Items
 
         public void Use()
         {
+            GameState.PlayerState.foodCount++;
+        }
+
+        public void Active()
+        {
             GameState.PlayerState.health++;
         }
 

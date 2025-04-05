@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using FiveGuysFixed.Common;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using FiveGuysFixed.Items;
 
 namespace FiveGuysFixed.LinkPlayer
 {
@@ -21,6 +22,8 @@ namespace FiveGuysFixed.LinkPlayer
         public int health;
         public int greenRupees;
         public int redRupees;
+        public int bombCount;
+        public int foodCount;
 
         public Vector2 transitionOffset;
 
@@ -36,6 +39,8 @@ namespace FiveGuysFixed.LinkPlayer
             this.redRupees = 0;
 
             this.transitionOffset = Vector2.Zero;
+            this.bombCount = 0;
+            this.foodCount = 0;
         }
     }
 }
