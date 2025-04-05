@@ -58,7 +58,8 @@ namespace FiveGuysFixed
         private Texture2D heartTexture;
         private CollisionDetector collisionDetector;
         private CollisionHandler collisionHandler;
-        
+        //private GUI.MiniMap miniMap;
+
 
 
         public int activeWeaponIndex;
@@ -117,6 +118,14 @@ namespace FiveGuysFixed
             GameStateManager.SetState(new GamePlayState(this));
 
             base.Initialize();
+
+            int minimapWidth = 150;
+            int minimapHeight = 150;
+            Vector2 minimapPosition = new Vector2(
+                GraphicsDevice.Viewport.Width - minimapWidth - 20,
+                GraphicsDevice.Viewport.Height - minimapHeight - 20
+            );
+            //miniMap = new GUI.MiniMap(GraphicsDevice, minimapPosition, minimapWidth, minimapHeight);
         }
 
         protected override void LoadContent()
@@ -142,8 +151,12 @@ namespace FiveGuysFixed
             bombTexture = Content.Load<Texture2D>("linkSprite");
             foodTexture = Content.Load<Texture2D>("linkSprite");
             rupeeTexture = Content.Load<Texture2D>("rupeeSprite");
+            //if (miniMap != null)
+            //{
+            //    miniMap.LoadContent(GameState.contentLoader.miniMapTexture);
+            //}
 
-            
+
             //heartTexture = Content.Load<Texture2D>("heart");
 
 
@@ -232,6 +245,7 @@ namespace FiveGuysFixed
             {
                 GameState.roomManager.SwitchRoom(GameState.currentRoomID);
                 GameState.ShouldSwitchRoom = false;
+                //miniMap.RoomChanged(GameState.currentRoomID);
             }
 
             RoomRenderer.Update(gameTime);
@@ -257,6 +271,7 @@ namespace FiveGuysFixed
                     i--;
                 }
             }
+            //miniMap.Update(gameTime);
         }
 
         protected override void Draw(GameTime gameTime)
@@ -275,11 +290,13 @@ namespace FiveGuysFixed
             GameState.Player.Draw(spriteBatch);
             RoomRenderer.Draw(spriteBatch);
             GameState.HUD.Draw(spriteBatch);
+            //miniMap.Draw(spriteBatch);
 
-            
+
 
             if (blocks.Count > 0)
                 blocks[activeBlockIndex].Draw(spriteBatch);
         }
     }
+
 }
