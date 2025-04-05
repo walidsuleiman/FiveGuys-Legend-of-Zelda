@@ -15,5 +15,6 @@ O and P to cycle enemies\
 U and I to cycle Items\
 T and Y to cycle Blocks\
 R to Reset\
+B to mute\
 0 to Quit\
 Enter to Pause / Menu
