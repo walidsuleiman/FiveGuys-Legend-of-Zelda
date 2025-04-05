@@ -92,7 +92,7 @@ namespace FiveGuysFixed.GameStates
             {
                 font = GameState.contentLoader.DefaultFont;
             }
-            spriteBatch.DrawString(font, "Item", new Vector2(50, 50), Color.White);
+            spriteBatch.DrawString(font, "Inventory", new Vector2(50, 50), Color.White);
 
             hearts.Draw(spriteBatch);
             rupees.Draw(spriteBatch);
