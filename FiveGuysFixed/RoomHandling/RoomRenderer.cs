@@ -88,9 +88,6 @@ namespace FiveGuysFixed.RoomHandling
                         break;
                 }
 
-                System.Diagnostics.Debug.WriteLine("Progress: " + progress);
-                System.Diagnostics.Debug.WriteLine("Offset: " + offset);
-
                 GameState.PlayerState.transitionOffset = offset;
             }
             else

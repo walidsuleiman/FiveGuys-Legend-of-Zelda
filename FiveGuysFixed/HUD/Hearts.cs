@@ -6,14 +6,16 @@ using System.Diagnostics;
 
 namespace FiveGuysFixed.HUD
 {
-    public class Hearts : IHUD
+    public class Hearts : IHUDElement
     {
         private Rectangle fullHeartRectangle = new Rectangle(645, 117, 8, 8);
         private Rectangle halfHeartRectangle = new Rectangle(636, 117, 8, 8);
         private Rectangle emptyHeartRectangle = new Rectangle(627, 117, 8, 8);
-        Vector2 heart1Pos = new Vector2(1200, 10);
-        Vector2 heart2Pos = new Vector2(1216, 10);
-        Vector2 heart3Pos = new Vector2(1232, 10);
+        private static int heartsPositionX = 1200;
+        private static int heartsPositionY = 740;
+        Vector2 heart1Pos = new Vector2(heartsPositionX, heartsPositionY);
+        Vector2 heart2Pos = new Vector2(heartsPositionX + 16, heartsPositionY);
+        Vector2 heart3Pos = new Vector2(heartsPositionX + 32, heartsPositionY);
 
         public Hearts() { }
 

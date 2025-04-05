@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace FiveGuysFixed.HUD
 {
-    public interface IHUD
+    public interface IHUDElement
     {
         void Update(GameTime gameTime);
         void Draw(SpriteBatch spriteBatch);
