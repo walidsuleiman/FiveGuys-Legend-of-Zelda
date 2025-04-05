@@ -15,15 +15,17 @@ namespace FiveGuysFixed.LinkPlayer
     public interface IPlayer
     {
 
-        public void move(Dir dir);
-        public void idle();
-        public void attack();
-        public void switchItem();
+        public void Move(Dir dir);
+        public void Idle();
+        public void Attack();
+        public void SwitchItem();
         public void Draw(SpriteBatch _spriteBatch);
         public void Update(GameTime gt);
         public void LoadContent(ContentManager content);
         public void Reset();
-        public void takeDamage(int damage);
-        public void gainHealth(int health);
+        public void TakeDamage(int damage);
+        public void GainHealth(int health);
+        public void SetInvincibility(float duration);
+        public bool IsInvincible { get; }
     }
 }

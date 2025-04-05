@@ -28,6 +28,10 @@ namespace FiveGuysFixed.LinkPlayer
         private SoundEffect harmedSound; // harmed sound
         private SoundEffect hitSound;    // hit sound
 
+        private bool isInvincible;
+        private float invincibilityTimer;
+
+        public bool IsInvincible => isInvincible;
         public double Rad { get { return Math.Max(linkSprite.Height, linkSprite.Width); } }
         public Vector2 position { get { return GameState.PlayerState.position; } }
 
@@ -40,20 +44,20 @@ namespace FiveGuysFixed.LinkPlayer
             GameState.PlayerState.health = 6;
 
         }
-        public void move(Dir newDir)
+        public void Move(Dir newDir)
         {
             GameState.PlayerState.direction = newDir;
             linkSprite.animate();
             GameState.PlayerState.isMoving = true;
             linkSprite.facingDirection(newDir);
         }
-        public void idle()
+        public void Idle()
         {
             GameState.PlayerState.isMoving = false;
             linkSprite.idle();
         }
 
-        public void attack()
+        public void Attack()
         {
             if (GameState.PlayerState.heldWeapon != WeaponType.NONE)
             {
@@ -61,7 +65,7 @@ namespace FiveGuysFixed.LinkPlayer
                 hitSound.Play();
             }
         }
-        public void switchItem() { }
+        public void SwitchItem() { }
         public void Draw(SpriteBatch _spriteBatch)
         {
             if (GameState.PlayerState.isAttacking)
@@ -110,6 +114,16 @@ namespace FiveGuysFixed.LinkPlayer
                 linkSprite.Update(gt);
             }
 
+            if (isInvincible)
+            {
+                // Update the invincibility timer
+                invincibilityTimer -= (float)gt.ElapsedGameTime.TotalSeconds;
+                if (invincibilityTimer <= 0)
+                {
+                    isInvincible = false; // End invincibility
+                }
+            }
+
 
         }
         public void LoadContent(ContentManager content)
@@ -129,8 +143,13 @@ namespace FiveGuysFixed.LinkPlayer
             GameState.PlayerState.redRupees = 0;
             GameState.roomManager.SwitchRoom(GameState.currentRoomID);
         }
-        public void takeDamage(int damage)
+        public void TakeDamage(int damage)
         {
+            if (isInvincible)
+            {
+                return;
+            }
+
             linkSprite.takeDamage();
             GameState.PlayerState.health -= damage;
             harmedSound.Play();
@@ -139,7 +158,7 @@ namespace FiveGuysFixed.LinkPlayer
                 GameStateManager.SetState(new GameOverState(game));
             }
         }
-        public void heal(int healing)
+        public void Heal(int healing)
         {
             linkSprite.heal();
             GameState.PlayerState.health += healing;
@@ -148,7 +167,7 @@ namespace FiveGuysFixed.LinkPlayer
                 GameState.PlayerState.health = 6;
             }
         }
-        public void gainHealth(int health)
+        public void GainHealth(int health)
         {
             GameState.PlayerState.health += health;
 
@@ -156,6 +175,12 @@ namespace FiveGuysFixed.LinkPlayer
             {
                 GameState.PlayerState.health = 6;
             }
+        }
+
+        public void SetInvincibility(float duration)
+        {
+            isInvincible = true;
+            invincibilityTimer = duration;
         }
     }
 

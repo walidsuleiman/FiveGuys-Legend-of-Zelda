@@ -21,12 +21,14 @@ namespace FiveGuysFixed.Animation
         private Dir dir;
         private double dmgTTL;
         private double healTTL;
+        private double invincibleTTL;
 
         public void Draw(SpriteBatch _spriteBatch, Vector2? OverridePosition)
         {
             this.sourceRect = new Rectangle(spriteLocationX + gap * (currentFrame + 1) + width * currentFrame, spriteLocationY, width, height);
 
             Color color = Color.White;
+            if (GameState.Player.IsInvincible) { color = Color.White * 0.5f; }
             if (dmgTTL > 0) { color = Color.Red; }
             else if (healTTL > 0) { color = Color.SkyBlue; }
 

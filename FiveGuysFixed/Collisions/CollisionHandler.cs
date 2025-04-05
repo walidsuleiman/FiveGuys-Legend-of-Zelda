@@ -51,13 +51,19 @@ public class CollisionHandler
 
     public void HandlePlayerEnemyCollision(IPlayer player, IEnemy enemy)
     {
+
+        if (GameState.Player.IsInvincible)
+        {
+            return; // If the player is invincible, ignore the collision and enter an untouchable state.
+        }
         // Compute the bounding boxes for both player and enemy.
         Rectangle playerRect = player.GetBoundingBox(32, 32);
         Rectangle enemyRect = enemy.BoundingBox;
 
         if (playerRect.Intersects(enemyRect))
         {
-            GameState.Player.takeDamage(1);
+            GameState.Player.TakeDamage(1);
+            GameState.Player.SetInvincibility(2.0f); // Set invincibility for 1 second after being hit
 
             switch (GameState.PlayerState.direction)
             {
