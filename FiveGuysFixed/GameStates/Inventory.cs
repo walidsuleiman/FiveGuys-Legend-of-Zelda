@@ -99,11 +99,10 @@ namespace FiveGuysFixed.GameStates
             if (miniMap == null)
             {
                 miniMap = new MiniMap(
-                    GameState.contentLoader.miniMapTexture,
-                    new Vector2(GameState.WindowWidth - 260, 320),
-                    160,
-                    160,
-                    spriteBatch.GraphicsDevice
+    spriteBatch.GraphicsDevice,
+    new Vector2(GameState.WindowWidth - 260, 320),
+    160,
+    160
                 );
             }
             miniMap.Draw(spriteBatch);
