@@ -48,7 +48,7 @@ namespace FiveGuysFixed.Weapons___Items
 
         public void Use()
         {
-            GameState.Player.takeDamage(1);
+            GameState.Player.TakeDamage(1);
         }
 
         public Rectangle BoundingBox

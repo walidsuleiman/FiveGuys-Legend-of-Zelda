@@ -39,12 +39,12 @@ namespace FiveGuysFixed.Commands
 
             if (currentDir.HasValue)
             {
-                GameState.Player.move(currentDir.Value);
+                GameState.Player.Move(currentDir.Value);
             }
             else
             {
                 // If no keys are pressed, stop movement.
-                GameState.Player.idle();
+                GameState.Player.Idle();
             }
         }
     }

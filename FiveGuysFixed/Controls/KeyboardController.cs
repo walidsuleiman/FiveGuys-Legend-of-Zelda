@@ -61,10 +61,10 @@ namespace FiveGuysFixed.Controls
                     switch (cKey)
                     {
                         case Keys.N:
-                            GameState.Player.attack();
+                            GameState.Player.Attack();
                             break;
                         case Keys.E:
-                            GameState.Player.takeDamage(1);
+                            GameState.Player.TakeDamage(1);
                             break;
                     }
                 }
