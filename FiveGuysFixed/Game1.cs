@@ -262,12 +262,12 @@ namespace FiveGuysFixed
             foreach (var proj in projectiles)
                 proj.Update(gameTime);
 
-            for (int i = 0; i < projectiles.Count; i++)
+            for (int i = 0; i < GameState.currentRoomContents.Projectiles.Count; i++)
             {
-                projectiles[i].Update(gameTime);
-                if (projectiles[i].IsFinished())
+                GameState.currentRoomContents.Projectiles[i].Update(gameTime);
+                if (GameState.currentRoomContents.Projectiles[i].IsFinished())
                 {
-                    projectiles.RemoveAt(i);
+                    GameState.currentRoomContents.Projectiles.RemoveAt(i);
                     i--;
                 }
             }
@@ -292,7 +292,10 @@ namespace FiveGuysFixed
             GameState.HUD.Draw(spriteBatch);
             //miniMap.Draw(spriteBatch);
 
-
+            foreach (var projectile in GameState.currentRoomContents.Projectiles)
+            {
+                projectile.Draw(spriteBatch);
+            }
 
             if (blocks.Count > 0)
                 blocks[activeBlockIndex].Draw(spriteBatch);

@@ -51,6 +51,7 @@ namespace FiveGuysFixed.RoomHandling
 
         public void SwitchRoom(int newRoomID)
         {
+            GameState.currentRoomContents.Projectiles = new List<IProjectile>();
             if (!roomData.ContainsKey(newRoomID)) return;
             XmlNode roomNode = roomData[newRoomID].RoomNode;
             GameState.currentRoomContents.Clear();
@@ -164,9 +165,9 @@ namespace FiveGuysFixed.RoomHandling
                 {
                     aquamentus = new Aquamentus(
                         new Vector2(x, y),
-                        new EnemySprite(GameState.contentLoader.BossTexture, 0, 0, 32, 32, 2), // Example sprite
-                        new EnemySprite(GameState.contentLoader.BossTexture, 32, 0, 32, 32, 2), // Example attack sprite
-                        new List<IProjectile>()  // Empty projectile list for now
+                        new EnemySprite(GameState.contentLoader.BossTexture, 0, 0, 32, 32, 2),
+                        new EnemySprite(GameState.contentLoader.BossTexture, 32, 0, 32, 32, 2),
+                        GameState.currentRoomContents.Projectiles  // Give access to the projectile list
                     );
                     GameState.currentRoomContents.Enemies.Add(aquamentus);
                 }
@@ -186,9 +187,9 @@ namespace FiveGuysFixed.RoomHandling
                     GameState.currentRoomContents.Enemies.Add(
                         new Goriya(
                             new Vector2(x, y),
-                            GameState.contentLoader.enemyTexture, // Uses the same enemy texture as Gel
-                            GameState.contentLoader.rupeeTexture, // Boomerang attack texture
-                            new List<IProjectile>() // Empty projectile list for now
+                            GameState.contentLoader.enemyTexture,
+                            GameState.contentLoader.weaponTexture, // Use the weapons texture
+                            GameState.currentRoomContents.Projectiles // Share the room's projectile list
                         )
                     );
                 }

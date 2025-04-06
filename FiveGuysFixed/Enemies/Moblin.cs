@@ -14,7 +14,7 @@ namespace FiveGuysFixed.Enemies
         private Random rnd;
 
         public Moblin(Vector2 position, Texture2D enemyTexture)
-            : base(position, new EnemySprite(enemyTexture, 16, 12, 16, 16, 2))
+            : base(position, new EnemySprite(enemyTexture, 16, 320, 16, 16, 2))
         {
             currentTime = 0;
             rnd = new Random();
@@ -45,19 +45,19 @@ namespace FiveGuysFixed.Enemies
             {
                 case 1:
                     velocity = new Vector2(0, 1);
-                    sprite = new EnemySprite(GameState.contentLoader.enemyTexture, 16, 112, 16, 16, 2); // Down
+                    sprite = new EnemySprite(GameState.contentLoader.enemyTexture, 16, 320, 16, 16, 2); // down
                     break;
                 case 2:
                     velocity = new Vector2(0, -1);
-                    sprite = new EnemySprite(GameState.contentLoader.enemyTexture, 112, 112, 16, 16, 2); // Up
+                    sprite = new EnemySprite(GameState.contentLoader.enemyTexture, 48, 320, 16, 16, 2); // up
                     break;
                 case 3:
                     velocity = new Vector2(1, 0);
-                    sprite = new EnemySprite(GameState.contentLoader.enemyTexture, 48, 112, 16, 16, 2); // Right
+                    sprite = new EnemySprite(GameState.contentLoader.enemyTexture, 80, 320, 16, 16, 2); // right
                     break;
                 case 4:
                     velocity = new Vector2(-1, 0);
-                    sprite = new EnemySprite(GameState.contentLoader.enemyTexture, 80, 112, 16, 16, 2); // Left
+                    sprite = new EnemySprite(GameState.contentLoader.enemyTexture, 112, 320, 16, 16, 2); // left
                     break;
             }
         }

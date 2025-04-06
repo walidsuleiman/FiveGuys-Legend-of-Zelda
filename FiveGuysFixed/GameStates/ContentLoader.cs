@@ -28,6 +28,7 @@ namespace FiveGuysFixed.GameStates
         public Texture2D HudTexture;
         public SpriteFont DefaultFont;
         public Texture2D miniMapTexture;
+        public Texture2D weaponTexture;
         public void LoadContent(ContentManager content)
         {
             //LinkTexture = content.Load<Texture2D>("linkSheet");
@@ -46,6 +47,7 @@ namespace FiveGuysFixed.GameStates
             bombTexture = content.Load<Texture2D>("linkSprite");
             foodTexture = content.Load<Texture2D>("linkSprite");
             rupeeTexture = content.Load<Texture2D>("rupeeSprite");
+            weaponTexture = content.Load<Texture2D>("Weapon");
 
             //HUD
             HudTexture = content.Load<Texture2D>("HUD");
