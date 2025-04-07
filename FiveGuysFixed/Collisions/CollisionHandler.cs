@@ -107,6 +107,7 @@ public class CollisionHandler
         // Compute the bounding boxes for both enemy and block.
         Rectangle enemyRect = enemy.BoundingBox;
         Rectangle blockRect = block.BoundingBox;
+
         if (enemyRect.Intersects(blockRect))
         {
 

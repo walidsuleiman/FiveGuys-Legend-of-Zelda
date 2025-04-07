@@ -39,7 +39,7 @@ namespace FiveGuysFixed.Enemies
         {
             get
             {
-                return new Rectangle((int) x, (int) y, 15, 15);
+                return new Rectangle((int) x, (int) y, 24, 24);
             }
             set
             {
