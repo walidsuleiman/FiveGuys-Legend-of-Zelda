@@ -49,7 +49,7 @@ namespace FiveGuysFixed.GameStates
                 return;
             }
 
-            if (IsKeyPressed(ks, Keys.M))
+            if (IsKeyPressed(ks, Keys.N))
             {
                 UseSelectedItem();
                 GameStateManager.SetState(new GamePlayState(game));
@@ -159,7 +159,7 @@ namespace FiveGuysFixed.GameStates
             }
             spriteBatch.DrawString(
                 font,
-                "[WASD/Arrows] Move | [M] Use | [C] Back",
+                "[WASD/Arrows] Move | [N] Use | [C] Back",
                 new Vector2(50, GameState.WindowHeight - 40),
                 Color.White
             );
