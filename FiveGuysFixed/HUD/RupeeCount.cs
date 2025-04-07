@@ -25,9 +25,9 @@ namespace FiveGuysFixed.HUD
 		private Rectangle eightRectangle = new Rectangle(519 + (9 * 9), 117, 8, 8);
 		private Rectangle nineRectangle = new Rectangle(519 + (9 * 10), 117, 8, 8);
 		
-		private static int rupeePositionX = 483;
-        private static int greenRupeePositionY = 885;
-        private static int redRupeePositionY = 925;
+		private static int rupeePositionX = 430;
+        private static int greenRupeePositionY = 815+25;
+        private static int redRupeePositionY = 865+25;
 
         Vector2 greenRupeePos = new Vector2(rupeePositionX, greenRupeePositionY);
 		Vector2 xPosGreen = new Vector2(rupeePositionX + 28, greenRupeePositionY + 3);

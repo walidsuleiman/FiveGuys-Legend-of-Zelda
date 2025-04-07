@@ -32,8 +32,8 @@ namespace FiveGuysFixed.HUD
         public void Draw(SpriteBatch spritebatch)
         {
             this.blackPixel = new Texture2D(spritebatch.GraphicsDevice, 1, 1);
-            this.blackPixel.SetData(new[] { Color.SlateGray });
-            spritebatch.Draw(blackPixel, new Rectangle(0, 720, 1280, 280), Color.SlateGray);
+            this.blackPixel.SetData(new[] { Color.Black });
+            spritebatch.Draw(blackPixel, new Rectangle(0, 720, 1280, 280), Color.Black);
             spritebatch.Draw(GameState.contentLoader.HudTexture, new Rectangle(0, 720, 1280, 280), new Rectangle(258, 11, 256, 55), Color.White);
 
             hearts.Draw(spritebatch);
@@ -44,9 +44,9 @@ namespace FiveGuysFixed.HUD
             {
                 miniMap = new MiniMap(
                     spritebatch.GraphicsDevice,
-                    new Vector2(157 , 783), // position in bottom-left
-                    160, // width
-                    160  // height
+                    new Vector2(110 , 753), // position in bottom-left
+                    220, // width
+                    220  // height
                 );
 
 
