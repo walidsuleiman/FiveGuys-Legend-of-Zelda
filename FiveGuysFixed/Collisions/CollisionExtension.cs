@@ -21,5 +21,16 @@ namespace FiveGuysFixed.Collisions
                 height
             );
         }
+
+        public static Rectangle NEWGetBoundingBox(this IPlayer player, int width, int height)
+        {
+            // Example using a player's position from GameState:
+            return new Rectangle(
+                (int)GameState.PlayerState.position.X - 84,
+                (int)GameState.PlayerState.position.Y - 84,
+                width,
+                height
+            );
+        }
     }
 }

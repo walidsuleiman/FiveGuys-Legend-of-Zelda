@@ -8,6 +8,7 @@ namespace FiveGuysFixed.Enemies
         void Update(GameTime gameTime);
         void Draw(SpriteBatch spriteBatch);
         void Draw(SpriteBatch spriteBatch, Vector2 offset); // Add this overload
+        void TakeDamage(int damage);
         Rectangle BoundingBox { get; }
         Vector2 Position { get; set; }
     }

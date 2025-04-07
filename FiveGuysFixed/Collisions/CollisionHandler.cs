@@ -11,6 +11,7 @@ using FiveGuysFixed.Commands;
 using FiveGuysFixed.RoomHandling;
 using System.Diagnostics;
 using FiveGuysFixed.Projectiles;
+using System.Linq;
 
 public class CollisionHandler
 {
@@ -83,6 +84,59 @@ public class CollisionHandler
             }
 
         }
+    }
+
+    public void HandleSwordEnemyCollision(IPlayer player, IEnemy enemy)
+    {
+
+
+        Rectangle playerRect = player.GetBoundingBox(32, 32);
+
+        switch (GameState.PlayerState.direction)
+        {
+            case Dir.UP:
+                playerRect = player.NEWGetBoundingBox(200, 200);
+                break;
+            case Dir.DOWN:
+                playerRect = player.NEWGetBoundingBox(200, 200);
+                break;
+            case Dir.LEFT:
+                playerRect = player.NEWGetBoundingBox(200, 200);
+                break;
+            case Dir.RIGHT:
+                playerRect = player.NEWGetBoundingBox(200, 200);
+                break;
+        }
+
+        Rectangle enemyRect = enemy.BoundingBox;
+
+        //enemy take damage
+        //enemy animation
+        //sound
+
+        //if(playerRect.Intersects(enemyRect) && GameState.PlayerState.isAttacking == true)
+        //{
+        //    foreach(var enemy1 in GameState.currentRoomContents.Enemies.ToList())
+        //    {
+        //        enemy1.TakeDamage(1);
+        //        Debug.WriteLine("hello");
+
+        //    }
+
+        //    Debug.WriteLine("hello1");
+        //}
+
+        foreach (var enemy1 in GameState.currentRoomContents.Enemies.ToList())
+        {
+            if (playerRect.Intersects(enemy.BoundingBox) && GameState.PlayerState.isAttacking)
+            {
+                enemy.TakeDamage(1);
+                Debug.WriteLine("hello");
+            }
+        }
+
+
+
     }
 
     public void HandlePlayerItemCollision(IPlayer player, IItem item)
