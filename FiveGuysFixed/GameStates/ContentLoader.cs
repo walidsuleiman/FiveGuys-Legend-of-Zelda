@@ -85,7 +85,7 @@ namespace FiveGuysFixed.GameStates
         //HUD and minimap textures
         private void LoadUITextures(ContentManager content)
         {
-            HudTexture = content.Load<Texture2D>("HUD");
+            HudTexture = content.Load<Texture2D>("HUDClean");
             miniMapTexture = content.Load<Texture2D>("Minimap1");
         }
 
