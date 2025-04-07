@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Content;
 
 namespace FiveGuysFixed.GameStates
 {
@@ -14,6 +15,11 @@ namespace FiveGuysFixed.GameStates
         {
             this.game = game;
             previousState = Keyboard.GetState();
+        }
+
+        public void LoadContent(ContentManager content)
+        {
+            // Load any content needed for the Pause state here
         }
 
         public void Update(GameTime gameTime)

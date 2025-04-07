@@ -37,7 +37,6 @@ namespace FiveGuysFixed.GameStates
 
         // game font
         public SpriteFont DefaultFont;
-
         #endregion
 
         public ContentLoader() { }
