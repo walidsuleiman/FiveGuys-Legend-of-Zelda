@@ -21,6 +21,9 @@ namespace FiveGuysFixed.RoomHandling
 
         public static void Draw(SpriteBatch spriteBatch)
         {
+
+            spriteBatch.Draw(GameState.contentLoader.blockTexture, new Rectangle(0, 0, GameState.WindowWidth, GameState.WindowHeight), new Rectangle(521, 11, 256, 176), Color.White);
+
             int screenWidth = GameState.WindowWidth;
             int screenHeight = GameState.WindowHeight;
 

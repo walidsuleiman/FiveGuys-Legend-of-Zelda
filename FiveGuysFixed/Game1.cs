@@ -79,7 +79,7 @@ namespace FiveGuysFixed
             IsMouseVisible = true;
 
             // window size
-            _graphics.PreferredBackBufferHeight = 1000;
+            _graphics.PreferredBackBufferHeight = 1160;
             _graphics.PreferredBackBufferWidth = 1280;
 
             collisionDetector = new CollisionDetector();
@@ -93,7 +93,7 @@ namespace FiveGuysFixed
 
             // set up shared GameState stuff
             GameState.WindowWidth = GraphicsDevice.Viewport.Width;
-            GameState.WindowHeight = 720;
+            GameState.WindowHeight = 880;
             GameState.PlayerState = new PlayerState(new Vector2(GameState.WindowWidth / 2, GameState.WindowHeight / 2));
             GameState.roomManager = new RoomManager();
             GameState.currentRoomContents = new CurrentRoomContents();
