@@ -19,11 +19,11 @@ namespace FiveGuysFixed.Projectiles
 
         public Fireball(Texture2D texture, float startX, float startY, Vector2 velocity)
         {
-            fireballSprite = new Sprite(texture, 32,32, 16, 16);
+            fireballSprite = new Sprite(texture, 32, 32, 16, 16);
             this.position = new Vector2(startX, startY);
             this.velocity = velocity;
             this.isFinished = false;
-            this.currentTime = 0; 
+            this.currentTime = 0;
         }
 
         public void Update(GameTime gameTime)
@@ -38,7 +38,6 @@ namespace FiveGuysFixed.Projectiles
             }
             currentTime++;
 
-
             fireballSprite.Update(gameTime);
         }
 
@@ -50,6 +49,19 @@ namespace FiveGuysFixed.Projectiles
         public bool IsFinished()
         {
             return isFinished;
+        }
+
+        public Rectangle BoundingBox
+        {
+            get
+            {
+                return new Rectangle((int)position.X, (int)position.Y, fireballSprite.Width, fireballSprite.Height);
+            }
+            set
+            {
+                position.X = value.X;
+                position.Y = value.Y;
+            }
         }
     }
 }

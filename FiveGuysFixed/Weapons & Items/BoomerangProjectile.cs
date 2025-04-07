@@ -42,24 +42,18 @@ namespace FiveGuysFixed.Projectiles
         {
             float deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
 
-
             position += velocity;
-
 
             distanceTraveled = Vector2.Distance(startPosition, position);
 
-
             if (!isReturning && distanceTraveled >= MaxDistance)
             {
-
                 isReturning = true;
                 velocity = -velocity;
             }
 
-
             if (isReturning)
             {
-
                 Vector2 ownerPosition = new Vector2();
 
                 try
@@ -91,7 +85,6 @@ namespace FiveGuysFixed.Projectiles
                 if (directionToOwner.Length() > 0)
                     directionToOwner.Normalize();
 
-
                 velocity = directionToOwner * Math.Abs(originalVelocity.Length()) * ReturnSpeed;
 
                 // check if boomerang has returned to owner
@@ -120,6 +113,18 @@ namespace FiveGuysFixed.Projectiles
         public bool IsFinished()
         {
             return isFinished;
+        }
+
+        public Rectangle BoundingBox
+        {
+            get
+            {
+                return new Rectangle((int)position.X, (int)position.Y, sprite.Width, sprite.Height);
+            }
+            set
+            {
+                position = new Vector2(value.X, value.Y);
+            }
         }
     }
 }

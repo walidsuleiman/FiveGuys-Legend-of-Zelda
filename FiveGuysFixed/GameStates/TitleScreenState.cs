@@ -25,8 +25,9 @@ namespace FiveGuysFixed.GameStates
 
         public void LoadContent(ContentManager content)
         {
-            backgroundTexture = content.Load<Texture2D>("TitleScreenBG.jpg");
-            font = GameState.contentLoader.DefaultFont;
+            backgroundTexture = content.Load<Texture2D>("TitleScreenBG");
+            font = content.Load<SpriteFont>("DefaultFont");
+
 
         }
         public void Update(GameTime gameTime)

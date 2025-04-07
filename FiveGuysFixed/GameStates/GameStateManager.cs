@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace FiveGuysFixed.GameStates
@@ -23,6 +24,7 @@ namespace FiveGuysFixed.GameStates
         {
             currentState?.Draw(spriteBatch);
         }
+
     }
 }
 

@@ -10,6 +10,7 @@ using FiveGuysFixed.Weapons___Items;
 using FiveGuysFixed.Commands;
 using FiveGuysFixed.RoomHandling;
 using System.Diagnostics;
+using FiveGuysFixed.Projectiles;
 
 public class CollisionHandler
 {
@@ -63,7 +64,7 @@ public class CollisionHandler
         if (playerRect.Intersects(enemyRect))
         {
             GameState.Player.TakeDamage(1);
-            GameState.Player.SetInvincibility(2.0f); // Set invincibility for 1 second after being hit
+            GameState.Player.SetInvincibility(2.5f); // Set invincibility for 2.5 seconds after being hit
 
             switch (GameState.PlayerState.direction)
             {
@@ -126,6 +127,21 @@ public class CollisionHandler
                     enemyPosition.Y += intersection.Height;
             }
             enemy.Position = enemyPosition;
+        }
+    }
+
+    public void HandlePlayerProjectileCollision(IPlayer player, IProjectile projectile)
+    {
+        Rectangle playerRect = player.GetBoundingBox(32, 32);
+        Rectangle projectileRect = projectile.BoundingBox;
+
+        if (playerRect.Intersects(projectileRect))
+        {
+            GameState.Player.TakeDamage(1);
+            GameState.Player.SetInvincibility(2.5f); // Set invincibility for 2.5 seconds after being hit
+            Debug.WriteLine("Projectile Hit Player");
+
+            //remove projectile from screen
         }
     }
 }

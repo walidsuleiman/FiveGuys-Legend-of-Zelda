@@ -8,5 +8,7 @@ namespace FiveGuysFixed.Projectiles
         void Update(GameTime gameTime);
         void Draw(SpriteBatch spriteBatch);
         bool IsFinished();
+
+        Rectangle BoundingBox { get; set; }
     }
 }
