@@ -115,7 +115,8 @@ namespace FiveGuysFixed
             items = new List<IItem>();
             activeItemIndex = 0;
 
-            GameStateManager.SetState(new GamePlayState(this));
+            GameStateManager.SetState(new TitleScreenState(this)); // Start with the title screen state
+            //GameStateManager.SetState(new GamePlayState(this));
 
             base.Initialize();
 
