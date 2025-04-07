@@ -68,6 +68,19 @@ namespace FiveGuysFixed.Enemies
             projectiles.Add(new Fireball(aquamentusAttackSprite.Texture, Position.X, Position.Y, new Vector2(-2, 0)));
             projectiles.Add(new Fireball(aquamentusAttackSprite.Texture, Position.X, Position.Y + 20, new Vector2(-2, 0)));
         }
-       
+
+        public override Rectangle BoundingBox
+        {
+            get
+            {
+                return new Rectangle((int)Position.X, (int)Position.Y, 24, 24);
+            }
+            set
+            {
+                x = value.X;
+                y = value.Y;
+            }
+        }
+
     }
 }

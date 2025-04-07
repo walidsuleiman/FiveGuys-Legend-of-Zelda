@@ -70,7 +70,7 @@ namespace FiveGuysFixed.RoomHandling
                 Vector2 offset = Vector2.Zero;
 
                 //Rename variable
-                int moveLink = 0; 
+                int moveLink = 0;
 
                 switch (GameState.transitionDir)
                 {
@@ -135,7 +135,7 @@ namespace FiveGuysFixed.RoomHandling
                 IEnemy enemy = GameState.currentRoomContents.Enemies[i];
                 enemy.Update(gameTime);
                 collisionHandler.HandlePlayerEnemyCollision(GameState.Player, enemy);
-                
+
                 foreach (var block in GameState.currentRoomContents.Blocks)
                 {
                     block.Update(gameTime);

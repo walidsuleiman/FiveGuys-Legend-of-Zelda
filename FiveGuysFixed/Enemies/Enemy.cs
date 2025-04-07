@@ -35,11 +35,11 @@ namespace FiveGuysFixed.Enemies
             sprite.Draw(spriteBatch, drawPos, null);
         }
 
-        public Rectangle BoundingBox
+        public virtual Rectangle BoundingBox
         {
             get
             {
-                return new Rectangle((int) x, (int) y, 32, 32);
+                return new Rectangle((int) x, (int) y, 15, 15);
             }
             set
             {
