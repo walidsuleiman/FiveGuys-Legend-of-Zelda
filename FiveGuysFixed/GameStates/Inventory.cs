@@ -101,16 +101,6 @@ namespace FiveGuysFixed.GameStates
 
             hearts.Draw(spriteBatch);
             rupees.Draw(spriteBatch);
-            if (miniMap == null)
-            {
-                miniMap = new MiniMap(
-                    spriteBatch.GraphicsDevice,
-                    new Vector2(GameState.WindowWidth - 260, 320),
-                    160,
-                    160
-                );
-            }
-            miniMap.Draw(spriteBatch);
 
             BuildItemList();
 
