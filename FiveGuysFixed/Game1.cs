@@ -79,7 +79,7 @@ namespace FiveGuysFixed
             IsMouseVisible = true;
 
             // window size
-            _graphics.PreferredBackBufferHeight = 940;
+            _graphics.PreferredBackBufferHeight = 1000;
             _graphics.PreferredBackBufferWidth = 1280;
 
             collisionDetector = new CollisionDetector();
