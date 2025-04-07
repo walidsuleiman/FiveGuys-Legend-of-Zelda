@@ -26,6 +26,7 @@ namespace FiveGuysFixed.GameStates
         private int slotHeight = 100;
         private int startX = 100;
         private int startY = 200;
+        private Texture2D blackPixel;
         private KeyboardState oldState;
         public Inventory(Game1 game)
         {
@@ -100,16 +101,6 @@ namespace FiveGuysFixed.GameStates
 
             hearts.Draw(spriteBatch);
             rupees.Draw(spriteBatch);
-            if (miniMap == null)
-            {
-                miniMap = new MiniMap(
-    spriteBatch.GraphicsDevice,
-    new Vector2(GameState.WindowWidth - 260, 320),
-    160,
-    160
-                );
-            }
-            miniMap.Draw(spriteBatch);
 
             BuildItemList();
 
@@ -163,6 +154,34 @@ namespace FiveGuysFixed.GameStates
                 new Vector2(50, GameState.WindowHeight - 40),
                 Color.White
             );
+
+
+                    
+            this.blackPixel = new Texture2D(spriteBatch.GraphicsDevice, 1, 1);
+            this.blackPixel.SetData(new[] { Color.Black });
+            spriteBatch.Draw(blackPixel, new Rectangle(0, 720, 1280, 280), Color.Black);
+            spriteBatch.Draw(GameState.contentLoader.HudTexture, new Rectangle(0, 720, 1280, 280), new Rectangle(258, 11, 256, 55), Color.White);
+
+            hearts.Draw(spriteBatch);
+            rupees.Draw(spriteBatch);
+
+
+            if (miniMap == null)
+            {
+                miniMap = new MiniMap(
+                    spriteBatch.GraphicsDevice,
+                    new Vector2(110, 753), // position in bottom-left
+                    220, // width
+                    220  // height
+                );
+
+
+                miniMap.LoadContent(GameState.contentLoader.miniMapTexture);
+            }
+
+            miniMap.Draw(spriteBatch);
+        
+
         }
         private void BuildItemList()
         {

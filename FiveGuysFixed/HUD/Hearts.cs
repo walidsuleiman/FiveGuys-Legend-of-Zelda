@@ -12,7 +12,7 @@ namespace FiveGuysFixed.HUD
         private Rectangle halfHeartRectangle = new Rectangle(636, 117, 8, 8);
         private Rectangle emptyHeartRectangle = new Rectangle(627, 117, 8, 8);
         private static int heartsPositionX = 935;
-        private static int heartsPositionY = 880+168;
+        private static int heartsPositionY = 880 + 168;
         private static int scale = 9;
         Vector2 heart1Pos = new Vector2(heartsPositionX, heartsPositionY);
         Vector2 heart2Pos = new Vector2(heartsPositionX + 8 * scale, heartsPositionY);
