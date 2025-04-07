@@ -20,6 +20,7 @@ namespace FiveGuysFixed.Enemies
         private Texture2D boomerangTexture;
 
         public Goriya(Vector2 position, Texture2D enemyTexture, Texture2D boomerangTexture, List<IProjectile> projectiles)
+
             : base(position, new EnemySprite(enemyTexture, 16, 48, 16, 16, 2))
         {
             this.boomerangTexture = boomerangTexture;
@@ -82,9 +83,42 @@ namespace FiveGuysFixed.Enemies
 
         private void Attack()
         {
-            if (projectiles == null || boomerangTexture == null)
+            if (projectiles == null)
+            {
+                System.Diagnostics.Debug.WriteLine("projectiles list is null!");
                 return;
-            //projectiles.Add(new Boomerang(boomerangTexture, Position.X, Position.Y, new Vector2(-3, 0), this));
+            }
+
+            if (boomerangTexture == null)
+            {
+                System.Diagnostics.Debug.WriteLine("boomerangTexture is null!");
+                return;
+            }
+
+            // Get player position from GameState
+            Vector2 playerPos = GameState.PlayerState.position;
+
+            // Calculate direction to player
+            Vector2 direction = playerPos - Position;
+
+            // Make sure direction is normalized
+            if (direction != Vector2.Zero)
+            {
+                direction.Normalize();
+            }
+            else
+            {
+                // If player is exactly at same position, throw in a default direction
+                direction = new Vector2(1, 0);
+            }
+
+            // Scale by speed
+            direction *= 3;
+
+            // Create the boomerang and add it to projectiles list
+            projectiles.Add(new Boomerang(boomerangTexture, Position.X, Position.Y, direction, this));
+
+            System.Diagnostics.Debug.WriteLine("Goriya attacking! Created boomerang");
         }
     }
 }

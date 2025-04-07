@@ -101,7 +101,7 @@ public class CollisionHandler
         }
     }
 
-    public void HandleEnemyBlockCollision(Enemy enemy, IBlock block)
+    public void HandleEnemyBlockCollision(IEnemy enemy, IBlock block)
     {
         // Compute the bounding boxes for both enemy and block.
         Rectangle enemyRect = enemy.BoundingBox;

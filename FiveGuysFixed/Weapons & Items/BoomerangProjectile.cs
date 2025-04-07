@@ -17,7 +17,6 @@ namespace FiveGuysFixed.Projectiles
         private bool isFinished;
         private Goriya owner;
 
-        // Boomerang flight parameters
         private const float MaxDistance = 100f;
         private const float ReturnSpeed = 1.2f;
         private Vector2 startPosition;

@@ -6,19 +6,22 @@ using System.Threading.Tasks;
 using FiveGuysFixed.Blocks;
 using FiveGuysFixed.Enemies;
 using FiveGuysFixed.Items;
+using FiveGuysFixed.Projectiles;
 
 namespace FiveGuysFixed.RoomHandling
 {
     public class CurrentRoomContents
     {
         public List<IBlock> Blocks { get; private set; }
-        public List<Enemy> Enemies { get; private set; }
+        public List<IEnemy> Enemies { get; private set; }
         public List<IItem> Items { get; set; }
+
+        public List<IProjectile> Projectiles { get; set; } = new List<IProjectile>();
 
         public CurrentRoomContents()
         {
             Blocks = new List<IBlock>();
-            Enemies = new List<Enemy>();
+            Enemies = new List<IEnemy>();
             Items = new List<IItem>();
         }
 
@@ -27,6 +30,7 @@ namespace FiveGuysFixed.RoomHandling
             Blocks.Clear();
             Enemies.Clear();
             Items.Clear();
+            Projectiles.Clear();
         }
     }
 

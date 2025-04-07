@@ -19,11 +19,11 @@ namespace FiveGuysFixed.Projectiles
 
         public Fireball(Texture2D texture, float startX, float startY, Vector2 velocity)
         {
-            fireballSprite = new Sprite(texture, 25, 32, 16, 16, frames: 1);
-
+            fireballSprite = new Sprite(texture, 32,32, 16, 16);
             this.position = new Vector2(startX, startY);
             this.velocity = velocity;
             this.isFinished = false;
+            this.currentTime = 0; 
         }
 
         public void Update(GameTime gameTime)
