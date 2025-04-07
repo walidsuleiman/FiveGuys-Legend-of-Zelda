@@ -18,7 +18,7 @@ namespace FiveGuysFixed.Blocks
 
         public RightDoorClose(Texture2D texture, int x, int y)
         {
-            blockSprite = new Sprite(texture, 882, 77, 32, 32);
+            blockSprite = new Sprite(texture, 881, 77, 32, 32);
 
 
             this.x = x;
@@ -33,13 +33,13 @@ namespace FiveGuysFixed.Blocks
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            float scale = 2;
+            float scale = 5;
             blockSprite.Draw(spriteBatch, new System.Numerics.Vector2((float)x, (float)y), null, scale);
         }
 
         public void Draw(SpriteBatch spriteBatch, Vector2 offset)
         {
-            float scale = 2;
+            float scale = 5;
             var drawPos = new System.Numerics.Vector2((float)x, (float)y) + new System.Numerics.Vector2(offset.X, offset.Y);
             blockSprite.Draw(spriteBatch, drawPos, null, scale);
         }
@@ -54,7 +54,7 @@ namespace FiveGuysFixed.Blocks
         {
             get
             {
-                return new Rectangle((int)x, (int)y, 64, 64);
+                return new Rectangle((int)x - 64, (int)y - 64, 160, 160);
             }
             set
             {

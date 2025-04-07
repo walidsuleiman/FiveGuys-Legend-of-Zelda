@@ -117,7 +117,12 @@ namespace FiveGuysFixed.RoomHandling
                 int x = int.Parse(blockNode.Attributes["x"].Value);
                 int y = int.Parse(blockNode.Attributes["y"].Value);
 
-
+                if (type == "Wall")
+                {
+                    GameState.currentRoomContents.Blocks.Add(
+                        new Wall(GameState.contentLoader.blockTexture, x, y)
+                    );
+                }
                 if (type == "TopDoorOpen")
                 {
                     GameState.currentRoomContents.Blocks.Add(
@@ -173,13 +178,6 @@ namespace FiveGuysFixed.RoomHandling
                         new BottomDoorClose(GameState.contentLoader.blockTexture, x, y)
                     );
                 }
-                if (type == "Wall")
-                {
-                    GameState.currentRoomContents.Blocks.Add(
-                        new Wall(GameState.contentLoader.blockTexture, x, y)
-                    );
-                }
-
 
                 if (type == "Block")
                 {
