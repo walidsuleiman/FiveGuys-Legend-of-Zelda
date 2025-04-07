@@ -108,9 +108,6 @@ namespace FiveGuysFixed
 
             InitializeEntityLists();
 
-            GameStateManager.SetState(new TitleScreenState(this)); // Start with the title screen state
-            //GameStateManager.SetState(new GamePlayState(this));
-
             base.Initialize();
         }
 
@@ -131,6 +128,9 @@ namespace FiveGuysFixed
 
         protected override void LoadContent()
         {
+            GameStateManager.Initialize(Content);
+            GameStateManager.SetState(new TitleScreenState(this));
+
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
             GameState.Player.LoadContent(Content);

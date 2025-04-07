@@ -6,6 +6,7 @@ using System.Linq;
 using FiveGuysFixed.GUI;
 using FiveGuysFixed.HUD;
 using FiveGuysFixed.Weapons___Items;
+using Microsoft.Xna.Framework.Content;
 
 namespace FiveGuysFixed.GameStates
 {
@@ -35,6 +36,9 @@ namespace FiveGuysFixed.GameStates
             oldState = Keyboard.GetState();
         }
 
+        public void LoadContent(ContentManager content)
+        {
+        }
         public void Update(GameTime gameTime)
         {
             KeyboardState ks = Keyboard.GetState();
