@@ -10,15 +10,16 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace FiveGuysFixed.Blocks
 {
-    internal class Block : IBlock
+    internal class BottomDoorClose : IBlock
     {
         private Sprite blockSprite;
         private double x, y;
         private int currentTime;
 
-        public Block(Texture2D texture, int x, int y)
+        public BottomDoorClose(Texture2D texture, int x, int y)
         {
-            blockSprite = new Sprite(texture, 423, 224, 16, 16);
+            blockSprite = new Sprite(texture, 882, 110, 32, 32);
+
 
             this.x = x;
             this.y = y;

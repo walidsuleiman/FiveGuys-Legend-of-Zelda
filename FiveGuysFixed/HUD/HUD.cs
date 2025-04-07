@@ -33,8 +33,8 @@ namespace FiveGuysFixed.HUD
         {
             this.blackPixel = new Texture2D(spritebatch.GraphicsDevice, 1, 1);
             this.blackPixel.SetData(new[] { Color.SlateGray });
-            spritebatch.Draw(blackPixel, new Rectangle(0, 720, 1280, 280), Color.SlateGray);
-            spritebatch.Draw(GameState.contentLoader.HudTexture, new Rectangle(0, 720, 1280, 280), new Rectangle(258, 11, 256, 55), Color.White);
+            spritebatch.Draw(blackPixel, new Rectangle(0, 880, 1280, 280), Color.SlateGray);
+            spritebatch.Draw(GameState.contentLoader.HudTexture, new Rectangle(0, 880, 1280, 280), new Rectangle(258, 11, 256, 55), Color.White);
 
             hearts.Draw(spritebatch);
             rupees.Draw(spritebatch);

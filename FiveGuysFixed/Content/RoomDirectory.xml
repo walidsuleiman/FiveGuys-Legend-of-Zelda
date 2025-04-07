@@ -16,6 +16,18 @@
 			<Item type="RedRupee" x="390" y="592"/>
 			<Item type="RedPotion" x="424" y="114"/>
 
+			<Block type="TopDoorOpen" x="80" y="100"/>
+			<Block type="LeftDoorOpen" x="80" y="174"/>
+			<Block type="RightDoorOpen" x="80" y="248"/>
+			<Block type="BottomDoorOpen" x="80" y="322"/>
+
+			<Block type="TopDoorClose" x="160" y="100"/>
+			<Block type="LeftDoorClose" x="160" y="174"/>
+			<Block type="RightDoorClose" x="160" y="248"/>
+			<Block type="BottomDoorClose" x="160" y="322"/>
+
+			<Block type="Wall" x="0" y="0"/>
+
 			<Block type="YellowBlock" x="520" y="306"/>
 			<Block type="YellowBlock" x="520" y="338"/>
 			<Block type="YellowBlock" x="520" y="370"/>

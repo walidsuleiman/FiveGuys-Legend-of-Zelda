@@ -5,18 +5,19 @@ using System.Text;
 using System.Threading.Tasks;
 using FiveGuysFixed.Animation;
 using FiveGuysFixed.Blocks;
+using FiveGuysFixed.GameStates;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace FiveGuysFixed.Blocks
 {
-    internal class Block : IBlock
+    internal class Wall : IBlock
     {
         private Sprite blockSprite;
         private double x, y;
         private int currentTime;
 
-        public Block(Texture2D texture, int x, int y)
+        public Wall(Texture2D texture, int x, int y)
         {
             blockSprite = new Sprite(texture, 423, 224, 16, 16);
 
@@ -27,20 +28,20 @@ namespace FiveGuysFixed.Blocks
 
         public bool IsCollidable()
         {
-            return true;
+            return false;
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
             float scale = 2;
-            blockSprite.Draw(spriteBatch, new System.Numerics.Vector2((float)x, (float)y), null, scale);
+            spriteBatch.Draw(GameState.contentLoader.blockTexture, new Rectangle(0, 0, GameState.WindowWidth, GameState.WindowHeight), new Rectangle(521, 11, 256, 176), Color.White);
         }
 
         public void Draw(SpriteBatch spriteBatch, Vector2 offset)
         {
             float scale = 2;
             var drawPos = new System.Numerics.Vector2((float)x, (float)y) + new System.Numerics.Vector2(offset.X, offset.Y);
-            blockSprite.Draw(spriteBatch, drawPos, null, scale);
+            spriteBatch.Draw(GameState.contentLoader.blockTexture, new Rectangle(0, 0, GameState.WindowWidth, GameState.WindowHeight), new Rectangle(521, 11, 256, 176), Color.White);
         }
 
         public void Update(GameTime gametime)
@@ -53,7 +54,7 @@ namespace FiveGuysFixed.Blocks
         {
             get
             {
-                return new Rectangle((int)x, (int)y, 64, 64);
+                return new Rectangle((int)x, (int)y, 0, 0);
             }
             set
             {
