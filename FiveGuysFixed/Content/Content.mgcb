@@ -129,7 +129,6 @@
 /build:HUDClean.png
 
 #begin linkSprite.png
-#begin LOZTitle.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -140,6 +139,17 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:linkSprite.png
+
+#begin LOZTitle.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
 /build:LOZTitle.png
 
 #begin Minimap1.png
@@ -176,19 +186,6 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:rupeeSprite.png.png;rupeeSprite.png
-
-#begin TitleScreenBG.jpg
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:TitleScreenBG.jpg
 /build:rupeeSprite.png.png;rupeeSprite.png
 
 #begin TreeBlockSprite.png
