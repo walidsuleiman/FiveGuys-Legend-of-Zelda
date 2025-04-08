@@ -45,19 +45,19 @@ namespace FiveGuysFixed.Controls
             Keys[] audioKeys = { Keys.B };
             Keys[] boomerangKeys = { Keys.Z }; // New array for boomerang key
 
-            // Boomerang key handling
-            foreach (Keys bKey in boomerangKeys)
-            {
-                bool currentDown = currentState.IsKeyDown(bKey);
-                bool previousDown = previousState.IsKeyDown(bKey);
+            //// Boomerang key handling
+            //foreach (Keys bKey in boomerangKeys)
+            //{
+            //    bool currentDown = currentState.IsKeyDown(bKey);
+            //    bool previousDown = previousState.IsKeyDown(bKey);
 
-                // Check for key press (not release)
-                if (currentDown && !previousDown)
-                {
-                    // Call boomerang specific method
-                    ThrowBoomerang();
-                }
-            }
+            //    // Check for key press (not release)
+            //    if (currentDown && !previousDown)
+            //    {
+            //        // Call boomerang specific method
+            //        ThrowBoomerang();
+            //    }
+            //}
 
             foreach (Keys cKey in combatKeys)
             {

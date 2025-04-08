@@ -33,9 +33,9 @@ namespace FiveGuysFixed.LinkPlayer
         private bool isInvincible;
         private float invincibilityTimer;
 
-        private bool canThrowBoomerang = true;
-        private float boomerangCooldown = 0f;
-        private const float BOOMERANG_COOLDOWN_TIME = 0.5f;
+        //private bool canThrowBoomerang = true;
+        //private float boomerangCooldown = 0f;
+        //private const float BOOMERANG_COOLDOWN_TIME = 0.5f;
 
         public bool IsInvincible => isInvincible;
         public double Rad { get { return Math.Max(linkSprite.Height, linkSprite.Width); } }
@@ -71,71 +71,71 @@ namespace FiveGuysFixed.LinkPlayer
             GameState.PlayerState.isAttacking = true;
             hitSound.Play();
 
-            // Check if we can throw a boomerang
-            if (canThrowBoomerang)
-            {
-                // Create boomerang velocity based on direction
-                Vector2 velocity = Vector2.Zero;
-                Vector2 startPos = GameState.PlayerState.position;
+            //    // Check if we can throw a boomerang
+            //    if (canThrowBoomerang)
+            //    {
+            //        // Create boomerang velocity based on direction
+            //        Vector2 velocity = Vector2.Zero;
+            //        Vector2 startPos = GameState.PlayerState.position;
 
-                switch (GameState.PlayerState.direction)
-                {
-                    case Dir.UP:
-                        velocity = new Vector2(0, -5);
-                        startPos.Y -= 20;
-                        break;
-                    case Dir.DOWN:
-                        velocity = new Vector2(0, 5);
-                        startPos.Y += 20;
-                        break;
-                    case Dir.LEFT:
-                        velocity = new Vector2(-5, 0);
-                        startPos.X -= 20;
-                        break;
-                    case Dir.RIGHT:
-                        velocity = new Vector2(5, 0);
-                        startPos.X += 20;
-                        break;
-                }
+            //        switch (GameState.PlayerState.direction)
+            //        {
+            //            case Dir.UP:
+            //                velocity = new Vector2(0, -5);
+            //                startPos.Y -= 20;
+            //                break;
+            //            case Dir.DOWN:
+            //                velocity = new Vector2(0, 5);
+            //                startPos.Y += 20;
+            //                break;
+            //            case Dir.LEFT:
+            //                velocity = new Vector2(-5, 0);
+            //                startPos.X -= 20;
+            //                break;
+            //            case Dir.RIGHT:
+            //                velocity = new Vector2(5, 0);
+            //                startPos.X += 20;
+            //                break;
+            //        }
 
-                // Check if there's already a boomerang
-                bool boomerangExists = false;
-                foreach (var projectile in GameState.currentRoomContents.Projectiles)
-                {
-                    if (projectile is Boomerang)
-                    {
-                        boomerangExists = true;
-                        break;
-                    }
-                }
+            //        // Check if there's already a boomerang
+            //        bool boomerangExists = false;
+            //        foreach (var projectile in GameState.currentRoomContents.Projectiles)
+            //        {
+            //            if (projectile is Boomerang)
+            //            {
+            //                boomerangExists = true;
+            //                break;
+            //            }
+            //        }
 
-                // Only throw if no boomerang exists
-                if (!boomerangExists)
-                {
-                    // Create and add boomerang
-                    try
-                    {
-                        Texture2D weaponTexture = game.Content.Load<Texture2D>("linkSprite");
-                        GameState.currentRoomContents.Projectiles.Add(
-                            new Boomerang(
-                                weaponTexture,
-                                startPos.X,
-                                startPos.Y,
-                                velocity
-                            )
-                        );
+            //        // Only throw if no boomerang exists
+            //        if (!boomerangExists)
+            //        {
+            //            // Create and add boomerang
+            //            try
+            //            {
+            //                Texture2D weaponTexture = game.Content.Load<Texture2D>("linkSprite");
+            //                GameState.currentRoomContents.Projectiles.Add(
+            //                    new Boomerang(
+            //                        weaponTexture,
+            //                        startPos.X,
+            //                        startPos.Y,
+            //                        velocity
+            //                    )
+            //                );
 
-                        // Set cooldown
-                        canThrowBoomerang = false;
-                        boomerangCooldown = BOOMERANG_COOLDOWN_TIME;
-                    }
-                    catch (Exception ex)
-                    {
-                        // Handle exception (texture not found, etc.)
-                        System.Diagnostics.Debug.WriteLine("Boomerang creation error: " + ex.Message);
-                    }
-                }
-            }
+            //                // Set cooldown
+            //                canThrowBoomerang = false;
+            //                boomerangCooldown = BOOMERANG_COOLDOWN_TIME;
+            //            }
+            //            catch (Exception ex)
+            //            {
+            //                // Handle exception (texture not found, etc.)
+            //                System.Diagnostics.Debug.WriteLine("Boomerang creation error: " + ex.Message);
+            //            }
+            //        }
+            //    }
         }
 
         public void SwitchItem() { }
@@ -196,14 +196,14 @@ namespace FiveGuysFixed.LinkPlayer
                     isInvincible = false; // End invincibility
                 }
             }
-            if (!canThrowBoomerang)
-            {
-                boomerangCooldown -= (float)gt.ElapsedGameTime.TotalSeconds;
-                if (boomerangCooldown <= 0)
-                {
-                    canThrowBoomerang = true;
-                }
-            }
+            //if (!canThrowBoomerang)
+            //{
+            //    boomerangCooldown -= (float)gt.ElapsedGameTime.TotalSeconds;
+            //    if (boomerangCooldown <= 0)
+            //    {
+            //        canThrowBoomerang = true;
+            //    }
+            //}
 
 
         }

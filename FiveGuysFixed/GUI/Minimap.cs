@@ -65,23 +65,23 @@ namespace FiveGuysFixed.GUI
         {
             roomPositions = new Dictionary<int, Vector2>
             {
-                { 1, new Vector2(22, 7) },
-                { 2, new Vector2(45, 2) },
-                { 3, new Vector2(45, 30) },
-                { 4, new Vector2(100, 30) },
-                { 5, new Vector2(125, 30) },
-                { 6, new Vector2(0, 58) },
-                { 7, new Vector2(20, 58) },
-                { 8, new Vector2(45, 58) },
-                { 9, new Vector2(75, 58) },
-                { 10, new Vector2(100, 58) }, 
-                { 11, new Vector2(20, 83) },
-                { 12, new Vector2(45, 83) },
-                { 13, new Vector2(75, 83) },
-                { 14, new Vector2(45, 110) },
-                { 15, new Vector2(20, 140) },
-                { 16, new Vector2(45, 140) },
-                { 17, new Vector2(75, 140) }
+                { 1, new Vector2(22, 3) },
+                { 2, new Vector2(60, 3) },
+                { 3, new Vector2(60, 40) },
+                { 4, new Vector2(132, 40) },
+                { 5, new Vector2(169, 40) },
+                { 6, new Vector2(0, 75) },
+                { 7, new Vector2(22, 75) },
+                { 8, new Vector2(60, 75) },
+                { 9, new Vector2(95, 75) },
+                { 10, new Vector2(132, 75) }, 
+                { 11, new Vector2(22, 115) },
+                { 12, new Vector2(60, 115) },
+                { 13, new Vector2(95, 115) },
+                { 14, new Vector2(60, 150) },
+                { 15, new Vector2(22, 185) },
+                { 16, new Vector2(60, 185) },
+                { 17, new Vector2(75, 185) }
             };
 
             // room world positions
