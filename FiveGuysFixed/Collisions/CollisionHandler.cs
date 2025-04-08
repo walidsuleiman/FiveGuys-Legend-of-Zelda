@@ -25,7 +25,7 @@ public class CollisionHandler
     public void HandlePlayerBlockCollision(IPlayer player, IBlock block)
     {
         // Compute the bounding boxes for both player and block.
-        Rectangle playerRect = player.GetBoundingBox(32, 32);
+        Rectangle playerRect = player.GetBoundingBox(80, 80);
         Rectangle blockRect = block.BoundingBox; // Provided by IBlock
 
         if (playerRect.Intersects(blockRect))
@@ -59,7 +59,7 @@ public class CollisionHandler
             return; // If the player is invincible, ignore the collision and enter an untouchable state.
         }
         // Compute the bounding boxes for both player and enemy.
-        Rectangle playerRect = player.GetBoundingBox(32, 32);
+        Rectangle playerRect = player.GetBoundingBox(80, 80);
         Rectangle enemyRect = enemy.BoundingBox;
 
         if (playerRect.Intersects(enemyRect))
@@ -90,7 +90,7 @@ public class CollisionHandler
     {
 
 
-        Rectangle playerRect = player.GetBoundingBox(32, 32);
+        Rectangle playerRect = player.GetBoundingBox(80, 80);
 
         switch (GameState.PlayerState.direction)
         {
@@ -141,7 +141,7 @@ public class CollisionHandler
 
     public void HandlePlayerItemCollision(IPlayer player, IItem item)
     {
-        Rectangle playerRect = player.GetBoundingBox(32, 32);
+        Rectangle playerRect = player.GetBoundingBox(80, 80);
         Rectangle itemRect = item.BoundingBox;
 
         // Ensure item is only collected once per room load
@@ -187,7 +187,7 @@ public class CollisionHandler
 
     public void HandlePlayerProjectileCollision(IPlayer player, IProjectile projectile)
     {
-        Rectangle playerRect = player.GetBoundingBox(32, 32);
+        Rectangle playerRect = player.GetBoundingBox(80, 80);
         Rectangle projectileRect = projectile.BoundingBox;
 
         if (playerRect.Intersects(projectileRect))

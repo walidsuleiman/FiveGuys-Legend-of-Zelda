@@ -123,6 +123,14 @@ namespace FiveGuysFixed.RoomHandling
                         new Wall(GameState.contentLoader.blockTexture, x, y)
                     );
                 }
+
+                if (type == "Floor")
+                {
+                    GameState.currentRoomContents.Blocks.Add(
+                        new Floor(GameState.contentLoader.blockTexture, x, y)
+                    );
+                }
+
                 if (type == "TopDoorOpen")
                 {
                     GameState.currentRoomContents.Blocks.Add(
