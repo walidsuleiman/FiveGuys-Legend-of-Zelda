@@ -584,6 +584,8 @@
 			<Item type="RedRupee" x="5" y="4"/>
 			<Item type="RedRupee" x="6" y="5"/>
 
+			<Enemy type="Aquamentus" x="700" y="500"/>
+
 			<Block type="ClearBlock" x="1" y="0"/>
 			<Block type="ClearBlock" x="2" y="0"/>
 			<Block type="ClearBlock" x="3" y="0"/>
