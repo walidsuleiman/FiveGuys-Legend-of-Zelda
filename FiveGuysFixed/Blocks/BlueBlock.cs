@@ -10,10 +10,8 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace FiveGuysFixed.Blocks
 {
-    internal class YellowBlock : Block
+    internal class BlueBlock : Block
     {
-        public YellowBlock(Texture2D texture, int x, int y) : base(texture, 354, 81, x, y)
-        {
-        }
+        public BlueBlock(Texture2D texture, int x, int y) : base(texture, 423, 224, x, y) { }
     }
 }

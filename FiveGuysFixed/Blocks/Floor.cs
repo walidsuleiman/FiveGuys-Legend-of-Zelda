@@ -11,15 +11,15 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace FiveGuysFixed.Blocks
 {
-    internal class Wall : IBlock
+    internal class Floor : IBlock
     {
         private Sprite blockSprite;
         private double x, y;
         private int currentTime;
 
-        public Wall(Texture2D texture, int x, int y)
+        public Floor(Texture2D texture, int x, int y)
         {
-            blockSprite = new Sprite(texture, 521, 11, 256, 176);
+            blockSprite = new Sprite(texture, 1, 192, 192, 112);
 
             this.x = x;
             this.y = y;
@@ -41,9 +41,7 @@ namespace FiveGuysFixed.Blocks
         public void Draw(SpriteBatch spriteBatch, Vector2 offset)
         {
             float scale = 5;
-           //var drawPos = new System.Numerics.Vector2((float)x+640, (float)y+440) + new System.Numerics.Vector2(offset.X, offset.Y);
-            var drawPos = new System.Numerics.Vector2((float)x, (float)y) + new System.Numerics.Vector2(offset.X, offset.Y);
-
+            var drawPos = new System.Numerics.Vector2((float)x + 640, (float)y + 440) + new System.Numerics.Vector2(offset.X, offset.Y);
             blockSprite.Draw(spriteBatch, drawPos, null, scale);
         }
 

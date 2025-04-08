@@ -268,11 +268,10 @@ namespace FiveGuysFixed
         // called by GamePlayState to render the scene like player, room, HUD
         public void GameDrawLogic(SpriteBatch spriteBatch)
         {
+            RoomRenderer.Draw(spriteBatch);
+
 
             GameState.Player.Draw(spriteBatch);
-
-   
-            RoomRenderer.Draw(spriteBatch);
 
 
             GameState.HUD.Draw(spriteBatch);

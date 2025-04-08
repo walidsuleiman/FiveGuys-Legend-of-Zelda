@@ -123,6 +123,14 @@ namespace FiveGuysFixed.RoomHandling
                         new Wall(GameState.contentLoader.blockTexture, x, y)
                     );
                 }
+
+                if (type == "Floor")
+                {
+                    GameState.currentRoomContents.Blocks.Add(
+                        new Floor(GameState.contentLoader.blockTexture, x, y)
+                    );
+                }
+
                 if (type == "TopDoorOpen")
                 {
                     GameState.currentRoomContents.Blocks.Add(
@@ -179,10 +187,17 @@ namespace FiveGuysFixed.RoomHandling
                     );
                 }
 
-                if (type == "Block")
+                if (type == "ClearBlock")
                 {
                     GameState.currentRoomContents.Blocks.Add(
-                        new Block(GameState.contentLoader.blockTexture, x, y)
+                        new ClearBlock(GameState.contentLoader.blockTexture, x, y)
+                    );
+                }
+
+                if (type == "BlueBlock")
+                {
+                    GameState.currentRoomContents.Blocks.Add(
+                        new BlueBlock(GameState.contentLoader.blockTexture, x, y)
                     );
                 }
 

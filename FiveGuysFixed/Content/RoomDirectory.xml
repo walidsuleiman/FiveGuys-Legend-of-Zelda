@@ -9,11 +9,26 @@
 			<Block type="TopDoorClose" x="640" y="80"/>
 			<Block type="BottomDoorClose" x="640" y="800"/>
 			<Block type="RightDoorOpen" x="1200" y="440"/>
+			
+			<Block type="Wall" x="640" y="440"/>
+			<Block type="Floor" x="0" y="0"/>
+			
+			<Block type="ClearBlock" x="0" y="0"/>
 
+			<Item type="Food" x="3" y="3"/>
+			<Item type="BluePotion" x="3" y="4"/>
+			<Item type="RedPotion" x="3" y="5"/>
+			<Item type="Bomb" x="3" y="6"/>
+			<Item type="GreenRupee" x="3" y="7"/>
+			<Item type="RedRupee" x="3" y="2"/>
+			
+			<Block type ="BlueBlock" x="1" y="1"/>
+			<Block type ="GreenBlock" x="2" y="1"/>
+			<Block type ="WhiteBlock" x="3" y="1"/>
+			<Block type ="YellowBlock" x="4" y="1"/>
 
-
-			<Block type="Wall" x="0" y="0"/>
-
+			
+			
 		</Objects>
 	</Room>
 

@@ -12,17 +12,21 @@ namespace FiveGuysFixed.Blocks
 {
     internal class Block : IBlock
     {
+        private readonly Vector2 globalOffset = new Vector2(160, 160);
+        private Vector2 scaleOffset;
         private Sprite blockSprite;
+        private int width = 80, height = 80;
         private double x, y;
+        private readonly float scale = 5;
         private int currentTime;
 
-        public Block(Texture2D texture, int x, int y)
+        public Block(Texture2D texture, int sourceX, int sourceY, int x, int y)
         {
-            blockSprite = new Sprite(texture, 423, 224, 16, 16);
-
+            blockSprite = new Sprite(texture, sourceX, sourceY, 16, 16);
             this.x = x;
             this.y = y;
             currentTime = 0;
+            scaleOffset = new Vector2(width / 2, height / 2);
         }
 
         public bool IsCollidable()
@@ -30,16 +34,14 @@ namespace FiveGuysFixed.Blocks
             return true;
         }
 
-        public void Draw(SpriteBatch spriteBatch)
+        public virtual void Draw(SpriteBatch spriteBatch)
         {
-            float scale = 2;
-            blockSprite.Draw(spriteBatch, new System.Numerics.Vector2((float)x, (float)y), null, scale);
+            Draw(spriteBatch, Vector2.Zero);
         }
 
-        public void Draw(SpriteBatch spriteBatch, Vector2 offset)
+        public virtual void Draw(SpriteBatch spriteBatch, Vector2 offset)
         {
-            float scale = 2;
-            var drawPos = new System.Numerics.Vector2((float)x, (float)y) + new System.Numerics.Vector2(offset.X, offset.Y);
+            var drawPos = new Vector2((float)x * width, (float)y * height) + offset + globalOffset - scaleOffset;
             blockSprite.Draw(spriteBatch, drawPos, null, scale);
         }
 
@@ -53,12 +55,9 @@ namespace FiveGuysFixed.Blocks
         {
             get
             {
-                return new Rectangle((int)x, (int)y, 64, 64);
-            }
-            set
-            {
-                x = value.X;
-                y = value.Y;
+                Vector2 pos = new Vector2((float)x * width, (float)y * height) + globalOffset - scaleOffset;
+
+                return new Rectangle((int)pos.X, (int)pos.Y, 80, 80);
             }
         }
     }

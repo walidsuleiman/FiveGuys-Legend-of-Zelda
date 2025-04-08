@@ -10,10 +10,15 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace FiveGuysFixed.Blocks
 {
-    internal class YellowBlock : Block
+    internal class ClearBlock : Block
     {
-        public YellowBlock(Texture2D texture, int x, int y) : base(texture, 354, 81, x, y)
+        public ClearBlock(Texture2D texture, int x, int y) : base(texture, 0, 0, x, y) { 
+        
+        }
+
+        public override void Draw(SpriteBatch spriteBatch, Vector2 offset)
         {
+            // Do not draw anything for ClearBlock
         }
     }
 }

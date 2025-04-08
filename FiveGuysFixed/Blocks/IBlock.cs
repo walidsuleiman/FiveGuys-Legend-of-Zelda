@@ -11,7 +11,7 @@ namespace FiveGuysFixed.Blocks
 {
     public interface IBlock
     {
-        Rectangle BoundingBox { get; set; }
+        Rectangle BoundingBox { get; }
 
         bool IsCollidable();
         void Update(GameTime gameTime);
