@@ -13,7 +13,45 @@
 			<Block type="Wall" x="640" y="440"/>
 			<Block type="Floor" x="0" y="0"/>
 			
-			<Block type="ClearBlock" x="0" y="0"/>
+			<Block type="ClearBlock" x="1" y="0"/>
+			<Block type="ClearBlock" x="2" y="0"/>
+			<Block type="ClearBlock" x="3" y="0"/>
+			<Block type="ClearBlock" x="4" y="0"/>
+			<Block type="ClearBlock" x="5" y="0"/>
+			<Block type="ClearBlock" x="8" y="0"/>
+			<Block type="ClearBlock" x="9" y="0"/>
+			<Block type="ClearBlock" x="10" y="0"/>
+			<Block type="ClearBlock" x="11" y="0"/>
+			<Block type="ClearBlock" x="12" y="0"/>
+			
+			<Block type="ClearBlock" x="1" y="8"/>
+			<Block type="ClearBlock" x="2" y="8"/>
+			<Block type="ClearBlock" x="3" y="8"/>
+			<Block type="ClearBlock" x="4" y="8"/>
+			<Block type="ClearBlock" x="5" y="8"/>
+			<Block type="ClearBlock" x="8" y="8"/>
+			<Block type="ClearBlock" x="9" y="8"/>
+			<Block type="ClearBlock" x="10" y="8"/>
+			<Block type="ClearBlock" x="11" y="8"/>
+			<Block type="ClearBlock" x="12" y="8"/>
+
+			<Block type="ClearBlock" x="0" y="1"/>
+			<Block type="ClearBlock" x="0" y="2"/>
+			<Block type="ClearBlock" x="0" y="3"/>
+			<Block type="ClearBlock" x="0" y="5"/>
+			<Block type="ClearBlock" x="0" y="6"/>
+			<Block type="ClearBlock" x="0" y="7"/>
+
+			<Block type="ClearBlock" x="13" y="1"/>
+			<Block type="ClearBlock" x="13" y="2"/>
+			<Block type="ClearBlock" x="13" y="3"/>
+			<Block type="ClearBlock" x="13" y="5"/>
+			<Block type="ClearBlock" x="13" y="6"/>
+			<Block type="ClearBlock" x="13" y="7"/>
+
+
+
+
 
 			<Item type="Food" x="3" y="3"/>
 			<Item type="BluePotion" x="3" y="4"/>
@@ -43,151 +81,54 @@
 		<Neighbor direction="left" id="1"/>
 		<Neighbor direction="down" id="3"/>as
 		<Objects>
-			<Enemy type="Aquamentus" x="330" y="350"/>
-			<Enemy type="Goriya" x="1000" y="350"/>
+			<Block type="LeftDoorOpen" x="80" y="440"/>
+			<Block type="TopDoorClose" x="640" y="80"/>
+			<Block type="BottomDoorOpen" x="640" y="800"/>
+			<Block type="RightDoorClose" x="1200" y="440"/>
+
+			<Block type="Wall" x="640" y="440"/>
+			<Block type="Floor" x="0" y="0"/>
+
+			<Item type="Food" x="12" y="3"/>
+			<Item type="GreenRupee" x="3" y="6"/>
+
+			<Block type="ClearBlock" x="1" y="0"/>
+			<Block type="ClearBlock" x="2" y="0"/>
+			<Block type="ClearBlock" x="3" y="0"/>
+			<Block type="ClearBlock" x="4" y="0"/>
+			<Block type="ClearBlock" x="5" y="0"/>
+			<Block type="ClearBlock" x="8" y="0"/>
+			<Block type="ClearBlock" x="9" y="0"/>
+			<Block type="ClearBlock" x="10" y="0"/>
+			<Block type="ClearBlock" x="11" y="0"/>
+			<Block type="ClearBlock" x="12" y="0"/>
+
+			<Block type="ClearBlock" x="1" y="8"/>
+			<Block type="ClearBlock" x="2" y="8"/>
+			<Block type="ClearBlock" x="3" y="8"/>
+			<Block type="ClearBlock" x="4" y="8"/>
+			<Block type="ClearBlock" x="5" y="8"/>
+			<Block type="ClearBlock" x="8" y="8"/>
+			<Block type="ClearBlock" x="9" y="8"/>
+			<Block type="ClearBlock" x="10" y="8"/>
+			<Block type="ClearBlock" x="11" y="8"/>
+			<Block type="ClearBlock" x="12" y="8"/>
+
+			<Block type="ClearBlock" x="0" y="1"/>
+			<Block type="ClearBlock" x="0" y="2"/>
+			<Block type="ClearBlock" x="0" y="3"/>
+			<Block type="ClearBlock" x="0" y="5"/>
+			<Block type="ClearBlock" x="0" y="6"/>
+			<Block type="ClearBlock" x="0" y="7"/>
+
+			<Block type="ClearBlock" x="13" y="1"/>
+			<Block type="ClearBlock" x="13" y="2"/>
+			<Block type="ClearBlock" x="13" y="3"/>
+			<Block type="ClearBlock" x="13" y="5"/>
+			<Block type="ClearBlock" x="13" y="6"/>
+			<Block type="ClearBlock" x="13" y="7"/>
 
 
-			<Item type="BluePotion" x="1000" y="274"/>
-			<Item type="RedPotion" x="402" y="594"/>
-			<Item type="RedRupee" x="520" y="306"/>
-
-			<Block type="GreenBlock" x="616" y="144"/>
-			<Block type="GreenBlock" x="616" y="176"/>
-			<Block type="GreenBlock" x="648" y="144"/>
-			<Block type="GreenBlock" x="648" y="176"/>
-			<Block type="GreenBlock" x="616" y="208"/>
-			<Block type="GreenBlock" x="648" y="208"/>
-
-			<Block type="GreenBlock" x="616" y="496"/>
-			<Block type="GreenBlock" x="616" y="528"/>
-			<Block type="GreenBlock" x="648" y="496"/>
-			<Block type="GreenBlock" x="648" y="528"/>
-			<Block type="GreenBlock" x="616" y="560"/>
-			<Block type="GreenBlock" x="648" y="560"/>
-
-			<Block type="GreenBlock" x="200" y="50"/>
-			<Block type="GreenBlock" x="232" y="50"/>
-			<Block type="GreenBlock" x="264" y="50"/>
-			<Block type="GreenBlock" x="296" y="50"/>
-			<Block type="GreenBlock" x="328" y="50"/>
-			<Block type="GreenBlock" x="360" y="50"/>
-			<Block type="GreenBlock" x="392" y="50"/>
-			<Block type="GreenBlock" x="424" y="50"/>
-			<Block type="GreenBlock" x="456" y="50"/>
-			<Block type="GreenBlock" x="488" y="50"/>
-			<Block type="GreenBlock" x="520" y="50"/>
-			<Block type="GreenBlock" x="552" y="50"/>
-			<Block type="GreenBlock" x="584" y="50"/>
-			<Block type="GreenBlock" x="616" y="50"/>
-			<Block type="GreenBlock" x="648" y="50"/>
-			<Block type="GreenBlock" x="680" y="50"/>
-			<Block type="GreenBlock" x="712" y="50"/>
-			<Block type="GreenBlock" x="744" y="50"/>
-			<Block type="GreenBlock" x="776" y="50"/>
-			<Block type="GreenBlock" x="808" y="50"/>
-			<Block type="GreenBlock" x="840" y="50"/>
-			<Block type="GreenBlock" x="872" y="50"/>
-			<Block type="GreenBlock" x="904" y="50"/>
-			<Block type="GreenBlock" x="936" y="50"/>
-			<Block type="GreenBlock" x="968" y="50"/>
-			<Block type="GreenBlock" x="1000" y="50"/>
-			<Block type="GreenBlock" x="1032" y="50"/>
-			<Block type="GreenBlock" x="1064" y="50"/>
-
-			<Block type="GreenBlock" x="200" y="82"/>
-			<Block type="GreenBlock" x="200" y="114"/>
-			<Block type="GreenBlock" x="200" y="146"/>
-			<Block type="GreenBlock" x="200" y="178"/>
-			<Block type="GreenBlock" x="200" y="210"/>
-			<Block type="GreenBlock" x="200" y="242"/>
-			<Block type="GreenBlock" x="200" y="274"/>
-			<Block type="GreenBlock" x="200" y="306"/>
-			<Block type="GreenBlock" x="200" y="402"/>
-			<Block type="GreenBlock" x="200" y="434"/>
-			<Block type="GreenBlock" x="200" y="466"/>
-			<Block type="GreenBlock" x="200" y="498"/>
-			<Block type="GreenBlock" x="200" y="530"/>
-			<Block type="GreenBlock" x="200" y="562"/>
-			<Block type="GreenBlock" x="200" y="594"/>
-			<Block type="GreenBlock" x="200" y="626"/>
-
-			<Block type="GreenBlock" x="200" y="658"/>
-			<Block type="GreenBlock" x="232" y="658"/>
-			<Block type="GreenBlock" x="264" y="658"/>
-			<Block type="GreenBlock" x="296" y="658"/>
-			<Block type="GreenBlock" x="328" y="658"/>
-			<Block type="GreenBlock" x="360" y="658"/>
-			<Block type="GreenBlock" x="392" y="658"/>
-			<Block type="GreenBlock" x="424" y="658"/>
-			<Block type="GreenBlock" x="456" y="658"/>
-			<Block type="GreenBlock" x="488" y="658"/>
-			<Block type="GreenBlock" x="520" y="658"/>
-			<Block type="GreenBlock" x="552" y="658"/>
-			<Block type="GreenBlock" x="584" y="658"/>
-			<Block type="GreenBlock" x="616" y="658"/>
-			<Block type="GreenBlock" x="648" y="658"/>
-			<Block type="GreenBlock" x="680" y="658"/>
-			<Block type="GreenBlock" x="712" y="658"/>
-			<Block type="GreenBlock" x="744" y="658"/>
-			<Block type="GreenBlock" x="776" y="658"/>
-			<Block type="GreenBlock" x="808" y="658"/>
-			<Block type="GreenBlock" x="840" y="658"/>
-			<Block type="GreenBlock" x="872" y="658"/>
-			<Block type="GreenBlock" x="904" y="658"/>
-			<Block type="GreenBlock" x="936" y="658"/>
-			<Block type="GreenBlock" x="968" y="658"/>
-			<Block type="GreenBlock" x="1000" y="658"/>
-			<Block type="GreenBlock" x="1032" y="658"/>
-			<Block type="GreenBlock" x="1064" y="658"/>
-
-			<Block type="GreenBlock" x="1064" y="82"/>
-			<Block type="GreenBlock" x="1064" y="114"/>
-			<Block type="GreenBlock" x="1064" y="146"/>
-			<Block type="GreenBlock" x="1064" y="178"/>
-			<Block type="GreenBlock" x="1064" y="210"/>
-			<Block type="GreenBlock" x="1064" y="242"/>
-			<Block type="GreenBlock" x="1064" y="274"/>
-			<Block type="GreenBlock" x="1064" y="306"/>
-			<Block type="GreenBlock" x="1064" y="402"/>
-			<Block type="GreenBlock" x="1064" y="434"/>
-			<Block type="GreenBlock" x="1064" y="466"/>
-			<Block type="GreenBlock" x="1064" y="498"/>
-			<Block type="GreenBlock" x="1064" y="530"/>
-			<Block type="GreenBlock" x="1064" y="562"/>
-			<Block type="GreenBlock" x="1064" y="594"/>
-			<Block type="GreenBlock" x="1064" y="626"/>
-
-			<Block type="GreenBlock" x="168" y="306"/>
-			<Block type="GreenBlock" x="136" y="306"/>
-			<Block type="GreenBlock" x="168" y="402"/>
-			<Block type="GreenBlock" x="136" y="402"/>
-
-			<Block type="GreenBlock" x="1096" y="306"/>
-			<Block type="GreenBlock" x="1128" y="306"/>
-			<Block type="GreenBlock" x="1096" y="402"/>
-			<Block type="GreenBlock" x="1128" y="402"/>
-
-			<Block type="GreenBlock" x="456" y="210"/>
-			<Block type="GreenBlock" x="456" y="242"/>
-			<Block type="GreenBlock" x="456" y="274"/>
-			<Block type="GreenBlock" x="456" y="306"/>
-			<Block type="GreenBlock" x="456" y="338"/>
-			<Block type="GreenBlock" x="456" y="370"/>
-			<Block type="GreenBlock" x="456" y="402"/>
-			<Block type="GreenBlock" x="456" y="434"/>
-			<Block type="GreenBlock" x="456" y="466"/>
-			<Block type="GreenBlock" x="456" y="498"/>
-
-			<Block type="GreenBlock" x="808" y="210"/>
-			<Block type="GreenBlock" x="808" y="242"/>
-			<Block type="GreenBlock" x="808" y="274"/>
-			<Block type="GreenBlock" x="808" y="306"/>
-			<Block type="GreenBlock" x="808" y="338"/>
-			<Block type="GreenBlock" x="808" y="370"/>
-			<Block type="GreenBlock" x="808" y="402"/>
-			<Block type="GreenBlock" x="808" y="434"/>
-			<Block type="GreenBlock" x="808" y="466"/>
-			<Block type="GreenBlock" x="808" y="498"/>
 		</Objects>
 	</Room>
 
@@ -195,153 +136,54 @@
 		<Neighbor direction="up" id="2"/>as
 		<Neighbor direction="down" id="8"/>as
 		<Objects>
-			<Enemy type="Moblin" x="330" y="350"/>
-			<Enemy type="Octorok" x="1000" y="350"/>
+			<Block type="LeftDoorClose" x="80" y="440"/>
+			<Block type="TopDoorOpen" x="640" y="80"/>
+			<Block type="BottomDoorOpen" x="640" y="800"/>
+			<Block type="RightDoorClose" x="1200" y="440"/>
 
+			<Block type="Wall" x="640" y="440"/>
+			<Block type="Floor" x="0" y="0"/>
 
-			<Item type="Food" x="968" y="498"/>
-			<Item type="Bomb" x="370" y="242"/>
-			<Item type="RedRupee" x="968" y="210"/>
+			<Item type="BluePotion" x="10" y="7"/>
+			<Item type="RedRupee" x="5" y="4"/>
+			<Item type="RedRupee" x="6" y="5"/>
 
-			<Block type="Block" x="616" y="144"/>
-			<Block type="Block" x="616" y="176"/>
-			<Block type="Block" x="648" y="144"/>
-			<Block type="Block" x="648" y="176"/>
-			<Block type="Block" x="616" y="208"/>
-			<Block type="Block" x="648" y="208"/>
+			<Block type="ClearBlock" x="1" y="0"/>
+			<Block type="ClearBlock" x="2" y="0"/>
+			<Block type="ClearBlock" x="3" y="0"/>
+			<Block type="ClearBlock" x="4" y="0"/>
+			<Block type="ClearBlock" x="5" y="0"/>
+			<Block type="ClearBlock" x="8" y="0"/>
+			<Block type="ClearBlock" x="9" y="0"/>
+			<Block type="ClearBlock" x="10" y="0"/>
+			<Block type="ClearBlock" x="11" y="0"/>
+			<Block type="ClearBlock" x="12" y="0"/>
 
-			<Block type="Block" x="616" y="496"/>
-			<Block type="Block" x="616" y="528"/>
-			<Block type="Block" x="648" y="496"/>
-			<Block type="Block" x="648" y="528"/>
-			<Block type="Block" x="616" y="560"/>
-			<Block type="Block" x="648" y="560"/>
+			<Block type="ClearBlock" x="1" y="8"/>
+			<Block type="ClearBlock" x="2" y="8"/>
+			<Block type="ClearBlock" x="3" y="8"/>
+			<Block type="ClearBlock" x="4" y="8"/>
+			<Block type="ClearBlock" x="5" y="8"/>
+			<Block type="ClearBlock" x="8" y="8"/>
+			<Block type="ClearBlock" x="9" y="8"/>
+			<Block type="ClearBlock" x="10" y="8"/>
+			<Block type="ClearBlock" x="11" y="8"/>
+			<Block type="ClearBlock" x="12" y="8"/>
 
-			<Block type="Block" x="200" y="50"/>
-			<Block type="Block" x="232" y="50"/>
-			<Block type="Block" x="264" y="50"/>
-			<Block type="Block" x="296" y="50"/>
-			<Block type="Block" x="328" y="50"/>
-			<Block type="Block" x="360" y="50"/>
-			<Block type="Block" x="392" y="50"/>
-			<Block type="Block" x="424" y="50"/>
-			<Block type="Block" x="456" y="50"/>
-			<Block type="Block" x="488" y="50"/>
-			<Block type="Block" x="520" y="50"/>
-			<Block type="Block" x="552" y="50"/>
-			<Block type="Block" x="584" y="50"/>
-			<Block type="Block" x="616" y="50"/>
-			<Block type="Block" x="648" y="50"/>
-			<Block type="Block" x="680" y="50"/>
-			<Block type="Block" x="712" y="50"/>
-			<Block type="Block" x="744" y="50"/>
-			<Block type="Block" x="776" y="50"/>
-			<Block type="Block" x="808" y="50"/>
-			<Block type="Block" x="840" y="50"/>
-			<Block type="Block" x="872" y="50"/>
-			<Block type="Block" x="904" y="50"/>
-			<Block type="Block" x="936" y="50"/>
-			<Block type="Block" x="968" y="50"/>
-			<Block type="Block" x="1000" y="50"/>
-			<Block type="Block" x="1032" y="50"/>
-			<Block type="Block" x="1064" y="50"/>
+			<Block type="ClearBlock" x="0" y="1"/>
+			<Block type="ClearBlock" x="0" y="2"/>
+			<Block type="ClearBlock" x="0" y="3"/>
+			<Block type="ClearBlock" x="0" y="5"/>
+			<Block type="ClearBlock" x="0" y="6"/>
+			<Block type="ClearBlock" x="0" y="7"/>
 
-			<Block type="Block" x="200" y="82"/>
-			<Block type="Block" x="200" y="114"/>
-			<Block type="Block" x="200" y="146"/>
-			<Block type="Block" x="200" y="178"/>
-			<Block type="Block" x="200" y="210"/>
-			<Block type="Block" x="200" y="242"/>
-			<Block type="Block" x="200" y="274"/>
-			<Block type="Block" x="200" y="306"/>
-			<Block type="Block" x="200" y="402"/>
-			<Block type="Block" x="200" y="434"/>
-			<Block type="Block" x="200" y="466"/>
-			<Block type="Block" x="200" y="498"/>
-			<Block type="Block" x="200" y="530"/>
-			<Block type="Block" x="200" y="562"/>
-			<Block type="Block" x="200" y="594"/>
-			<Block type="Block" x="200" y="626"/>
+			<Block type="ClearBlock" x="13" y="1"/>
+			<Block type="ClearBlock" x="13" y="2"/>
+			<Block type="ClearBlock" x="13" y="3"/>
+			<Block type="ClearBlock" x="13" y="5"/>
+			<Block type="ClearBlock" x="13" y="6"/>
+			<Block type="ClearBlock" x="13" y="7"/>
 
-			<Block type="Block" x="200" y="658"/>
-			<Block type="Block" x="232" y="658"/>
-			<Block type="Block" x="264" y="658"/>
-			<Block type="Block" x="296" y="658"/>
-			<Block type="Block" x="328" y="658"/>
-			<Block type="Block" x="360" y="658"/>
-			<Block type="Block" x="392" y="658"/>
-			<Block type="Block" x="424" y="658"/>
-			<Block type="Block" x="456" y="658"/>
-			<Block type="Block" x="488" y="658"/>
-			<Block type="Block" x="520" y="658"/>
-			<Block type="Block" x="552" y="658"/>
-			<Block type="Block" x="584" y="658"/>
-			<Block type="Block" x="616" y="658"/>
-			<Block type="Block" x="648" y="658"/>
-			<Block type="Block" x="680" y="658"/>
-			<Block type="Block" x="712" y="658"/>
-			<Block type="Block" x="744" y="658"/>
-			<Block type="Block" x="776" y="658"/>
-			<Block type="Block" x="808" y="658"/>
-			<Block type="Block" x="840" y="658"/>
-			<Block type="Block" x="872" y="658"/>
-			<Block type="Block" x="904" y="658"/>
-			<Block type="Block" x="936" y="658"/>
-			<Block type="Block" x="968" y="658"/>
-			<Block type="Block" x="1000" y="658"/>
-			<Block type="Block" x="1032" y="658"/>
-			<Block type="Block" x="1064" y="658"/>
-
-			<Block type="Block" x="1064" y="82"/>
-			<Block type="Block" x="1064" y="114"/>
-			<Block type="Block" x="1064" y="146"/>
-			<Block type="Block" x="1064" y="178"/>
-			<Block type="Block" x="1064" y="210"/>
-			<Block type="Block" x="1064" y="242"/>
-			<Block type="Block" x="1064" y="274"/>
-			<Block type="Block" x="1064" y="306"/>
-			<Block type="Block" x="1064" y="402"/>
-			<Block type="Block" x="1064" y="434"/>
-			<Block type="Block" x="1064" y="466"/>
-			<Block type="Block" x="1064" y="498"/>
-			<Block type="Block" x="1064" y="530"/>
-			<Block type="Block" x="1064" y="562"/>
-			<Block type="Block" x="1064" y="594"/>
-			<Block type="Block" x="1064" y="626"/>
-
-			<Block type="Block" x="168" y="306"/>
-			<Block type="Block" x="136" y="306"/>
-			<Block type="Block" x="168" y="402"/>
-			<Block type="Block" x="136" y="402"/>
-
-			<Block type="Block" x="1096" y="306"/>
-			<Block type="Block" x="1128" y="306"/>
-			<Block type="Block" x="1096" y="402"/>
-			<Block type="Block" x="1128" y="402"/>
-
-			<Block type="Block" x="456" y="242"/>
-			<Block type="Block" x="456" y="274"/>
-			<Block type="Block" x="456" y="306"/>
-			<Block type="Block" x="456" y="338"/>
-			<Block type="Block" x="456" y="370"/>
-			<Block type="Block" x="456" y="402"/>
-			<Block type="Block" x="456" y="434"/>
-			<Block type="Block" x="456" y="466"/>
-
-			<Block type="Block" x="808" y="242"/>
-			<Block type="Block" x="808" y="274"/>
-			<Block type="Block" x="808" y="306"/>
-			<Block type="Block" x="808" y="338"/>
-			<Block type="Block" x="808" y="370"/>
-			<Block type="Block" x="808" y="402"/>
-			<Block type="Block" x="808" y="434"/>
-			<Block type="Block" x="808" y="466"/>
-
-			<Block type="Block" x="488" y="242"/>
-			<Block type="Block" x="776" y="242"/>
-
-			<Block type="Block" x="488" y="466"/>
-			<Block type="Block" x="776" y="466"/>
 
 		</Objects>
 	</Room>
@@ -350,160 +192,54 @@
 		<Neighbor direction="right" id="5"/>as
 		<Neighbor direction="down" id="10"/>as
 		<Objects>
-			<Enemy type="Stalfos" x="330" y="350"/>
-			<Enemy type="Tektike" x="1000" y="350"/>
+			<Block type="LeftDoorClose" x="80" y="440"/>
+			<Block type="TopDoorClose" x="640" y="80"/>
+			<Block type="BottomDoorOpen" x="640" y="800"/>
+			<Block type="RightDoorOpen" x="1200" y="440"/>
 
-			<Item type="Food" x="968" y="242"/>
-			<Item type="Bomb" x="370" y="498"/>
-			<Item type="GreenRupee" x="520" y="306"/>
+			<Block type="Wall" x="640" y="440"/>
+			<Block type="Floor" x="0" y="0"/>
 
-			<Block type="WhiteBlock" x="200" y="50"/>
-			<Block type="WhiteBlock" x="232" y="50"/>
-			<Block type="WhiteBlock" x="264" y="50"/>
-			<Block type="WhiteBlock" x="296" y="50"/>
-			<Block type="WhiteBlock" x="328" y="50"/>
-			<Block type="WhiteBlock" x="360" y="50"/>
-			<Block type="WhiteBlock" x="392" y="50"/>
-			<Block type="WhiteBlock" x="424" y="50"/>
-			<Block type="WhiteBlock" x="456" y="50"/>
-			<Block type="WhiteBlock" x="488" y="50"/>
-			<Block type="WhiteBlock" x="520" y="50"/>
-			<Block type="WhiteBlock" x="552" y="50"/>
-			<Block type="WhiteBlock" x="584" y="50"/>
-			<Block type="WhiteBlock" x="616" y="50"/>
-			<Block type="WhiteBlock" x="648" y="50"/>
-			<Block type="WhiteBlock" x="680" y="50"/>
-			<Block type="WhiteBlock" x="712" y="50"/>
-			<Block type="WhiteBlock" x="744" y="50"/>
-			<Block type="WhiteBlock" x="776" y="50"/>
-			<Block type="WhiteBlock" x="808" y="50"/>
-			<Block type="WhiteBlock" x="840" y="50"/>
-			<Block type="WhiteBlock" x="872" y="50"/>
-			<Block type="WhiteBlock" x="904" y="50"/>
-			<Block type="WhiteBlock" x="936" y="50"/>
-			<Block type="WhiteBlock" x="968" y="50"/>
-			<Block type="WhiteBlock" x="1000" y="50"/>
-			<Block type="WhiteBlock" x="1032" y="50"/>
-			<Block type="WhiteBlock" x="1064" y="50"/>
+			<Item type="Bomb" x="6" y="3"/>
+			<Item type="Bomb" x="6" y="4"/>
+			<Item type="Bomb" x="7" y="3"/>
+			<Item type="Bomb" x="7" y="4"/>
 
-			<Block type="WhiteBlock" x="200" y="82"/>
-			<Block type="WhiteBlock" x="200" y="114"/>
-			<Block type="WhiteBlock" x="200" y="146"/>
-			<Block type="WhiteBlock" x="200" y="178"/>
-			<Block type="WhiteBlock" x="200" y="210"/>
-			<Block type="WhiteBlock" x="200" y="242"/>
-			<Block type="WhiteBlock" x="200" y="274"/>
-			<Block type="WhiteBlock" x="200" y="306"/>
-			<Block type="WhiteBlock" x="200" y="402"/>
-			<Block type="WhiteBlock" x="200" y="434"/>
-			<Block type="WhiteBlock" x="200" y="466"/>
-			<Block type="WhiteBlock" x="200" y="498"/>
-			<Block type="WhiteBlock" x="200" y="530"/>
-			<Block type="WhiteBlock" x="200" y="562"/>
-			<Block type="WhiteBlock" x="200" y="594"/>
-			<Block type="WhiteBlock" x="200" y="626"/>
+			<Block type="ClearBlock" x="1" y="0"/>
+			<Block type="ClearBlock" x="2" y="0"/>
+			<Block type="ClearBlock" x="3" y="0"/>
+			<Block type="ClearBlock" x="4" y="0"/>
+			<Block type="ClearBlock" x="5" y="0"/>
+			<Block type="ClearBlock" x="8" y="0"/>
+			<Block type="ClearBlock" x="9" y="0"/>
+			<Block type="ClearBlock" x="10" y="0"/>
+			<Block type="ClearBlock" x="11" y="0"/>
+			<Block type="ClearBlock" x="12" y="0"/>
 
-			<Block type="WhiteBlock" x="200" y="658"/>
-			<Block type="WhiteBlock" x="232" y="658"/>
-			<Block type="WhiteBlock" x="264" y="658"/>
-			<Block type="WhiteBlock" x="296" y="658"/>
-			<Block type="WhiteBlock" x="328" y="658"/>
-			<Block type="WhiteBlock" x="360" y="658"/>
-			<Block type="WhiteBlock" x="392" y="658"/>
-			<Block type="WhiteBlock" x="424" y="658"/>
-			<Block type="WhiteBlock" x="456" y="658"/>
-			<Block type="WhiteBlock" x="488" y="658"/>
-			<Block type="WhiteBlock" x="520" y="658"/>
-			<Block type="WhiteBlock" x="552" y="658"/>
-			<Block type="WhiteBlock" x="584" y="658"/>
-			<Block type="WhiteBlock" x="616" y="658"/>
-			<Block type="WhiteBlock" x="648" y="658"/>
-			<Block type="WhiteBlock" x="680" y="658"/>
-			<Block type="WhiteBlock" x="712" y="658"/>
-			<Block type="WhiteBlock" x="744" y="658"/>
-			<Block type="WhiteBlock" x="776" y="658"/>
-			<Block type="WhiteBlock" x="808" y="658"/>
-			<Block type="WhiteBlock" x="840" y="658"/>
-			<Block type="WhiteBlock" x="872" y="658"/>
-			<Block type="WhiteBlock" x="904" y="658"/>
-			<Block type="WhiteBlock" x="936" y="658"/>
-			<Block type="WhiteBlock" x="968" y="658"/>
-			<Block type="WhiteBlock" x="1000" y="658"/>
-			<Block type="WhiteBlock" x="1032" y="658"/>
-			<Block type="WhiteBlock" x="1064" y="658"/>
+			<Block type="ClearBlock" x="1" y="8"/>
+			<Block type="ClearBlock" x="2" y="8"/>
+			<Block type="ClearBlock" x="3" y="8"/>
+			<Block type="ClearBlock" x="4" y="8"/>
+			<Block type="ClearBlock" x="5" y="8"/>
+			<Block type="ClearBlock" x="8" y="8"/>
+			<Block type="ClearBlock" x="9" y="8"/>
+			<Block type="ClearBlock" x="10" y="8"/>
+			<Block type="ClearBlock" x="11" y="8"/>
+			<Block type="ClearBlock" x="12" y="8"/>
 
-			<Block type="WhiteBlock" x="1064" y="82"/>
-			<Block type="WhiteBlock" x="1064" y="114"/>
-			<Block type="WhiteBlock" x="1064" y="146"/>
-			<Block type="WhiteBlock" x="1064" y="178"/>
-			<Block type="WhiteBlock" x="1064" y="210"/>
-			<Block type="WhiteBlock" x="1064" y="242"/>
-			<Block type="WhiteBlock" x="1064" y="274"/>
-			<Block type="WhiteBlock" x="1064" y="306"/>
-			<Block type="WhiteBlock" x="1064" y="402"/>
-			<Block type="WhiteBlock" x="1064" y="434"/>
-			<Block type="WhiteBlock" x="1064" y="466"/>
-			<Block type="WhiteBlock" x="1064" y="498"/>
-			<Block type="WhiteBlock" x="1064" y="530"/>
-			<Block type="WhiteBlock" x="1064" y="562"/>
-			<Block type="WhiteBlock" x="1064" y="594"/>
-			<Block type="WhiteBlock" x="1064" y="626"/>
+			<Block type="ClearBlock" x="0" y="1"/>
+			<Block type="ClearBlock" x="0" y="2"/>
+			<Block type="ClearBlock" x="0" y="3"/>
+			<Block type="ClearBlock" x="0" y="5"/>
+			<Block type="ClearBlock" x="0" y="6"/>
+			<Block type="ClearBlock" x="0" y="7"/>
 
-			<Block type="WhiteBlock" x="168" y="306"/>
-			<Block type="WhiteBlock" x="136" y="306"/>
-			<Block type="WhiteBlock" x="168" y="402"/>
-			<Block type="WhiteBlock" x="136" y="402"/>
-
-			<Block type="WhiteBlock" x="1096" y="306"/>
-			<Block type="WhiteBlock" x="1128" y="306"/>
-			<Block type="WhiteBlock" x="1096" y="402"/>
-			<Block type="WhiteBlock" x="1128" y="402"/>
-
-			<Block type="WhiteBlock" x="456" y="242"/>
-			<Block type="WhiteBlock" x="456" y="274"/>
-			<Block type="WhiteBlock" x="456" y="306"/>
-			<Block type="WhiteBlock" x="456" y="338"/>
-			<Block type="WhiteBlock" x="456" y="370"/>
-			<Block type="WhiteBlock" x="456" y="402"/>
-			<Block type="WhiteBlock" x="456" y="434"/>
-			<Block type="WhiteBlock" x="456" y="466"/>
-
-			<Block type="WhiteBlock" x="808" y="242"/>
-			<Block type="WhiteBlock" x="808" y="274"/>
-			<Block type="WhiteBlock" x="808" y="306"/>
-			<Block type="WhiteBlock" x="808" y="338"/>
-			<Block type="WhiteBlock" x="808" y="370"/>
-			<Block type="WhiteBlock" x="808" y="402"/>
-			<Block type="WhiteBlock" x="808" y="434"/>
-			<Block type="WhiteBlock" x="808" y="466"/>
-
-			<Block type="WhiteBlock" x="488" y="242"/>
-			<Block type="WhiteBlock" x="520" y="242"/>
-			<Block type="WhiteBlock" x="776" y="242"/>
-			<Block type="WhiteBlock" x="744" y="242"/>
-
-			<Block type="WhiteBlock" x="488" y="466"/>
-			<Block type="WhiteBlock" x="520" y="466"/>
-			<Block type="WhiteBlock" x="776" y="466"/>
-			<Block type="WhiteBlock" x="744" y="466"/>
-
-			<Block type="WhiteBlock" x="520" y="530"/>
-			<Block type="WhiteBlock" x="552" y="530"/>
-			<Block type="WhiteBlock" x="584" y="530"/>
-			<Block type="WhiteBlock" x="616" y="530"/>
-			<Block type="WhiteBlock" x="648" y="530"/>
-			<Block type="WhiteBlock" x="680" y="530"/>
-			<Block type="WhiteBlock" x="712" y="530"/>
-			<Block type="WhiteBlock" x="744" y="530"/>
-
-			<Block type="WhiteBlock" x="520" y="178"/>
-			<Block type="WhiteBlock" x="552" y="178"/>
-			<Block type="WhiteBlock" x="584" y="178"/>
-			<Block type="WhiteBlock" x="616" y="178"/>
-			<Block type="WhiteBlock" x="648" y="178"/>
-			<Block type="WhiteBlock" x="680" y="178"/>
-			<Block type="WhiteBlock" x="712" y="178"/>
-			<Block type="WhiteBlock" x="744" y="178"/>
+			<Block type="ClearBlock" x="13" y="1"/>
+			<Block type="ClearBlock" x="13" y="2"/>
+			<Block type="ClearBlock" x="13" y="3"/>
+			<Block type="ClearBlock" x="13" y="5"/>
+			<Block type="ClearBlock" x="13" y="6"/>
+			<Block type="ClearBlock" x="13" y="7"/>
 
 		</Objects>
 	</Room>
@@ -511,172 +247,57 @@
 	<Room id="5">
 		<Neighbor direction="left" id="4"/>as
 		<Objects>
-			<Enemy type="Aquamentus" x="330" y="150"/>
-			<Enemy type="Gel" x="330" y="350"/>
-			<Enemy type="Goriya" x="330" y="500"/>
-			<Enemy type="Keese" x="1000" y="150"/>
-			<Enemy type="Moblin" x="1000" y="350"/>
-			<Enemy type="Octorok" x="1000" y="500"/>
-			<Enemy type="Stalfos" x="700" y="150"/>
-			<Enemy type="Tektike" x="700" y="700"/>
+			<Block type="LeftDoorOpen" x="80" y="440"/>
+			<Block type="TopDoorClose" x="640" y="80"/>
+			<Block type="BottomDoorClose" x="640" y="800"/>
+			<Block type="RightDoorClose" x="1200" y="440"/>
 
+			<Block type="Wall" x="640" y="440"/>
+			<Block type="Floor" x="0" y="0"/>
 
-			<Item type="Food" x="968" y="242"/>
-			<Item type="Bomb" x="370" y="498"/>
-			<Item type="GreenRupee" x="520" y="338"/>
-			<Item type="BluePotion" x="424" y="306"/>
-			<Item type="RedPotion" x="392" y="370"/>
-			<Item type="RedRupee" x="584" y="306"/>
+			<Item type="RedPotion" x="3" y="3"/>
+			<Item type="BluePotion" x="9" y="5"/>
 
+			<Item type="GreenRupee" x="6" y="3"/>
+			<Item type="GreenRupee" x="6" y="4"/>
+			<Item type="GreenRupee" x="7" y="3"/>
+			<Item type="GreenRupee" x="7" y="4"/>
 
+			<Block type="ClearBlock" x="1" y="0"/>
+			<Block type="ClearBlock" x="2" y="0"/>
+			<Block type="ClearBlock" x="3" y="0"/>
+			<Block type="ClearBlock" x="4" y="0"/>
+			<Block type="ClearBlock" x="5" y="0"/>
+			<Block type="ClearBlock" x="8" y="0"/>
+			<Block type="ClearBlock" x="9" y="0"/>
+			<Block type="ClearBlock" x="10" y="0"/>
+			<Block type="ClearBlock" x="11" y="0"/>
+			<Block type="ClearBlock" x="12" y="0"/>
 
-			<Block type="WhiteBlock" x="200" y="50"/>
-			<Block type="WhiteBlock" x="232" y="50"/>
-			<Block type="WhiteBlock" x="264" y="50"/>
-			<Block type="WhiteBlock" x="296" y="50"/>
-			<Block type="WhiteBlock" x="328" y="50"/>
-			<Block type="WhiteBlock" x="360" y="50"/>
-			<Block type="WhiteBlock" x="392" y="50"/>
-			<Block type="WhiteBlock" x="424" y="50"/>
-			<Block type="WhiteBlock" x="456" y="50"/>
-			<Block type="WhiteBlock" x="488" y="50"/>
-			<Block type="WhiteBlock" x="520" y="50"/>
-			<Block type="WhiteBlock" x="552" y="50"/>
-			<Block type="WhiteBlock" x="584" y="50"/>
-			<Block type="WhiteBlock" x="616" y="50"/>
-			<Block type="WhiteBlock" x="648" y="50"/>
-			<Block type="WhiteBlock" x="680" y="50"/>
-			<Block type="WhiteBlock" x="712" y="50"/>
-			<Block type="WhiteBlock" x="744" y="50"/>
-			<Block type="WhiteBlock" x="776" y="50"/>
-			<Block type="WhiteBlock" x="808" y="50"/>
-			<Block type="WhiteBlock" x="840" y="50"/>
-			<Block type="WhiteBlock" x="872" y="50"/>
-			<Block type="WhiteBlock" x="904" y="50"/>
-			<Block type="WhiteBlock" x="936" y="50"/>
-			<Block type="WhiteBlock" x="968" y="50"/>
-			<Block type="WhiteBlock" x="1000" y="50"/>
-			<Block type="WhiteBlock" x="1032" y="50"/>
-			<Block type="WhiteBlock" x="1064" y="50"/>
+			<Block type="ClearBlock" x="1" y="8"/>
+			<Block type="ClearBlock" x="2" y="8"/>
+			<Block type="ClearBlock" x="3" y="8"/>
+			<Block type="ClearBlock" x="4" y="8"/>
+			<Block type="ClearBlock" x="5" y="8"/>
+			<Block type="ClearBlock" x="8" y="8"/>
+			<Block type="ClearBlock" x="9" y="8"/>
+			<Block type="ClearBlock" x="10" y="8"/>
+			<Block type="ClearBlock" x="11" y="8"/>
+			<Block type="ClearBlock" x="12" y="8"/>
 
-			<Block type="YellowBlock" x="200" y="82"/>
-			<Block type="YellowBlock" x="200" y="114"/>
-			<Block type="YellowBlock" x="200" y="146"/>
-			<Block type="YellowBlock" x="200" y="178"/>
-			<Block type="YellowBlock" x="200" y="210"/>
-			<Block type="YellowBlock" x="200" y="242"/>
-			<Block type="YellowBlock" x="200" y="274"/>
-			<Block type="YellowBlock" x="200" y="306"/>
-			<Block type="YellowBlock" x="200" y="402"/>
-			<Block type="YellowBlock" x="200" y="434"/>
-			<Block type="YellowBlock" x="200" y="466"/>
-			<Block type="YellowBlock" x="200" y="498"/>
-			<Block type="YellowBlock" x="200" y="530"/>
-			<Block type="YellowBlock" x="200" y="562"/>
-			<Block type="YellowBlock" x="200" y="594"/>
-			<Block type="YellowBlock" x="200" y="626"/>
+			<Block type="ClearBlock" x="0" y="1"/>
+			<Block type="ClearBlock" x="0" y="2"/>
+			<Block type="ClearBlock" x="0" y="3"/>
+			<Block type="ClearBlock" x="0" y="5"/>
+			<Block type="ClearBlock" x="0" y="6"/>
+			<Block type="ClearBlock" x="0" y="7"/>
 
-			<Block type="WhiteBlock" x="200" y="658"/>
-			<Block type="WhiteBlock" x="232" y="658"/>
-			<Block type="WhiteBlock" x="264" y="658"/>
-			<Block type="WhiteBlock" x="296" y="658"/>
-			<Block type="WhiteBlock" x="328" y="658"/>
-			<Block type="WhiteBlock" x="360" y="658"/>
-			<Block type="WhiteBlock" x="392" y="658"/>
-			<Block type="WhiteBlock" x="424" y="658"/>
-			<Block type="WhiteBlock" x="456" y="658"/>
-			<Block type="WhiteBlock" x="488" y="658"/>
-			<Block type="WhiteBlock" x="520" y="658"/>
-			<Block type="WhiteBlock" x="552" y="658"/>
-			<Block type="WhiteBlock" x="584" y="658"/>
-			<Block type="WhiteBlock" x="616" y="658"/>
-			<Block type="WhiteBlock" x="648" y="658"/>
-			<Block type="WhiteBlock" x="680" y="658"/>
-			<Block type="WhiteBlock" x="712" y="658"/>
-			<Block type="WhiteBlock" x="744" y="658"/>
-			<Block type="WhiteBlock" x="776" y="658"/>
-			<Block type="WhiteBlock" x="808" y="658"/>
-			<Block type="WhiteBlock" x="840" y="658"/>
-			<Block type="WhiteBlock" x="872" y="658"/>
-			<Block type="WhiteBlock" x="904" y="658"/>
-			<Block type="WhiteBlock" x="936" y="658"/>
-			<Block type="WhiteBlock" x="968" y="658"/>
-			<Block type="WhiteBlock" x="1000" y="658"/>
-			<Block type="WhiteBlock" x="1032" y="658"/>
-			<Block type="WhiteBlock" x="1064" y="658"/>
-
-			<Block type="YellowBlock" x="1064" y="82"/>
-			<Block type="YellowBlock" x="1064" y="114"/>
-			<Block type="YellowBlock" x="1064" y="146"/>
-			<Block type="YellowBlock" x="1064" y="178"/>
-			<Block type="YellowBlock" x="1064" y="210"/>
-			<Block type="YellowBlock" x="1064" y="242"/>
-			<Block type="YellowBlock" x="1064" y="274"/>
-			<Block type="YellowBlock" x="1064" y="306"/>
-			<Block type="YellowBlock" x="1064" y="402"/>
-			<Block type="YellowBlock" x="1064" y="434"/>
-			<Block type="YellowBlock" x="1064" y="466"/>
-			<Block type="YellowBlock" x="1064" y="498"/>
-			<Block type="YellowBlock" x="1064" y="530"/>
-			<Block type="YellowBlock" x="1064" y="562"/>
-			<Block type="YellowBlock" x="1064" y="594"/>
-			<Block type="YellowBlock" x="1064" y="626"/>
-
-			<Block type="WhiteBlock" x="168" y="306"/>
-			<Block type="WhiteBlock" x="136" y="306"/>
-			<Block type="WhiteBlock" x="168" y="402"/>
-			<Block type="WhiteBlock" x="136" y="402"/>
-
-			<Block type="WhiteBlock" x="1096" y="306"/>
-			<Block type="WhiteBlock" x="1128" y="306"/>
-			<Block type="WhiteBlock" x="1096" y="402"/>
-			<Block type="WhiteBlock" x="1128" y="402"/>
-
-			<Block type="GreenBlock" x="456" y="242"/>
-			<Block type="GreenBlock" x="456" y="274"/>
-			<Block type="GreenBlock" x="456" y="306"/>
-			<Block type="GreenBlock" x="456" y="338"/>
-			<Block type="GreenBlock" x="456" y="370"/>
-			<Block type="GreenBlock" x="456" y="402"/>
-			<Block type="GreenBlock" x="456" y="434"/>
-			<Block type="GreenBlock" x="456" y="466"/>
-
-			<Block type="GreenBlock" x="808" y="242"/>
-			<Block type="GreenBlock" x="808" y="274"/>
-			<Block type="GreenBlock" x="808" y="306"/>
-			<Block type="GreenBlock" x="808" y="338"/>
-			<Block type="GreenBlock" x="808" y="370"/>
-			<Block type="GreenBlock" x="808" y="402"/>
-			<Block type="GreenBlock" x="808" y="434"/>
-			<Block type="GreenBlock" x="808" y="466"/>
-
-			<Block type="GreenBlock" x="488" y="242"/>
-			<Block type="GreenBlock" x="520" y="242"/>
-			<Block type="GreenBlock" x="776" y="242"/>
-			<Block type="GreenBlock" x="744" y="242"/>
-
-			<Block type="GreenBlock" x="488" y="466"/>
-			<Block type="GreenBlock" x="520" y="466"/>
-			<Block type="GreenBlock" x="776" y="466"/>
-			<Block type="GreenBlock" x="744" y="466"/>
-
-			<Block type="Block" x="520" y="530"/>
-			<Block type="Block" x="552" y="530"/>
-			<Block type="Block" x="584" y="530"/>
-			<Block type="Block" x="616" y="530"/>
-			<Block type="Block" x="648" y="530"/>
-			<Block type="Block" x="680" y="530"/>
-			<Block type="Block" x="712" y="530"/>
-			<Block type="Block" x="744" y="530"/>
-
-			<Block type="Block" x="520" y="178"/>
-			<Block type="Block" x="552" y="178"/>
-			<Block type="Block" x="584" y="178"/>
-			<Block type="Block" x="616" y="178"/>
-			<Block type="Block" x="648" y="178"/>
-			<Block type="Block" x="680" y="178"/>
-			<Block type="Block" x="712" y="178"/>
-			<Block type="Block" x="744" y="178"/>
+			<Block type="ClearBlock" x="13" y="1"/>
+			<Block type="ClearBlock" x="13" y="2"/>
+			<Block type="ClearBlock" x="13" y="3"/>
+			<Block type="ClearBlock" x="13" y="5"/>
+			<Block type="ClearBlock" x="13" y="6"/>
+			<Block type="ClearBlock" x="13" y="7"/>
 
 		</Objects>
 	</Room>
@@ -684,28 +305,60 @@
 	<Room id="6">
 		<Neighbor direction="right" id="7"/>as
 		<Objects>
-			<Item type="Bomb" x="400" y="300"/>
-			<Item type="BluePotion" x="500" y="300"/>
-			<Item type="RedPotion" x="600" y="300"/>
-			<Item type="GreenRupee" x="700" y="300"/>
-			<Item type="RedRupee" x="800" y="300"/>
-			<Item type="Food" x="900" y="300"/>
+			<Block type="LeftDoorClose" x="80" y="440"/>
+			<Block type="TopDoorClose" x="640" y="80"/>
+			<Block type="BottomDoorClose" x="640" y="800"/>
+			<Block type="RightDoorOpen" x="1200" y="440"/>
 
-			<Block type="TreeBlock" x="400" y="450"/>
-			<Block type="GreenBlock" x="500" y="450"/>
-			<Block type="Block" x="600" y="450"/>
-			<Block type="WhiteBlock" x="700" y="450"/>
-			<Block type="YellowBlock" x="800" y="450"/>
+			<Block type="Wall" x="640" y="440"/>
+			<Block type="Floor" x="0" y="0"/>
+
+			<Item type="GreenRupee" x="5" y="3"/>
+			<Item type="GreenRupee" x="6" y="3"/>
+			<Item type="GreenRupee" x="7" y="3"/>
+			<Item type="GreenRupee" x="8" y="3"/>
+			<Item type="GreenRupee" x="5" y="4"/>
+			<Item type="GreenRupee" x="6" y="4"/>
+			<Item type="GreenRupee" x="7" y="4"/>
+			<Item type="GreenRupee" x="8" y="4"/>
+
+			<Block type="ClearBlock" x="1" y="0"/>
+			<Block type="ClearBlock" x="2" y="0"/>
+			<Block type="ClearBlock" x="3" y="0"/>
+			<Block type="ClearBlock" x="4" y="0"/>
+			<Block type="ClearBlock" x="5" y="0"/>
+			<Block type="ClearBlock" x="8" y="0"/>
+			<Block type="ClearBlock" x="9" y="0"/>
+			<Block type="ClearBlock" x="10" y="0"/>
+			<Block type="ClearBlock" x="11" y="0"/>
+			<Block type="ClearBlock" x="12" y="0"/>
+
+			<Block type="ClearBlock" x="1" y="8"/>
+			<Block type="ClearBlock" x="2" y="8"/>
+			<Block type="ClearBlock" x="3" y="8"/>
+			<Block type="ClearBlock" x="4" y="8"/>
+			<Block type="ClearBlock" x="5" y="8"/>
+			<Block type="ClearBlock" x="8" y="8"/>
+			<Block type="ClearBlock" x="9" y="8"/>
+			<Block type="ClearBlock" x="10" y="8"/>
+			<Block type="ClearBlock" x="11" y="8"/>
+			<Block type="ClearBlock" x="12" y="8"/>
+
+			<Block type="ClearBlock" x="0" y="1"/>
+			<Block type="ClearBlock" x="0" y="2"/>
+			<Block type="ClearBlock" x="0" y="3"/>
+			<Block type="ClearBlock" x="0" y="5"/>
+			<Block type="ClearBlock" x="0" y="6"/>
+			<Block type="ClearBlock" x="0" y="7"/>
+
+			<Block type="ClearBlock" x="13" y="1"/>
+			<Block type="ClearBlock" x="13" y="2"/>
+			<Block type="ClearBlock" x="13" y="3"/>
+			<Block type="ClearBlock" x="13" y="5"/>
+			<Block type="ClearBlock" x="13" y="6"/>
+			<Block type="ClearBlock" x="13" y="7"/>
 
 
-			<Enemy type="Aquamentus" x="400" y="550"/>
-			<Enemy type="Gel" x="500" y="550"/>
-			<Enemy type="Goriya" x="600" y="550"/>
-			<Enemy type="Keese" x="700" y="550"/>
-			<Enemy type="Moblin" x="800" y="550"/>
-			<Enemy type="Octorok" x="900" y="550"/>
-			<Enemy type="Stalfos" x="1000" y="550"/>
-			<Enemy type="Tektike" x="1100" y="550"/>
 		</Objects>
 	</Room>
 
@@ -715,227 +368,59 @@
 		<Neighbor direction="right" id="8"/>
 		<Neighbor direction="down" id="11"/>
 		<Objects>
-			<!-- Main structure - Square pattern with three exits -->
-			<!-- Top horizontal wall - full -->
-			<Block type="Block" x="200" y="150"/>
-			<Block type="Block" x="232" y="150"/>
-			<Block type="Block" x="264" y="150"/>
-			<Block type="Block" x="296" y="150"/>
-			<Block type="Block" x="328" y="150"/>
-			<Block type="Block" x="360" y="150"/>
-			<Block type="Block" x="392" y="150"/>
-			<Block type="Block" x="424" y="150"/>
-			<Block type="Block" x="456" y="150"/>
-			<Block type="Block" x="488" y="150"/>
-			<Block type="Block" x="520" y="150"/>
-			<Block type="Block" x="552" y="150"/>
-			<Block type="Block" x="584" y="150"/>
-			<Block type="Block" x="616" y="150"/>
-			<Block type="Block" x="648" y="150"/>
-			<Block type="Block" x="680" y="150"/>
-			<Block type="Block" x="712" y="150"/>
-			<Block type="Block" x="744" y="150"/>
-			<Block type="Block" x="776" y="150"/>
-			<Block type="Block" x="808" y="150"/>
-			<Block type="Block" x="840" y="150"/>
-			<Block type="Block" x="872" y="150"/>
-			<Block type="Block" x="904" y="150"/>
-			<Block type="Block" x="936" y="150"/>
-			<Block type="Block" x="968" y="150"/>
-			<Block type="Block" x="1000" y="150"/>
-			<Block type="Block" x="1032" y="150"/>
+			<Block type="LeftDoorOpen" x="80" y="440"/>
+			<Block type="TopDoorClose" x="640" y="80"/>
+			<Block type="BottomDoorOpen" x="640" y="800"/>
+			<Block type="RightDoorOpen" x="1200" y="440"/>
 
-			<!-- Left vertical section with gap for left exit -->
-			<Block type="Block" x="350" y="182"/>
-			<Block type="Block" x="350" y="214"/>
-			<Block type="Block" x="350" y="246"/>
-			<Block type="Block" x="350" y="278"/>
-			<Block type="Block" x="350" y="310"/>
+			<Block type="Wall" x="640" y="440"/>
+			<Block type="Floor" x="0" y="0"/>
 
-			<!-- LEFT EXIT GAP (to Room 6) -->
+			<Block type="BlueBlock" x="6" y="3"/>
+			<Block type="BlueBlock" x="7" y="3"/>
+			<Block type="BlueBlock" x="6" y="4"/>
+			<Block type="BlueBlock" x="7" y="4"/>
 
-			<Block type="Block" x="350" y="438"/>
-			<Block type="Block" x="350" y="470"/>
-			<Block type="Block" x="350" y="502"/>
-			<Block type="Block" x="350" y="534"/>
 
-			<!-- Right vertical section with gap for right exit -->
-			<Block type="Block" x="914" y="182"/>
-			<Block type="Block" x="914" y="214"/>
-			<Block type="Block" x="914" y="246"/>
-			<Block type="Block" x="914" y="278"/>
-			<Block type="Block" x="914" y="310"/>
 
-			<!-- RIGHT EXIT GAP (to Room 8) -->
+			<Item type="Bomb" x="10" y="1"/>
+			<Item type="RedRupee" x="2" y="6"/>
 
-			<Block type="Block" x="914" y="438"/>
-			<Block type="Block" x="914" y="470"/>
-			<Block type="Block" x="914" y="502"/>
-			<Block type="Block" x="914" y="534"/>
+			<Block type="ClearBlock" x="1" y="0"/>
+			<Block type="ClearBlock" x="2" y="0"/>
+			<Block type="ClearBlock" x="3" y="0"/>
+			<Block type="ClearBlock" x="4" y="0"/>
+			<Block type="ClearBlock" x="5" y="0"/>
+			<Block type="ClearBlock" x="8" y="0"/>
+			<Block type="ClearBlock" x="9" y="0"/>
+			<Block type="ClearBlock" x="10" y="0"/>
+			<Block type="ClearBlock" x="11" y="0"/>
+			<Block type="ClearBlock" x="12" y="0"/>
 
-			<!-- Bottom horizontal section with gap for bottom exit -->
-			<Block type="Block" x="350" y="534"/>
-			<Block type="Block" x="382" y="534"/>
-			<Block type="Block" x="414" y="534"/>
-			<Block type="Block" x="446" y="534"/>
-			<Block type="Block" x="478" y="534"/>
-			<Block type="Block" x="510" y="534"/>
-			<Block type="Block" x="542" y="534"/>
-			<Block type="Block" x="574" y="534"/>
+			<Block type="ClearBlock" x="1" y="8"/>
+			<Block type="ClearBlock" x="2" y="8"/>
+			<Block type="ClearBlock" x="3" y="8"/>
+			<Block type="ClearBlock" x="4" y="8"/>
+			<Block type="ClearBlock" x="5" y="8"/>
+			<Block type="ClearBlock" x="8" y="8"/>
+			<Block type="ClearBlock" x="9" y="8"/>
+			<Block type="ClearBlock" x="10" y="8"/>
+			<Block type="ClearBlock" x="11" y="8"/>
+			<Block type="ClearBlock" x="12" y="8"/>
 
-			<!-- BOTTOM EXIT GAP (to Room 11) -->
+			<Block type="ClearBlock" x="0" y="1"/>
+			<Block type="ClearBlock" x="0" y="2"/>
+			<Block type="ClearBlock" x="0" y="3"/>
+			<Block type="ClearBlock" x="0" y="5"/>
+			<Block type="ClearBlock" x="0" y="6"/>
+			<Block type="ClearBlock" x="0" y="7"/>
 
-			<Block type="Block" x="690" y="534"/>
-			<Block type="Block" x="722" y="534"/>
-			<Block type="Block" x="754" y="534"/>
-			<Block type="Block" x="786" y="534"/>
-			<Block type="Block" x="818" y="534"/>
-			<Block type="Block" x="850" y="534"/>
-			<Block type="Block" x="882" y="534"/>
-			<Block type="Block" x="914" y="534"/>
-
-			<!-- Center obstacle that creates paths but doesn't trap the player -->
-			<Block type="Block" x="500" y="290"/>
-			<Block type="Block" x="532" y="290"/>
-			<Block type="Block" x="564" y="290"/>
-			<Block type="Block" x="596" y="290"/>
-			<Block type="Block" x="628" y="290"/>
-			<Block type="Block" x="660" y="290"/>
-			<Block type="Block" x="692" y="290"/>
-			<Block type="Block" x="724" y="290"/>
-			<Block type="Block" x="756" y="290"/>
-
-			<Block type="Block" x="500" y="354"/>
-			<Block type="Block" x="532" y="354"/>
-			<Block type="Block" x="564" y="354"/>
-			<Block type="Block" x="596" y="354"/>
-			<Block type="Block" x="628" y="354"/>
-			<Block type="Block" x="660" y="354"/>
-			<Block type="Block" x="692" y="354"/>
-			<Block type="Block" x="724" y="354"/>
-			<Block type="Block" x="756" y="354"/>
-
-			<Block type="Block" x="500" y="322"/>
-			<Block type="Block" x="756" y="322"/>
-
-			<!-- Strategically placed enemies -->
-			<Enemy type="Stalfos" x="450" y="240"/>
-			<!-- Guards top path -->
-			<Enemy type="Octorok" x="800" y="240"/>
-			<!-- Guards top path -->
-			<Enemy type="Gel" x="450" y="420"/>
-			<!-- Guards bottom path -->
-			<Enemy type="Gel" x="800" y="420"/>
-			<!-- Guards bottom path -->
-			<Enemy type="Keese" x="632" y="240"/>
-			<!-- Flies around center -->
-
-			<!-- Items placed as rewards -->
-			<Item type="RedRupee" x="632" y="220"/>
-			<!-- Top reward -->
-			<Item type="Bomb" x="550" y="320"/>
-			<!-- Center reward -->
-			<Item type="Food" x="714" y="420"/>
-			<!-- Bottom reward -->
-
-			<!-- Room borders with proper entrance/exit gaps -->
-			<Block type="YellowBlock" x="200" y="50"/>
-			<Block type="YellowBlock" x="232" y="50"/>
-			<Block type="YellowBlock" x="264" y="50"/>
-			<Block type="YellowBlock" x="296" y="50"/>
-			<Block type="YellowBlock" x="328" y="50"/>
-			<Block type="YellowBlock" x="360" y="50"/>
-			<Block type="YellowBlock" x="392" y="50"/>
-			<Block type="YellowBlock" x="424" y="50"/>
-			<Block type="YellowBlock" x="456" y="50"/>
-			<Block type="YellowBlock" x="488" y="50"/>
-			<Block type="YellowBlock" x="520" y="50"/>
-			<Block type="YellowBlock" x="552" y="50"/>
-			<Block type="YellowBlock" x="584" y="50"/>
-			<Block type="YellowBlock" x="616" y="50"/>
-			<Block type="YellowBlock" x="648" y="50"/>
-			<Block type="YellowBlock" x="680" y="50"/>
-			<Block type="YellowBlock" x="712" y="50"/>
-			<Block type="YellowBlock" x="744" y="50"/>
-			<Block type="YellowBlock" x="776" y="50"/>
-			<Block type="YellowBlock" x="808" y="50"/>
-			<Block type="YellowBlock" x="840" y="50"/>
-			<Block type="YellowBlock" x="872" y="50"/>
-			<Block type="YellowBlock" x="904" y="50"/>
-			<Block type="YellowBlock" x="936" y="50"/>
-			<Block type="YellowBlock" x="968" y="50"/>
-			<Block type="YellowBlock" x="1000" y="50"/>
-			<Block type="YellowBlock" x="1032" y="50"/>
-			<Block type="YellowBlock" x="1064" y="50"/>
-
-			<!-- Left wall with gap for Room 6 entrance -->
-			<Block type="YellowBlock" x="200" y="82"/>
-			<Block type="YellowBlock" x="200" y="114"/>
-			<Block type="YellowBlock" x="200" y="146"/>
-			<Block type="YellowBlock" x="200" y="178"/>
-			<Block type="YellowBlock" x="200" y="210"/>
-			<Block type="YellowBlock" x="200" y="242"/>
-			<Block type="YellowBlock" x="200" y="274"/>
-			<Block type="YellowBlock" x="200" y="306"/>
-
-			<!-- LEFT ENTRANCE GAP (from Room 6) -->
-
-			<Block type="YellowBlock" x="200" y="434"/>
-			<Block type="YellowBlock" x="200" y="466"/>
-			<Block type="YellowBlock" x="200" y="498"/>
-			<Block type="YellowBlock" x="200" y="530"/>
-			<Block type="YellowBlock" x="200" y="562"/>
-			<Block type="YellowBlock" x="200" y="594"/>
-			<Block type="YellowBlock" x="200" y="626"/>
-
-			<!-- Bottom wall with gap for Room 11 exit -->
-			<Block type="YellowBlock" x="200" y="658"/>
-			<Block type="YellowBlock" x="232" y="658"/>
-			<Block type="YellowBlock" x="264" y="658"/>
-			<Block type="YellowBlock" x="296" y="658"/>
-			<Block type="YellowBlock" x="328" y="658"/>
-			<Block type="YellowBlock" x="360" y="658"/>
-			<Block type="YellowBlock" x="392" y="658"/>
-			<Block type="YellowBlock" x="424" y="658"/>
-			<Block type="YellowBlock" x="456" y="658"/>
-			<Block type="YellowBlock" x="488" y="658"/>
-			<Block type="YellowBlock" x="520" y="658"/>
-			<Block type="YellowBlock" x="552" y="658"/>
-
-			<!-- BOTTOM EXIT GAP (to Room 11) -->
-
-			<Block type="YellowBlock" x="712" y="658"/>
-			<Block type="YellowBlock" x="744" y="658"/>
-			<Block type="YellowBlock" x="776" y="658"/>
-			<Block type="YellowBlock" x="808" y="658"/>
-			<Block type="YellowBlock" x="840" y="658"/>
-			<Block type="YellowBlock" x="872" y="658"/>
-			<Block type="YellowBlock" x="904" y="658"/>
-			<Block type="YellowBlock" x="936" y="658"/>
-			<Block type="YellowBlock" x="968" y="658"/>
-			<Block type="YellowBlock" x="1000" y="658"/>
-			<Block type="YellowBlock" x="1032" y="658"/>
-			<Block type="YellowBlock" x="1064" y="658"/>
-
-			<!-- Right wall with gap for Room 8 exit -->
-			<Block type="YellowBlock" x="1064" y="82"/>
-			<Block type="YellowBlock" x="1064" y="114"/>
-			<Block type="YellowBlock" x="1064" y="146"/>
-			<Block type="YellowBlock" x="1064" y="178"/>
-			<Block type="YellowBlock" x="1064" y="210"/>
-			<Block type="YellowBlock" x="1064" y="242"/>
-			<Block type="YellowBlock" x="1064" y="274"/>
-			<Block type="YellowBlock" x="1064" y="306"/>
-
-			<!-- RIGHT EXIT GAP (to Room 8) -->
-
-			<Block type="YellowBlock" x="1064" y="434"/>
-			<Block type="YellowBlock" x="1064" y="466"/>
-			<Block type="YellowBlock" x="1064" y="498"/>
-			<Block type="YellowBlock" x="1064" y="530"/>
-			<Block type="YellowBlock" x="1064" y="562"/>
-			<Block type="YellowBlock" x="1064" y="594"/>
-			<Block type="YellowBlock" x="1064" y="626"/>
+			<Block type="ClearBlock" x="13" y="1"/>
+			<Block type="ClearBlock" x="13" y="2"/>
+			<Block type="ClearBlock" x="13" y="3"/>
+			<Block type="ClearBlock" x="13" y="5"/>
+			<Block type="ClearBlock" x="13" y="6"/>
+			<Block type="ClearBlock" x="13" y="7"/>
 		</Objects>
 	</Room>
 
@@ -946,143 +431,64 @@
 		<Neighbor direction="right" id="9"/>
 		<Neighbor direction="down" id="12"/>
 		<Objects>
-			<Enemy type="Aquamentus" x="632" y="336"/>
+			<Block type="LeftDoorOpen" x="80" y="440"/>
+			<Block type="TopDoorOpen" x="640" y="80"/>
+			<Block type="BottomDoorOpen" x="640" y="800"/>
+			<Block type="RightDoorOpen" x="1200" y="440"/>
 
-			<Enemy type="Keese" x="350" y="200"/>
-			<Enemy type="Keese" x="914" y="200"/>
-			<Enemy type="Keese" x="350" y="472"/>
-			<Enemy type="Keese" x="914" y="472"/>
+			<Block type="Wall" x="640" y="440"/>
+			<Block type="Floor" x="0" y="0"/>
 
-			<Block type="GreenBlock" x="350" y="250"/>
-			<Block type="GreenBlock" x="382" y="250"/>
-			<Block type="GreenBlock" x="414" y="250"/>
+			<Block type="BlueBlock" x="6" y="4"/>
+			<Block type="BlueBlock" x="7" y="4"/>
 
-			<Block type="GreenBlock" x="850" y="250"/>
-			<Block type="GreenBlock" x="882" y="250"/>
-			<Block type="GreenBlock" x="914" y="250"/>
+			<Block type="BlueBlock" x="2" y="2"/>
+			<Block type="BlueBlock" x="3" y="2"/>
 
-			<Block type="GreenBlock" x="350" y="422"/>
-			<Block type="GreenBlock" x="382" y="422"/>
-			<Block type="GreenBlock" x="414" y="422"/>
+			<Block type="BlueBlock" x="2" y="6"/>
+			<Block type="BlueBlock" x="3" y="6"/>
 
-			<Block type="GreenBlock" x="850" y="422"/>
-			<Block type="GreenBlock" x="882" y="422"/>
-			<Block type="GreenBlock" x="914" y="422"/>
+			<Block type="BlueBlock" x="10" y="2"/>
+			<Block type="BlueBlock" x="11" y="2"/>
 
-			<Block type="GreenBlock" x="350" y="150"/>
-			<Block type="GreenBlock" x="382" y="150"/>
-			<Block type="GreenBlock" x="350" y="182"/>
-			<Block type="GreenBlock" x="382" y="182"/>
+			<Block type="BlueBlock" x="10" y="6"/>
+			<Block type="BlueBlock" x="11" y="6"/>
 
-			<Block type="GreenBlock" x="882" y="150"/>
-			<Block type="GreenBlock" x="914" y="150"/>
-			<Block type="GreenBlock" x="882" y="182"/>
-			<Block type="GreenBlock" x="914" y="182"/>
+			<Block type="ClearBlock" x="1" y="0"/>
+			<Block type="ClearBlock" x="2" y="0"/>
+			<Block type="ClearBlock" x="3" y="0"/>
+			<Block type="ClearBlock" x="4" y="0"/>
+			<Block type="ClearBlock" x="5" y="0"/>
+			<Block type="ClearBlock" x="8" y="0"/>
+			<Block type="ClearBlock" x="9" y="0"/>
+			<Block type="ClearBlock" x="10" y="0"/>
+			<Block type="ClearBlock" x="11" y="0"/>
+			<Block type="ClearBlock" x="12" y="0"/>
 
-			<Block type="GreenBlock" x="350" y="490"/>
-			<Block type="GreenBlock" x="382" y="490"/>
-			<Block type="GreenBlock" x="350" y="522"/>
-			<Block type="GreenBlock" x="382" y="522"/>
+			<Block type="ClearBlock" x="1" y="8"/>
+			<Block type="ClearBlock" x="2" y="8"/>
+			<Block type="ClearBlock" x="3" y="8"/>
+			<Block type="ClearBlock" x="4" y="8"/>
+			<Block type="ClearBlock" x="5" y="8"/>
+			<Block type="ClearBlock" x="8" y="8"/>
+			<Block type="ClearBlock" x="9" y="8"/>
+			<Block type="ClearBlock" x="10" y="8"/>
+			<Block type="ClearBlock" x="11" y="8"/>
+			<Block type="ClearBlock" x="12" y="8"/>
 
-			<Block type="GreenBlock" x="882" y="490"/>
-			<Block type="GreenBlock" x="914" y="490"/>
-			<Block type="GreenBlock" x="882" y="522"/>
-			<Block type="GreenBlock" x="914" y="522"/>
+			<Block type="ClearBlock" x="0" y="1"/>
+			<Block type="ClearBlock" x="0" y="2"/>
+			<Block type="ClearBlock" x="0" y="3"/>
+			<Block type="ClearBlock" x="0" y="5"/>
+			<Block type="ClearBlock" x="0" y="6"/>
+			<Block type="ClearBlock" x="0" y="7"/>
 
-			<Item type="RedPotion" x="632" y="150"/>
-			<Item type="Bomb" x="500" y="336"/>
-			<Item type="Bomb" x="764" y="336"/>
-			<Item type="RedRupee" x="632" y="522"/>
-
-			<Block type="Block" x="200" y="50"/>
-			<Block type="Block" x="232" y="50"/>
-			<Block type="Block" x="264" y="50"/>
-			<Block type="Block" x="296" y="50"/>
-			<Block type="Block" x="328" y="50"/>
-			<Block type="Block" x="360" y="50"/>
-			<Block type="Block" x="392" y="50"/>
-			<Block type="Block" x="424" y="50"/>
-			<Block type="Block" x="456" y="50"/>
-			<Block type="Block" x="488" y="50"/>
-			<Block type="Block" x="520" y="50"/>
-			<Block type="Block" x="552" y="50"/>
-
-
-			<Block type="Block" x="712" y="50"/>
-			<Block type="Block" x="744" y="50"/>
-			<Block type="Block" x="776" y="50"/>
-			<Block type="Block" x="808" y="50"/>
-			<Block type="Block" x="840" y="50"/>
-			<Block type="Block" x="872" y="50"/>
-			<Block type="Block" x="904" y="50"/>
-			<Block type="Block" x="936" y="50"/>
-			<Block type="Block" x="968" y="50"/>
-			<Block type="Block" x="1000" y="50"/>
-			<Block type="Block" x="1032" y="50"/>
-			<Block type="Block" x="1064" y="50"/>
-
-			<Block type="Block" x="200" y="82"/>
-			<Block type="Block" x="200" y="114"/>
-			<Block type="Block" x="200" y="146"/>
-			<Block type="Block" x="200" y="178"/>
-			<Block type="Block" x="200" y="210"/>
-			<Block type="Block" x="200" y="242"/>
-			<Block type="Block" x="200" y="274"/>
-			<Block type="Block" x="200" y="306"/>
-
-
-			<Block type="Block" x="200" y="434"/>
-			<Block type="Block" x="200" y="466"/>
-			<Block type="Block" x="200" y="498"/>
-			<Block type="Block" x="200" y="530"/>
-			<Block type="Block" x="200" y="562"/>
-			<Block type="Block" x="200" y="594"/>
-			<Block type="Block" x="200" y="626"/>
-
-			<Block type="Block" x="200" y="658"/>
-			<Block type="Block" x="232" y="658"/>
-			<Block type="Block" x="264" y="658"/>
-			<Block type="Block" x="296" y="658"/>
-			<Block type="Block" x="328" y="658"/>
-			<Block type="Block" x="360" y="658"/>
-			<Block type="Block" x="392" y="658"/>
-			<Block type="Block" x="424" y="658"/>
-			<Block type="Block" x="456" y="658"/>
-			<Block type="Block" x="488" y="658"/>
-			<Block type="Block" x="520" y="658"/>
-			<Block type="Block" x="552" y="658"/>
-
-
-			<Block type="Block" x="712" y="658"/>
-			<Block type="Block" x="744" y="658"/>
-			<Block type="Block" x="776" y="658"/>
-			<Block type="Block" x="808" y="658"/>
-			<Block type="Block" x="840" y="658"/>
-			<Block type="Block" x="872" y="658"/>
-			<Block type="Block" x="904" y="658"/>
-			<Block type="Block" x="936" y="658"/>
-			<Block type="Block" x="968" y="658"/>
-			<Block type="Block" x="1000" y="658"/>
-			<Block type="Block" x="1032" y="658"/>
-			<Block type="Block" x="1064" y="658"/>
-
-
-			<Block type="Block" x="1064" y="82"/>
-			<Block type="Block" x="1064" y="114"/>
-			<Block type="Block" x="1064" y="146"/>
-			<Block type="Block" x="1064" y="178"/>
-			<Block type="Block" x="1064" y="210"/>
-			<Block type="Block" x="1064" y="242"/>
-			<Block type="Block" x="1064" y="274"/>
-			<Block type="Block" x="1064" y="306"/>
-
-			<Block type="Block" x="1064" y="434"/>
-			<Block type="Block" x="1064" y="466"/>
-			<Block type="Block" x="1064" y="498"/>
-			<Block type="Block" x="1064" y="530"/>
-			<Block type="Block" x="1064" y="562"/>
-			<Block type="Block" x="1064" y="594"/>
-			<Block type="Block" x="1064" y="626"/>
+			<Block type="ClearBlock" x="13" y="1"/>
+			<Block type="ClearBlock" x="13" y="2"/>
+			<Block type="ClearBlock" x="13" y="3"/>
+			<Block type="ClearBlock" x="13" y="5"/>
+			<Block type="ClearBlock" x="13" y="6"/>
+			<Block type="ClearBlock" x="13" y="7"/>
 		</Objects>
 	</Room>
 
@@ -1091,196 +497,59 @@
 		<Neighbor direction="right" id="10"/>
 		<Neighbor direction="down" id="13"/>
 		<Objects>
-			<Block type="WhiteBlock" x="350" y="150"/>
-			<Block type="WhiteBlock" x="382" y="150"/>
-			<Block type="WhiteBlock" x="414" y="150"/>
-			<Block type="WhiteBlock" x="446" y="150"/>
-			<Block type="WhiteBlock" x="478" y="150"/>
-			<Block type="WhiteBlock" x="542" y="150"/>
-			<Block type="WhiteBlock" x="574" y="150"/>
-			<Block type="WhiteBlock" x="638" y="150"/>
-			<Block type="WhiteBlock" x="670" y="150"/>
-			<Block type="WhiteBlock" x="702" y="150"/>
-			<Block type="WhiteBlock" x="734" y="150"/>
-			<Block type="WhiteBlock" x="766" y="150"/>
-			<Block type="WhiteBlock" x="798" y="150"/>
-			<Block type="WhiteBlock" x="830" y="150"/>
-			<Block type="WhiteBlock" x="862" y="150"/>
-			<Block type="WhiteBlock" x="894" y="150"/>
-			<Block type="WhiteBlock" x="926" y="150"/>
+			<Block type="LeftDoorOpen" x="80" y="440"/>
+			<Block type="TopDoorClose" x="640" y="80"/>
+			<Block type="BottomDoorOpen" x="640" y="800"/>
+			<Block type="RightDoorOpen" x="1200" y="440"/>
 
-			<Block type="WhiteBlock" x="350" y="182"/>
-			<Block type="WhiteBlock" x="350" y="214"/>
-			<Block type="WhiteBlock" x="350" y="246"/>
-			<Block type="WhiteBlock" x="350" y="278"/>
-			<Block type="WhiteBlock" x="350" y="310"/>
-			<Block type="WhiteBlock" x="350" y="342"/>
-			<Block type="WhiteBlock" x="350" y="374"/>
-			<Block type="WhiteBlock" x="350" y="406"/>
-			<Block type="WhiteBlock" x="350" y="438"/>
-			<Block type="WhiteBlock" x="350" y="470"/>
-			<Block type="WhiteBlock" x="350" y="502"/>
-			<Block type="WhiteBlock" x="350" y="534"/>
+			<Block type="Wall" x="640" y="440"/>
+			<Block type="Floor" x="0" y="0"/>
 
-			<Block type="WhiteBlock" x="926" y="182"/>
-			<Block type="WhiteBlock" x="926" y="214"/>
-			<Block type="WhiteBlock" x="926" y="246"/>
-			<Block type="WhiteBlock" x="926" y="278"/>
-			<Block type="WhiteBlock" x="926" y="310"/>
-			<Block type="WhiteBlock" x="926" y="342"/>
-			<Block type="WhiteBlock" x="926" y="374"/>
-			<Block type="WhiteBlock" x="926" y="406"/>
-			<Block type="WhiteBlock" x="926" y="438"/>
-			<Block type="WhiteBlock" x="926" y="470"/>
-			<Block type="WhiteBlock" x="926" y="502"/>
-			<Block type="WhiteBlock" x="926" y="534"/>
+			<Block type="BlueBlock" x="3" y="3"/>
+			<Block type="BlueBlock" x="3" y="5"/>
+			<Block type="BlueBlock" x="10" y="3"/>
+			<Block type="BlueBlock" x="10" y="5"/>
 
-			<Block type="WhiteBlock" x="350" y="566"/>
-			<Block type="WhiteBlock" x="382" y="566"/>
-			<Block type="WhiteBlock" x="414" y="566"/>
-			<Block type="WhiteBlock" x="446" y="566"/>
-			<Block type="WhiteBlock" x="478" y="566"/>
-			<Block type="WhiteBlock" x="510" y="566"/>
-			<Block type="WhiteBlock" x="542" y="566"/>
-			<Block type="WhiteBlock" x="686" y="566"/>
-			<Block type="WhiteBlock" x="718" y="566"/>
-			<Block type="WhiteBlock" x="750" y="566"/>
-			<Block type="WhiteBlock" x="782" y="566"/>
-			<Block type="WhiteBlock" x="814" y="566"/>
-			<Block type="WhiteBlock" x="846" y="566"/>
-			<Block type="WhiteBlock" x="878" y="566"/>
+			<Item type="BluePotion" x="5" y="4"/>
+			<Item type="BluePotion" x="7" y="4"/>
 
-			<Block type="WhiteBlock" x="414" y="214"/>
-			<Block type="WhiteBlock" x="446" y="214"/>
-			<Block type="WhiteBlock" x="478" y="214"/>
-			<Block type="WhiteBlock" x="510" y="214"/>
-			<Block type="WhiteBlock" x="542" y="214"/>
-			<Block type="WhiteBlock" x="574" y="214"/>
-			<Block type="WhiteBlock" x="606" y="214"/>
-			<Block type="WhiteBlock" x="638" y="214"/>
-			<Block type="WhiteBlock" x="670" y="214"/>
-			<Block type="WhiteBlock" x="702" y="214"/>
-			<Block type="WhiteBlock" x="734" y="214"/>
-			<Block type="WhiteBlock" x="798" y="214"/>
-			<Block type="WhiteBlock" x="830" y="214"/>
+			<Block type="ClearBlock" x="1" y="0"/>
+			<Block type="ClearBlock" x="2" y="0"/>
+			<Block type="ClearBlock" x="3" y="0"/>
+			<Block type="ClearBlock" x="4" y="0"/>
+			<Block type="ClearBlock" x="5" y="0"/>
+			<Block type="ClearBlock" x="8" y="0"/>
+			<Block type="ClearBlock" x="9" y="0"/>
+			<Block type="ClearBlock" x="10" y="0"/>
+			<Block type="ClearBlock" x="11" y="0"/>
+			<Block type="ClearBlock" x="12" y="0"/>
 
-			<Block type="WhiteBlock" x="414" y="246"/>
-			<Block type="WhiteBlock" x="414" y="342"/>
-			<Block type="WhiteBlock" x="414" y="374"/>
-			<Block type="WhiteBlock" x="414" y="406"/>
-			<Block type="WhiteBlock" x="414" y="438"/>
-			<Block type="WhiteBlock" x="414" y="470"/>
+			<Block type="ClearBlock" x="1" y="8"/>
+			<Block type="ClearBlock" x="2" y="8"/>
+			<Block type="ClearBlock" x="3" y="8"/>
+			<Block type="ClearBlock" x="4" y="8"/>
+			<Block type="ClearBlock" x="5" y="8"/>
+			<Block type="ClearBlock" x="8" y="8"/>
+			<Block type="ClearBlock" x="9" y="8"/>
+			<Block type="ClearBlock" x="10" y="8"/>
+			<Block type="ClearBlock" x="11" y="8"/>
+			<Block type="ClearBlock" x="12" y="8"/>
 
-			<Block type="WhiteBlock" x="830" y="246"/>
-			<Block type="WhiteBlock" x="830" y="278"/>
-			<Block type="WhiteBlock" x="830" y="310"/>
-			<Block type="WhiteBlock" x="830" y="406"/>
-			<Block type="WhiteBlock" x="830" y="438"/>
-			<Block type="WhiteBlock" x="830" y="470"/>
+			<Block type="ClearBlock" x="0" y="1"/>
+			<Block type="ClearBlock" x="0" y="2"/>
+			<Block type="ClearBlock" x="0" y="3"/>
+			<Block type="ClearBlock" x="0" y="5"/>
+			<Block type="ClearBlock" x="0" y="6"/>
+			<Block type="ClearBlock" x="0" y="7"/>
 
-			<Enemy type="Keese" x="630" y="180"/>
-			<Enemy type="Octorok" x="480" y="320"/>
-			<Enemy type="Octorok" x="760" y="320"/>
-			<Enemy type="Gel" x="630" y="530"/>
-
-			<Item type="RedRupee" x="630" y="245"/>
-			<Item type="BluePotion" x="630" y="370"/>
-			<Item type="Bomb" x="630" y="470"/>
+			<Block type="ClearBlock" x="13" y="1"/>
+			<Block type="ClearBlock" x="13" y="2"/>
+			<Block type="ClearBlock" x="13" y="3"/>
+			<Block type="ClearBlock" x="13" y="5"/>
+			<Block type="ClearBlock" x="13" y="6"/>
+			<Block type="ClearBlock" x="13" y="7"/>
 
 
-			<!-- Top wall -->
-			<Block type="Block" x="200" y="50"/>
-			<Block type="Block" x="232" y="50"/>
-			<Block type="Block" x="264" y="50"/>
-			<Block type="Block" x="296" y="50"/>
-			<Block type="Block" x="328" y="50"/>
-			<Block type="Block" x="360" y="50"/>
-			<Block type="Block" x="392" y="50"/>
-			<Block type="Block" x="424" y="50"/>
-			<Block type="Block" x="456" y="50"/>
-			<Block type="Block" x="488" y="50"/>
-			<Block type="Block" x="520" y="50"/>
-			<Block type="Block" x="552" y="50"/>
-			<Block type="Block" x="584" y="50"/>
-			<Block type="Block" x="616" y="50"/>
-			<Block type="Block" x="648" y="50"/>
-			<Block type="Block" x="680" y="50"/>
-			<Block type="Block" x="712" y="50"/>
-			<Block type="Block" x="744" y="50"/>
-			<Block type="Block" x="776" y="50"/>
-			<Block type="Block" x="808" y="50"/>
-			<Block type="Block" x="840" y="50"/>
-			<Block type="Block" x="872" y="50"/>
-			<Block type="Block" x="904" y="50"/>
-			<Block type="Block" x="936" y="50"/>
-			<Block type="Block" x="968" y="50"/>
-			<Block type="Block" x="1000" y="50"/>
-			<Block type="Block" x="1032" y="50"/>
-			<Block type="Block" x="1064" y="50"/>
-
-			<!-- Left wall -->
-			<Block type="Block" x="200" y="82"/>
-			<Block type="Block" x="200" y="114"/>
-			<Block type="Block" x="200" y="146"/>
-			<Block type="Block" x="200" y="178"/>
-			<Block type="Block" x="200" y="210"/>
-			<Block type="Block" x="200" y="242"/>
-			<Block type="Block" x="200" y="274"/>
-			<Block type="Block" x="200" y="306"/>
-			<Block type="Block" x="200" y="434"/>
-			<Block type="Block" x="200" y="466"/>
-			<Block type="Block" x="200" y="498"/>
-			<Block type="Block" x="200" y="530"/>
-			<Block type="Block" x="200" y="562"/>
-			<Block type="Block" x="200" y="594"/>
-			<Block type="Block" x="200" y="626"/>
-
-			<!-- Bottom wall -->
-			<Block type="Block" x="200" y="658"/>
-			<Block type="Block" x="232" y="658"/>
-			<Block type="Block" x="264" y="658"/>
-			<Block type="Block" x="296" y="658"/>
-			<Block type="Block" x="328" y="658"/>
-			<Block type="Block" x="360" y="658"/>
-			<Block type="Block" x="392" y="658"/>
-			<Block type="Block" x="424" y="658"/>
-			<Block type="Block" x="456" y="658"/>
-			<Block type="Block" x="488" y="658"/>
-			<Block type="Block" x="520" y="658"/>
-			<Block type="Block" x="552" y="658"/>
-			<Block type="Block" x="584" y="658"/>
-			<Block type="Block" x="616" y="658"/>
-			<Block type="Block" x="648" y="658"/>
-			<Block type="Block" x="680" y="658"/>
-			<Block type="Block" x="712" y="658"/>
-			<Block type="Block" x="744" y="658"/>
-			<Block type="Block" x="776" y="658"/>
-			<Block type="Block" x="808" y="658"/>
-			<Block type="Block" x="840" y="658"/>
-			<Block type="Block" x="872" y="658"/>
-			<Block type="Block" x="904" y="658"/>
-			<Block type="Block" x="936" y="658"/>
-			<Block type="Block" x="968" y="658"/>
-			<Block type="Block" x="1000" y="658"/>
-			<Block type="Block" x="1032" y="658"/>
-			<Block type="Block" x="1064" y="658"/>
-
-			<!-- Right wall -->
-			<Block type="Block" x="1064" y="82"/>
-			<Block type="Block" x="1064" y="114"/>
-			<Block type="Block" x="1064" y="146"/>
-			<Block type="Block" x="1064" y="178"/>
-			<Block type="Block" x="1064" y="210"/>
-			<Block type="Block" x="1064" y="242"/>
-			<Block type="Block" x="1064" y="274"/>
-			<Block type="Block" x="1064" y="306"/>
-			<Block type="Block" x="1064" y="434"/>
-			<Block type="Block" x="1064" y="466"/>
-			<Block type="Block" x="1064" y="498"/>
-			<Block type="Block" x="1064" y="530"/>
-			<Block type="Block" x="1064" y="562"/>
-			<Block type="Block" x="1064" y="594"/>
-			<Block type="Block" x="1064" y="626"/>
 		</Objects>
 	</Room>
 
@@ -1291,165 +560,54 @@
 		<Neighbor direction="left" id="9"/>
 		<Neighbor direction="up" id="4"/>
 		<Objects>
-			<!-- Cross-shaped barrier pattern -->
-			<Block type="YellowBlock" x="532" y="154"/>
-			<Block type="YellowBlock" x="564" y="154"/>
-			<Block type="YellowBlock" x="596" y="154"/>
-			<Block type="YellowBlock" x="628" y="154"/>
-			<Block type="YellowBlock" x="660" y="154"/>
-			<Block type="YellowBlock" x="692" y="154"/>
-			<Block type="YellowBlock" x="724" y="154"/>
+			<Block type="LeftDoorOpen" x="80" y="440"/>
+			<Block type="TopDoorOpen" x="640" y="80"/>
+			<Block type="BottomDoorClose" x="640" y="800"/>
+			<Block type="RightDoorClose" x="1200" y="440"/>
 
-			<Block type="YellowBlock" x="532" y="554"/>
-			<Block type="YellowBlock" x="564" y="554"/>
-			<Block type="YellowBlock" x="596" y="554"/>
-			<Block type="YellowBlock" x="628" y="554"/>
-			<Block type="YellowBlock" x="660" y="554"/>
-			<Block type="YellowBlock" x="692" y="554"/>
-			<Block type="YellowBlock" x="724" y="554"/>
+			<Block type="Wall" x="640" y="440"/>
+			<Block type="Floor" x="0" y="0"/>
 
-			<Block type="YellowBlock" x="400" y="254"/>
-			<Block type="YellowBlock" x="400" y="286"/>
-			<Block type="YellowBlock" x="400" y="318"/>
-			<Block type="YellowBlock" x="400" y="350"/>
-			<Block type="YellowBlock" x="400" y="382"/>
-			<Block type="YellowBlock" x="400" y="414"/>
-			<Block type="YellowBlock" x="400" y="446"/>
+			<Item type="BluePotion" x="10" y="7"/>
+			<Item type="RedRupee" x="5" y="4"/>
+			<Item type="RedRupee" x="6" y="5"/>
 
-			<Block type="YellowBlock" x="864" y="254"/>
-			<Block type="YellowBlock" x="864" y="286"/>
-			<Block type="YellowBlock" x="864" y="318"/>
-			<Block type="YellowBlock" x="864" y="350"/>
-			<Block type="YellowBlock" x="864" y="382"/>
-			<Block type="YellowBlock" x="864" y="414"/>
-			<Block type="YellowBlock" x="864" y="446"/>
+			<Block type="ClearBlock" x="1" y="0"/>
+			<Block type="ClearBlock" x="2" y="0"/>
+			<Block type="ClearBlock" x="3" y="0"/>
+			<Block type="ClearBlock" x="4" y="0"/>
+			<Block type="ClearBlock" x="5" y="0"/>
+			<Block type="ClearBlock" x="8" y="0"/>
+			<Block type="ClearBlock" x="9" y="0"/>
+			<Block type="ClearBlock" x="10" y="0"/>
+			<Block type="ClearBlock" x="11" y="0"/>
+			<Block type="ClearBlock" x="12" y="0"/>
 
-			<!-- Corner blocks -->
-			<Block type="YellowBlock" x="300" y="154"/>
-			<Block type="YellowBlock" x="332" y="154"/>
-			<Block type="YellowBlock" x="364" y="154"/>
-			<Block type="YellowBlock" x="300" y="186"/>
-			<Block type="YellowBlock" x="300" y="218"/>
+			<Block type="ClearBlock" x="1" y="8"/>
+			<Block type="ClearBlock" x="2" y="8"/>
+			<Block type="ClearBlock" x="3" y="8"/>
+			<Block type="ClearBlock" x="4" y="8"/>
+			<Block type="ClearBlock" x="5" y="8"/>
+			<Block type="ClearBlock" x="8" y="8"/>
+			<Block type="ClearBlock" x="9" y="8"/>
+			<Block type="ClearBlock" x="10" y="8"/>
+			<Block type="ClearBlock" x="11" y="8"/>
+			<Block type="ClearBlock" x="12" y="8"/>
 
-			<Block type="YellowBlock" x="300" y="554"/>
-			<Block type="YellowBlock" x="332" y="554"/>
-			<Block type="YellowBlock" x="364" y="554"/>
-			<Block type="YellowBlock" x="300" y="522"/>
-			<Block type="YellowBlock" x="300" y="490"/>
+			<Block type="ClearBlock" x="0" y="1"/>
+			<Block type="ClearBlock" x="0" y="2"/>
+			<Block type="ClearBlock" x="0" y="3"/>
+			<Block type="ClearBlock" x="0" y="5"/>
+			<Block type="ClearBlock" x="0" y="6"/>
+			<Block type="ClearBlock" x="0" y="7"/>
 
-			<Block type="YellowBlock" x="964" y="154"/>
-			<Block type="YellowBlock" x="932" y="154"/>
-			<Block type="YellowBlock" x="900" y="154"/>
-			<Block type="YellowBlock" x="964" y="186"/>
-			<Block type="YellowBlock" x="964" y="218"/>
-
-			<Block type="YellowBlock" x="964" y="554"/>
-			<Block type="YellowBlock" x="932" y="554"/>
-			<Block type="YellowBlock" x="900" y="554"/>
-			<Block type="YellowBlock" x="964" y="522"/>
-			<Block type="YellowBlock" x="964" y="490"/>
-
-			<Enemy type="Moblin" x="632" y="254"/>
-			<Enemy type="Stalfos" x="500" y="350"/>
-			<Enemy type="Stalfos" x="764" y="350"/>
-			<Enemy type="Moblin" x="632" y="446"/>
-
-			<Item type="RedRupee" x="632" y="350"/>
-			<Item type="Bomb" x="500" y="446"/>
-			<Item type="Food" x="764" y="254"/>
-
-			<Block type="WhiteBlock" x="200" y="50"/>
-			<Block type="WhiteBlock" x="232" y="50"/>
-			<Block type="WhiteBlock" x="264" y="50"/>
-			<Block type="WhiteBlock" x="296" y="50"/>
-			<Block type="WhiteBlock" x="328" y="50"/>
-			<Block type="WhiteBlock" x="360" y="50"/>
-			<Block type="WhiteBlock" x="392" y="50"/>
-			<Block type="WhiteBlock" x="424" y="50"/>
-			<Block type="WhiteBlock" x="456" y="50"/>
-			<Block type="WhiteBlock" x="488" y="50"/>
-			<Block type="WhiteBlock" x="520" y="50"/>
-			<Block type="WhiteBlock" x="552" y="50"/>
-
-
-			<Block type="WhiteBlock" x="712" y="50"/>
-			<Block type="WhiteBlock" x="744" y="50"/>
-			<Block type="WhiteBlock" x="776" y="50"/>
-			<Block type="WhiteBlock" x="808" y="50"/>
-			<Block type="WhiteBlock" x="840" y="50"/>
-			<Block type="WhiteBlock" x="872" y="50"/>
-			<Block type="WhiteBlock" x="904" y="50"/>
-			<Block type="WhiteBlock" x="936" y="50"/>
-			<Block type="WhiteBlock" x="968" y="50"/>
-			<Block type="WhiteBlock" x="1000" y="50"/>
-			<Block type="WhiteBlock" x="1032" y="50"/>
-			<Block type="WhiteBlock" x="1064" y="50"/>
-
-			<Block type="WhiteBlock" x="200" y="82"/>
-			<Block type="WhiteBlock" x="200" y="114"/>
-			<Block type="WhiteBlock" x="200" y="146"/>
-			<Block type="WhiteBlock" x="200" y="178"/>
-			<Block type="WhiteBlock" x="200" y="210"/>
-			<Block type="WhiteBlock" x="200" y="242"/>
-			<Block type="WhiteBlock" x="200" y="274"/>
-			<Block type="WhiteBlock" x="200" y="306"/>
-
-
-			<Block type="WhiteBlock" x="200" y="434"/>
-			<Block type="WhiteBlock" x="200" y="466"/>
-			<Block type="WhiteBlock" x="200" y="498"/>
-			<Block type="WhiteBlock" x="200" y="530"/>
-			<Block type="WhiteBlock" x="200" y="562"/>
-			<Block type="WhiteBlock" x="200" y="594"/>
-			<Block type="WhiteBlock" x="200" y="626"/>
-
-			<Block type="WhiteBlock" x="200" y="658"/>
-			<Block type="WhiteBlock" x="232" y="658"/>
-			<Block type="WhiteBlock" x="264" y="658"/>
-			<Block type="WhiteBlock" x="296" y="658"/>
-			<Block type="WhiteBlock" x="328" y="658"/>
-			<Block type="WhiteBlock" x="360" y="658"/>
-			<Block type="WhiteBlock" x="392" y="658"/>
-			<Block type="WhiteBlock" x="424" y="658"/>
-			<Block type="WhiteBlock" x="456" y="658"/>
-			<Block type="WhiteBlock" x="488" y="658"/>
-			<Block type="WhiteBlock" x="520" y="658"/>
-			<Block type="WhiteBlock" x="552" y="658"/>
-			<Block type="WhiteBlock" x="584" y="658"/>
-			<Block type="WhiteBlock" x="616" y="658"/>
-			<Block type="WhiteBlock" x="648" y="658"/>
-			<Block type="WhiteBlock" x="680" y="658"/>
-			<Block type="WhiteBlock" x="712" y="658"/>
-			<Block type="WhiteBlock" x="744" y="658"/>
-			<Block type="WhiteBlock" x="776" y="658"/>
-			<Block type="WhiteBlock" x="808" y="658"/>
-			<Block type="WhiteBlock" x="840" y="658"/>
-			<Block type="WhiteBlock" x="872" y="658"/>
-			<Block type="WhiteBlock" x="904" y="658"/>
-			<Block type="WhiteBlock" x="936" y="658"/>
-			<Block type="WhiteBlock" x="968" y="658"/>
-			<Block type="WhiteBlock" x="1000" y="658"/>
-			<Block type="WhiteBlock" x="1032" y="658"/>
-			<Block type="WhiteBlock" x="1064" y="658"/>
-
-			<Block type="WhiteBlock" x="1064" y="82"/>
-			<Block type="WhiteBlock" x="1064" y="114"/>
-			<Block type="WhiteBlock" x="1064" y="146"/>
-			<Block type="WhiteBlock" x="1064" y="178"/>
-			<Block type="WhiteBlock" x="1064" y="210"/>
-			<Block type="WhiteBlock" x="1064" y="242"/>
-			<Block type="WhiteBlock" x="1064" y="274"/>
-			<Block type="WhiteBlock" x="1064" y="306"/>
-			<Block type="WhiteBlock" x="1064" y="338"/>
-			<Block type="WhiteBlock" x="1064" y="370"/>
-			<Block type="WhiteBlock" x="1064" y="402"/>
-			<Block type="WhiteBlock" x="1064" y="434"/>
-			<Block type="WhiteBlock" x="1064" y="466"/>
-			<Block type="WhiteBlock" x="1064" y="498"/>
-			<Block type="WhiteBlock" x="1064" y="530"/>
-			<Block type="WhiteBlock" x="1064" y="562"/>
-			<Block type="WhiteBlock" x="1064" y="594"/>
-			<Block type="WhiteBlock" x="1064" y="626"/>
+			<Block type="ClearBlock" x="13" y="1"/>
+			<Block type="ClearBlock" x="13" y="2"/>
+			<Block type="ClearBlock" x="13" y="3"/>
+			<Block type="ClearBlock" x="13" y="5"/>
+			<Block type="ClearBlock" x="13" y="6"/>
+			<Block type="ClearBlock" x="13" y="7"/>
+			
 		</Objects>
 	</Room>
 
@@ -1457,166 +615,53 @@
 		<Neighbor direction="right" id="12"/>
 		<Neighbor direction="up" id="7"/>
 		<Objects>
-			<Block type="Block" x="350" y="180"/>
-			<Block type="Block" x="414" y="180"/>
-			<Block type="Block" x="478" y="180"/>
-			<Block type="Block" x="542" y="180"/>
+			<Block type="LeftDoorClose" x="80" y="440"/>
+			<Block type="TopDoorOpen" x="640" y="80"/>
+			<Block type="BottomDoorClose" x="640" y="800"/>
+			<Block type="RightDoorOpen" x="1200" y="440"/>
 
+			<Block type="Wall" x="640" y="440"/>
+			<Block type="Floor" x="0" y="0"/>
 
-			<Block type="Block" x="670" y="180"/>
-			<Block type="Block" x="734" y="180"/>
-			<Block type="Block" x="798" y="180"/>
-			<Block type="Block" x="862" y="180"/>
-			<Block type="Block" x="926" y="180"/>
+			<Item type="Food" x="12" y="3"/>
+			<Item type="GreenRupee" x="3" y="6"/>
 
-			<Block type="Block" x="350" y="244"/>
-			<Block type="Block" x="350" y="308"/>
-			<Block type="Block" x="350" y="372"/>
-			<Block type="Block" x="350" y="436"/>
-			<Block type="Block" x="350" y="500"/>
-			<Block type="Block" x="350" y="564"/>
+			<Block type="ClearBlock" x="1" y="0"/>
+			<Block type="ClearBlock" x="2" y="0"/>
+			<Block type="ClearBlock" x="3" y="0"/>
+			<Block type="ClearBlock" x="4" y="0"/>
+			<Block type="ClearBlock" x="5" y="0"/>
+			<Block type="ClearBlock" x="8" y="0"/>
+			<Block type="ClearBlock" x="9" y="0"/>
+			<Block type="ClearBlock" x="10" y="0"/>
+			<Block type="ClearBlock" x="11" y="0"/>
+			<Block type="ClearBlock" x="12" y="0"/>
 
-			<Block type="Block" x="414" y="244"/>
-			<Block type="Block" x="542" y="244"/>
-			<Block type="Block" x="670" y="244"/>
-			<Block type="Block" x="798" y="244"/>
-			<Block type="Block" x="926" y="244"/>
+			<Block type="ClearBlock" x="1" y="8"/>
+			<Block type="ClearBlock" x="2" y="8"/>
+			<Block type="ClearBlock" x="3" y="8"/>
+			<Block type="ClearBlock" x="4" y="8"/>
+			<Block type="ClearBlock" x="5" y="8"/>
+			<Block type="ClearBlock" x="8" y="8"/>
+			<Block type="ClearBlock" x="9" y="8"/>
+			<Block type="ClearBlock" x="10" y="8"/>
+			<Block type="ClearBlock" x="11" y="8"/>
+			<Block type="ClearBlock" x="12" y="8"/>
 
-			<Block type="Block" x="478" y="308"/>
-			<Block type="Block" x="606" y="308"/>
-			<Block type="Block" x="734" y="308"/>
-			<Block type="Block" x="862" y="308"/>
+			<Block type="ClearBlock" x="0" y="1"/>
+			<Block type="ClearBlock" x="0" y="2"/>
+			<Block type="ClearBlock" x="0" y="3"/>
+			<Block type="ClearBlock" x="0" y="5"/>
+			<Block type="ClearBlock" x="0" y="6"/>
+			<Block type="ClearBlock" x="0" y="7"/>
 
-			<Block type="Block" x="414" y="372"/>
-			<Block type="Block" x="542" y="372"/>
-			<Block type="Block" x="670" y="372"/>
-			<Block type="Block" x="798" y="372"/>
-			<Block type="Block" x="926" y="372"/>
-
-			<Block type="Block" x="478" y="436"/>
-			<Block type="Block" x="606" y="436"/>
-			<Block type="Block" x="734" y="436"/>
-			<Block type="Block" x="862" y="436"/>
-
-			<Block type="Block" x="414" y="500"/>
-			<Block type="Block" x="542" y="500"/>
-			<Block type="Block" x="670" y="500"/>
-			<Block type="Block" x="798" y="500"/>
-			<Block type="Block" x="926" y="500"/>
-
-			<Block type="Block" x="478" y="564"/>
-			<Block type="Block" x="606" y="564"/>
-			<Block type="Block" x="734" y="564"/>
-			<Block type="Block" x="862" y="564"/>
-
-			<Block type="Block" x="926" y="244"/>
-			<Block type="Block" x="926" y="308"/>
-
-
-			<Block type="Block" x="926" y="436"/>
-			<Block type="Block" x="926" y="500"/>
-			<Block type="Block" x="926" y="564"/>
-
-			<Enemy type="Keese" x="606" y="180"/>
-			<Enemy type="Gel" x="414" y="308"/>
-			<Enemy type="Gel" x="798" y="308"/>
-			<Enemy type="Octorok" x="606" y="500"/>
-
-			<Item type="Bomb" x="606" y="244"/>
-			<Item type="GreenRupee" x="414" y="436"/>
-			<Item type="RedRupee" x="798" y="436"/>
-
-			<Block type="YellowBlock" x="200" y="50"/>
-			<Block type="YellowBlock" x="232" y="50"/>
-			<Block type="YellowBlock" x="264" y="50"/>
-			<Block type="YellowBlock" x="296" y="50"/>
-			<Block type="YellowBlock" x="328" y="50"/>
-			<Block type="YellowBlock" x="360" y="50"/>
-			<Block type="YellowBlock" x="392" y="50"/>
-			<Block type="YellowBlock" x="424" y="50"/>
-			<Block type="YellowBlock" x="456" y="50"/>
-			<Block type="YellowBlock" x="488" y="50"/>
-			<Block type="YellowBlock" x="520" y="50"/>
-			<Block type="YellowBlock" x="552" y="50"/>
-
-			<Block type="YellowBlock" x="712" y="50"/>
-			<Block type="YellowBlock" x="744" y="50"/>
-			<Block type="YellowBlock" x="776" y="50"/>
-			<Block type="YellowBlock" x="808" y="50"/>
-			<Block type="YellowBlock" x="840" y="50"/>
-			<Block type="YellowBlock" x="872" y="50"/>
-			<Block type="YellowBlock" x="904" y="50"/>
-			<Block type="YellowBlock" x="936" y="50"/>
-			<Block type="YellowBlock" x="968" y="50"/>
-			<Block type="YellowBlock" x="1000" y="50"/>
-			<Block type="YellowBlock" x="1032" y="50"/>
-			<Block type="YellowBlock" x="1064" y="50"/>
-
-			<Block type="YellowBlock" x="200" y="82"/>
-			<Block type="YellowBlock" x="200" y="114"/>
-			<Block type="YellowBlock" x="200" y="146"/>
-			<Block type="YellowBlock" x="200" y="178"/>
-			<Block type="YellowBlock" x="200" y="210"/>
-			<Block type="YellowBlock" x="200" y="242"/>
-			<Block type="YellowBlock" x="200" y="274"/>
-			<Block type="YellowBlock" x="200" y="306"/>
-			<Block type="YellowBlock" x="200" y="338"/>
-			<Block type="YellowBlock" x="200" y="370"/>
-			<Block type="YellowBlock" x="200" y="402"/>
-			<Block type="YellowBlock" x="200" y="434"/>
-			<Block type="YellowBlock" x="200" y="466"/>
-			<Block type="YellowBlock" x="200" y="498"/>
-			<Block type="YellowBlock" x="200" y="530"/>
-			<Block type="YellowBlock" x="200" y="562"/>
-			<Block type="YellowBlock" x="200" y="594"/>
-			<Block type="YellowBlock" x="200" y="626"/>
-
-			<Block type="YellowBlock" x="200" y="658"/>
-			<Block type="YellowBlock" x="232" y="658"/>
-			<Block type="YellowBlock" x="264" y="658"/>
-			<Block type="YellowBlock" x="296" y="658"/>
-			<Block type="YellowBlock" x="328" y="658"/>
-			<Block type="YellowBlock" x="360" y="658"/>
-			<Block type="YellowBlock" x="392" y="658"/>
-			<Block type="YellowBlock" x="424" y="658"/>
-			<Block type="YellowBlock" x="456" y="658"/>
-			<Block type="YellowBlock" x="488" y="658"/>
-			<Block type="YellowBlock" x="520" y="658"/>
-			<Block type="YellowBlock" x="552" y="658"/>
-			<Block type="YellowBlock" x="584" y="658"/>
-			<Block type="YellowBlock" x="616" y="658"/>
-			<Block type="YellowBlock" x="648" y="658"/>
-			<Block type="YellowBlock" x="680" y="658"/>
-			<Block type="YellowBlock" x="712" y="658"/>
-			<Block type="YellowBlock" x="744" y="658"/>
-			<Block type="YellowBlock" x="776" y="658"/>
-			<Block type="YellowBlock" x="808" y="658"/>
-			<Block type="YellowBlock" x="840" y="658"/>
-			<Block type="YellowBlock" x="872" y="658"/>
-			<Block type="YellowBlock" x="904" y="658"/>
-			<Block type="YellowBlock" x="936" y="658"/>
-			<Block type="YellowBlock" x="968" y="658"/>
-			<Block type="YellowBlock" x="1000" y="658"/>
-			<Block type="YellowBlock" x="1032" y="658"/>
-			<Block type="YellowBlock" x="1064" y="658"/>
-
-			<Block type="YellowBlock" x="1064" y="82"/>
-			<Block type="YellowBlock" x="1064" y="114"/>
-			<Block type="YellowBlock" x="1064" y="146"/>
-			<Block type="YellowBlock" x="1064" y="178"/>
-			<Block type="YellowBlock" x="1064" y="210"/>
-			<Block type="YellowBlock" x="1064" y="242"/>
-			<Block type="YellowBlock" x="1064" y="274"/>
-			<Block type="YellowBlock" x="1064" y="306"/>
-
-
-			<Block type="YellowBlock" x="1064" y="434"/>
-			<Block type="YellowBlock" x="1064" y="466"/>
-			<Block type="YellowBlock" x="1064" y="498"/>
-			<Block type="YellowBlock" x="1064" y="530"/>
-			<Block type="YellowBlock" x="1064" y="562"/>
-			<Block type="YellowBlock" x="1064" y="594"/>
-			<Block type="YellowBlock" x="1064" y="626"/>
+			<Block type="ClearBlock" x="13" y="1"/>
+			<Block type="ClearBlock" x="13" y="2"/>
+			<Block type="ClearBlock" x="13" y="3"/>
+			<Block type="ClearBlock" x="13" y="5"/>
+			<Block type="ClearBlock" x="13" y="6"/>
+			<Block type="ClearBlock" x="13" y="7"/>
+			
 		</Objects>
 	</Room>
 
@@ -1626,169 +671,57 @@
 		<Neighbor direction="right" id="13"/>
 		<Neighbor direction="down" id="14"/>
 		<Objects>
-			<!-- Hub room with clear paths between all four doors -->
-			<Block type="GreenBlock" x="300" y="150"/>
-			<Block type="GreenBlock" x="332" y="150"/>
-			<Block type="GreenBlock" x="364" y="150"/>
-			<Block type="GreenBlock" x="396" y="150"/>
-			<Block type="GreenBlock" x="428" y="150"/>
+			<Block type="LeftDoorOpen" x="80" y="440"/>
+			<Block type="TopDoorOpen" x="640" y="80"/>
+			<Block type="BottomDoorOpen" x="640" y="800"/>
+			<Block type="RightDoorOpen" x="1200" y="440"/>
 
-			<Block type="GreenBlock" x="300" y="182"/>
-			<Block type="GreenBlock" x="300" y="214"/>
-			<Block type="GreenBlock" x="300" y="246"/>
-			<Block type="GreenBlock" x="300" y="278"/>
+			<Block type="Wall" x="640" y="440"/>
+			<Block type="Floor" x="0" y="0"/>
 
-			<Block type="GreenBlock" x="836" y="150"/>
-			<Block type="GreenBlock" x="868" y="150"/>
-			<Block type="GreenBlock" x="900" y="150"/>
-			<Block type="GreenBlock" x="932" y="150"/>
-			<Block type="GreenBlock" x="964" y="150"/>
+			<Item type="RedPotion" x="3" y="3"/>
+			<Item type="BluePotion" x="9" y="5"/>
 
-			<Block type="GreenBlock" x="964" y="182"/>
-			<Block type="GreenBlock" x="964" y="214"/>
-			<Block type="GreenBlock" x="964" y="246"/>
-			<Block type="GreenBlock" x="964" y="278"/>
+			<Item type="GreenRupee" x="6" y="3"/>
+			<Item type="GreenRupee" x="6" y="4"/>
+			<Item type="GreenRupee" x="7" y="3"/>
+			<Item type="GreenRupee" x="7" y="4"/>
 
-			<Block type="GreenBlock" x="300" y="422"/>
-			<Block type="GreenBlock" x="300" y="454"/>
-			<Block type="GreenBlock" x="300" y="486"/>
-			<Block type="GreenBlock" x="300" y="518"/>
+			<Block type="ClearBlock" x="1" y="0"/>
+			<Block type="ClearBlock" x="2" y="0"/>
+			<Block type="ClearBlock" x="3" y="0"/>
+			<Block type="ClearBlock" x="4" y="0"/>
+			<Block type="ClearBlock" x="5" y="0"/>
+			<Block type="ClearBlock" x="8" y="0"/>
+			<Block type="ClearBlock" x="9" y="0"/>
+			<Block type="ClearBlock" x="10" y="0"/>
+			<Block type="ClearBlock" x="11" y="0"/>
+			<Block type="ClearBlock" x="12" y="0"/>
 
-			<Block type="GreenBlock" x="300" y="550"/>
-			<Block type="GreenBlock" x="332" y="550"/>
-			<Block type="GreenBlock" x="364" y="550"/>
-			<Block type="GreenBlock" x="396" y="550"/>
-			<Block type="GreenBlock" x="428" y="550"/>
+			<Block type="ClearBlock" x="1" y="8"/>
+			<Block type="ClearBlock" x="2" y="8"/>
+			<Block type="ClearBlock" x="3" y="8"/>
+			<Block type="ClearBlock" x="4" y="8"/>
+			<Block type="ClearBlock" x="5" y="8"/>
+			<Block type="ClearBlock" x="8" y="8"/>
+			<Block type="ClearBlock" x="9" y="8"/>
+			<Block type="ClearBlock" x="10" y="8"/>
+			<Block type="ClearBlock" x="11" y="8"/>
+			<Block type="ClearBlock" x="12" y="8"/>
 
-			<Block type="GreenBlock" x="964" y="422"/>
-			<Block type="GreenBlock" x="964" y="454"/>
-			<Block type="GreenBlock" x="964" y="486"/>
-			<Block type="GreenBlock" x="964" y="518"/>
+			<Block type="ClearBlock" x="0" y="1"/>
+			<Block type="ClearBlock" x="0" y="2"/>
+			<Block type="ClearBlock" x="0" y="3"/>
+			<Block type="ClearBlock" x="0" y="5"/>
+			<Block type="ClearBlock" x="0" y="6"/>
+			<Block type="ClearBlock" x="0" y="7"/>
 
-			<Block type="GreenBlock" x="836" y="550"/>
-			<Block type="GreenBlock" x="868" y="550"/>
-			<Block type="GreenBlock" x="900" y="550"/>
-			<Block type="GreenBlock" x="932" y="550"/>
-			<Block type="GreenBlock" x="964" y="550"/>
-
-			<Block type="GreenBlock" x="500" y="250"/>
-			<Block type="GreenBlock" x="532" y="250"/>
-			<Block type="GreenBlock" x="564" y="250"/>
-
-			<Block type="GreenBlock" x="700" y="250"/>
-			<Block type="GreenBlock" x="732" y="250"/>
-			<Block type="GreenBlock" x="764" y="250"/>
-
-			<Block type="GreenBlock" x="500" y="450"/>
-			<Block type="GreenBlock" x="532" y="450"/>
-			<Block type="GreenBlock" x="564" y="450"/>
-
-			<Block type="GreenBlock" x="700" y="450"/>
-			<Block type="GreenBlock" x="732" y="450"/>
-			<Block type="GreenBlock" x="764" y="450"/>
-
-			<Enemy type="Goriya" x="632" y="350"/>
-			<Enemy type="Gel" x="400" y="200"/>
-			<Enemy type="Gel" x="864" y="200"/>
-			<Enemy type="Octorok" x="400" y="500"/>
-			<Enemy type="Octorok" x="864" y="500"/>
-
-			<Enemy type="Keese" x="500" y="350"/>
-			<Enemy type="Keese" x="764" y="350"/>
-
-			<Item type="RedPotion" x="632" y="350"/>
-			<Item type="Bomb" x="500" y="200"/>
-			<Item type="GreenRupee" x="764" y="200"/>
-			<Item type="RedRupee" x="632" y="500"/>
-			<Block type="Block" x="200" y="50"/>
-			<Block type="Block" x="232" y="50"/>
-			<Block type="Block" x="264" y="50"/>
-			<Block type="Block" x="296" y="50"/>
-			<Block type="Block" x="328" y="50"/>
-			<Block type="Block" x="360" y="50"/>
-			<Block type="Block" x="392" y="50"/>
-			<Block type="Block" x="424" y="50"/>
-			<Block type="Block" x="456" y="50"/>
-			<Block type="Block" x="488" y="50"/>
-			<Block type="Block" x="520" y="50"/>
-			<Block type="Block" x="552" y="50"/>
-
-
-			<Block type="Block" x="712" y="50"/>
-			<Block type="Block" x="744" y="50"/>
-			<Block type="Block" x="776" y="50"/>
-			<Block type="Block" x="808" y="50"/>
-			<Block type="Block" x="840" y="50"/>
-			<Block type="Block" x="872" y="50"/>
-			<Block type="Block" x="904" y="50"/>
-			<Block type="Block" x="936" y="50"/>
-			<Block type="Block" x="968" y="50"/>
-			<Block type="Block" x="1000" y="50"/>
-			<Block type="Block" x="1032" y="50"/>
-			<Block type="Block" x="1064" y="50"/>
-
-			<Block type="Block" x="200" y="82"/>
-			<Block type="Block" x="200" y="114"/>
-			<Block type="Block" x="200" y="146"/>
-			<Block type="Block" x="200" y="178"/>
-			<Block type="Block" x="200" y="210"/>
-			<Block type="Block" x="200" y="242"/>
-			<Block type="Block" x="200" y="274"/>
-			<Block type="Block" x="200" y="306"/>
-
-
-			<Block type="Block" x="200" y="434"/>
-			<Block type="Block" x="200" y="466"/>
-			<Block type="Block" x="200" y="498"/>
-			<Block type="Block" x="200" y="530"/>
-			<Block type="Block" x="200" y="562"/>
-			<Block type="Block" x="200" y="594"/>
-			<Block type="Block" x="200" y="626"/>
-
-			<Block type="Block" x="200" y="658"/>
-			<Block type="Block" x="232" y="658"/>
-			<Block type="Block" x="264" y="658"/>
-			<Block type="Block" x="296" y="658"/>
-			<Block type="Block" x="328" y="658"/>
-			<Block type="Block" x="360" y="658"/>
-			<Block type="Block" x="392" y="658"/>
-			<Block type="Block" x="424" y="658"/>
-			<Block type="Block" x="456" y="658"/>
-			<Block type="Block" x="488" y="658"/>
-			<Block type="Block" x="520" y="658"/>
-			<Block type="Block" x="552" y="658"/>
-
-
-			<Block type="Block" x="712" y="658"/>
-			<Block type="Block" x="744" y="658"/>
-			<Block type="Block" x="776" y="658"/>
-			<Block type="Block" x="808" y="658"/>
-			<Block type="Block" x="840" y="658"/>
-			<Block type="Block" x="872" y="658"/>
-			<Block type="Block" x="904" y="658"/>
-			<Block type="Block" x="936" y="658"/>
-			<Block type="Block" x="968" y="658"/>
-			<Block type="Block" x="1000" y="658"/>
-			<Block type="Block" x="1032" y="658"/>
-			<Block type="Block" x="1064" y="658"/>
-
-			<Block type="Block" x="1064" y="82"/>
-			<Block type="Block" x="1064" y="114"/>
-			<Block type="Block" x="1064" y="146"/>
-			<Block type="Block" x="1064" y="178"/>
-			<Block type="Block" x="1064" y="210"/>
-			<Block type="Block" x="1064" y="242"/>
-			<Block type="Block" x="1064" y="274"/>
-			<Block type="Block" x="1064" y="306"/>
-
-
-			<Block type="Block" x="1064" y="434"/>
-			<Block type="Block" x="1064" y="466"/>
-			<Block type="Block" x="1064" y="498"/>
-			<Block type="Block" x="1064" y="530"/>
-			<Block type="Block" x="1064" y="562"/>
-			<Block type="Block" x="1064" y="594"/>
-			<Block type="Block" x="1064" y="626"/>
+			<Block type="ClearBlock" x="13" y="1"/>
+			<Block type="ClearBlock" x="13" y="2"/>
+			<Block type="ClearBlock" x="13" y="3"/>
+			<Block type="ClearBlock" x="13" y="5"/>
+			<Block type="ClearBlock" x="13" y="6"/>
+			<Block type="ClearBlock" x="13" y="7"/>
 		</Objects>
 	</Room>
 
@@ -1797,183 +730,54 @@
 		<Neighbor direction="left" id="12"/>
 		<Neighbor direction="up" id="9"/>
 		<Objects>
-			<Block type="WhiteBlock" x="300" y="150"/>
-			<Block type="WhiteBlock" x="332" y="150"/>
-			<Block type="WhiteBlock" x="364" y="150"/>
-			<Block type="WhiteBlock" x="396" y="150"/>
+			<Block type="LeftDoorOpen" x="80" y="440"/>
+			<Block type="TopDoorOpen" x="640" y="80"/>
+			<Block type="BottomDoorClose" x="640" y="800"/>
+			<Block type="RightDoorClose" x="1200" y="440"/>
 
-			<Block type="WhiteBlock" x="300" y="182"/>
-			<Block type="WhiteBlock" x="300" y="214"/>
-			<Block type="WhiteBlock" x="300" y="246"/>
-			<Block type="WhiteBlock" x="300" y="278"/>
-			<Block type="WhiteBlock" x="300" y="310"/>
-			<Block type="WhiteBlock" x="300" y="342"/>
-			<Block type="WhiteBlock" x="300" y="374"/>
-			<Block type="WhiteBlock" x="300" y="406"/>
-			<Block type="WhiteBlock" x="300" y="438"/>
-			<Block type="WhiteBlock" x="300" y="470"/>
-			<Block type="WhiteBlock" x="300" y="502"/>
-			<Block type="WhiteBlock" x="300" y="534"/>
-			<Block type="WhiteBlock" x="300" y="566"/>
+			<Block type="Wall" x="640" y="440"/>
+			<Block type="Floor" x="0" y="0"/>
 
-			<Block type="WhiteBlock" x="332" y="566"/>
-			<Block type="WhiteBlock" x="364" y="566"/>
-			<Block type="WhiteBlock" x="396" y="566"/>
-			<Block type="WhiteBlock" x="428" y="566"/>
-			<Block type="WhiteBlock" x="460" y="566"/>
-			<Block type="WhiteBlock" x="492" y="566"/>
-			<Block type="WhiteBlock" x="524" y="566"/>
-			<Block type="WhiteBlock" x="556" y="566"/>
-			<Block type="WhiteBlock" x="588" y="566"/>
-			<Block type="WhiteBlock" x="620" y="566"/>
-			<Block type="WhiteBlock" x="652" y="566"/>
-			<Block type="WhiteBlock" x="684" y="566"/>
-			<Block type="WhiteBlock" x="716" y="566"/>
-			<Block type="WhiteBlock" x="748" y="566"/>
-			<Block type="WhiteBlock" x="780" y="566"/>
-			<Block type="WhiteBlock" x="812" y="566"/>
-			<Block type="WhiteBlock" x="844" y="566"/>
-			<Block type="WhiteBlock" x="876" y="566"/>
-			<Block type="WhiteBlock" x="908" y="566"/>
-			<Block type="WhiteBlock" x="940" y="566"/>
+			<Block type="GreenBlock" x="2" y="3"/>
+			<Block type="GreenBlock" x="2" y="5"/>
+			<Block type="GreenBlock" x="11" y="3"/>
+			<Block type="GreenBlock" x="11" y="5"/>
 
-			<Block type="WhiteBlock" x="940" y="150"/>
-			<Block type="WhiteBlock" x="908" y="150"/>
-			<Block type="WhiteBlock" x="876" y="150"/>
-			<Block type="WhiteBlock" x="844" y="150"/>
+			<Block type="ClearBlock" x="1" y="0"/>
+			<Block type="ClearBlock" x="2" y="0"/>
+			<Block type="ClearBlock" x="3" y="0"/>
+			<Block type="ClearBlock" x="4" y="0"/>
+			<Block type="ClearBlock" x="5" y="0"/>
+			<Block type="ClearBlock" x="8" y="0"/>
+			<Block type="ClearBlock" x="9" y="0"/>
+			<Block type="ClearBlock" x="10" y="0"/>
+			<Block type="ClearBlock" x="11" y="0"/>
+			<Block type="ClearBlock" x="12" y="0"/>
 
-			<Block type="WhiteBlock" x="940" y="182"/>
-			<Block type="WhiteBlock" x="940" y="214"/>
-			<Block type="WhiteBlock" x="940" y="246"/>
-			<Block type="WhiteBlock" x="940" y="278"/>
-			<Block type="WhiteBlock" x="940" y="310"/>
-			<Block type="WhiteBlock" x="940" y="342"/>
-			<Block type="WhiteBlock" x="940" y="374"/>
-			<Block type="WhiteBlock" x="940" y="406"/>
-			<Block type="WhiteBlock" x="940" y="438"/>
-			<Block type="WhiteBlock" x="940" y="470"/>
-			<Block type="WhiteBlock" x="940" y="502"/>
-			<Block type="WhiteBlock" x="940" y="534"/>
+			<Block type="ClearBlock" x="1" y="8"/>
+			<Block type="ClearBlock" x="2" y="8"/>
+			<Block type="ClearBlock" x="3" y="8"/>
+			<Block type="ClearBlock" x="4" y="8"/>
+			<Block type="ClearBlock" x="5" y="8"/>
+			<Block type="ClearBlock" x="8" y="8"/>
+			<Block type="ClearBlock" x="9" y="8"/>
+			<Block type="ClearBlock" x="10" y="8"/>
+			<Block type="ClearBlock" x="11" y="8"/>
+			<Block type="ClearBlock" x="12" y="8"/>
 
-			<Block type="WhiteBlock" x="556" y="300"/>
-			<Block type="WhiteBlock" x="588" y="300"/>
-			<Block type="WhiteBlock" x="620" y="300"/>
-			<Block type="WhiteBlock" x="652" y="300"/>
-			<Block type="WhiteBlock" x="684" y="300"/>
+			<Block type="ClearBlock" x="0" y="1"/>
+			<Block type="ClearBlock" x="0" y="2"/>
+			<Block type="ClearBlock" x="0" y="3"/>
+			<Block type="ClearBlock" x="0" y="5"/>
+			<Block type="ClearBlock" x="0" y="6"/>
+			<Block type="ClearBlock" x="0" y="7"/>
 
-			<Block type="WhiteBlock" x="556" y="332"/>
-			<Block type="WhiteBlock" x="684" y="332"/>
-
-			<Block type="WhiteBlock" x="556" y="364"/>
-			<Block type="WhiteBlock" x="684" y="364"/>
-
-			<Block type="WhiteBlock" x="556" y="396"/>
-			<Block type="WhiteBlock" x="588" y="396"/>
-			<Block type="WhiteBlock" x="620" y="396"/>
-			<Block type="WhiteBlock" x="652" y="396"/>
-			<Block type="WhiteBlock" x="684" y="396"/>
-
-			<Enemy type="Stalfos" x="400" y="350"/>
-			<Enemy type="Stalfos" x="840" y="350"/>
-			<Enemy type="Keese" x="470" y="200"/>
-			<Enemy type="Keese" x="780" y="200"/>
-			<Enemy type="Gel" x="620" y="500"/>
-
-			<Item type="RedRupee" x="620" y="200"/>
-			<Item type="Bomb" x="620" y="332"/>
-			<Item type="RedPotion" x="620" y="480"/>
-			<Block type="Block" x="200" y="50"/>
-			<Block type="Block" x="232" y="50"/>
-			<Block type="Block" x="264" y="50"/>
-			<Block type="Block" x="296" y="50"/>
-			<Block type="Block" x="328" y="50"/>
-			<Block type="Block" x="360" y="50"/>
-			<Block type="Block" x="392" y="50"/>
-			<Block type="Block" x="424" y="50"/>
-			<Block type="Block" x="456" y="50"/>
-			<Block type="Block" x="488" y="50"/>
-			<Block type="Block" x="520" y="50"/>
-			<Block type="Block" x="552" y="50"/>
-			<Block type="Block" x="584" y="50"/>
-
-			<Block type="Block" x="712" y="50"/>
-			<Block type="Block" x="744" y="50"/>
-			<Block type="Block" x="776" y="50"/>
-			<Block type="Block" x="808" y="50"/>
-			<Block type="Block" x="840" y="50"/>
-			<Block type="Block" x="872" y="50"/>
-			<Block type="Block" x="904" y="50"/>
-			<Block type="Block" x="936" y="50"/>
-			<Block type="Block" x="968" y="50"/>
-			<Block type="Block" x="1000" y="50"/>
-			<Block type="Block" x="1032" y="50"/>
-			<Block type="Block" x="1064" y="50"/>
-
-			<Block type="Block" x="200" y="82"/>
-			<Block type="Block" x="200" y="114"/>
-			<Block type="Block" x="200" y="146"/>
-			<Block type="Block" x="200" y="178"/>
-			<Block type="Block" x="200" y="210"/>
-			<Block type="Block" x="200" y="242"/>
-			<Block type="Block" x="200" y="274"/>
-			<Block type="Block" x="200" y="306"/>
-
-
-			<Block type="Block" x="200" y="434"/>
-			<Block type="Block" x="200" y="466"/>
-			<Block type="Block" x="200" y="498"/>
-			<Block type="Block" x="200" y="530"/>
-			<Block type="Block" x="200" y="562"/>
-			<Block type="Block" x="200" y="594"/>
-			<Block type="Block" x="200" y="626"/>
-
-			<Block type="Block" x="200" y="658"/>
-			<Block type="Block" x="232" y="658"/>
-			<Block type="Block" x="264" y="658"/>
-			<Block type="Block" x="296" y="658"/>
-			<Block type="Block" x="328" y="658"/>
-			<Block type="Block" x="360" y="658"/>
-			<Block type="Block" x="392" y="658"/>
-			<Block type="Block" x="424" y="658"/>
-			<Block type="Block" x="456" y="658"/>
-			<Block type="Block" x="488" y="658"/>
-			<Block type="Block" x="520" y="658"/>
-			<Block type="Block" x="552" y="658"/>
-			<Block type="Block" x="584" y="658"/>
-			<Block type="Block" x="616" y="658"/>
-			<Block type="Block" x="648" y="658"/>
-			<Block type="Block" x="680" y="658"/>
-			<Block type="Block" x="712" y="658"/>
-			<Block type="Block" x="744" y="658"/>
-			<Block type="Block" x="776" y="658"/>
-			<Block type="Block" x="808" y="658"/>
-			<Block type="Block" x="840" y="658"/>
-			<Block type="Block" x="872" y="658"/>
-			<Block type="Block" x="904" y="658"/>
-			<Block type="Block" x="936" y="658"/>
-			<Block type="Block" x="968" y="658"/>
-			<Block type="Block" x="1000" y="658"/>
-			<Block type="Block" x="1032" y="658"/>
-			<Block type="Block" x="1064" y="658"/>
-
-			<Block type="Block" x="1064" y="82"/>
-			<Block type="Block" x="1064" y="114"/>
-			<Block type="Block" x="1064" y="146"/>
-			<Block type="Block" x="1064" y="178"/>
-			<Block type="Block" x="1064" y="210"/>
-			<Block type="Block" x="1064" y="242"/>
-			<Block type="Block" x="1064" y="274"/>
-			<Block type="Block" x="1064" y="306"/>
-			<Block type="Block" x="1064" y="338"/>
-			<Block type="Block" x="1064" y="370"/>
-			<Block type="Block" x="1064" y="402"/>
-			<Block type="Block" x="1064" y="434"/>
-			<Block type="Block" x="1064" y="466"/>
-			<Block type="Block" x="1064" y="498"/>
-			<Block type="Block" x="1064" y="530"/>
-			<Block type="Block" x="1064" y="562"/>
-			<Block type="Block" x="1064" y="594"/>
-			<Block type="Block" x="1064" y="626"/>
+			<Block type="ClearBlock" x="13" y="1"/>
+			<Block type="ClearBlock" x="13" y="2"/>
+			<Block type="ClearBlock" x="13" y="3"/>
+			<Block type="ClearBlock" x="13" y="5"/>
+			<Block type="ClearBlock" x="13" y="6"/>
+			<Block type="ClearBlock" x="13" y="7"/>
 		</Objects>
 	</Room>
 
@@ -1982,378 +786,118 @@
 		<Neighbor direction="up" id="12"/>
 		<Neighbor direction="down" id="16"/>
 		<Objects>
+			<Block type="LeftDoorClose" x="80" y="440"/>
+			<Block type="TopDoorOpen" x="640" y="80"/>
+			<Block type="BottomDoorOpen" x="640" y="800"/>
+			<Block type="RightDoorClose" x="1200" y="440"/>
 
-			<Block type="Block" x="350" y="150"/>
-			<Block type="Block" x="382" y="150"/>
-			<Block type="Block" x="414" y="150"/>
-			<Block type="Block" x="350" y="182"/>
-			<Block type="Block" x="382" y="182"/>
-			<Block type="Block" x="414" y="182"/>
-			<Block type="Block" x="350" y="214"/>
-			<Block type="Block" x="382" y="214"/>
-			<Block type="Block" x="414" y="214"/>
+			<Block type="Wall" x="640" y="440"/>
+			<Block type="Floor" x="0" y="0"/>
 
-			<Block type="Block" x="350" y="278"/>
-			<Block type="Block" x="382" y="278"/>
-			<Block type="Block" x="414" y="278"/>
-			<Block type="Block" x="350" y="310"/>
-			<Block type="Block" x="382" y="310"/>
-			<Block type="Block" x="414" y="310"/>
-			<Block type="Block" x="350" y="342"/>
-			<Block type="Block" x="382" y="342"/>
-			<Block type="Block" x="414" y="342"/>
+			<Block type="WhiteBlock" x="6" y="3"/>
+			<Block type="WhiteBlock" x="7" y="3"/>
+			<Block type="WhiteBlock" x="6" y="4"/>
+			<Block type="WhiteBlock" x="7" y="4"/>
+			<Block type="WhiteBlock" x="6" y="5"/>
+			<Block type="WhiteBlock" x="7" y="5"/>
 
-			<Block type="Block" x="350" y="406"/>
-			<Block type="Block" x="382" y="406"/>
-			<Block type="Block" x="414" y="406"/>
-			<Block type="Block" x="350" y="438"/>
-			<Block type="Block" x="382" y="438"/>
-			<Block type="Block" x="414" y="438"/>
-			<Block type="Block" x="350" y="470"/>
-			<Block type="Block" x="382" y="470"/>
-			<Block type="Block" x="414" y="470"/>
+			<Block type="ClearBlock" x="1" y="0"/>
+			<Block type="ClearBlock" x="2" y="0"/>
+			<Block type="ClearBlock" x="3" y="0"/>
+			<Block type="ClearBlock" x="4" y="0"/>
+			<Block type="ClearBlock" x="5" y="0"/>
+			<Block type="ClearBlock" x="8" y="0"/>
+			<Block type="ClearBlock" x="9" y="0"/>
+			<Block type="ClearBlock" x="10" y="0"/>
+			<Block type="ClearBlock" x="11" y="0"/>
+			<Block type="ClearBlock" x="12" y="0"/>
 
-			<Block type="Block" x="350" y="534"/>
-			<Block type="Block" x="382" y="534"/>
-			<Block type="Block" x="414" y="534"/>
-			<Block type="Block" x="350" y="566"/>
-			<Block type="Block" x="382" y="566"/>
-			<Block type="Block" x="414" y="566"/>
-			<Block type="Block" x="350" y="598"/>
-			<Block type="Block" x="382" y="598"/>
-			<Block type="Block" x="414" y="598"/>
+			<Block type="ClearBlock" x="1" y="8"/>
+			<Block type="ClearBlock" x="2" y="8"/>
+			<Block type="ClearBlock" x="3" y="8"/>
+			<Block type="ClearBlock" x="4" y="8"/>
+			<Block type="ClearBlock" x="5" y="8"/>
+			<Block type="ClearBlock" x="8" y="8"/>
+			<Block type="ClearBlock" x="9" y="8"/>
+			<Block type="ClearBlock" x="10" y="8"/>
+			<Block type="ClearBlock" x="11" y="8"/>
+			<Block type="ClearBlock" x="12" y="8"/>
 
-			<Block type="Block" x="850" y="150"/>
-			<Block type="Block" x="882" y="150"/>
-			<Block type="Block" x="914" y="150"/>
-			<Block type="Block" x="850" y="182"/>
-			<Block type="Block" x="882" y="182"/>
-			<Block type="Block" x="914" y="182"/>
-			<Block type="Block" x="850" y="214"/>
-			<Block type="Block" x="882" y="214"/>
-			<Block type="Block" x="914" y="214"/>
+			<Block type="ClearBlock" x="0" y="1"/>
+			<Block type="ClearBlock" x="0" y="2"/>
+			<Block type="ClearBlock" x="0" y="3"/>
+			<Block type="ClearBlock" x="0" y="5"/>
+			<Block type="ClearBlock" x="0" y="6"/>
+			<Block type="ClearBlock" x="0" y="7"/>
 
-			<Block type="Block" x="850" y="278"/>
-			<Block type="Block" x="882" y="278"/>
-			<Block type="Block" x="914" y="278"/>
-			<Block type="Block" x="850" y="310"/>
-			<Block type="Block" x="882" y="310"/>
-			<Block type="Block" x="914" y="310"/>
-			<Block type="Block" x="850" y="342"/>
-			<Block type="Block" x="882" y="342"/>
-			<Block type="Block" x="914" y="342"/>
-
-			<Block type="Block" x="850" y="406"/>
-			<Block type="Block" x="882" y="406"/>
-			<Block type="Block" x="914" y="406"/>
-			<Block type="Block" x="850" y="438"/>
-			<Block type="Block" x="882" y="438"/>
-			<Block type="Block" x="914" y="438"/>
-			<Block type="Block" x="850" y="470"/>
-			<Block type="Block" x="882" y="470"/>
-			<Block type="Block" x="914" y="470"/>
-
-			<Block type="Block" x="850" y="534"/>
-			<Block type="Block" x="882" y="534"/>
-			<Block type="Block" x="914" y="534"/>
-			<Block type="Block" x="850" y="566"/>
-			<Block type="Block" x="882" y="566"/>
-			<Block type="Block" x="914" y="566"/>
-			<Block type="Block" x="850" y="598"/>
-			<Block type="Block" x="882" y="598"/>
-			<Block type="Block" x="914" y="598"/>
-
-			<Block type="Block" x="478" y="250"/>
-			<Block type="Block" x="510" y="250"/>
-			<Block type="Block" x="542" y="250"/>
-			<Block type="Block" x="574" y="250"/>
-
-			<Block type="Block" x="690" y="250"/>
-			<Block type="Block" x="722" y="250"/>
-			<Block type="Block" x="754" y="250"/>
-			<Block type="Block" x="786" y="250"/>
-
-			<Block type="Block" x="478" y="350"/>
-			<Block type="Block" x="510" y="350"/>
-			<Block type="Block" x="542" y="350"/>
-			<Block type="Block" x="574" y="350"/>
-
-			<Block type="Block" x="690" y="350"/>
-			<Block type="Block" x="722" y="350"/>
-			<Block type="Block" x="754" y="350"/>
-			<Block type="Block" x="786" y="350"/>
-
-			<Block type="Block" x="478" y="450"/>
-			<Block type="Block" x="510" y="450"/>
-			<Block type="Block" x="542" y="450"/>
-			<Block type="Block" x="574" y="450"/>
-
-			<Block type="Block" x="690" y="450"/>
-			<Block type="Block" x="722" y="450"/>
-			<Block type="Block" x="754" y="450"/>
-			<Block type="Block" x="786" y="450"/>
-
-			<Block type="Block" x="478" y="550"/>
-			<Block type="Block" x="510" y="550"/>
-			<Block type="Block" x="542" y="550"/>
-			<Block type="Block" x="574" y="550"/>
-
-			<Block type="Block" x="690" y="550"/>
-			<Block type="Block" x="722" y="550"/>
-			<Block type="Block" x="754" y="550"/>
-			<Block type="Block" x="786" y="550"/>
-
-			<Enemy type="Stalfos" x="632" y="200"/>
-			<Enemy type="Keese" x="500" y="300"/>
-			<Enemy type="Keese" x="764" y="300"/>
-			<Enemy type="Octorok" x="632" y="400"/>
-			<Enemy type="Gel" x="632" y="500"/>
-
-			<Item type="Bomb" x="632" y="250"/>
-			<Item type="GreenRupee" x="632" y="350"/>
-			<Item type="RedRupee" x="632" y="450"/>
-			<Item type="RedPotion" x="632" y="550"/>
-			<Block type="Block" x="200" y="50"/>
-			<Block type="Block" x="232" y="50"/>
-			<Block type="Block" x="264" y="50"/>
-			<Block type="Block" x="296" y="50"/>
-			<Block type="Block" x="328" y="50"/>
-			<Block type="Block" x="360" y="50"/>
-			<Block type="Block" x="392" y="50"/>
-			<Block type="Block" x="424" y="50"/>
-			<Block type="Block" x="456" y="50"/>
-			<Block type="Block" x="488" y="50"/>
-			<Block type="Block" x="520" y="50"/>
-			<Block type="Block" x="552" y="50"/>
+			<Block type="ClearBlock" x="13" y="1"/>
+			<Block type="ClearBlock" x="13" y="2"/>
+			<Block type="ClearBlock" x="13" y="3"/>
+			<Block type="ClearBlock" x="13" y="5"/>
+			<Block type="ClearBlock" x="13" y="6"/>
+			<Block type="ClearBlock" x="13" y="7"/>
 
 
-			<Block type="Block" x="712" y="50"/>
-			<Block type="Block" x="744" y="50"/>
-			<Block type="Block" x="776" y="50"/>
-			<Block type="Block" x="808" y="50"/>
-			<Block type="Block" x="840" y="50"/>
-			<Block type="Block" x="872" y="50"/>
-			<Block type="Block" x="904" y="50"/>
-			<Block type="Block" x="936" y="50"/>
-			<Block type="Block" x="968" y="50"/>
-			<Block type="Block" x="1000" y="50"/>
-			<Block type="Block" x="1032" y="50"/>
-			<Block type="Block" x="1064" y="50"/>
-
-			<Block type="Block" x="200" y="82"/>
-			<Block type="Block" x="200" y="114"/>
-			<Block type="Block" x="200" y="146"/>
-			<Block type="Block" x="200" y="178"/>
-			<Block type="Block" x="200" y="210"/>
-			<Block type="Block" x="200" y="242"/>
-			<Block type="Block" x="200" y="274"/>
-			<Block type="Block" x="200" y="306"/>
-			<Block type="Block" x="200" y="338"/>
-			<Block type="Block" x="200" y="370"/>
-			<Block type="Block" x="200" y="402"/>
-			<Block type="Block" x="200" y="434"/>
-			<Block type="Block" x="200" y="466"/>
-			<Block type="Block" x="200" y="498"/>
-			<Block type="Block" x="200" y="530"/>
-			<Block type="Block" x="200" y="562"/>
-			<Block type="Block" x="200" y="594"/>
-			<Block type="Block" x="200" y="626"/>
-
-			<Block type="Block" x="200" y="658"/>
-			<Block type="Block" x="232" y="658"/>
-			<Block type="Block" x="264" y="658"/>
-			<Block type="Block" x="296" y="658"/>
-			<Block type="Block" x="328" y="658"/>
-			<Block type="Block" x="360" y="658"/>
-			<Block type="Block" x="392" y="658"/>
-			<Block type="Block" x="424" y="658"/>
-			<Block type="Block" x="456" y="658"/>
-			<Block type="Block" x="488" y="658"/>
-			<Block type="Block" x="520" y="658"/>
-			<Block type="Block" x="552" y="658"/>
-
-
-			<Block type="Block" x="712" y="658"/>
-			<Block type="Block" x="744" y="658"/>
-			<Block type="Block" x="776" y="658"/>
-			<Block type="Block" x="808" y="658"/>
-			<Block type="Block" x="840" y="658"/>
-			<Block type="Block" x="872" y="658"/>
-			<Block type="Block" x="904" y="658"/>
-			<Block type="Block" x="936" y="658"/>
-			<Block type="Block" x="968" y="658"/>
-			<Block type="Block" x="1000" y="658"/>
-			<Block type="Block" x="1032" y="658"/>
-			<Block type="Block" x="1064" y="658"/>
-
-			<Block type="Block" x="1064" y="82"/>
-			<Block type="Block" x="1064" y="114"/>
-			<Block type="Block" x="1064" y="146"/>
-			<Block type="Block" x="1064" y="178"/>
-			<Block type="Block" x="1064" y="210"/>
-			<Block type="Block" x="1064" y="242"/>
-			<Block type="Block" x="1064" y="274"/>
-			<Block type="Block" x="1064" y="306"/>
-			<Block type="Block" x="1064" y="338"/>
-			<Block type="Block" x="1064" y="370"/>
-			<Block type="Block" x="1064" y="402"/>
-			<Block type="Block" x="1064" y="434"/>
-			<Block type="Block" x="1064" y="466"/>
-			<Block type="Block" x="1064" y="498"/>
-			<Block type="Block" x="1064" y="530"/>
-			<Block type="Block" x="1064" y="562"/>
-			<Block type="Block" x="1064" y="594"/>
-			<Block type="Block" x="1064" y="626"/>
 		</Objects>
 	</Room>
 
 	<Room id="15">
 		<Neighbor direction="right" id="16"/>
 		<Objects>
-			<Block type="GreenBlock" x="350" y="300"/>
-			<Block type="GreenBlock" x="382" y="300"/>
-			<Block type="GreenBlock" x="414" y="300"/>
+			<Block type="LeftDoorClose" x="80" y="440"/>
+			<Block type="TopDoorClose" x="640" y="80"/>
+			<Block type="BottomDoorClose" x="640" y="800"/>
+			<Block type="RightDoorOpen" x="1200" y="440"/>
 
-			<Block type="GreenBlock" x="350" y="332"/>
-			<Block type="GreenBlock" x="414" y="332"/>
+			<Block type="Wall" x="640" y="440"/>
+			<Block type="Floor" x="0" y="0"/>
 
-			<Block type="GreenBlock" x="350" y="364"/>
-			<Block type="GreenBlock" x="414" y="364"/>
+			<Block type="YellowBlock" x="6" y="3"/>
+			<Block type="YellowBlock" x="7" y="3"/>
+			<Block type="YellowBlock" x="6" y="4"/>
+			<Block type="YellowBlock" x="7" y="4"/>
+			<Block type="YellowBlock" x="6" y="5"/>
+			<Block type="YellowBlock" x="7" y="5"/>
 
-			<Block type="GreenBlock" x="350" y="396"/>
-			<Block type="GreenBlock" x="382" y="396"/>
-			<Block type="GreenBlock" x="414" y="396"/>
+			<Item type="BluePotion" x="2" y="2"/>
 
-			<Block type="GreenBlock" x="550" y="450"/>
-			<Block type="GreenBlock" x="582" y="450"/>
-			<Block type="GreenBlock" x="614" y="450"/>
+			<Item type="GreenRupee" x="10" y="7"/>
 
-			<Block type="GreenBlock" x="550" y="482"/>
-			<Block type="GreenBlock" x="614" y="482"/>
+			<Block type="ClearBlock" x="1" y="0"/>
+			<Block type="ClearBlock" x="2" y="0"/>
+			<Block type="ClearBlock" x="3" y="0"/>
+			<Block type="ClearBlock" x="4" y="0"/>
+			<Block type="ClearBlock" x="5" y="0"/>
+			<Block type="ClearBlock" x="8" y="0"/>
+			<Block type="ClearBlock" x="9" y="0"/>
+			<Block type="ClearBlock" x="10" y="0"/>
+			<Block type="ClearBlock" x="11" y="0"/>
+			<Block type="ClearBlock" x="12" y="0"/>
 
-			<Block type="GreenBlock" x="550" y="514"/>
-			<Block type="GreenBlock" x="582" y="514"/>
-			<Block type="GreenBlock" x="614" y="514"/>
+			<Block type="ClearBlock" x="1" y="8"/>
+			<Block type="ClearBlock" x="2" y="8"/>
+			<Block type="ClearBlock" x="3" y="8"/>
+			<Block type="ClearBlock" x="4" y="8"/>
+			<Block type="ClearBlock" x="5" y="8"/>
+			<Block type="ClearBlock" x="8" y="8"/>
+			<Block type="ClearBlock" x="9" y="8"/>
+			<Block type="ClearBlock" x="10" y="8"/>
+			<Block type="ClearBlock" x="11" y="8"/>
+			<Block type="ClearBlock" x="12" y="8"/>
 
-			<Block type="GreenBlock" x="750" y="200"/>
-			<Block type="GreenBlock" x="782" y="200"/>
-			<Block type="GreenBlock" x="814" y="200"/>
+			<Block type="ClearBlock" x="0" y="1"/>
+			<Block type="ClearBlock" x="0" y="2"/>
+			<Block type="ClearBlock" x="0" y="3"/>
+			<Block type="ClearBlock" x="0" y="5"/>
+			<Block type="ClearBlock" x="0" y="6"/>
+			<Block type="ClearBlock" x="0" y="7"/>
 
-			<Block type="GreenBlock" x="750" y="232"/>
-			<Block type="GreenBlock" x="814" y="232"/>
-
-			<Block type="GreenBlock" x="750" y="264"/>
-			<Block type="GreenBlock" x="782" y="264"/>
-			<Block type="GreenBlock" x="814" y="264"/>
-
-			<Block type="YellowBlock" x="300" y="150"/>
-			<Block type="YellowBlock" x="300" y="550"/>
-			<Block type="YellowBlock" x="864" y="150"/>
-			<Block type="YellowBlock" x="864" y="550"/>
-
-			<Enemy type="Stalfos" x="384" y="332"/>
-			<Enemy type="Stalfos" x="584" y="482"/>
-			<Enemy type="Stalfos" x="784" y="232"/>
-			<Enemy type="Keese" x="600" y="300"/>
-			<Enemy type="Keese" x="500" y="400"/>
-
-			<Item type="RedPotion" x="382" y="332"/>
-			<Item type="RedRupee" x="582" y="482"/>
-			<Item type="Bomb" x="782" y="232"/>
-
-			<Block type="Block" x="200" y="50"/>
-			<Block type="Block" x="232" y="50"/>
-			<Block type="Block" x="264" y="50"/>
-			<Block type="Block" x="296" y="50"/>
-			<Block type="Block" x="328" y="50"/>
-			<Block type="Block" x="360" y="50"/>
-			<Block type="Block" x="392" y="50"/>
-			<Block type="Block" x="424" y="50"/>
-			<Block type="Block" x="456" y="50"/>
-			<Block type="Block" x="488" y="50"/>
-			<Block type="Block" x="520" y="50"/>
-			<Block type="Block" x="552" y="50"/>
-			<Block type="Block" x="584" y="50"/>
-			<Block type="Block" x="616" y="50"/>
-			<Block type="Block" x="648" y="50"/>
-			<Block type="Block" x="680" y="50"/>
-			<Block type="Block" x="712" y="50"/>
-			<Block type="Block" x="744" y="50"/>
-			<Block type="Block" x="776" y="50"/>
-			<Block type="Block" x="808" y="50"/>
-			<Block type="Block" x="840" y="50"/>
-			<Block type="Block" x="872" y="50"/>
-			<Block type="Block" x="904" y="50"/>
-			<Block type="Block" x="936" y="50"/>
-			<Block type="Block" x="968" y="50"/>
-			<Block type="Block" x="1000" y="50"/>
-			<Block type="Block" x="1032" y="50"/>
-			<Block type="Block" x="1064" y="50"/>
-			<Block type="Block" x="200" y="82"/>
-			<Block type="Block" x="200" y="114"/>
-			<Block type="Block" x="200" y="146"/>
-			<Block type="Block" x="200" y="178"/>
-			<Block type="Block" x="200" y="210"/>
-			<Block type="Block" x="200" y="242"/>
-			<Block type="Block" x="200" y="274"/>
-			<Block type="Block" x="200" y="306"/>
-			<Block type="Block" x="200" y="338"/>
-			<Block type="Block" x="200" y="370"/>
-			<Block type="Block" x="200" y="402"/>
-			<Block type="Block" x="200" y="434"/>
-			<Block type="Block" x="200" y="466"/>
-			<Block type="Block" x="200" y="498"/>
-			<Block type="Block" x="200" y="530"/>
-			<Block type="Block" x="200" y="562"/>
-			<Block type="Block" x="200" y="594"/>
-			<Block type="Block" x="200" y="626"/>
-
-			<Block type="Block" x="200" y="658"/>
-			<Block type="Block" x="232" y="658"/>
-			<Block type="Block" x="264" y="658"/>
-			<Block type="Block" x="296" y="658"/>
-			<Block type="Block" x="328" y="658"/>
-			<Block type="Block" x="360" y="658"/>
-			<Block type="Block" x="392" y="658"/>
-			<Block type="Block" x="424" y="658"/>
-			<Block type="Block" x="456" y="658"/>
-			<Block type="Block" x="488" y="658"/>
-			<Block type="Block" x="520" y="658"/>
-			<Block type="Block" x="552" y="658"/>
-			<Block type="Block" x="584" y="658"/>
-			<Block type="Block" x="616" y="658"/>
-			<Block type="Block" x="648" y="658"/>
-			<Block type="Block" x="680" y="658"/>
-			<Block type="Block" x="712" y="658"/>
-			<Block type="Block" x="744" y="658"/>
-			<Block type="Block" x="776" y="658"/>
-			<Block type="Block" x="808" y="658"/>
-			<Block type="Block" x="840" y="658"/>
-			<Block type="Block" x="872" y="658"/>
-			<Block type="Block" x="904" y="658"/>
-			<Block type="Block" x="936" y="658"/>
-			<Block type="Block" x="968" y="658"/>
-			<Block type="Block" x="1000" y="658"/>
-			<Block type="Block" x="1032" y="658"/>
-			<Block type="Block" x="1064" y="658"/>
-
-			<Block type="Block" x="1064" y="82"/>
-			<Block type="Block" x="1064" y="114"/>
-			<Block type="Block" x="1064" y="146"/>
-			<Block type="Block" x="1064" y="178"/>
-			<Block type="Block" x="1064" y="210"/>
-			<Block type="Block" x="1064" y="242"/>
-			<Block type="Block" x="1064" y="274"/>
-			<Block type="Block" x="1064" y="306"/>
-
-
-			<Block type="Block" x="1064" y="434"/>
-			<Block type="Block" x="1064" y="466"/>
-			<Block type="Block" x="1064" y="498"/>
-			<Block type="Block" x="1064" y="530"/>
-			<Block type="Block" x="1064" y="562"/>
-			<Block type="Block" x="1064" y="594"/>
-			<Block type="Block" x="1064" y="626"/>
+			<Block type="ClearBlock" x="13" y="1"/>
+			<Block type="ClearBlock" x="13" y="2"/>
+			<Block type="ClearBlock" x="13" y="3"/>
+			<Block type="ClearBlock" x="13" y="5"/>
+			<Block type="ClearBlock" x="13" y="6"/>
+			<Block type="ClearBlock" x="13" y="7"/>
 		</Objects>
 	</Room>
 
@@ -2364,139 +908,58 @@
 		<Neighbor direction="right" id="17"/>
 		<Neighbor direction="up" id="14"/>
 		<Objects>
-			<Block type="WhiteBlock" x="300" y="150"/>
-			<Block type="WhiteBlock" x="332" y="150"/>
-			<Block type="WhiteBlock" x="300" y="182"/>
-			<Block type="WhiteBlock" x="332" y="182"/>
+			<Block type="LeftDoorOpen" x="80" y="440"/>
+			<Block type="TopDoorOpen" x="640" y="80"/>
+			<Block type="BottomDoorClose" x="640" y="800"/>
+			<Block type="RightDoorOpen" x="1200" y="440"/>
 
-			<Block type="WhiteBlock" x="932" y="150"/>
-			<Block type="WhiteBlock" x="964" y="150"/>
-			<Block type="WhiteBlock" x="932" y="182"/>
-			<Block type="WhiteBlock" x="964" y="182"/>
+			<Block type="Wall" x="640" y="440"/>
+			<Block type="Floor" x="0" y="0"/>
 
-			<Block type="WhiteBlock" x="300" y="526"/>
-			<Block type="WhiteBlock" x="332" y="526"/>
-			<Block type="WhiteBlock" x="300" y="558"/>
-			<Block type="WhiteBlock" x="332" y="558"/>
+			<Item type="RedRupee" x="5" y="3"/>
+			<Item type="RedRupee" x="6" y="3"/>
+			<Item type="RedRupee" x="7" y="3"/>
+			<Item type="RedRupee" x="8" y="3"/>
+			<Item type="RedRupee" x="5" y="4"/>
+			<Item type="RedRupee" x="6" y="4"/>
+			<Item type="RedRupee" x="7" y="4"/>
+			<Item type="RedRupee" x="8" y="4"/>
 
-			<Block type="WhiteBlock" x="932" y="526"/>
-			<Block type="WhiteBlock" x="964" y="526"/>
-			<Block type="WhiteBlock" x="932" y="558"/>
-			<Block type="WhiteBlock" x="964" y="558"/>
+			<Block type="ClearBlock" x="1" y="0"/>
+			<Block type="ClearBlock" x="2" y="0"/>
+			<Block type="ClearBlock" x="3" y="0"/>
+			<Block type="ClearBlock" x="4" y="0"/>
+			<Block type="ClearBlock" x="5" y="0"/>
+			<Block type="ClearBlock" x="8" y="0"/>
+			<Block type="ClearBlock" x="9" y="0"/>
+			<Block type="ClearBlock" x="10" y="0"/>
+			<Block type="ClearBlock" x="11" y="0"/>
+			<Block type="ClearBlock" x="12" y="0"/>
 
-			<Block type="WhiteBlock" x="600" y="300"/>
-			<Block type="WhiteBlock" x="632" y="300"/>
-			<Block type="WhiteBlock" x="664" y="300"/>
+			<Block type="ClearBlock" x="1" y="8"/>
+			<Block type="ClearBlock" x="2" y="8"/>
+			<Block type="ClearBlock" x="3" y="8"/>
+			<Block type="ClearBlock" x="4" y="8"/>
+			<Block type="ClearBlock" x="5" y="8"/>
+			<Block type="ClearBlock" x="8" y="8"/>
+			<Block type="ClearBlock" x="9" y="8"/>
+			<Block type="ClearBlock" x="10" y="8"/>
+			<Block type="ClearBlock" x="11" y="8"/>
+			<Block type="ClearBlock" x="12" y="8"/>
 
-			<Block type="WhiteBlock" x="600" y="400"/>
-			<Block type="WhiteBlock" x="632" y="400"/>
-			<Block type="WhiteBlock" x="664" y="400"/>
+			<Block type="ClearBlock" x="0" y="1"/>
+			<Block type="ClearBlock" x="0" y="2"/>
+			<Block type="ClearBlock" x="0" y="3"/>
+			<Block type="ClearBlock" x="0" y="5"/>
+			<Block type="ClearBlock" x="0" y="6"/>
+			<Block type="ClearBlock" x="0" y="7"/>
 
-			<Block type="WhiteBlock" x="550" y="350"/>
-			<Block type="WhiteBlock" x="714" y="350"/>
-
-
-			<Enemy type="Aquamentus" x="632" y="350"/>
-			<Enemy type="Keese" x="440" y="280"/>
-			<Enemy type="Keese" x="824" y="280"/>
-			<Enemy type="Keese" x="632" y="160"/>
-			<Enemy type="Keese" x="632" y="540"/>
-
-			<Item type="RedPotion" x="632" y="350"/>
-			<Item type="Bomb" x="400" y="350"/>
-			<Item type="Bomb" x="864" y="350"/>
-			<Item type="RedRupee" x="632" y="250"/>
-			<Block type="Block" x="200" y="50"/>
-			<Block type="Block" x="232" y="50"/>
-			<Block type="Block" x="264" y="50"/>
-			<Block type="Block" x="296" y="50"/>
-			<Block type="Block" x="328" y="50"/>
-			<Block type="Block" x="360" y="50"/>
-			<Block type="Block" x="392" y="50"/>
-			<Block type="Block" x="424" y="50"/>
-			<Block type="Block" x="456" y="50"/>
-			<Block type="Block" x="488" y="50"/>
-			<Block type="Block" x="520" y="50"/>
-			<Block type="Block" x="552" y="50"/>
-
-
-			<Block type="Block" x="712" y="50"/>
-			<Block type="Block" x="744" y="50"/>
-			<Block type="Block" x="776" y="50"/>
-			<Block type="Block" x="808" y="50"/>
-			<Block type="Block" x="840" y="50"/>
-			<Block type="Block" x="872" y="50"/>
-			<Block type="Block" x="904" y="50"/>
-			<Block type="Block" x="936" y="50"/>
-			<Block type="Block" x="968" y="50"/>
-			<Block type="Block" x="1000" y="50"/>
-			<Block type="Block" x="1032" y="50"/>
-			<Block type="Block" x="1064" y="50"/>
-
-			<Block type="Block" x="200" y="82"/>
-			<Block type="Block" x="200" y="114"/>
-			<Block type="Block" x="200" y="146"/>
-			<Block type="Block" x="200" y="178"/>
-			<Block type="Block" x="200" y="210"/>
-			<Block type="Block" x="200" y="242"/>
-			<Block type="Block" x="200" y="274"/>
-			<Block type="Block" x="200" y="306"/>
-
-
-			<Block type="Block" x="200" y="434"/>
-			<Block type="Block" x="200" y="466"/>
-			<Block type="Block" x="200" y="498"/>
-			<Block type="Block" x="200" y="530"/>
-			<Block type="Block" x="200" y="562"/>
-			<Block type="Block" x="200" y="594"/>
-			<Block type="Block" x="200" y="626"/>
-
-			<Block type="Block" x="200" y="658"/>
-			<Block type="Block" x="232" y="658"/>
-			<Block type="Block" x="264" y="658"/>
-			<Block type="Block" x="296" y="658"/>
-			<Block type="Block" x="328" y="658"/>
-			<Block type="Block" x="360" y="658"/>
-			<Block type="Block" x="392" y="658"/>
-			<Block type="Block" x="424" y="658"/>
-			<Block type="Block" x="456" y="658"/>
-			<Block type="Block" x="488" y="658"/>
-			<Block type="Block" x="520" y="658"/>
-			<Block type="Block" x="552" y="658"/>
-			<Block type="Block" x="584" y="658"/>
-			<Block type="Block" x="616" y="658"/>
-			<Block type="Block" x="648" y="658"/>
-			<Block type="Block" x="680" y="658"/>
-			<Block type="Block" x="712" y="658"/>
-			<Block type="Block" x="744" y="658"/>
-			<Block type="Block" x="776" y="658"/>
-			<Block type="Block" x="808" y="658"/>
-			<Block type="Block" x="840" y="658"/>
-			<Block type="Block" x="872" y="658"/>
-			<Block type="Block" x="904" y="658"/>
-			<Block type="Block" x="936" y="658"/>
-			<Block type="Block" x="968" y="658"/>
-			<Block type="Block" x="1000" y="658"/>
-			<Block type="Block" x="1032" y="658"/>
-			<Block type="Block" x="1064" y="658"/>
-
-			<Block type="Block" x="1064" y="82"/>
-			<Block type="Block" x="1064" y="114"/>
-			<Block type="Block" x="1064" y="146"/>
-			<Block type="Block" x="1064" y="178"/>
-			<Block type="Block" x="1064" y="210"/>
-			<Block type="Block" x="1064" y="242"/>
-			<Block type="Block" x="1064" y="274"/>
-			<Block type="Block" x="1064" y="306"/>
-
-
-			<Block type="Block" x="1064" y="434"/>
-			<Block type="Block" x="1064" y="466"/>
-			<Block type="Block" x="1064" y="498"/>
-			<Block type="Block" x="1064" y="530"/>
-			<Block type="Block" x="1064" y="562"/>
-			<Block type="Block" x="1064" y="594"/>
-			<Block type="Block" x="1064" y="626"/>
+			<Block type="ClearBlock" x="13" y="1"/>
+			<Block type="ClearBlock" x="13" y="2"/>
+			<Block type="ClearBlock" x="13" y="3"/>
+			<Block type="ClearBlock" x="13" y="5"/>
+			<Block type="ClearBlock" x="13" y="6"/>
+			<Block type="ClearBlock" x="13" y="7"/>
 		</Objects>
 	</Room>
 
@@ -2505,193 +968,54 @@
 <Room id="17">
 	<Neighbor direction="left" id="16"/>
 	<Objects>
-			<!-- Center boss platform -->
-			<Block type="GreenBlock" x="550" y="250"/>
-			<Block type="GreenBlock" x="582" y="250"/>
-			<Block type="GreenBlock" x="614" y="250"/>
-			<Block type="GreenBlock" x="646" y="250"/>
-			<Block type="GreenBlock" x="678" y="250"/>
-			<Block type="GreenBlock" x="710" y="250"/>
+		<Block type="LeftDoorOpen" x="80" y="440"/>
+		<Block type="TopDoorClose" x="640" y="80"/>
+		<Block type="BottomDoorClose" x="640" y="800"/>
+		<Block type="RightDoorClose" x="1200" y="440"/>
 
-			<Block type="GreenBlock" x="550" y="282"/>
-			<Block type="GreenBlock" x="710" y="282"/>
+		<Block type="Wall" x="640" y="440"/>
+		<Block type="Floor" x="0" y="0"/>
 
-			<Block type="GreenBlock" x="550" y="314"/>
-			<Block type="GreenBlock" x="710" y="314"/>
+		<Item type="Bomb" x="6" y="3"/>
+		<Item type="Bomb" x="6" y="4"/>
+		<Item type="Bomb" x="7" y="3"/>
+		<Item type="Bomb" x="7" y="4"/>
 
-			<Block type="GreenBlock" x="550" y="346"/>
-			<Block type="GreenBlock" x="710" y="346"/>
+		<Block type="ClearBlock" x="1" y="0"/>
+		<Block type="ClearBlock" x="2" y="0"/>
+		<Block type="ClearBlock" x="3" y="0"/>
+		<Block type="ClearBlock" x="4" y="0"/>
+		<Block type="ClearBlock" x="5" y="0"/>
+		<Block type="ClearBlock" x="8" y="0"/>
+		<Block type="ClearBlock" x="9" y="0"/>
+		<Block type="ClearBlock" x="10" y="0"/>
+		<Block type="ClearBlock" x="11" y="0"/>
+		<Block type="ClearBlock" x="12" y="0"/>
 
-			<Block type="GreenBlock" x="550" y="378"/>
-			<Block type="GreenBlock" x="710" y="378"/>
+		<Block type="ClearBlock" x="1" y="8"/>
+		<Block type="ClearBlock" x="2" y="8"/>
+		<Block type="ClearBlock" x="3" y="8"/>
+		<Block type="ClearBlock" x="4" y="8"/>
+		<Block type="ClearBlock" x="5" y="8"/>
+		<Block type="ClearBlock" x="8" y="8"/>
+		<Block type="ClearBlock" x="9" y="8"/>
+		<Block type="ClearBlock" x="10" y="8"/>
+		<Block type="ClearBlock" x="11" y="8"/>
+		<Block type="ClearBlock" x="12" y="8"/>
 
-			<Block type="GreenBlock" x="550" y="410"/>
-			<Block type="GreenBlock" x="582" y="410"/>
-			<Block type="GreenBlock" x="614" y="410"/>
-			<Block type="GreenBlock" x="646" y="410"/>
-			<Block type="GreenBlock" x="678" y="410"/>
-			<Block type="GreenBlock" x="710" y="410"/>
+		<Block type="ClearBlock" x="0" y="1"/>
+		<Block type="ClearBlock" x="0" y="2"/>
+		<Block type="ClearBlock" x="0" y="3"/>
+		<Block type="ClearBlock" x="0" y="5"/>
+		<Block type="ClearBlock" x="0" y="6"/>
+		<Block type="ClearBlock" x="0" y="7"/>
 
-			<Block type="GreenBlock" x="320" y="314"/>
-			<Block type="GreenBlock" x="352" y="314"/>
-			<Block type="GreenBlock" x="384" y="314"/>
-			<Block type="GreenBlock" x="416" y="314"/>
-			<Block type="GreenBlock" x="448" y="314"/>
-			<Block type="GreenBlock" x="480" y="314"/>
-			<Block type="GreenBlock" x="512" y="314"/>
-
-			<Block type="GreenBlock" x="320" y="346"/>
-			<Block type="GreenBlock" x="352" y="346"/>
-			<Block type="GreenBlock" x="384" y="346"/>
-			<Block type="GreenBlock" x="416" y="346"/>
-			<Block type="GreenBlock" x="448" y="346"/>
-			<Block type="GreenBlock" x="480" y="346"/>
-			<Block type="GreenBlock" x="512" y="346"/>
-
-			<Block type="GreenBlock" x="350" y="150"/>
-			<Block type="GreenBlock" x="382" y="150"/>
-			<Block type="GreenBlock" x="414" y="150"/>
-			<Block type="GreenBlock" x="446" y="150"/>
-			<Block type="GreenBlock" x="478" y="150"/>
-			<Block type="GreenBlock" x="510" y="150"/>
-
-			<Block type="GreenBlock" x="750" y="150"/>
-			<Block type="GreenBlock" x="782" y="150"/>
-			<Block type="GreenBlock" x="814" y="150"/>
-			<Block type="GreenBlock" x="846" y="150"/>
-			<Block type="GreenBlock" x="878" y="150"/>
-			<Block type="GreenBlock" x="910" y="150"/>
-
-			<Block type="GreenBlock" x="350" y="510"/>
-			<Block type="GreenBlock" x="382" y="510"/>
-			<Block type="GreenBlock" x="414" y="510"/>
-			<Block type="GreenBlock" x="446" y="510"/>
-			<Block type="GreenBlock" x="478" y="510"/>
-			<Block type="GreenBlock" x="510" y="510"/>
-
-			<Block type="GreenBlock" x="750" y="510"/>
-			<Block type="GreenBlock" x="782" y="510"/>
-			<Block type="GreenBlock" x="814" y="510"/>
-			<Block type="GreenBlock" x="846" y="510"/>
-			<Block type="GreenBlock" x="878" y="510"/>
-			<Block type="GreenBlock" x="910" y="510"/>
-
-			<Block type="GreenBlock" x="800" y="250"/>
-			<Block type="GreenBlock" x="800" y="282"/>
-			<Block type="GreenBlock" x="800" y="314"/>
-			<Block type="GreenBlock" x="800" y="346"/>
-			<Block type="GreenBlock" x="800" y="378"/>
-			<Block type="GreenBlock" x="800" y="410"/>
-
-			<Enemy type="Aquamentus" x="630" y="330"/>
-			<Enemy type="Goriya" x="450" y="200"/>
-			<Enemy type="Goriya" x="810" y="200"/>
-			<Enemy type="Goriya" x="450" y="460"/>
-			<Enemy type="Goriya" x="810" y="460"/>
-
-			<Item type="RedPotion" x="582" y="330"/>
-			<Item type="RedRupee" x="630" y="330"/>
-			<Item type="Bomb" x="678" y="330"/>
-
-			<Item type="RedRupee" x="350" y="182"/>
-			<Item type="RedRupee" x="910" y="182"/>
-			<Item type="RedRupee" x="350" y="478"/>
-			<Item type="RedRupee" x="910" y="478"/>
-
-			<Block type="Block" x="200" y="50"/>
-			<Block type="Block" x="232" y="50"/>
-			<Block type="Block" x="264" y="50"/>
-			<Block type="Block" x="296" y="50"/>
-			<Block type="Block" x="328" y="50"/>
-			<Block type="Block" x="360" y="50"/>
-			<Block type="Block" x="392" y="50"/>
-			<Block type="Block" x="424" y="50"/>
-			<Block type="Block" x="456" y="50"/>
-			<Block type="Block" x="488" y="50"/>
-			<Block type="Block" x="520" y="50"/>
-			<Block type="Block" x="552" y="50"/>
-			<Block type="Block" x="584" y="50"/>
-			<Block type="Block" x="616" y="50"/>
-			<Block type="Block" x="648" y="50"/>
-			<Block type="Block" x="680" y="50"/>
-			<Block type="Block" x="712" y="50"/>
-			<Block type="Block" x="744" y="50"/>
-			<Block type="Block" x="776" y="50"/>
-			<Block type="Block" x="808" y="50"/>
-			<Block type="Block" x="840" y="50"/>
-			<Block type="Block" x="872" y="50"/>
-			<Block type="Block" x="904" y="50"/>
-			<Block type="Block" x="936" y="50"/>
-			<Block type="Block" x="968" y="50"/>
-			<Block type="Block" x="1000" y="50"/>
-			<Block type="Block" x="1032" y="50"/>
-			<Block type="Block" x="1064" y="50"/>
-
-			<Block type="Block" x="200" y="82"/>
-			<Block type="Block" x="200" y="114"/>
-			<Block type="Block" x="200" y="146"/>
-			<Block type="Block" x="200" y="178"/>
-			<Block type="Block" x="200" y="210"/>
-			<Block type="Block" x="200" y="242"/>
-			<Block type="Block" x="200" y="274"/>
-			<Block type="Block" x="200" y="306"/>
-
-
-			<Block type="Block" x="200" y="434"/>
-			<Block type="Block" x="200" y="466"/>
-			<Block type="Block" x="200" y="498"/>
-			<Block type="Block" x="200" y="530"/>
-			<Block type="Block" x="200" y="562"/>
-			<Block type="Block" x="200" y="594"/>
-			<Block type="Block" x="200" y="626"/>
-
-			<Block type="Block" x="200" y="658"/>
-			<Block type="Block" x="232" y="658"/>
-			<Block type="Block" x="264" y="658"/>
-			<Block type="Block" x="296" y="658"/>
-			<Block type="Block" x="328" y="658"/>
-			<Block type="Block" x="360" y="658"/>
-			<Block type="Block" x="392" y="658"/>
-			<Block type="Block" x="424" y="658"/>
-			<Block type="Block" x="456" y="658"/>
-			<Block type="Block" x="488" y="658"/>
-			<Block type="Block" x="520" y="658"/>
-			<Block type="Block" x="552" y="658"/>
-			<Block type="Block" x="584" y="658"/>
-			<Block type="Block" x="616" y="658"/>
-			<Block type="Block" x="648" y="658"/>
-			<Block type="Block" x="680" y="658"/>
-			<Block type="Block" x="712" y="658"/>
-			<Block type="Block" x="744" y="658"/>
-			<Block type="Block" x="776" y="658"/>
-			<Block type="Block" x="808" y="658"/>
-			<Block type="Block" x="840" y="658"/>
-			<Block type="Block" x="872" y="658"/>
-			<Block type="Block" x="904" y="658"/>
-			<Block type="Block" x="936" y="658"/>
-			<Block type="Block" x="968" y="658"/>
-			<Block type="Block" x="1000" y="658"/>
-			<Block type="Block" x="1032" y="658"/>
-			<Block type="Block" x="1064" y="658"/>
-
-			<Block type="Block" x="1064" y="82"/>
-			<Block type="Block" x="1064" y="114"/>
-			<Block type="Block" x="1064" y="146"/>
-			<Block type="Block" x="1064" y="178"/>
-			<Block type="Block" x="1064" y="210"/>
-			<Block type="Block" x="1064" y="242"/>
-			<Block type="Block" x="1064" y="274"/>
-			<Block type="Block" x="1064" y="306"/>
-			<Block type="Block" x="1064" y="338"/>
-			<Block type="Block" x="1064" y="370"/>
-			<Block type="Block" x="1064" y="402"/>
-			<Block type="Block" x="1064" y="434"/>
-			<Block type="Block" x="1064" y="466"/>
-			<Block type="Block" x="1064" y="498"/>
-			<Block type="Block" x="1064" y="530"/>
-			<Block type="Block" x="1064" y="562"/>
-			<Block type="Block" x="1064" y="594"/>
-			<Block type="Block" x="1064" y="626"/>
+		<Block type="ClearBlock" x="13" y="1"/>
+		<Block type="ClearBlock" x="13" y="2"/>
+		<Block type="ClearBlock" x="13" y="3"/>
+		<Block type="ClearBlock" x="13" y="5"/>
+		<Block type="ClearBlock" x="13" y="6"/>
+		<Block type="ClearBlock" x="13" y="7"/>
 		</Objects>
 	</Room>
 </Rooms>
