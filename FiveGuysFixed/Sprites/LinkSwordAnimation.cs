@@ -58,7 +58,10 @@ namespace FiveGuysFixed.Animation
             }
             else
             {
-                throw new Exception("Impossible");
+               
+                swordSprites = GetWoodSwordAttackSprites(GameState.PlayerState.direction);
+                
+                return;
             }
 
             Debug.WriteLine("Swdadwadsd:" + currentFrameIndex);

@@ -28,12 +28,10 @@ namespace FiveGuysFixed.Controls
             this.game = game;
             this.currentState = Keyboard.GetState();
             this.previousState = Keyboard.GetState();
-
         }
 
         public void Update()
         {
-
             currentState = Keyboard.GetState();
 
             // Array of keys we care about.
@@ -41,12 +39,25 @@ namespace FiveGuysFixed.Controls
             Keys[] itemKeys = { Keys.U, Keys.I };
             Keys[] weaponKeys = { Keys.D1, Keys.D2, Keys.D3 };
             Keys[] enemyKeys = { Keys.O, Keys.P };
-            Keys[] gameKeys = { Keys.Q, Keys.R, Keys.Enter, Keys.C};
+            Keys[] gameKeys = { Keys.Q, Keys.R, Keys.Enter, Keys.C };
             Keys[] blockKeys = { Keys.T, Keys.Y };
             Keys[] combatKeys = { Keys.N, Keys.E };
             Keys[] audioKeys = { Keys.B };
+            Keys[] boomerangKeys = { Keys.Z }; // New array for boomerang key
 
+            // Boomerang key handling
+            foreach (Keys bKey in boomerangKeys)
+            {
+                bool currentDown = currentState.IsKeyDown(bKey);
+                bool previousDown = previousState.IsKeyDown(bKey);
 
+                // Check for key press (not release)
+                if (currentDown && !previousDown)
+                {
+                    // Call boomerang specific method
+                    ThrowBoomerang();
+                }
+            }
 
             foreach (Keys cKey in combatKeys)
             {
@@ -61,7 +72,12 @@ namespace FiveGuysFixed.Controls
                     switch (cKey)
                     {
                         case Keys.N:
-                            GameState.Player.Attack();
+                            // Only use for sword attack
+                            if (GameState.PlayerState.heldWeapon == WeaponType.WOODSWORD ||
+                                GameState.PlayerState.heldWeapon == WeaponType.WHITESWORD)
+                            {
+                                GameState.Player.Attack();
+                            }
                             break;
                         case Keys.E:
                             GameState.Player.TakeDamage(1);
@@ -69,7 +85,7 @@ namespace FiveGuysFixed.Controls
                     }
                 }
             }
-            
+
             foreach (Keys gKey in gameKeys)
             {
                 if (currentState.IsKeyDown(gKey) && !previousState.IsKeyDown(gKey))
@@ -81,10 +97,6 @@ namespace FiveGuysFixed.Controls
                             break;
                         case Keys.R:
                             GameState.Player.Reset();
-                            //game.Player.idle();
-                            //game.enemies.Clear();
-                            //game.projectiles.Clear();
-                            //GameState.PlayerState.direction = Dir.DOWN;
                             break;
                         case Keys.Enter:
                             if (GameStateManager.CurrentState is GamePlayState)
@@ -157,9 +169,8 @@ namespace FiveGuysFixed.Controls
                             break;
                     }
                 }
-
             }
-   
+
             foreach (Keys iKey in itemKeys)
             {
                 bool currentDown = currentState.IsKeyDown(iKey);
@@ -207,7 +218,7 @@ namespace FiveGuysFixed.Controls
                 if (!currentDown && previousDown)
                 {
                     bool isKeyDown = currentDown;
-                    switch (bKey) 
+                    switch (bKey)
                     {
                         case Keys.T:
                             new BlockSwitchCommand(game, true).Execute();
@@ -216,9 +227,7 @@ namespace FiveGuysFixed.Controls
                             new BlockSwitchCommand(game, false).Execute();
                             break;
                     }
-
                 }
-
             }
 
             foreach (Keys audioKey in audioKeys)
@@ -249,9 +258,69 @@ namespace FiveGuysFixed.Controls
                     }
                 }
             }
-                previousState = currentState;
+
+            previousState = currentState;
         }
 
+        private void ThrowBoomerang()
+        {
+            // Create boomerang velocity based on direction
+            Vector2 velocity = Vector2.Zero;
+            Vector2 startPos = GameState.PlayerState.position;
 
+            switch (GameState.PlayerState.direction)
+            {
+                case Dir.UP:
+                    velocity = new Vector2(0, -5);
+                    startPos.Y -= 20;
+                    break;
+                case Dir.DOWN:
+                    velocity = new Vector2(0, 5);
+                    startPos.Y += 20;
+                    break;
+                case Dir.LEFT:
+                    velocity = new Vector2(-5, 0);
+                    startPos.X -= 20;
+                    break;
+                case Dir.RIGHT:
+                    velocity = new Vector2(5, 0);
+                    startPos.X += 20;
+                    break;
+            }
+
+            // Check if there's already a boomerang
+            bool boomerangExists = false;
+            foreach (var projectile in GameState.currentRoomContents.Projectiles)
+            {
+                if (projectile is FiveGuysFixed.Projectiles.Boomerang)
+                {
+                    boomerangExists = true;
+                    break;
+                }
+            }
+
+            // Only throw if no boomerang exists
+            if (!boomerangExists)
+            {
+                // Create and add boomerang
+                try
+                {
+                    Texture2D weaponTexture = game.Content.Load<Texture2D>("linkSprite");
+                    GameState.currentRoomContents.Projectiles.Add(
+                        new FiveGuysFixed.Projectiles.Boomerang(
+                            weaponTexture,
+                            startPos.X,
+                            startPos.Y,
+                            velocity
+                        )
+                    );
+                }
+                catch (Exception ex)
+                {
+                    // Handle exception (texture not found, etc.)
+                    System.Diagnostics.Debug.WriteLine("Boomerang creation error: " + ex.Message);
+                }
+            }
+        }
     }
 }

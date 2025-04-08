@@ -4,6 +4,7 @@ using Microsoft.Xna.Framework.Content;
 using FiveGuysFixed.GameStates;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace FiveGuysFixed.GUI
 {
@@ -15,18 +16,20 @@ namespace FiveGuysFixed.GUI
         private int mapWidth, mapHeight;     // minimap dimensions
         private GraphicsDevice graphicsDevice;
 
-        private const int DOT_SIZE = 4;      // size of Link's position indicator
+        private const int DOT_SIZE = 8;      // size of Link's position indicator
+        private Vector2 mapOffset;           // offset for fine-tuning
 
-        // Room dimensions in the game world
-        private float roomWidth = 1280;
-        private float roomHeight = 720;
+        private float roomWidth = 720;
+        private float roomHeight = 528;
 
-        // Store actual room layout in a 2D grid
-        private int[,] roomGrid;
-        private Vector2 roomGridOrigin; // Coordinates of room 1 in the grid
+        private float ROOM_WID;
+        private float ROOM_HEI;
 
-        // Define the corners of the minimap where the dungeon area is
-        private Rectangle dungeonArea;
+        private Dictionary<int, Vector2> roomPositions;
+
+        private Dictionary<int, Vector2> roomWorldPositions;
+
+        private bool isFirstDraw = true;
 
         public MiniMap(GraphicsDevice graphicsDevice, Vector2 mapPosition, int mapWidth, int mapHeight)
         {
@@ -35,20 +38,17 @@ namespace FiveGuysFixed.GUI
             this.mapWidth = mapWidth;
             this.mapHeight = mapHeight;
 
-            // Create red dot texture
+            // calculate room size on minimap (6 rooms across)
+            ROOM_WID = mapWidth / 6;
+            ROOM_HEI = mapHeight / 6;
+
             linkDotTexture = new Texture2D(graphicsDevice, 1, 1);
             linkDotTexture.SetData(new[] { Color.Red });
 
-            // Define the area on the minimap where the dungeon is shown
-            // Adjust these values based on your actual minimap texture
-            dungeonArea = new Rectangle(
-                (int)mapPosition.X + 10,  // Left edge of dungeon area
-                (int)mapPosition.Y + 10,  // Top edge of dungeon area
-                mapWidth - 20,            // Width of dungeon area
-                mapHeight - 20            // Height of dungeon area
-            );
+            // add a small offset for fine-tuning positioning
+            mapOffset = new Vector2(8, 8);
 
-            InitializeRoomGrid();
+            InitializeRoomPositions();
         }
 
         public void LoadContent(ContentManager content)
@@ -61,91 +61,66 @@ namespace FiveGuysFixed.GUI
             mapTexture = texture;
         }
 
-        private void InitializeRoomGrid()
+        private void InitializeRoomPositions()
         {
-            // Create a larger grid to ensure we have enough space
-            // for all rooms with their proper relationships
-            roomGrid = new int[7, 8]; // 7 rows, 8 columns
-
-            // Initialize all to -1 (no room)
-            for (int y = 0; y < 7; y++)
-                for (int x = 0; x < 8; x++)
-                    roomGrid[y, x] = -1;
-
-            // Place rooms in the grid according to their connections
-
-            // Row 0 (top row)
-            roomGrid[0, 1] = 1;  // Room 1
-            roomGrid[0, 2] = 2;  // Room 2
-
-            // Row 1
-            roomGrid[1, 2] = 3;  // Room 3
-            roomGrid[1, 4] = 4;  // Room 4
-            roomGrid[1, 5] = 5;  // Room 5
-
-            // Row 2
-            roomGrid[2, 0] = 6;  // Room 6
-            roomGrid[2, 1] = 7;  // Room 7
-            roomGrid[2, 2] = 8;  // Room 8
-            roomGrid[2, 3] = 9;  // Room 9
-            roomGrid[2, 4] = 10; // Room 10
-
-            // Row 3
-            roomGrid[3, 1] = 11; // Room 11
-            roomGrid[3, 2] = 12; // Room 12
-            roomGrid[3, 3] = 13; // Room 13
-
-            // Row 4
-            roomGrid[4, 2] = 14; // Room 14
-
-            // Row 5
-            roomGrid[5, 1] = 15; // Room 15
-            roomGrid[5, 2] = 16; // Room 16
-            roomGrid[5, 3] = 17; // Room 17
-
-            // Set origin to room 1 position
-            roomGridOrigin = new Vector2(1, 0);
-        }
-
-        private Vector2 GetRoomCoordinates(int roomId)
-        {
-            // Search for the room in the grid
-            for (int y = 0; y < 7; y++)
+            roomPositions = new Dictionary<int, Vector2>
             {
-                for (int x = 0; x < 8; x++)
-                {
-                    if (roomGrid[y, x] == roomId)
-                    {
-                        return new Vector2(x, y);
-                    }
-                }
-            }
+                { 1, new Vector2(22, 7) },
+                { 2, new Vector2(45, 2) },
+                { 3, new Vector2(45, 30) },
+                { 4, new Vector2(100, 30) },
+                { 5, new Vector2(125, 30) },
+                { 6, new Vector2(0, 58) },
+                { 7, new Vector2(20, 58) },
+                { 8, new Vector2(45, 58) },
+                { 9, new Vector2(75, 58) },
+                { 10, new Vector2(100, 58) }, 
+                { 11, new Vector2(20, 83) },
+                { 12, new Vector2(45, 83) },
+                { 13, new Vector2(75, 83) },
+                { 14, new Vector2(45, 110) },
+                { 15, new Vector2(20, 140) },
+                { 16, new Vector2(45, 140) },
+                { 17, new Vector2(75, 140) }
+            };
 
-            // Return a default position if room not found
-            return new Vector2(0, 0);
-        }
-
-        private Vector2 GridToMinimap(Vector2 gridPosition)
-        {
-            // Calculate the size of each cell in the minimap
-            float cellWidth = dungeonArea.Width / 8.0f;
-            float cellHeight = dungeonArea.Height / 7.0f;
-
-            // Convert grid coordinates to pixel coordinates
-            float pixelX = dungeonArea.X + gridPosition.X * cellWidth + cellWidth / 2;
-            float pixelY = dungeonArea.Y + gridPosition.Y * cellHeight + cellHeight / 2;
-
-            return new Vector2(pixelX, pixelY);
+            // room world positions
+            roomWorldPositions = new Dictionary<int, Vector2>
+            {
+                { 1, new Vector2(1 * ROOM_WID, 0 * ROOM_HEI) },
+                { 2, new Vector2(2 * ROOM_WID, 0 * ROOM_HEI) },
+                { 3, new Vector2(2 * ROOM_WID, 1 * ROOM_HEI) },
+                { 4, new Vector2(4 * ROOM_WID, 1 * ROOM_HEI) },
+                { 5, new Vector2(5 * ROOM_WID, 1 * ROOM_HEI) },
+                { 6, new Vector2(0 * ROOM_WID, 2 * ROOM_HEI) },
+                { 7, new Vector2(1 * ROOM_WID, 2 * ROOM_HEI) },
+                { 8, new Vector2(2 * ROOM_WID, 2 * ROOM_HEI) },
+                { 9, new Vector2(3 * ROOM_WID, 2 * ROOM_HEI) },
+                { 10, new Vector2(4 * ROOM_WID, 2 * ROOM_HEI) },
+                { 11, new Vector2(1 * ROOM_WID, 3 * ROOM_HEI) },
+                { 12, new Vector2(2 * ROOM_WID, 3 * ROOM_HEI) },
+                { 13, new Vector2(3 * ROOM_WID, 3 * ROOM_HEI) },
+                { 14, new Vector2(2 * ROOM_WID, 4 * ROOM_HEI) },
+                { 15, new Vector2(1 * ROOM_WID, 5 * ROOM_HEI) },
+                { 16, new Vector2(2 * ROOM_WID, 5 * ROOM_HEI) },
+                { 17, new Vector2(3 * ROOM_WID, 5 * ROOM_HEI) }
+            };
         }
 
         public void Update(GameTime gameTime)
         {
-            // No additional update logic needed for this implementation
+          
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            // Draw the map background if available
+            if (isFirstDraw)
+            {
+                GameState.currentRoomID = 1;
+                isFirstDraw = false;
+                Debug.WriteLine("First draw detected, setting room to 1");
+            }
+
             if (mapTexture != null)
             {
                 spriteBatch.Draw(mapTexture, new Rectangle(
@@ -156,61 +131,67 @@ namespace FiveGuysFixed.GUI
                     Color.White);
             }
 
-            // Get grid coordinates for the current room
-            Vector2 roomGridPos = GetRoomCoordinates(GameState.currentRoomID);
+            Debug.WriteLine($"Current Room ID: {GameState.currentRoomID}");
 
-            // Convert to minimap coordinates
-            Vector2 roomMiniPos = GridToMinimap(roomGridPos);
-
-            // Calculate cell size
-            float cellWidth = dungeonArea.Width / 8.0f;
-            float cellHeight = dungeonArea.Height / 7.0f;
-
-            // Calculate relative position within the room
-            float relativeX = GameState.PlayerState.position.X / roomWidth;
-            float relativeY = GameState.PlayerState.position.Y / roomHeight;
-
-            // Clamp to ensure dot stays within room boundaries
-            relativeX = MathHelper.Clamp(relativeX, 0.1f, 0.9f);
-            relativeY = MathHelper.Clamp(relativeY, 0.1f, 0.9f);
-
-            // Map the player's position within the room to the minimap
-            float offsetX = (relativeX - 0.5f) * cellWidth * 0.8f;
-            float offsetY = (relativeY - 0.5f) * cellHeight * 0.8f;
-
-            // Calculate final dot position
-            Vector2 dotPosition = new Vector2(
-                roomMiniPos.X + offsetX,
-                roomMiniPos.Y + offsetY
-            );
-
-            // Draw the red dot for Link
-            spriteBatch.Draw(linkDotTexture, new Rectangle(
-                (int)dotPosition.X - DOT_SIZE / 2,
-                (int)dotPosition.Y - DOT_SIZE / 2,
-                DOT_SIZE,
-                DOT_SIZE),
-                Color.Red);
-
-            // For debugging - draw room centers
-            /*
-            for (int y = 0; y < 7; y++)
+            if (roomPositions.TryGetValue(GameState.currentRoomID, out Vector2 roomMinimapPosition) &&
+                roomWorldPositions.TryGetValue(GameState.currentRoomID, out Vector2 roomWorldPosition))
             {
-                for (int x = 0; x < 8; x++)
-                {
-                    if (roomGrid[y, x] != -1)
-                    {
-                        Vector2 pos = GridToMinimap(new Vector2(x, y));
-                        spriteBatch.Draw(linkDotTexture, new Rectangle(
-                            (int)pos.X - 1,
-                            (int)pos.Y - 1,
-                            2,
-                            2),
-                            Color.Blue);
-                    }
-                }
+                float relativeX = (GameState.PlayerState.position.X - 96) / 528;
+                float relativeY = (GameState.PlayerState.position.Y - 336) / 288;
+
+                relativeX = MathHelper.Clamp(relativeX, 0f, 1f);
+                relativeY = MathHelper.Clamp(relativeY, 0f, 1f);
+
+                Debug.WriteLine($"Player Position: X={GameState.PlayerState.position.X}, Y={GameState.PlayerState.position.Y}");
+                Debug.WriteLine($"Relative Position: X={relativeX}, Y={relativeY}");
+
+                Vector2 dotPosition = mapPosition + roomMinimapPosition + mapOffset + new Vector2(
+                    relativeX * (ROOM_WID - 12),
+                    relativeY * (ROOM_HEI - 12)
+                );
+
+                Debug.WriteLine($"Dot Position: X={dotPosition.X}, Y={dotPosition.Y}");
+
+                spriteBatch.Draw(linkDotTexture, new Rectangle(
+                    (int)dotPosition.X - DOT_SIZE / 2,
+                    (int)dotPosition.Y - DOT_SIZE / 2,
+                    DOT_SIZE,
+                    DOT_SIZE),
+                    Color.Red);
             }
-            */
+            else
+            {
+                Debug.WriteLine($"Room {GameState.currentRoomID} not found in position dictionaries");
+            }
+
+            int borderThickness = 2;
+            spriteBatch.Draw(linkDotTexture, new Rectangle(
+                (int)mapPosition.X,
+                (int)mapPosition.Y,
+                mapWidth,
+                borderThickness),
+                Color.Black);
+
+            spriteBatch.Draw(linkDotTexture, new Rectangle(
+                (int)mapPosition.X,
+                (int)mapPosition.Y + mapHeight - borderThickness,
+                mapWidth,
+                borderThickness),
+                Color.Black);
+
+            spriteBatch.Draw(linkDotTexture, new Rectangle(
+                (int)mapPosition.X,
+                (int)mapPosition.Y,
+                borderThickness,
+                mapHeight),
+                Color.Black);
+
+            spriteBatch.Draw(linkDotTexture, new Rectangle(
+                (int)mapPosition.X + mapWidth - borderThickness,
+                (int)mapPosition.Y,
+                borderThickness,
+                mapHeight),
+                Color.Black);
         }
 
         public void Dispose()
