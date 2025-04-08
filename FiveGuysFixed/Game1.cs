@@ -273,6 +273,13 @@ namespace FiveGuysFixed
 
             GameState.Player.Draw(spriteBatch);
 
+            //spriteBatch.Draw(GameState.contentLoader.blockTexture, new Vector2(1195, 397), new Rectangle(863, 77, 17, 32),  Color.White, 0, new Vector2(0,0), 5.0f, SpriteEffects.None, 0);//right
+            //spriteBatch.Draw(GameState.contentLoader.blockTexture, new Rectangle(848, 44, 17, 32), new Rectangle(0, 397, 17*5, 32*5), Color.White);//left
+            //spriteBatch.Draw(GameState.contentLoader.blockTexture, new Rectangle(848, 11, 32, 17), new Rectangle(537, 0, 32*5, 17*5), Color.White);//up
+            //spriteBatch.Draw(GameState.contentLoader.blockTexture, new Rectangle(848, 125, 32, 17), new Rectangle(537, 795, 32 * 5, 17 * 5), Color.White);//down
+
+            
+
 
             GameState.HUD.Draw(spriteBatch);
 

@@ -27,7 +27,14 @@
 			<Block type ="WhiteBlock" x="3" y="1"/>
 			<Block type ="YellowBlock" x="4" y="1"/>
 
-			
+			<Enemy type="Aquamentus" x="700" y="500"/>
+			<Enemy type="Gel" x="500" y="200"/>
+			<Enemy type="Goriya" x="500" y="300"/>
+			<Enemy type="Keese" x="500" y="400"/>
+			<Enemy type="Moblin" x="500" y="500"/>
+			<Enemy type="Octorok" x="500" y="600"/>
+			<Enemy type="Stalfos" x="500" y="700"/>
+			<Enemy type="Tektike" x="500" y="800"/>
 			
 		</Objects>
 	</Room>

@@ -13,6 +13,7 @@ namespace FiveGuysFixed.Enemies
         protected ISprite sprite;
         public int x, y;
         int health = 1;
+        public float scale = 5.0f;
 
         public void TakeDamage(int damage)
         {
@@ -22,6 +23,15 @@ namespace FiveGuysFixed.Enemies
             {
                 GameState.currentRoomContents.Enemies.Remove(this);
             }
+        }
+
+        public Enemy(Vector2 position, ISprite sprite, float scale)
+        {
+            Position = position;
+            this.x = (int)position.X;
+            this.y = (int)position.Y;
+            this.sprite = sprite;
+            this.scale = scale;
         }
 
         public Enemy(Vector2 position, ISprite sprite)
@@ -45,7 +55,8 @@ namespace FiveGuysFixed.Enemies
         public virtual void Draw(SpriteBatch spriteBatch, Vector2 offset)
         {
             Vector2 drawPos = Position + offset;
-            sprite.Draw(spriteBatch, drawPos, null);
+            sprite.Draw(spriteBatch, drawPos, null, scale);
+            
         }
 
         public virtual Rectangle BoundingBox
