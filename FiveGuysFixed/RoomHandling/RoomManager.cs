@@ -187,10 +187,17 @@ namespace FiveGuysFixed.RoomHandling
                     );
                 }
 
-                if (type == "Block")
+                if (type == "ClearBlock")
                 {
                     GameState.currentRoomContents.Blocks.Add(
-                        new Block(GameState.contentLoader.blockTexture, x, y)
+                        new ClearBlock(GameState.contentLoader.blockTexture, x, y)
+                    );
+                }
+
+                if (type == "BlueBlock")
+                {
+                    GameState.currentRoomContents.Blocks.Add(
+                        new BlueBlock(GameState.contentLoader.blockTexture, x, y)
                     );
                 }
 
