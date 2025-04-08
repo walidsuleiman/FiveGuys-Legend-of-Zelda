@@ -40,11 +40,11 @@ namespace FiveGuysFixed.Animation
 
             if (facLeft)
             {
-                _spriteBatch.Draw(texture, position, sourceRect, color, 0, new Vector2(width / 2, height / 2), 2, SpriteEffects.FlipHorizontally, 0f);
+                _spriteBatch.Draw(texture, position, sourceRect, color, 0, new Vector2(width / 2, height / 2), 5, SpriteEffects.FlipHorizontally, 0f);
             }
             else
             {
-                _spriteBatch.Draw(texture, position, sourceRect, color, 0, new Vector2(width / 2, height / 2), 2, SpriteEffects.None, 0f);
+                _spriteBatch.Draw(texture, position, sourceRect, color, 0, new Vector2(width / 2, height / 2), 5, SpriteEffects.None, 0f);
             }
         }
 

@@ -117,6 +117,76 @@ namespace FiveGuysFixed.RoomHandling
                 int x = int.Parse(blockNode.Attributes["x"].Value);
                 int y = int.Parse(blockNode.Attributes["y"].Value);
 
+                if (type == "Wall")
+                {
+                    GameState.currentRoomContents.Blocks.Add(
+                        new Wall(GameState.contentLoader.blockTexture, x, y)
+                    );
+                }
+
+                if (type == "Floor")
+                {
+                    GameState.currentRoomContents.Blocks.Add(
+                        new Floor(GameState.contentLoader.blockTexture, x, y)
+                    );
+                }
+
+                if (type == "TopDoorOpen")
+                {
+                    GameState.currentRoomContents.Blocks.Add(
+                        new TopDoorOpen(GameState.contentLoader.blockTexture, x, y)
+                    );
+                }
+
+                if (type == "TopDoorClose")
+                {
+                    GameState.currentRoomContents.Blocks.Add(
+                        new TopDoorClose(GameState.contentLoader.blockTexture, x, y)
+                    );
+                }
+
+                if (type == "LeftDoorOpen")
+                {
+                    GameState.currentRoomContents.Blocks.Add(
+                        new LeftDoorOpen(GameState.contentLoader.blockTexture, x, y)
+                    );
+                }
+
+                if (type == "LeftDoorClose")
+                {
+                    GameState.currentRoomContents.Blocks.Add(
+                        new LeftDoorClose(GameState.contentLoader.blockTexture, x, y)
+                    );
+                }
+
+                if (type == "RightDoorOpen")
+                {
+                    GameState.currentRoomContents.Blocks.Add(
+                        new RightDoorOpen(GameState.contentLoader.blockTexture, x, y)
+                    );
+                }
+
+                if (type == "RightDoorClose")
+                {
+                    GameState.currentRoomContents.Blocks.Add(
+                        new RightDoorClose(GameState.contentLoader.blockTexture, x, y)
+                    );
+                }
+
+                if (type == "BottomDoorOpen")
+                {
+                    GameState.currentRoomContents.Blocks.Add(
+                        new BottomDoorOpen(GameState.contentLoader.blockTexture, x, y)
+                    );
+                }
+
+                if (type == "BottomDoorClose")
+                {
+                    GameState.currentRoomContents.Blocks.Add(
+                        new BottomDoorClose(GameState.contentLoader.blockTexture, x, y)
+                    );
+                }
+
                 if (type == "Block")
                 {
                     GameState.currentRoomContents.Blocks.Add(

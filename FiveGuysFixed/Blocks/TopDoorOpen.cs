@@ -10,15 +10,16 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace FiveGuysFixed.Blocks
 {
-    internal class Block : IBlock
+    internal class TopDoorOpen : IBlock
     {
         private Sprite blockSprite;
         private double x, y;
         private int currentTime;
 
-        public Block(Texture2D texture, int x, int y)
+        public TopDoorOpen(Texture2D texture, int x, int y)
         {
-            blockSprite = new Sprite(texture, 423, 224, 16, 16);
+            blockSprite = new Sprite(texture, 848, 11, 32, 32);
+
 
             this.x = x;
             this.y = y;
@@ -27,18 +28,18 @@ namespace FiveGuysFixed.Blocks
 
         public bool IsCollidable()
         {
-            return true;
+            return false;
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            float scale = 2;
+            float scale = 5;
             blockSprite.Draw(spriteBatch, new System.Numerics.Vector2((float)x, (float)y), null, scale);
         }
 
         public void Draw(SpriteBatch spriteBatch, Vector2 offset)
         {
-            float scale = 2;
+            float scale = 5;
             var drawPos = new System.Numerics.Vector2((float)x, (float)y) + new System.Numerics.Vector2(offset.X, offset.Y);
             blockSprite.Draw(spriteBatch, drawPos, null, scale);
         }
@@ -53,7 +54,7 @@ namespace FiveGuysFixed.Blocks
         {
             get
             {
-                return new Rectangle((int)x, (int)y, 64, 64);
+                return new Rectangle((int)x, (int)y, 0, 0);
             }
             set
             {

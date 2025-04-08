@@ -2,6 +2,8 @@
 using Microsoft.Xna.Framework.Graphics;
 using FiveGuysFixed.Animation;
 using FiveGuysFixed.Sprites;
+using FiveGuysFixed.GameStates;
+
 
 namespace FiveGuysFixed.Enemies
 {
@@ -10,6 +12,17 @@ namespace FiveGuysFixed.Enemies
         public Vector2 Position { get; set; }
         protected ISprite sprite;
         public int x, y;
+        int health = 1;
+
+        public void TakeDamage(int damage)
+        {
+            health = health - damage;
+
+            if (health < 0)
+            {
+                GameState.currentRoomContents.Enemies.Remove(this);
+            }
+        }
 
         public Enemy(Vector2 position, ISprite sprite)
         {

@@ -5,20 +5,21 @@ using System.Text;
 using System.Threading.Tasks;
 using FiveGuysFixed.Animation;
 using FiveGuysFixed.Blocks;
+using FiveGuysFixed.GameStates;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace FiveGuysFixed.Blocks
 {
-    internal class Block : IBlock
+    internal class Floor : IBlock
     {
         private Sprite blockSprite;
         private double x, y;
         private int currentTime;
 
-        public Block(Texture2D texture, int x, int y)
+        public Floor(Texture2D texture, int x, int y)
         {
-            blockSprite = new Sprite(texture, 423, 224, 16, 16);
+            blockSprite = new Sprite(texture, 1, 192, 192, 112);
 
             this.x = x;
             this.y = y;
@@ -32,14 +33,15 @@ namespace FiveGuysFixed.Blocks
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            float scale = 2;
+            float scale = 5;
             blockSprite.Draw(spriteBatch, new System.Numerics.Vector2((float)x, (float)y), null, scale);
+
         }
 
         public void Draw(SpriteBatch spriteBatch, Vector2 offset)
         {
-            float scale = 2;
-            var drawPos = new System.Numerics.Vector2((float)x, (float)y) + new System.Numerics.Vector2(offset.X, offset.Y);
+            float scale = 5;
+            var drawPos = new System.Numerics.Vector2((float)x + 640, (float)y + 440) + new System.Numerics.Vector2(offset.X, offset.Y);
             blockSprite.Draw(spriteBatch, drawPos, null, scale);
         }
 
@@ -53,7 +55,7 @@ namespace FiveGuysFixed.Blocks
         {
             get
             {
-                return new Rectangle((int)x, (int)y, 64, 64);
+                return new Rectangle((int)x, (int)y, 0, 0);
             }
             set
             {

@@ -11,6 +11,7 @@ using FiveGuysFixed.Commands;
 using FiveGuysFixed.RoomHandling;
 using System.Diagnostics;
 using FiveGuysFixed.Projectiles;
+using System.Linq;
 
 public class CollisionHandler
 {
@@ -24,7 +25,7 @@ public class CollisionHandler
     public void HandlePlayerBlockCollision(IPlayer player, IBlock block)
     {
         // Compute the bounding boxes for both player and block.
-        Rectangle playerRect = player.GetBoundingBox(32, 32);
+        Rectangle playerRect = player.GetBoundingBox(80, 80);
         Rectangle blockRect = block.BoundingBox; // Provided by IBlock
 
         if (playerRect.Intersects(blockRect))
@@ -58,7 +59,7 @@ public class CollisionHandler
             return; // If the player is invincible, ignore the collision and enter an untouchable state.
         }
         // Compute the bounding boxes for both player and enemy.
-        Rectangle playerRect = player.GetBoundingBox(32, 32);
+        Rectangle playerRect = player.GetBoundingBox(80, 80);
         Rectangle enemyRect = enemy.BoundingBox;
 
         if (playerRect.Intersects(enemyRect))
@@ -85,9 +86,62 @@ public class CollisionHandler
         }
     }
 
+    public void HandleSwordEnemyCollision(IPlayer player, IEnemy enemy)
+    {
+
+
+        Rectangle playerRect = player.GetBoundingBox(80, 80);
+
+        switch (GameState.PlayerState.direction)
+        {
+            case Dir.UP:
+                playerRect = player.NEWGetBoundingBox(200, 200);
+                break;
+            case Dir.DOWN:
+                playerRect = player.NEWGetBoundingBox(200, 200);
+                break;
+            case Dir.LEFT:
+                playerRect = player.NEWGetBoundingBox(200, 200);
+                break;
+            case Dir.RIGHT:
+                playerRect = player.NEWGetBoundingBox(200, 200);
+                break;
+        }
+
+        Rectangle enemyRect = enemy.BoundingBox;
+
+        //enemy take damage
+        //enemy animation
+        //sound
+
+        //if(playerRect.Intersects(enemyRect) && GameState.PlayerState.isAttacking == true)
+        //{
+        //    foreach(var enemy1 in GameState.currentRoomContents.Enemies.ToList())
+        //    {
+        //        enemy1.TakeDamage(1);
+        //        Debug.WriteLine("hello");
+
+        //    }
+
+        //    Debug.WriteLine("hello1");
+        //}
+
+        foreach (var enemy1 in GameState.currentRoomContents.Enemies.ToList())
+        {
+            if (playerRect.Intersects(enemy.BoundingBox) && GameState.PlayerState.isAttacking)
+            {
+                enemy.TakeDamage(1);
+                Debug.WriteLine("hello");
+            }
+        }
+
+
+
+    }
+
     public void HandlePlayerItemCollision(IPlayer player, IItem item)
     {
-        Rectangle playerRect = player.GetBoundingBox(32, 32);
+        Rectangle playerRect = player.GetBoundingBox(80, 80);
         Rectangle itemRect = item.BoundingBox;
 
         // Ensure item is only collected once per room load
@@ -133,7 +187,7 @@ public class CollisionHandler
 
     public void HandlePlayerProjectileCollision(IPlayer player, IProjectile projectile)
     {
-        Rectangle playerRect = player.GetBoundingBox(32, 32);
+        Rectangle playerRect = player.GetBoundingBox(80, 80);
         Rectangle projectileRect = projectile.BoundingBox;
 
         if (playerRect.Intersects(projectileRect))
