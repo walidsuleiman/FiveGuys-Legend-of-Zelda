@@ -29,6 +29,7 @@ namespace FiveGuysFixed.LinkPlayer
 
         private SoundEffect harmedSound; // harmed sound
         private SoundEffect hitSound;    // hit sound
+        public SoundEffect ItemPickupSound; // item pickup sound
 
         private bool isInvincible;
         private float invincibilityTimer;
@@ -213,6 +214,7 @@ namespace FiveGuysFixed.LinkPlayer
             swordAnimation.LoadContent(content);
             harmedSound = content.Load<SoundEffect>("harmed");
             hitSound = content.Load<SoundEffect>("hit");
+            ItemPickupSound = content.Load<SoundEffect>("item-pick-up");
         }
         public void Reset()
         {

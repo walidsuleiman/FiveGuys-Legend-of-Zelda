@@ -149,6 +149,7 @@ public class CollisionHandler
         {
             Debug.WriteLine("Item Collected");
 
+            ((Player)player).ItemPickupSound?.Play(); // Play item pickup sound
             item.Use();
 
             GameState.collectedItems.Add(item);
