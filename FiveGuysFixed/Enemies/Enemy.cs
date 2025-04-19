@@ -37,8 +37,8 @@ namespace FiveGuysFixed.Enemies
         public Enemy(Vector2 position, ISprite sprite)
         {
             Position = position;
-            this.x = (int) position.X;
-            this.y = (int) position.Y;
+            this.x = (int)position.X;
+            this.y = (int)position.Y;
             this.sprite = sprite;
         }
 
@@ -56,14 +56,14 @@ namespace FiveGuysFixed.Enemies
         {
             Vector2 drawPos = Position + offset;
             sprite.Draw(spriteBatch, drawPos, null, scale);
-            
+
         }
 
         public virtual Rectangle BoundingBox
         {
             get
             {
-                return new Rectangle((int) x, (int) y, 24, 24);
+                return new Rectangle((int)x, (int)y, 24, 24);
             }
             set
             {

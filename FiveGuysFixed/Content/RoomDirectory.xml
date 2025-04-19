@@ -9,10 +9,10 @@
 			<Block type="TopDoorClose" x="640" y="80"/>
 			<Block type="BottomDoorClose" x="640" y="800"/>
 			<Block type="RightDoorOpen" x="1200" y="440"/>
-			
+
 			<Block type="Wall" x="640" y="440"/>
 			<Block type="Floor" x="0" y="0"/>
-			
+
 			<Block type="ClearBlock" x="1" y="0"/>
 			<Block type="ClearBlock" x="2" y="0"/>
 			<Block type="ClearBlock" x="3" y="0"/>
@@ -23,7 +23,7 @@
 			<Block type="ClearBlock" x="10" y="0"/>
 			<Block type="ClearBlock" x="11" y="0"/>
 			<Block type="ClearBlock" x="12" y="0"/>
-			
+
 			<Block type="ClearBlock" x="1" y="8"/>
 			<Block type="ClearBlock" x="2" y="8"/>
 			<Block type="ClearBlock" x="3" y="8"/>
@@ -49,17 +49,14 @@
 			<Block type="ClearBlock" x="13" y="6"/>
 			<Block type="ClearBlock" x="13" y="7"/>
 
-
-
-
-
 			<Item type="Food" x="3" y="3"/>
 			<Item type="BluePotion" x="3" y="4"/>
 			<Item type="RedPotion" x="3" y="5"/>
 			<Item type="Bomb" x="3" y="6"/>
 			<Item type="GreenRupee" x="3" y="7"/>
 			<Item type="RedRupee" x="3" y="2"/>
-			
+			<Item type="Triforce" x="11" y="2"/>
+
 			<Block type ="BlueBlock" x="1" y="1"/>
 			<Block type ="GreenBlock" x="2" y="1"/>
 			<Block type ="WhiteBlock" x="3" y="1"/>
@@ -73,7 +70,7 @@
 			<Enemy type="Octorok" x="500" y="600"/>
 			<Enemy type="Stalfos" x="500" y="700"/>
 			<Enemy type="Tektike" x="500" y="800"/>
-			
+
 		</Objects>
 	</Room>
 
@@ -621,7 +618,7 @@
 			<Block type="ClearBlock" x="13" y="5"/>
 			<Block type="ClearBlock" x="13" y="6"/>
 			<Block type="ClearBlock" x="13" y="7"/>
-			
+
 		</Objects>
 	</Room>
 
@@ -678,7 +675,7 @@
 			<Block type="ClearBlock" x="13" y="5"/>
 			<Block type="ClearBlock" x="13" y="6"/>
 			<Block type="ClearBlock" x="13" y="7"/>
-			
+
 		</Objects>
 	</Room>
 
@@ -991,60 +988,57 @@
 
 
 
-<Room id="17">
-	<Neighbor direction="left" id="16"/>
-	<Objects>
-		<Block type="LeftDoorOpen" x="80" y="440"/>
-		<Block type="TopDoorClose" x="640" y="80"/>
-		<Block type="BottomDoorClose" x="640" y="800"/>
-		<Block type="RightDoorClose" x="1200" y="440"/>
+	<Room id="17">
+		<Neighbor direction="left" id="16"/>
+		<Objects>
+			<Block type="LeftDoorOpen" x="80" y="440"/>
+			<Block type="TopDoorClose" x="640" y="80"/>
+			<Block type="BottomDoorClose" x="640" y="800"/>
+			<Block type="RightDoorClose" x="1200" y="440"/>
 
-		<Block type="Wall" x="640" y="440"/>
-		<Block type="Floor" x="0" y="0"/>
+			<Block type="Wall" x="640" y="440"/>
+			<Block type="Floor" x="0" y="0"/>
 
-		<Item type="Bomb" x="6" y="3"/>
-		<Item type="Bomb" x="6" y="4"/>
-		<Item type="Bomb" x="7" y="3"/>
-		<Item type="Bomb" x="7" y="4"/>
+			<Item type="Triforce" x="7" y="4"/>
 
-		<Enemy type="Moblin" x="500" y="500"/>
+			<Enemy type="Moblin" x="500" y="500"/>
 
 
-		<Block type="ClearBlock" x="1" y="0"/>
-		<Block type="ClearBlock" x="2" y="0"/>
-		<Block type="ClearBlock" x="3" y="0"/>
-		<Block type="ClearBlock" x="4" y="0"/>
-		<Block type="ClearBlock" x="5" y="0"/>
-		<Block type="ClearBlock" x="8" y="0"/>
-		<Block type="ClearBlock" x="9" y="0"/>
-		<Block type="ClearBlock" x="10" y="0"/>
-		<Block type="ClearBlock" x="11" y="0"/>
-		<Block type="ClearBlock" x="12" y="0"/>
+			<Block type="ClearBlock" x="1" y="0"/>
+			<Block type="ClearBlock" x="2" y="0"/>
+			<Block type="ClearBlock" x="3" y="0"/>
+			<Block type="ClearBlock" x="4" y="0"/>
+			<Block type="ClearBlock" x="5" y="0"/>
+			<Block type="ClearBlock" x="8" y="0"/>
+			<Block type="ClearBlock" x="9" y="0"/>
+			<Block type="ClearBlock" x="10" y="0"/>
+			<Block type="ClearBlock" x="11" y="0"/>
+			<Block type="ClearBlock" x="12" y="0"/>
 
-		<Block type="ClearBlock" x="1" y="8"/>
-		<Block type="ClearBlock" x="2" y="8"/>
-		<Block type="ClearBlock" x="3" y="8"/>
-		<Block type="ClearBlock" x="4" y="8"/>
-		<Block type="ClearBlock" x="5" y="8"/>
-		<Block type="ClearBlock" x="8" y="8"/>
-		<Block type="ClearBlock" x="9" y="8"/>
-		<Block type="ClearBlock" x="10" y="8"/>
-		<Block type="ClearBlock" x="11" y="8"/>
-		<Block type="ClearBlock" x="12" y="8"/>
+			<Block type="ClearBlock" x="1" y="8"/>
+			<Block type="ClearBlock" x="2" y="8"/>
+			<Block type="ClearBlock" x="3" y="8"/>
+			<Block type="ClearBlock" x="4" y="8"/>
+			<Block type="ClearBlock" x="5" y="8"/>
+			<Block type="ClearBlock" x="8" y="8"/>
+			<Block type="ClearBlock" x="9" y="8"/>
+			<Block type="ClearBlock" x="10" y="8"/>
+			<Block type="ClearBlock" x="11" y="8"/>
+			<Block type="ClearBlock" x="12" y="8"/>
 
-		<Block type="ClearBlock" x="0" y="1"/>
-		<Block type="ClearBlock" x="0" y="2"/>
-		<Block type="ClearBlock" x="0" y="3"/>
-		<Block type="ClearBlock" x="0" y="5"/>
-		<Block type="ClearBlock" x="0" y="6"/>
-		<Block type="ClearBlock" x="0" y="7"/>
+			<Block type="ClearBlock" x="0" y="1"/>
+			<Block type="ClearBlock" x="0" y="2"/>
+			<Block type="ClearBlock" x="0" y="3"/>
+			<Block type="ClearBlock" x="0" y="5"/>
+			<Block type="ClearBlock" x="0" y="6"/>
+			<Block type="ClearBlock" x="0" y="7"/>
 
-		<Block type="ClearBlock" x="13" y="1"/>
-		<Block type="ClearBlock" x="13" y="2"/>
-		<Block type="ClearBlock" x="13" y="3"/>
-		<Block type="ClearBlock" x="13" y="5"/>
-		<Block type="ClearBlock" x="13" y="6"/>
-		<Block type="ClearBlock" x="13" y="7"/>
+			<Block type="ClearBlock" x="13" y="1"/>
+			<Block type="ClearBlock" x="13" y="2"/>
+			<Block type="ClearBlock" x="13" y="3"/>
+			<Block type="ClearBlock" x="13" y="5"/>
+			<Block type="ClearBlock" x="13" y="6"/>
+			<Block type="ClearBlock" x="13" y="7"/>
 		</Objects>
 	</Room>
 </Rooms>

@@ -17,10 +17,10 @@ namespace FiveGuysFixed.RoomHandling
         public Aquamentus aquamentus;
 
         public class ParsedRoom
-    {
-        public XmlNode RoomNode;
-        public Dictionary<Dir, int> Neighbors = new();
-    }
+        {
+            public XmlNode RoomNode;
+            public Dictionary<Dir, int> Neighbors = new();
+        }
 
         public void LoadRoomsFromXML(string filePath)
         {
@@ -103,6 +103,13 @@ namespace FiveGuysFixed.RoomHandling
                 {
                     GameState.currentRoomContents.Items.Add(
                         new RedRupee(GameState.contentLoader.rupeeTexture, x, y)
+                    );
+                }
+
+                if (type == "Triforce")
+                {
+                    GameState.currentRoomContents.Items.Add(
+                        new Triforce(GameState.contentLoader.triforceTexture, x, y)
                     );
                 }
             }

@@ -17,13 +17,14 @@ namespace FiveGuysFixed.Projectiles
         private ISprite sprite;
         private bool isFinished;
         private Goriya owner;
-        private bool isLinkBoomerang; 
+        private bool isLinkBoomerang;
 
-        private const float MaxDistance = 100f;
+        private const float MaxDistance = 300f;
         private const float ReturnSpeed = 1.2f;
         private Vector2 startPosition;
         private float distanceTraveled;
         private bool isReturning = false;
+        private const float SCALE = 5f;
 
         public Boomerang(Texture2D texture, float x, float y, Vector2 velocity, Goriya owner)
         {
@@ -48,7 +49,7 @@ namespace FiveGuysFixed.Projectiles
             this.position = new Vector2(x, y);
             this.velocity = velocity;
             this.originalVelocity = velocity;
-            this.owner = null; 
+            this.owner = null;
             this.startPosition = position;
             this.isLinkBoomerang = true;
 
@@ -83,10 +84,10 @@ namespace FiveGuysFixed.Projectiles
                 }
                 else
                 {
-                    
+
                     try
                     {
-                    
+
                         var xField = owner.GetType().GetField("x", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
                         var yField = owner.GetType().GetField("y", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
 
@@ -98,35 +99,35 @@ namespace FiveGuysFixed.Projectiles
                         }
                         else
                         {
-                       
+
                             returnTarget = startPosition;
                         }
                     }
                     catch
                     {
-                     
+
                         returnTarget = startPosition;
                     }
                 }
 
-             
+
                 Vector2 directionToTarget = returnTarget - position;
                 if (directionToTarget.Length() > 0)
                     directionToTarget.Normalize();
 
                 velocity = directionToTarget * Math.Abs(originalVelocity.Length()) * ReturnSpeed;
 
-             
+
                 if (Vector2.Distance(position, returnTarget) < 10)
                 {
                     isFinished = true;
                 }
             }
 
-         
+
             sprite.Update(gameTime);
 
-           
+
             if (position.X < -50 || position.X > 1300 ||
                 position.Y < -50 || position.Y > 750)
             {
@@ -136,7 +137,7 @@ namespace FiveGuysFixed.Projectiles
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            sprite.Draw(spriteBatch, position, null);
+            sprite.Draw(spriteBatch, position, null, SCALE);
         }
 
         public bool IsFinished()
@@ -155,5 +156,7 @@ namespace FiveGuysFixed.Projectiles
                 position = new Vector2(value.X, value.Y);
             }
         }
+        public Goriya Owner => owner;
+        public bool IsLinkBoomerang => isLinkBoomerang;
     }
 }

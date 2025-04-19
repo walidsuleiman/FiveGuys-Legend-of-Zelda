@@ -259,6 +259,21 @@ namespace FiveGuysFixed.Controls
                 }
             }
 
+            foreach (Keys boomerangKey in boomerangKeys)
+            {
+                bool currentDown = currentState.IsKeyDown(boomerangKey);
+                bool previousDown = previousState.IsKeyDown(boomerangKey);
+                if (currentDown && !previousDown)
+                {
+                    switch (boomerangKey)
+                    {
+                        case Keys.Z:
+                            ThrowBoomerang();
+                            break;
+                    }
+                }
+            }
+
             previousState = currentState;
         }
 

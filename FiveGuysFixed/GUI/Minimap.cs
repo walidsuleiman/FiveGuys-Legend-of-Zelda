@@ -30,14 +30,18 @@ namespace FiveGuysFixed.GUI
         private Dictionary<int, Vector2> roomWorldPositions;
 
         private bool isFirstDraw = true;
+        private bool suppressRoomInit;
+        private readonly float scale;
 
-        public MiniMap(GraphicsDevice graphicsDevice, Vector2 mapPosition, int mapWidth, int mapHeight)
+        public MiniMap(GraphicsDevice graphicsDevice, Vector2 mapPosition, int mapWidth, int mapHeight, bool suppressRoomInit = false)
         {
             this.graphicsDevice = graphicsDevice;
             this.mapPosition = mapPosition;
             this.mapWidth = mapWidth;
             this.mapHeight = mapHeight;
+            this.suppressRoomInit = suppressRoomInit;
 
+            scale = mapWidth / 220f;
             // calculate room size on minimap (6 rooms across)
             ROOM_WID = mapWidth / 6;
             ROOM_HEI = mapHeight / 6;
@@ -46,7 +50,7 @@ namespace FiveGuysFixed.GUI
             linkDotTexture.SetData(new[] { Color.Red });
 
             // add a small offset for fine-tuning positioning
-            mapOffset = new Vector2(8, 8);
+            mapOffset = new Vector2(8f * scale, 8f * scale);
 
             InitializeRoomPositions();
         }
@@ -65,23 +69,23 @@ namespace FiveGuysFixed.GUI
         {
             roomPositions = new Dictionary<int, Vector2>
             {
-                { 1, new Vector2(22, 3) },
-                { 2, new Vector2(60, 3) },
-                { 3, new Vector2(60, 40) },
-                { 4, new Vector2(132, 40) },
-                { 5, new Vector2(169, 40) },
-                { 6, new Vector2(0, 75) },
-                { 7, new Vector2(22, 75) },
-                { 8, new Vector2(60, 75) },
-                { 9, new Vector2(95, 75) },
-                { 10, new Vector2(132, 75) }, 
-                { 11, new Vector2(22, 115) },
-                { 12, new Vector2(60, 115) },
-                { 13, new Vector2(95, 115) },
-                { 14, new Vector2(60, 150) },
-                { 15, new Vector2(22, 185) },
-                { 16, new Vector2(60, 185) },
-                { 17, new Vector2(75, 185) }
+                { 1, new Vector2(22, 3) * scale },
+                { 2, new Vector2(60, 3) * scale },
+                { 3, new Vector2(60, 40) * scale },
+                { 4, new Vector2(132, 40) * scale },
+                { 5, new Vector2(169, 40) * scale },
+                { 6, new Vector2(0, 75) * scale },
+                { 7, new Vector2(22, 75) * scale },
+                { 8, new Vector2(60, 75) * scale },
+                { 9, new Vector2(95, 75) * scale },
+                { 10, new Vector2(132, 75) * scale },
+                { 11, new Vector2(22, 115) * scale },
+                { 12, new Vector2(60, 115) * scale },
+                { 13, new Vector2(95, 115) * scale },
+                { 14, new Vector2(60, 150) * scale },
+                { 15, new Vector2(22, 185) * scale },
+                { 16, new Vector2(60, 185) * scale },
+                { 17, new Vector2(75, 185) * scale }
             };
 
             // room world positions
@@ -109,12 +113,16 @@ namespace FiveGuysFixed.GUI
 
         public void Update(GameTime gameTime)
         {
-          
+
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            if (isFirstDraw)
+            Draw(spriteBatch, GameState.PlayerState.position, GameState.currentRoomID);
+        }
+        public void Draw(SpriteBatch spriteBatch, Vector2 playerPosition, int roomID)
+        {
+            if (isFirstDraw && !suppressRoomInit)
             {
                 GameState.currentRoomID = 1;
                 isFirstDraw = false;
@@ -131,23 +139,22 @@ namespace FiveGuysFixed.GUI
                     Color.White);
             }
 
-            Debug.WriteLine($"Current Room ID: {GameState.currentRoomID}");
+            Debug.WriteLine($"Current Room ID: {roomID}");
 
-            if (roomPositions.TryGetValue(GameState.currentRoomID, out Vector2 roomMinimapPosition) &&
-                roomWorldPositions.TryGetValue(GameState.currentRoomID, out Vector2 roomWorldPosition))
+            if (roomPositions.TryGetValue(roomID, out Vector2 roomMinimapPosition))
             {
-                float relativeX = (GameState.PlayerState.position.X - 96) / 528;
-                float relativeY = (GameState.PlayerState.position.Y - 336) / 288;
+                float relativeX = (playerPosition.X - 96) / 528;
+                float relativeY = (playerPosition.Y - 336) / 288;
 
                 relativeX = MathHelper.Clamp(relativeX, 0f, 1f);
                 relativeY = MathHelper.Clamp(relativeY, 0f, 1f);
 
-                Debug.WriteLine($"Player Position: X={GameState.PlayerState.position.X}, Y={GameState.PlayerState.position.Y}");
+                Debug.WriteLine($"Player Position: X={playerPosition.X}, Y={playerPosition.Y}");
                 Debug.WriteLine($"Relative Position: X={relativeX}, Y={relativeY}");
 
                 Vector2 dotPosition = mapPosition + roomMinimapPosition + mapOffset + new Vector2(
-                    relativeX * (ROOM_WID - 12),
-                    relativeY * (ROOM_HEI - 12)
+                    relativeX * (ROOM_WID - 12f * scale),
+                    relativeY * (ROOM_HEI - 12f * scale)
                 );
 
                 Debug.WriteLine($"Dot Position: X={dotPosition.X}, Y={dotPosition.Y}");
@@ -161,7 +168,7 @@ namespace FiveGuysFixed.GUI
             }
             else
             {
-                Debug.WriteLine($"Room {GameState.currentRoomID} not found in position dictionaries");
+                Debug.WriteLine($"Room {roomID} not found in position dictionaries");
             }
 
             int borderThickness = 2;
