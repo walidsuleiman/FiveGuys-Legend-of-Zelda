@@ -16,7 +16,7 @@ namespace FiveGuysFixed.Enemies
         private List<IProjectile> projectiles;
 
         public Aquamentus(Vector2 position, ISprite sprite, ISprite attackSprite, List<IProjectile> projectiles)
-            : base(position, sprite)
+            : base(position, sprite, 5f)
         {
             this.aquamentusAttackSprite = attackSprite;
             this.projectiles = projectiles;
@@ -64,16 +64,16 @@ namespace FiveGuysFixed.Enemies
         }
         private void Attack()
         {
-            projectiles.Add(new Fireball(aquamentusAttackSprite.Texture, Position.X, Position.Y - 20, new Vector2(-2, 0)));
+            projectiles.Add(new Fireball(aquamentusAttackSprite.Texture, Position.X, Position.Y - 70, new Vector2(-2, 0)));
             projectiles.Add(new Fireball(aquamentusAttackSprite.Texture, Position.X, Position.Y, new Vector2(-2, 0)));
-            projectiles.Add(new Fireball(aquamentusAttackSprite.Texture, Position.X, Position.Y + 20, new Vector2(-2, 0)));
+            projectiles.Add(new Fireball(aquamentusAttackSprite.Texture, Position.X, Position.Y + 70, new Vector2(-2, 0)));
         }
 
         public override Rectangle BoundingBox
         {
             get
             {
-                return new Rectangle((int)Position.X, (int)Position.Y, 26, 32);
+                return new Rectangle((int)(Position.X - 32*2.5), (int)(Position.Y - 32*2.5), (int)(32*scale), (int)(32*scale));
             }
             set
             {

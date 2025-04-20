@@ -31,6 +31,7 @@ namespace FiveGuysFixed.GameStates
         public Texture2D foodTexture;
         public Texture2D rupeeTexture;
         public Texture2D weaponTexture;
+        public Texture2D triforceTexture;
 
         public Texture2D HudTexture;
         public Texture2D miniMapTexture;
@@ -80,6 +81,7 @@ namespace FiveGuysFixed.GameStates
             foodTexture = content.Load<Texture2D>("linkSprite"); // same here
             rupeeTexture = content.Load<Texture2D>("rupeeSprite");
             weaponTexture = content.Load<Texture2D>("Weapon");
+            triforceTexture = content.Load<Texture2D>("Triforce");
         }
 
         //HUD and minimap textures
