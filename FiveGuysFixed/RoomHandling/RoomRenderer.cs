@@ -131,7 +131,7 @@ namespace FiveGuysFixed.RoomHandling
             foreach (var projectile in GameState.roomManager.getCurrentRoom().Projectiles)
             {
                 projectile.Update(gameTime);
-                collisionHandler.HandlePlayerProjectileCollision(GameState.Player, projectile);
+                projectileCollisionResolver.ResolvePlayerHit(GameState.Player, projectile);
                 foreach (var e in GameState.roomManager.getCurrentRoom().Enemies.ToList())
                 {
                     projectileCollisionResolver.ResolveEnemyHit(projectile, e);

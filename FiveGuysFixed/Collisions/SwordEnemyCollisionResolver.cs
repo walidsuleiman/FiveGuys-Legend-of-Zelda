@@ -39,7 +39,7 @@ public class SwordEnemyCollisionResolver
 
         Rectangle enemyRect = enemy.BoundingBox;
 
-        foreach (var enemy1 in GameState.currentRoomContents.Enemies.ToList())
+        foreach (var enemy1 in GameState.roomManager.getCurrentRoom().Enemies.ToList())
         {
             if (playerRect.Intersects(enemy.BoundingBox) && GameState.PlayerState.isAttacking)
             {
