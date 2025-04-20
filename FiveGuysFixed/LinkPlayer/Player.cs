@@ -100,7 +100,8 @@ namespace FiveGuysFixed.LinkPlayer
 
             //        // Check if there's already a boomerang
             //        bool boomerangExists = false;
-            //        foreach (var projectile in GameState.currentRoomContents.Projectiles)
+            //        foreach (var projectile in
+            //        .Projectiles)
             //        {
             //            if (projectile is Boomerang)
             //            {
@@ -116,7 +117,7 @@ namespace FiveGuysFixed.LinkPlayer
             //            try
             //            {
             //                Texture2D weaponTexture = game.Content.Load<Texture2D>("linkSprite");
-            //                GameState.currentRoomContents.Projectiles.Add(
+            //                GameState.roomManager.getCurrentRoom().Projectiles.Add(
             //                    new Boomerang(
             //                        weaponTexture,
             //                        startPos.X,
@@ -223,7 +224,7 @@ namespace FiveGuysFixed.LinkPlayer
             GameState.PlayerState.health = 6;
             GameState.PlayerState.greenRupees = 0;
             GameState.PlayerState.redRupees = 0;
-            GameState.roomManager.SwitchRoom(GameState.currentRoomID);
+            GameState.roomManager.SwitchRoom(1);
         }
         public void TakeDamage(int damage)
         {

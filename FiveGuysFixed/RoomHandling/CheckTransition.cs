@@ -22,37 +22,23 @@ namespace FiveGuysFixed.RoomHandling
             Vector2 pos = GameState.PlayerState.position;
             int currentRoomId = GameState.currentRoomID;
 
-            if (pos.X <= buffer)
+            int neighborId;
+
+            if (pos.X <= buffer && (neighborId = GameState.roomManager.TryGetNeighborRoomID(Dir.LEFT)) > -1)
             {
-                if (GameState.roomManager.TryGetNeighborRoomID(currentRoomId, Dir.LEFT, out int neighborId))
-                {
-                    //GameState.PlayerState.position = new Vector2(roomWidth - buffer - 1, pos.Y);
-                    GameState.transitionManager.Start(neighborId, Dir.LEFT);
-                }
+                GameState.transitionManager.Start(neighborId, Dir.LEFT);
             }
-            else if (pos.X >= roomWidth - buffer)
+            else if (pos.X >= roomWidth - buffer && (neighborId = GameState.roomManager.TryGetNeighborRoomID(Dir.RIGHT)) > -1)
             {
-                if (GameState.roomManager.TryGetNeighborRoomID(currentRoomId, Dir.RIGHT, out int neighborId))
-                {
-                    //GameState.PlayerState.position = new Vector2(buffer + 1, pos.Y);
-                    GameState.transitionManager.Start(neighborId, Dir.RIGHT);
-                }
+                GameState.transitionManager.Start(neighborId, Dir.RIGHT);
             }
-            else if (pos.Y <= buffer)
+            else if (pos.Y <= buffer && (neighborId = GameState.roomManager.TryGetNeighborRoomID(Dir.UP)) > -1)
             {
-                if (GameState.roomManager.TryGetNeighborRoomID(currentRoomId, Dir.UP, out int neighborId))
-                {
-                    //GameState.PlayerState.position = new Vector2(pos.X, roomHeight - buffer - 1);
-                    GameState.transitionManager.Start(neighborId, Dir.UP);
-                }
+                GameState.transitionManager.Start(neighborId, Dir.UP);
             }
-            else if (pos.Y >= roomHeight - buffer)
+            else if (pos.Y >= roomHeight - buffer && (neighborId = GameState.roomManager.TryGetNeighborRoomID(Dir.DOWN)) > -1)
             {
-                if (GameState.roomManager.TryGetNeighborRoomID(currentRoomId, Dir.DOWN, out int neighborId))
-                {
-                    //GameState.PlayerState.position = new Vector2(pos.X, buffer + 1);
-                    GameState.transitionManager.Start(neighborId, Dir.DOWN);
-                }
+                GameState.transitionManager.Start(neighborId, Dir.DOWN);
             }
         }
 

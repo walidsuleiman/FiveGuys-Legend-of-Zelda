@@ -31,7 +31,7 @@ namespace FiveGuysFixed.RoomHandling
 
             if (!GameState.IsTransitioning)
             {
-                DrawRoomContents(spriteBatch, GameState.currentRoomContents, Vector2.Zero);
+                DrawRoomContents(spriteBatch, GameState.roomManager.getCurrentRoom(), Vector2.Zero);
                 return;
             }
 
@@ -66,7 +66,7 @@ namespace FiveGuysFixed.RoomHandling
             }
 
             DrawRoomContents(spriteBatch, GameState.previousRoomContents, prevPos);
-            DrawRoomContents(spriteBatch, GameState.currentRoomContents, currPos);
+            DrawRoomContents(spriteBatch, GameState.roomManager.getCurrentRoom(), currPos);
 
             if (GameState.IsTransitioning)
             {
@@ -106,7 +106,7 @@ namespace FiveGuysFixed.RoomHandling
 
 
 
-        private static void DrawRoomContents(SpriteBatch spriteBatch, CurrentRoomContents contents, Vector2 offset)
+        private static void DrawRoomContents(SpriteBatch spriteBatch, RoomContents contents, Vector2 offset)
         {
             foreach (var block in contents.Blocks)
                 block.Draw(spriteBatch, offset);
@@ -121,32 +121,32 @@ namespace FiveGuysFixed.RoomHandling
 
         public static void Update(GameTime gameTime)
         {
-            //Update Blocks  
-            foreach (var block in GameState.currentRoomContents.Blocks)
+            //Update Blocks
+            foreach (var block in GameState.roomManager.getCurrentRoom().Blocks)
             {
                 block.Update(gameTime);
                 playerBlockCollisionResolver.Resolve(GameState.Player, block);
             }
 
-            foreach (var projectile in GameState.currentRoomContents.Projectiles)
+            foreach (var projectile in GameState.roomManager.getCurrentRoom().Projectiles)
             {
                 projectile.Update(gameTime);
-                projectileCollisionResolver.ResolvePlayerHit(GameState.Player, projectile);
-                foreach (var e in GameState.currentRoomContents.Enemies.ToList())
+                collisionHandler.HandlePlayerProjectileCollision(GameState.Player, projectile);
+                foreach (var e in GameState.roomManager.getCurrentRoom().Enemies.ToList())
                 {
                     projectileCollisionResolver.ResolveEnemyHit(projectile, e);
                 }
             }
 
-            // Update Enemies  
-            foreach (IEnemy enemy in GameState.currentRoomContents.Enemies.ToList())
+            // Update Enemies
+            foreach (IEnemy enemy in GameState.roomManager.getCurrentRoom().Enemies.ToList())
             {
                 enemy.Update(gameTime);
                 playerEnemyCollisionResolver.Resolve(GameState.Player, enemy);
                 swordEnemyCollisionResolver.HandleSwordEnemyCollision(GameState.Player, enemy);
 
 
-                foreach (var block in GameState.currentRoomContents.Blocks)
+                foreach (var block in GameState.roomManager.getCurrentRoom().Blocks)
                 {
                     block.Update(gameTime);
                     enemyBlockCollisionResolver.Resolve(enemy, block);
@@ -155,10 +155,10 @@ namespace FiveGuysFixed.RoomHandling
             }
 
 
-            //Update Items  
-            for (int i = GameState.currentRoomContents.Items.Count - 1; i >= 0; i--)
+            //Update Items
+            for (int i = GameState.roomManager.getCurrentRoom().Items.Count - 1; i >= 0; i--)
             {
-                IItem item = GameState.currentRoomContents.Items[i];
+                IItem item = GameState.roomManager.getCurrentRoom().Items[i];
                 item.Update(gameTime);
                 playerItemCollisionResolver.Resolve(GameState.Player, item);
             }
@@ -166,7 +166,7 @@ namespace FiveGuysFixed.RoomHandling
             // Remove collected items **AFTER** checking all items  
             foreach (var item in GameState.itemsToRemove)
             {
-                GameState.currentRoomContents.Items.Remove(item);
+                GameState.roomManager.getCurrentRoom().Items.Remove(item);
             }
             GameState.itemsToRemove.Clear();
 

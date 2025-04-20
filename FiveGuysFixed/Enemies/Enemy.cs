@@ -21,7 +21,7 @@ namespace FiveGuysFixed.Enemies
 
             if (health < 0)
             {
-                GameState.currentRoomContents.Enemies.Remove(this);
+                GameState.roomManager.getCurrentRoom().Enemies.Remove(this);
             }
         }
 
