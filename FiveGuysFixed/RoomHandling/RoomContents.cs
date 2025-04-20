@@ -32,7 +32,8 @@ namespace FiveGuysFixed.RoomHandling
             { "Food",       (x, y) => new Food(GameState.contentLoader.foodTexture, x, y) },
             { "GreenRupee", (x, y) => new GreenRupee(GameState.contentLoader.rupeeTexture, x, y) },
             { "RedPotion",  (x, y) => new RedPotion(GameState.contentLoader.redPotionTexture, x, y) },
-            { "RedRupee",   (x, y) => new RedRupee(GameState.contentLoader.rupeeTexture, x, y) }
+            { "RedRupee",   (x, y) => new RedRupee(GameState.contentLoader.rupeeTexture, x, y) },
+            { "Triforce", (x, y) => new Triforce(GameState.contentLoader.triforceTexture, x, y) }
         };
 
         private Dictionary<string, Func<int, int, IBlock>> BlockMap = new()

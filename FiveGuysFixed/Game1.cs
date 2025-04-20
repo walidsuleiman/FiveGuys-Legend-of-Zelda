@@ -198,17 +198,17 @@ namespace FiveGuysFixed
         {
             if (GameState.PendingBomb)
             {
-                GameState.currentRoomContents.Items.Add(new BombPlaced(GameState.contentLoader.bombTexture, GameState.PendingPos));
+                GameState.roomManager.getCurrentRoom().Items.Add(new BombPlaced(GameState.contentLoader.bombTexture, GameState.PendingPos));
                 GameState.PendingBomb = false;
             }
             
-            for (int i = 0; i < GameState.currentRoomContents.Items.Count; i++)
+            for (int i = 0; i < GameState.roomManager.getCurrentRoom().Items.Count; i++)
             {
-                var it = GameState.currentRoomContents.Items[i];
+                var it = GameState.roomManager.getCurrentRoom().Items[i];
                 it.Update(gameTime);
 
                 if (it is BombPlaced bp && bp.IsFinished)
-                    GameState.currentRoomContents.Items.RemoveAt(i--);
+                    GameState.roomManager.getCurrentRoom().Items.RemoveAt(i--);
             }
 
             mouseController.Update();
@@ -307,7 +307,7 @@ namespace FiveGuysFixed
             if (blocks.Count > 0)
                 blocks[activeBlockIndex].Draw(spriteBatch);
 
-            //foreach (var it in GameState.currentRoomContents.Items)
+            //foreach (var it in GameState.roomManager.getCurrentRoom().Items)
             //    it.Draw(spriteBatch);
         }
     }
