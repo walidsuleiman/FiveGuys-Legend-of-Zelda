@@ -37,6 +37,7 @@ namespace FiveGuysFixed.GameStates
         }
         public void Update(GameTime gameTime)
         {
+            //win animation
             /*
             if (isAnimationPlaying)
             {
@@ -51,6 +52,12 @@ namespace FiveGuysFixed.GameStates
             */
 
             KeyboardState ks = Keyboard.GetState();
+
+            if (IsKeyPressed(ks, Keys.R))
+            {
+                GameState.currentRoomID = 1;
+                GameStateManager.SetState(new GamePlayState(GameState.Game));
+            }
 
             if (IsKeyPressed(ks, Keys.Q))
             {
@@ -72,7 +79,7 @@ namespace FiveGuysFixed.GameStates
             spriteBatch.Draw(triforceTexture, triforcePosition, null, Color.White, 0f, Vector2.Zero, triforceScale, SpriteEffects.None, 0f);
 
             // prompt texture
-            spriteBatch.DrawString(GameState.contentLoader.DefaultFont, "Press Q to Quit", new Vector2(560, GameState.WindowHeight - 100), Color.Black);
+            spriteBatch.DrawString(GameState.contentLoader.DefaultFont, "Press Q to Quit | Press R to restart", new Vector2(400, GameState.WindowHeight - 50), Color.Black);
         }
 
         private bool IsKeyPressed(KeyboardState ks, Keys key)
