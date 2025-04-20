@@ -22,12 +22,14 @@ namespace FiveGuysFixed.GameStates
         private List<KeyValuePair<string, int>> itemList;
         private int selectedIndex = 0;
         private int columns = 2;
-        private int slotWidth = 200;
-        private int slotHeight = 100;
+        private int slotWidth = 250;
+        private int slotHeight = 150;
         private int startX = 100;
         private int startY = 200;
         private Texture2D blackPixel;
         private KeyboardState oldState;
+        private Vector2 cachedPlayerPos;
+        private int cachedRoomID;
         public Inventory(Game1 game)
         {
             this.game = game;
@@ -35,6 +37,13 @@ namespace FiveGuysFixed.GameStates
             hearts = new Hearts();
             rupees = new RupeeCount();
             oldState = Keyboard.GetState();
+
+            var ps = GameState.PlayerState;
+            if (ps != null)
+            {
+                cachedPlayerPos = ps.position;
+                cachedRoomID = GameState.currentRoomID;
+            }
         }
 
         public void LoadContent(ContentManager content)
@@ -121,6 +130,7 @@ namespace FiveGuysFixed.GameStates
                     int y = startY + row * slotHeight;
 
                     Rectangle slotRect = new Rectangle(x, y, slotWidth - 10, slotHeight - 10);
+                    Vector2 iconPos = new Vector2(slotRect.Right - 200, slotRect.Top - 40);
                     spriteBatch.Draw(whitePixel, slotRect, Color.Gray);
 
                     if (i == selectedIndex)
@@ -136,7 +146,7 @@ namespace FiveGuysFixed.GameStates
                             GameState.contentLoader.bombTexture,
                             0, 0
                         );
-                        bombIcon.Draw(spriteBatch, new Vector2(x + slotWidth - 40, y + 10));
+                        bombIcon.Draw(spriteBatch, iconPos);
                     }
                     else if (itemName == "Food")
                     {
@@ -144,7 +154,7 @@ namespace FiveGuysFixed.GameStates
                             GameState.contentLoader.foodTexture,
                             0, 0
                         );
-                        foodIcon.Draw(spriteBatch, new Vector2(x + slotWidth - 40, y + 10));
+                        foodIcon.Draw(spriteBatch, iconPos);
                     }
                 }
             }
@@ -156,7 +166,7 @@ namespace FiveGuysFixed.GameStates
             );
 
 
-                    
+
             this.blackPixel = new Texture2D(spriteBatch.GraphicsDevice, 1, 1);
             this.blackPixel.SetData(new[] { Color.Black });
             spriteBatch.Draw(blackPixel, new Rectangle(0, 880, 1280, 280), Color.Black);
@@ -170,18 +180,16 @@ namespace FiveGuysFixed.GameStates
             {
                 miniMap = new MiniMap(
                     spriteBatch.GraphicsDevice,
-                    new Vector2(110, GameState.WindowHeight + 33), // position in bottom-left
-                    220, // width
-                    220  // height
+                    new Vector2(GameState.WindowWidth - 480, (GameState.WindowHeight - 440) / 2),
+                    440,
+                    440,
+                    true
                 );
 
 
                 miniMap.LoadContent(GameState.contentLoader.miniMapTexture);
             }
-
-            miniMap.Draw(spriteBatch);
-        
-
+            miniMap.Draw(spriteBatch, cachedPlayerPos, cachedRoomID);
         }
         private void BuildItemList()
         {
@@ -217,7 +225,8 @@ namespace FiveGuysFixed.GameStates
             if (itemName == "Bomb")
             {
                 ps.bombCount = count;
-                ps.health--;
+                GameState.PendingBomb = true;
+                GameState.PendingPos = new Vector2(ps.position.X, ps.position.Y - 150);
             }
             else if (itemName == "Food")
             {

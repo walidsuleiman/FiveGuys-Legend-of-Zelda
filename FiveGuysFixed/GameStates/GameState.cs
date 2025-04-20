@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using FiveGuysFixed.Common;
@@ -38,8 +41,9 @@ namespace FiveGuysFixed.GameStates
         public static bool ShouldSwitchRoom = false; // Default: No switch
         public static List<IItem> itemsToRemove = new List<IItem>();
         public static HashSet<IItem> collectedItems = new HashSet<IItem>();
-
         public static HUD.HUD HUD = new HUD.HUD(); // Global HUD
-
+        public static Game1 Game { get; set; }
+        public static bool PendingBomb = false;
+        public static Vector2 PendingPos;
     }
 }

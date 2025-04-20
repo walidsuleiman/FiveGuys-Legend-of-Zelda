@@ -68,9 +68,9 @@ namespace FiveGuysFixed
 
         private GameState gameState;
         public Player Player { get; set; }
-
         public Song backgroundMusic;
         public bool isMuted = false; // if true, no background music
+
 
         public Game1()
         {
@@ -100,6 +100,7 @@ namespace FiveGuysFixed
             GameState.currentRoomID = 1;
             GameState.Player = new Player(this);
             GameState.transitionManager = new TransitionManager();
+            GameState.Game = this;
 
             keyboardController = new KeyboardController(this);
             mouseController = new MouseController(this);
@@ -195,6 +196,21 @@ namespace FiveGuysFixed
         // custom game logic per frame, called by the active GamePlayState
         public void GameUpdateLogic(GameTime gameTime)
         {
+            if (GameState.PendingBomb)
+            {
+                GameState.currentRoomContents.Items.Add(new BombPlaced(GameState.contentLoader.bombTexture, GameState.PendingPos));
+                GameState.PendingBomb = false;
+            }
+            
+            for (int i = 0; i < GameState.currentRoomContents.Items.Count; i++)
+            {
+                var it = GameState.currentRoomContents.Items[i];
+                it.Update(gameTime);
+
+                if (it is BombPlaced bp && bp.IsFinished)
+                    GameState.currentRoomContents.Items.RemoveAt(i--);
+            }
+
             mouseController.Update();
             keyboardController.Update();
 
@@ -277,7 +293,7 @@ namespace FiveGuysFixed
             //spriteBatch.Draw(GameState.contentLoader.blockTexture, new Rectangle(848, 11, 32, 17), new Rectangle(537, 0, 32*5, 17*5), Color.White);//up
             //spriteBatch.Draw(GameState.contentLoader.blockTexture, new Rectangle(848, 125, 32, 17), new Rectangle(537, 795, 32 * 5, 17 * 5), Color.White);//down
 
-
+            
 
 
             GameState.HUD.Draw(spriteBatch);
@@ -290,6 +306,9 @@ namespace FiveGuysFixed
 
             if (blocks.Count > 0)
                 blocks[activeBlockIndex].Draw(spriteBatch);
+
+            //foreach (var it in GameState.currentRoomContents.Items)
+            //    it.Draw(spriteBatch);
         }
     }
 }

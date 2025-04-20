@@ -127,6 +127,10 @@ namespace FiveGuysFixed.RoomHandling
             {
                 projectile.Update(gameTime);
                 collisionHandler.HandlePlayerProjectileCollision(GameState.Player, projectile);
+                foreach (var e in GameState.currentRoomContents.Enemies.ToList())
+                {
+                    collisionHandler.HandleProjectileEnemyCollision(projectile, e);
+                }
             }
 
             // Update Enemies

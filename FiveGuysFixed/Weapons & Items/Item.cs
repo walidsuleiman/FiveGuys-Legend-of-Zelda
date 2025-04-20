@@ -31,7 +31,7 @@ namespace FiveGuysFixed.Weapons___Items
             this.width = width;
             this.height = height;
             currentTime = 0;
-            scaleOffset = new Vector2((width*scale) / 2, (height*scale) / 2);
+            scaleOffset = new Vector2((width * scale) / 2, (height * scale) / 2);
         }
 
         public Item(Texture2D texture, int sourceX, int sourceY, int x, int y, int width, int height, float scale)
@@ -44,22 +44,22 @@ namespace FiveGuysFixed.Weapons___Items
             this.scale = scale;
             currentTime = 0;
             scaleOffset = new Vector2((width * scale) / 2, (height * scale) / 2);
-            
+
 
         }
 
-        public void Draw(SpriteBatch spriteBatch)
+        public virtual void Draw(SpriteBatch spriteBatch)
         {
             Draw(spriteBatch, Vector2.Zero);
         }
 
-        public void Draw(SpriteBatch spriteBatch, Vector2 offset)
+        public virtual void Draw(SpriteBatch spriteBatch, Vector2 offset)
         {
             var drawPos = new Vector2((float)x * 80, (float)y * 80) + offset + globalOffset - scaleOffset;
             sprite.Draw(spriteBatch, drawPos, null, scale);
         }
 
-        public void Update(GameTime gametime)
+        public virtual void Update(GameTime gametime)
         {
             currentTime++;
             sprite.Update(gametime);
@@ -77,7 +77,7 @@ namespace FiveGuysFixed.Weapons___Items
             {
                 Vector2 pos = new Vector2((float)x * 80, (float)y * 80) + globalOffset - scaleOffset;
 
-                return new Rectangle((int)pos.X, (int)pos.Y, (int)(width*scale), (int)(height * scale));
+                return new Rectangle((int)pos.X, (int)pos.Y, (int)(width * scale), (int)(height * scale));
             }
         }
     }

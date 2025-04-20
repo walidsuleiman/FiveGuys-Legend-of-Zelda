@@ -188,6 +188,8 @@ public class CollisionHandler
 
     public void HandlePlayerProjectileCollision(IPlayer player, IProjectile projectile)
     {
+        if (projectile is FiveGuysFixed.Projectiles.Boomerang b && b.IsLinkBoomerang)
+            return;
         Rectangle playerRect = player.GetBoundingBox(80, 80);
         Rectangle projectileRect = projectile.BoundingBox;
 
@@ -198,6 +200,17 @@ public class CollisionHandler
             Debug.WriteLine("Projectile Hit Player");
 
             //remove projectile from screen
+        }
+    }
+    public void HandleProjectileEnemyCollision(IProjectile proj, IEnemy enemy)
+    {
+        if (proj is Boomerang b)
+        {
+            if (b.Owner == enemy) return;
+            if (proj.BoundingBox.Intersects(enemy.BoundingBox))
+            {
+                enemy.TakeDamage(1);
+            }
         }
     }
 }
