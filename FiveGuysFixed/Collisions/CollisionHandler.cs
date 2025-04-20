@@ -116,7 +116,7 @@ public class CollisionHandler
 
         //if(playerRect.Intersects(enemyRect) && GameState.PlayerState.isAttacking == true)
         //{
-        //    foreach(var enemy1 in GameState.currentRoomContents.Enemies.ToList())
+        //    foreach(var enemy1 in GameState.roomManager.getCurrentRoom().Enemies.ToList())
         //    {
         //        enemy1.TakeDamage(1);
         //        Debug.WriteLine("hello");
@@ -126,7 +126,7 @@ public class CollisionHandler
         //    Debug.WriteLine("hello1");
         //}
 
-        foreach (var enemy1 in GameState.currentRoomContents.Enemies.ToList())
+        foreach (var enemy1 in GameState.roomManager.getCurrentRoom().Enemies.ToList())
         {
             if (playerRect.Intersects(enemy.BoundingBox) && GameState.PlayerState.isAttacking)
             {

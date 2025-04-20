@@ -290,7 +290,7 @@ namespace FiveGuysFixed.Controls
 
             // Check if there's already a boomerang
             bool boomerangExists = false;
-            foreach (var projectile in GameState.currentRoomContents.Projectiles)
+            foreach (var projectile in GameState.roomManager.getCurrentRoom().Projectiles)
             {
                 if (projectile is FiveGuysFixed.Projectiles.Boomerang)
                 {
@@ -306,7 +306,7 @@ namespace FiveGuysFixed.Controls
                 try
                 {
                     Texture2D weaponTexture = game.Content.Load<Texture2D>("linkSprite");
-                    GameState.currentRoomContents.Projectiles.Add(
+                    GameState.roomManager.getCurrentRoom().Projectiles.Add(
                         new FiveGuysFixed.Projectiles.Boomerang(
                             weaponTexture,
                             startPos.X,

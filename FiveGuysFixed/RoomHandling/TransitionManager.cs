@@ -25,9 +25,9 @@ namespace FiveGuysFixed.RoomHandling
 
             // Copy current room contents into "previous"
             GameState.previousRoomContents.Clear();
-            GameState.previousRoomContents.Blocks.AddRange(GameState.currentRoomContents.Blocks);
-            GameState.previousRoomContents.Enemies.AddRange(GameState.currentRoomContents.Enemies);
-            GameState.previousRoomContents.Items.AddRange(GameState.currentRoomContents.Items);
+            GameState.previousRoomContents.Blocks.AddRange(GameState.roomManager.getCurrentRoom().Blocks);
+            GameState.previousRoomContents.Enemies.AddRange(GameState.roomManager.getCurrentRoom().Enemies);
+            GameState.previousRoomContents.Items.AddRange(GameState.roomManager.getCurrentRoom().Items);
 
             // Load next room into currentRoomContents
             GameState.roomManager.SwitchRoom(destinationRoomId);
