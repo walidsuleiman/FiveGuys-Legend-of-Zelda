@@ -13,6 +13,8 @@ M to use attack 2\
 E to take damage and die\
 R to Reset\
 B to mute\
-0 to Quit\
+Q to Quit\
+Z to use boomerang\
+C to open inventory\
 Enter to Pause / Menu
 Use the doors to go to another room
