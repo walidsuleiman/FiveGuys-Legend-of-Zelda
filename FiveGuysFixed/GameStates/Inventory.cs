@@ -92,25 +92,34 @@ namespace FiveGuysFixed.GameStates
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            if (whitePixel == null)
-            {
-                whitePixel = new Texture2D(spriteBatch.GraphicsDevice, 1, 1);
-                whitePixel.SetData(new[] { Color.White });
-            }
+
+            EnsureResourcesInitialized(spriteBatch.GraphicsDevice);
+
             spriteBatch.Draw(
                 whitePixel,
                 new Rectangle(0, 0, GameState.WindowWidth, GameState.WindowHeight),
                 Color.Black
             );
-            if (font == null)
-            {
-                font = GameState.contentLoader.DefaultFont;
-            }
+
             spriteBatch.DrawString(font, "Inventory", new Vector2(50, 50), Color.White);
+
+            // draw HUD
+            spriteBatch.Draw(
+                blackPixel,
+                new Rectangle(0, 880, 1280, 280),
+                Color.Black
+            );
+            spriteBatch.Draw(
+                GameState.contentLoader.HudTexture,
+                new Rectangle(0, 880, 1280, 280),
+                new Rectangle(258, 11, 256, 55),
+                Color.White
+            );
 
             hearts.Draw(spriteBatch);
             rupees.Draw(spriteBatch);
 
+            // draw the inventory
             BuildItemList();
 
             if (itemList.Count == 0)
@@ -131,6 +140,7 @@ namespace FiveGuysFixed.GameStates
 
                     Rectangle slotRect = new Rectangle(x, y, slotWidth - 10, slotHeight - 10);
                     Vector2 iconPos = new Vector2(slotRect.Right - 200, slotRect.Top - 40);
+
                     spriteBatch.Draw(whitePixel, slotRect, Color.Gray);
 
                     if (i == selectedIndex)
@@ -140,24 +150,21 @@ namespace FiveGuysFixed.GameStates
 
                     spriteBatch.DrawString(font, itemName, new Vector2(x + 10, y + 5), Color.White);
                     spriteBatch.DrawString(font, $"x {count}", new Vector2(x + 10, y + 30), Color.Yellow);
+
                     if (itemName == "Bomb")
                     {
-                        Bomb bombIcon = new Bomb(
-                            GameState.contentLoader.bombTexture,
-                            0, 0
-                        );
+                        Bomb bombIcon = new Bomb(GameState.contentLoader.bombTexture, 0, 0);
                         bombIcon.Draw(spriteBatch, iconPos);
                     }
                     else if (itemName == "Food")
                     {
-                        Food foodIcon = new Food(
-                            GameState.contentLoader.foodTexture,
-                            0, 0
-                        );
+                        Food foodIcon = new Food(GameState.contentLoader.foodTexture, 0, 0);
                         foodIcon.Draw(spriteBatch, iconPos);
                     }
                 }
             }
+
+            // draw prompt message
             spriteBatch.DrawString(
                 font,
                 "[WASD/Arrows] Move | [N] Use | [C] Back",
@@ -165,30 +172,7 @@ namespace FiveGuysFixed.GameStates
                 Color.White
             );
 
-
-
-            this.blackPixel = new Texture2D(spriteBatch.GraphicsDevice, 1, 1);
-            this.blackPixel.SetData(new[] { Color.Black });
-            spriteBatch.Draw(blackPixel, new Rectangle(0, 880, 1280, 280), Color.Black);
-            spriteBatch.Draw(GameState.contentLoader.HudTexture, new Rectangle(0, 880, 1280, 280), new Rectangle(258, 11, 256, 55), Color.White);
-
-            hearts.Draw(spriteBatch);
-            rupees.Draw(spriteBatch);
-
-
-            if (miniMap == null)
-            {
-                miniMap = new MiniMap(
-                    spriteBatch.GraphicsDevice,
-                    new Vector2(GameState.WindowWidth - 480, (GameState.WindowHeight - 440) / 2),
-                    440,
-                    440,
-                    true
-                );
-
-
-                miniMap.LoadContent(GameState.contentLoader.miniMapTexture);
-            }
+            // draw minimap
             miniMap.Draw(spriteBatch, cachedPlayerPos, cachedRoomID);
         }
         private void BuildItemList()
@@ -255,5 +239,38 @@ namespace FiveGuysFixed.GameStates
             bool pressed = ks.IsKeyDown(key) && !oldState.IsKeyDown(key);
             return pressed;
         }
+
+        private void EnsureResourcesInitialized(GraphicsDevice graphicsDevice)
+        {
+            if (whitePixel == null)
+            {
+                whitePixel = new Texture2D(graphicsDevice, 1, 1);
+                whitePixel.SetData(new[] { Color.White });
+            }
+
+            if (blackPixel == null)
+            {
+                blackPixel = new Texture2D(graphicsDevice, 1, 1);
+                blackPixel.SetData(new[] { Color.Black });
+            }
+
+            if (font == null)
+            {
+                font = GameState.contentLoader.DefaultFont;
+            }
+
+            if (miniMap == null)
+            {
+                miniMap = new MiniMap(
+                    graphicsDevice,
+                    new Vector2(GameState.WindowWidth - 480, (GameState.WindowHeight - 440) / 2),
+                    440,
+                    440,
+                    true
+                );
+                miniMap.LoadContent(GameState.contentLoader.miniMapTexture);
+            }
+        }
+
     }
 }
