@@ -24,6 +24,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <None Include="HUD\HeldItems.cs" />
     <None Include="HUD\RupeeCount.cs" />
   </ItemGroup>
   <ItemGroup>

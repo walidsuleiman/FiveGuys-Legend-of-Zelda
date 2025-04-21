@@ -3,40 +3,26 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework;
 using FiveGuysFixed.Animation;
 using FiveGuysFixed.Common;
-using Microsoft.Xna.Framework.Content;
+using FiveGuysFixed.GameStates;
+using FiveGuysFixed.Items;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
-namespace FiveGuysFixed.Items
+namespace FiveGuysFixed.Weapons___Items
 {
-    public class WoodSword
+    internal class WoodSword : Item
     {
-        private Dir dir;
-        private Rectangle sourceRect;
-        private LinkSwordAnimation swordAttack;
 
-        public WoodSword(Dir dir)
+        public WoodSword(Texture2D texture, int x, int y) : base(texture, 1, 154, x, y, 8, 16)
         {
-            this.dir = dir;
-            //swordAttack = new LinkSwordAnimation(dir, WeaponType.WOODSWORD);
+        }
+        public override void Use()
+        {
+            GameState.PlayerState.heldWeapon = WeaponType.WOODSWORD;
         }
 
-        public void Draw(SpriteBatch spriteBatch)
-        {
-            //swordAttack.Draw(spriteBatch, null);
-        }
-
-        public void Update(GameTime gameTime)
-        {
-            swordAttack.Update(gameTime);
-        }
-
-        public void LoadContent(ContentManager content)
-        {
-            swordAttack.LoadContent(content);
-        }
 
     }
 }

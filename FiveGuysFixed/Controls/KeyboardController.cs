@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Security.Principal;
 using System.Text;
@@ -39,7 +40,7 @@ namespace FiveGuysFixed.Controls
             Keys[] itemKeys = { Keys.U, Keys.I };
             Keys[] weaponKeys = { Keys.D1, Keys.D2, Keys.D3 };
             Keys[] enemyKeys = { Keys.O, Keys.P };
-            Keys[] gameKeys = { Keys.Q, Keys.R, Keys.Enter, Keys.C };
+            Keys[] gameKeys = { Keys.Q, Keys.R, Keys.Enter, Keys.C, Keys.L };
             Keys[] blockKeys = { Keys.T, Keys.Y };
             Keys[] combatKeys = { Keys.N, Keys.E };
             Keys[] audioKeys = { Keys.B };
@@ -114,6 +115,10 @@ namespace FiveGuysFixed.Controls
                                 GameStateManager.SetState(new GamePlayState(game));
                             }
                             break;
+                        case Keys.L:
+                            GameState.darkMode = !GameState.darkMode;
+                            Debug.WriteLine("Dark mode toggled: " + GameState.darkMode);
+                            break;
                     }
                 }
             }
@@ -186,25 +191,6 @@ namespace FiveGuysFixed.Controls
                             break;
                         case Keys.I:
                             new ItemSwitchCommand(game, false).Execute();
-                            break;
-                    }
-                }
-            }
-
-            foreach (Keys wKey in weaponKeys)
-            {
-                if (currentState.IsKeyDown(wKey))
-                {
-                    switch (wKey)
-                    {
-                        case Keys.D1:
-                            new WeaponSwitchCommand(game, 1).Execute();
-                            break;
-                        case Keys.D2:
-                            new WeaponSwitchCommand(game, 2).Execute();
-                            break;
-                        case Keys.D3:
-                            new WeaponSwitchCommand(game, 3).Execute();
                             break;
                     }
                 }

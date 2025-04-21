@@ -56,6 +56,8 @@
 			<Item type="GreenRupee" x="3" y="7"/>
 			<Item type="RedRupee" x="3" y="2"/>
 			<Item type="Triforce" x="11" y="2"/>
+			<Item type="WoodSword" x="11" y="3"/>
+			<Item type="WhiteSword" x="11" y="4"/>
 
 			<Block type ="BlueBlock" x="1" y="1"/>
 			<Block type ="GreenBlock" x="2" y="1"/>

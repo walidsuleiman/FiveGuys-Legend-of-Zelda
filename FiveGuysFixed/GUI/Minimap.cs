@@ -126,7 +126,7 @@ namespace FiveGuysFixed.GUI
             {
                 GameState.currentRoomID = 1;
                 isFirstDraw = false;
-                Debug.WriteLine("First draw detected, setting room to 1");
+                //Debug.WriteLine("First draw detected, setting room to 1");
             }
 
             if (mapTexture != null)
@@ -139,7 +139,7 @@ namespace FiveGuysFixed.GUI
                     Color.White);
             }
 
-            Debug.WriteLine($"Current Room ID: {roomID}");
+            //Debug.WriteLine($"Current Room ID: {roomID}");
 
             if (roomPositions.TryGetValue(roomID, out Vector2 roomMinimapPosition))
             {
@@ -149,15 +149,15 @@ namespace FiveGuysFixed.GUI
                 relativeX = MathHelper.Clamp(relativeX, 0f, 1f);
                 relativeY = MathHelper.Clamp(relativeY, 0f, 1f);
 
-                Debug.WriteLine($"Player Position: X={playerPosition.X}, Y={playerPosition.Y}");
-                Debug.WriteLine($"Relative Position: X={relativeX}, Y={relativeY}");
+                //Debug.WriteLine($"Player Position: X={playerPosition.X}, Y={playerPosition.Y}");
+                //Debug.WriteLine($"Relative Position: X={relativeX}, Y={relativeY}");
 
                 Vector2 dotPosition = mapPosition + roomMinimapPosition + mapOffset + new Vector2(
                     relativeX * (ROOM_WID - 12f * scale),
                     relativeY * (ROOM_HEI - 12f * scale)
                 );
 
-                Debug.WriteLine($"Dot Position: X={dotPosition.X}, Y={dotPosition.Y}");
+                //Debug.WriteLine($"Dot Position: X={dotPosition.X}, Y={dotPosition.Y}");
 
                 spriteBatch.Draw(linkDotTexture, new Rectangle(
                     (int)dotPosition.X - DOT_SIZE / 2,
@@ -168,7 +168,7 @@ namespace FiveGuysFixed.GUI
             }
             else
             {
-                Debug.WriteLine($"Room {roomID} not found in position dictionaries");
+                //Debug.WriteLine($"Room {roomID} not found in position dictionaries");
             }
 
             int borderThickness = 2;

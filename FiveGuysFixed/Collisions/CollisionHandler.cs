@@ -110,21 +110,6 @@ public class CollisionHandler
 
         Rectangle enemyRect = enemy.BoundingBox;
 
-        //enemy take damage
-        //enemy animation
-        //sound
-
-        //if(playerRect.Intersects(enemyRect) && GameState.PlayerState.isAttacking == true)
-        //{
-        //    foreach(var enemy1 in GameState.roomManager.getCurrentRoom().Enemies.ToList())
-        //    {
-        //        enemy1.TakeDamage(1);
-        //        Debug.WriteLine("hello");
-
-        //    }
-
-        //    Debug.WriteLine("hello1");
-        //}
 
         foreach (var enemy1 in GameState.roomManager.getCurrentRoom().Enemies.ToList())
         {
@@ -147,7 +132,6 @@ public class CollisionHandler
         // Ensure item is only collected once per room load
         if (playerRect.Intersects(itemRect) && !GameState.collectedItems.Contains(item))
         {
-            Debug.WriteLine("Item Collected");
 
             ((Player)player).ItemPickupSound?.Play(); // Play item pickup sound
             item.Use();
@@ -197,7 +181,6 @@ public class CollisionHandler
         {
             GameState.Player.TakeDamage(1);
             GameState.Player.SetInvincibility(2.5f); // Set invincibility for 2.5 seconds after being hit
-            Debug.WriteLine("Projectile Hit Player");
 
             //remove projectile from screen
         }

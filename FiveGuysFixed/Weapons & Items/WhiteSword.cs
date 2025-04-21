@@ -3,37 +3,26 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Microsoft.Xna.Framework.Graphics;
+using FiveGuysFixed.Animation;
+using FiveGuysFixed.Common;
+using FiveGuysFixed.GameStates;
+using FiveGuysFixed.Items;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
-namespace FiveGuysFixed.Items
+namespace FiveGuysFixed.Weapons___Items
 {
-    public class WhiteSword
+    internal class WhiteSword : Item
     {
-        private Texture2D texture;
-        public Vector2 Position { get; set; }
-        private Rectangle sourceRect;
 
-        public WhiteSword(Texture2D texture, Vector2 position)
+        public WhiteSword(Texture2D texture, int x, int y) : base(texture, 36, 154, x, y, 8, 16)
         {
-            this.texture = texture;
-            Position = position;
-            sourceRect = new Rectangle(0, 0, 0, 0);
+        }
+        public override void Use()
+        {
+            GameState.PlayerState.heldWeapon = WeaponType.WHITESWORD;
         }
 
-        public void Use()
-        {
-            int damage = 15;
-        }
 
-        public void Draw(SpriteBatch spriteBatch)
-        {
-            spriteBatch.Draw(texture, Position, sourceRect, Color.White);
-        }
-
-        public void Update(GameTime gameTime)
-        {
-            // update
-        }
     }
 }

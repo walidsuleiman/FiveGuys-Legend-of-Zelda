@@ -14,12 +14,14 @@ namespace FiveGuysFixed.HUD
         private Hearts hearts;
         private RupeeCount rupees;
         private MiniMap miniMap;
+        private HeldItems heldItems;
         Texture2D blackPixel;
 
         public HUD()
         {
             hearts = new Hearts();
             rupees = new RupeeCount();
+            heldItems = new HeldItems();
         }
 
         public void Update(GameTime gameTime)
@@ -38,6 +40,7 @@ namespace FiveGuysFixed.HUD
 
             hearts.Draw(spritebatch);
             rupees.Draw(spritebatch);
+            heldItems.Draw(spritebatch);
 
             
             if (miniMap == null)

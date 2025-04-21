@@ -32,9 +32,11 @@ namespace FiveGuysFixed.GameStates
         public Texture2D rupeeTexture;
         public Texture2D weaponTexture;
         public Texture2D triforceTexture;
+        public Texture2D swordTexture;
 
         public Texture2D HudTexture;
         public Texture2D miniMapTexture;
+        public Texture2D darkModeTexture;
 
         // game font
         public SpriteFont DefaultFont;
@@ -79,6 +81,7 @@ namespace FiveGuysFixed.GameStates
             bluePotionTexture = content.Load<Texture2D>("BluePotionSprite");
             bombTexture = content.Load<Texture2D>("linkSprite"); // placeholder?
             foodTexture = content.Load<Texture2D>("linkSprite"); // same here
+            swordTexture = content.Load<Texture2D>("linkSprite"); // same here
             rupeeTexture = content.Load<Texture2D>("rupeeSprite");
             weaponTexture = content.Load<Texture2D>("Weapon");
             triforceTexture = content.Load<Texture2D>("Triforce");
@@ -89,6 +92,9 @@ namespace FiveGuysFixed.GameStates
         {
             HudTexture = content.Load<Texture2D>("HUDClean");
             miniMapTexture = content.Load<Texture2D>("Minimap1");
+
+            darkModeTexture = content.Load<Texture2D>("darkmode");
+
         }
 
         #endregion

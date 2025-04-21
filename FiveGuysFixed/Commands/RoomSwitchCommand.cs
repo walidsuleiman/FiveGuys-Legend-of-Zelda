@@ -18,7 +18,6 @@ namespace FiveGuysFixed.Commands
             if (GameState.currentRoomID < 17)
             {
                 GameState.ShouldSwitchRoom = true;
-                Debug.WriteLine("Switched to next: " + GameState.currentRoomID);
                 GameState.currentRoomID++; // Move to Room 2
                 GameState.PlayerState.position = new Vector2(GameState.WindowWidth / 2, GameState.WindowHeight / 2);
 
@@ -30,7 +29,6 @@ namespace FiveGuysFixed.Commands
             if (GameState.currentRoomID > 1)
             {
                 GameState.ShouldSwitchRoom = true;
-                Debug.WriteLine("Switched to previous: " + GameState.currentRoomID);
                 GameState.currentRoomID--; // Move to Room 1
                 GameState.PlayerState.position = new Vector2(GameState.WindowWidth / 2, GameState.WindowHeight / 2);
 

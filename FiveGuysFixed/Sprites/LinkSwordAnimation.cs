@@ -64,7 +64,6 @@ namespace FiveGuysFixed.Animation
                 return;
             }
 
-            Debug.WriteLine("Swdadwadsd:" + currentFrameIndex);
             Rectangle rectangle = swordSprites[currentFrameIndex];
             sourceRect = rectangle;
             Rectangle destRect = new Rectangle((int)GameState.PlayerState.position.X, (int)GameState.PlayerState.position.Y, rectangle.Width, rectangle.Height);

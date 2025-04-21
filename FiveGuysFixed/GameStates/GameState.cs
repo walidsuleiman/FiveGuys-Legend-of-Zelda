@@ -37,6 +37,7 @@ namespace FiveGuysFixed.GameStates
         public static Dir transitionDir;
         public static RoomContents previousRoomContents = new();
         public static TransitionManager transitionManager;
+        public static bool darkMode = false; // Default: Light mode
 
         public static bool ShouldSwitchRoom = false; // Default: No switch
         public static List<IItem> itemsToRemove = new List<IItem>();

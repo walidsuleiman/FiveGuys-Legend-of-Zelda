@@ -85,13 +85,13 @@ namespace FiveGuysFixed.Enemies
         {
             if (projectiles == null)
             {
-                System.Diagnostics.Debug.WriteLine("projectiles list is null!");
+                //System.Diagnostics.Debug.WriteLine("projectiles list is null!");
                 return;
             }
 
             if (boomerangTexture == null)
             {
-                System.Diagnostics.Debug.WriteLine("boomerangTexture is null!");
+                //System.Diagnostics.Debug.WriteLine("boomerangTexture is null!");
                 return;
             }
 
@@ -118,7 +118,7 @@ namespace FiveGuysFixed.Enemies
             // Create the boomerang and add it to projectiles list
             projectiles.Add(new Boomerang(boomerangTexture, Position.X, Position.Y, direction, this));
 
-            System.Diagnostics.Debug.WriteLine("Goriya attacking! Created boomerang");
+            //System.Diagnostics.Debug.WriteLine("Goriya attacking! Created boomerang");
         }
     }
 }

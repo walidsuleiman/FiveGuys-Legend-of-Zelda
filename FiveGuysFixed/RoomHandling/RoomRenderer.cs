@@ -11,6 +11,7 @@ using FiveGuysFixed.GameStates;
 using FiveGuysFixed.Items;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using FiveGuysFixed.DarkMode;
 
 
 namespace FiveGuysFixed.RoomHandling
@@ -18,6 +19,8 @@ namespace FiveGuysFixed.RoomHandling
     public class RoomRenderer
     {
         private static CollisionHandler collisionHandler = new CollisionHandler();
+
+        private static DarkMode.DarkMode darkMode = new DarkMode.DarkMode();
 
         public static void Draw(SpriteBatch spriteBatch)
         {
@@ -27,6 +30,12 @@ namespace FiveGuysFixed.RoomHandling
             if (!GameState.IsTransitioning)
             {
                 DrawRoomContents(spriteBatch, GameState.roomManager.getCurrentRoom(), Vector2.Zero);
+
+                if (GameState.darkMode)
+                {
+                    darkMode.draw(spriteBatch);
+                }
+
                 return;
             }
 
@@ -93,6 +102,7 @@ namespace FiveGuysFixed.RoomHandling
             else
             {
                 GameState.PlayerState.transitionOffset = Vector2.Zero;
+                
             }
 
             GameState.Player.Draw(spriteBatch);
