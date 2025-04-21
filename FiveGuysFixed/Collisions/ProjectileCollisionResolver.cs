@@ -38,5 +38,9 @@ public class ProjectileCollisionResolver
         {
             enemy.TakeDamage(1);
         }
+        if (proj is Boomerang)
+        {
+            ContentLoader.hitSound.Play();
+        }
     }
 }

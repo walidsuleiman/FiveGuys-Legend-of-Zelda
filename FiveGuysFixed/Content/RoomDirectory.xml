@@ -257,13 +257,10 @@
 			<Block type="Wall" x="640" y="440"/>
 			<Block type="Floor" x="0" y="0"/>
 
+			<Item type="Triforce" x="7" y="4"/>
+
 			<Item type="RedPotion" x="3" y="3"/>
 			<Item type="BluePotion" x="9" y="5"/>
-
-			<Item type="GreenRupee" x="6" y="3"/>
-			<Item type="GreenRupee" x="6" y="4"/>
-			<Item type="GreenRupee" x="7" y="3"/>
-			<Item type="GreenRupee" x="7" y="4"/>
 
 			<Enemy type="Octorok" x="500" y="600"/>
 
@@ -998,8 +995,6 @@
 
 			<Block type="Wall" x="640" y="440"/>
 			<Block type="Floor" x="0" y="0"/>
-
-			<Item type="Triforce" x="7" y="4"/>
 
 			<Enemy type="Moblin" x="500" y="500"/>
 

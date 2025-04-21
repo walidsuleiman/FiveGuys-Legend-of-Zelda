@@ -34,6 +34,8 @@ namespace FiveGuysFixed.GameStates
         {
             triforceTexture = content.Load<Texture2D>("Triforce");
             linkSpriteTexture = content.Load<Texture2D>("linkSprite");
+
+            ContentLoader.victorySound.Play();
         }
         public void Update(GameTime gameTime)
         {

@@ -230,6 +230,12 @@
 /processorParam:TextureFormat=Color
 /build:Triforce.png
 
+#begin victory.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:victory.wav
+
 #begin Weapon.png
 /importer:TextureImporter
 /processor:TextureProcessor

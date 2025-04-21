@@ -215,6 +215,7 @@ namespace FiveGuysFixed.GameStates
             else if (itemName == "Food")
             {
                 ps.foodCount = count;
+                //ContentLoader.eatSound.Play();
                 ps.health++;
             }
 
