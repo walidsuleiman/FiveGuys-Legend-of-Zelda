@@ -1,4 +1,5 @@
 ﻿using System;
+using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -32,6 +33,8 @@ namespace FiveGuysFixed.GameStates
         public Texture2D rupeeTexture;
         public Texture2D weaponTexture;
         public Texture2D triforceTexture;
+        public static SoundEffect BombSound;
+        public static SoundEffect ExplosionSound;
 
         public Texture2D HudTexture;
         public Texture2D miniMapTexture;
@@ -77,11 +80,13 @@ namespace FiveGuysFixed.GameStates
         {
             redPotionTexture = content.Load<Texture2D>("RedPotionSprite");
             bluePotionTexture = content.Load<Texture2D>("BluePotionSprite");
-            bombTexture = content.Load<Texture2D>("linkSprite"); // placeholder?
-            foodTexture = content.Load<Texture2D>("linkSprite"); // same here
+            bombTexture = content.Load<Texture2D>("linkSprite");
+            foodTexture = content.Load<Texture2D>("linkSprite"); 
             rupeeTexture = content.Load<Texture2D>("rupeeSprite");
             weaponTexture = content.Load<Texture2D>("Weapon");
             triforceTexture = content.Load<Texture2D>("Triforce");
+            BombSound = content.Load<SoundEffect>("bomb");
+            ExplosionSound = content.Load<SoundEffect>("explosion");
         }
 
         //HUD and minimap textures

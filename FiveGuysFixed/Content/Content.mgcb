@@ -37,6 +37,12 @@
 /processorParam:TextureFormat=Color
 /build:BluePotionSprite.png
 
+#begin bomb.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:bomb.wav
+
 #begin Boss_SpriteSheet.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -67,6 +73,12 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Enemy_SpriteSheet.png
+
+#begin explosion.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:explosion.wav
 
 #begin GreenBlockSprite.png
 /importer:TextureImporter

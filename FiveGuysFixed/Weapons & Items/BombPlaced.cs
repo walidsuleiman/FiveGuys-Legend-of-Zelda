@@ -40,6 +40,7 @@ namespace FiveGuysFixed.Weapons___Items
         {
             pixelPos = worldPixel;
             spriteSheet = sheet;
+            ContentLoader.BombSound.Play();
         }
 
 
@@ -57,6 +58,7 @@ namespace FiveGuysFixed.Weapons___Items
                 if (timer <= 0f)
                 {
                     exploded = true;
+                    ContentLoader.ExplosionSound.Play();
                     DealDamage();
                 }
             }
