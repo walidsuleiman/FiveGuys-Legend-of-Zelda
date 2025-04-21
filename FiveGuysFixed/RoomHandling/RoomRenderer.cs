@@ -18,7 +18,12 @@ namespace FiveGuysFixed.RoomHandling
 {
     public class RoomRenderer
     {
-        private static CollisionHandler collisionHandler = new CollisionHandler();
+        private static PlayerBlockCollisionResolver playerBlockCollisionResolver = new PlayerBlockCollisionResolver();
+        private static ProjectileCollisionResolver projectileCollisionResolver = new ProjectileCollisionResolver();
+        private static PlayerEnemyCollisionResolver playerEnemyCollisionResolver = new PlayerEnemyCollisionResolver();
+        private static SwordEnemyCollisionResolver swordEnemyCollisionResolver = new SwordEnemyCollisionResolver();
+        private static EnemyBlockCollisionResolver enemyBlockCollisionResolver = new EnemyBlockCollisionResolver();
+        private static PlayerItemCollisionResolver playerItemCollisionResolver = new PlayerItemCollisionResolver();
 
         private static DarkMode.DarkMode darkMode = new DarkMode.DarkMode();
 
@@ -78,7 +83,7 @@ namespace FiveGuysFixed.RoomHandling
 
                 Vector2 offset = Vector2.Zero;
 
-                //Rename variable
+                //Rename variable  
                 int moveLink = 0;
 
                 switch (GameState.transitionDir)
@@ -130,16 +135,16 @@ namespace FiveGuysFixed.RoomHandling
             foreach (var block in GameState.roomManager.getCurrentRoom().Blocks)
             {
                 block.Update(gameTime);
-                collisionHandler.HandlePlayerBlockCollision(GameState.Player, block);
+                playerBlockCollisionResolver.Resolve(GameState.Player, block);
             }
 
             foreach (var projectile in GameState.roomManager.getCurrentRoom().Projectiles)
             {
                 projectile.Update(gameTime);
-                collisionHandler.HandlePlayerProjectileCollision(GameState.Player, projectile);
+                projectileCollisionResolver.ResolvePlayerHit(GameState.Player, projectile);
                 foreach (var e in GameState.roomManager.getCurrentRoom().Enemies.ToList())
                 {
-                    collisionHandler.HandleProjectileEnemyCollision(projectile, e);
+                    projectileCollisionResolver.ResolveEnemyHit(projectile, e);
                 }
             }
 
@@ -147,14 +152,14 @@ namespace FiveGuysFixed.RoomHandling
             foreach (IEnemy enemy in GameState.roomManager.getCurrentRoom().Enemies.ToList())
             {
                 enemy.Update(gameTime);
-                collisionHandler.HandlePlayerEnemyCollision(GameState.Player, enemy);
-                collisionHandler.HandleSwordEnemyCollision(GameState.Player, enemy);
+                playerEnemyCollisionResolver.Resolve(GameState.Player, enemy);
+                swordEnemyCollisionResolver.HandleSwordEnemyCollision(GameState.Player, enemy);
 
 
                 foreach (var block in GameState.roomManager.getCurrentRoom().Blocks)
                 {
                     block.Update(gameTime);
-                    collisionHandler.HandleEnemyBlockCollision(enemy, block);
+                    enemyBlockCollisionResolver.Resolve(enemy, block);
                 }
 
             }
@@ -165,10 +170,10 @@ namespace FiveGuysFixed.RoomHandling
             {
                 IItem item = GameState.roomManager.getCurrentRoom().Items[i];
                 item.Update(gameTime);
-                collisionHandler.HandlePlayerItemCollision(GameState.Player, item);
+                playerItemCollisionResolver.Resolve(GameState.Player, item);
             }
 
-            // Remove collected items **AFTER** checking all items
+            // Remove collected items **AFTER** checking all items  
             foreach (var item in GameState.itemsToRemove)
             {
                 GameState.roomManager.getCurrentRoom().Items.Remove(item);

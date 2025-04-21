@@ -64,9 +64,13 @@ namespace FiveGuysFixed.Enemies
         }
         private void Attack()
         {
-            projectiles.Add(new Fireball(aquamentusAttackSprite.Texture, Position.X, Position.Y - 70, new Vector2(-2, 0)));
-            projectiles.Add(new Fireball(aquamentusAttackSprite.Texture, Position.X, Position.Y, new Vector2(-2, 0)));
-            projectiles.Add(new Fireball(aquamentusAttackSprite.Texture, Position.X, Position.Y + 70, new Vector2(-2, 0)));
+            Fireball top = new Fireball(aquamentusAttackSprite.Texture, Position.X, Position.Y - 70, new Vector2(-2, 0));
+            Fireball mid = new Fireball(aquamentusAttackSprite.Texture, Position.X, Position.Y, new Vector2(-2, 0));
+            Fireball bot = new Fireball(aquamentusAttackSprite.Texture, Position.X, Position.Y + 70, new Vector2(-2, 0));
+
+            projectiles.Add(top);
+            projectiles.Add(mid);
+            projectiles.Add(bot);
         }
 
         public override Rectangle BoundingBox

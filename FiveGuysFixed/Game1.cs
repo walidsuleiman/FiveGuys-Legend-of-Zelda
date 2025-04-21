@@ -59,7 +59,12 @@ namespace FiveGuysFixed
         private Texture2D heartTexture;
 
         private CollisionDetector collisionDetector;
-        private CollisionHandler collisionHandler;
+        private PlayerEnemyCollisionResolver playerEnemyCollisionResolver;
+        private PlayerBlockCollisionResolver playerBlockCollisionResolver;
+        private PlayerItemCollisionResolver playerItemCollisionResolver;
+        private ProjectileCollisionResolver projectileCollisionResolver;
+        private EnemyBlockCollisionResolver enemyBlockCollisionResolver;
+        private SwordEnemyCollisionResolver swordEnemyCollisionResolver;
 
         public int activeWeaponIndex;
         public int activeItemIndex;
@@ -83,7 +88,6 @@ namespace FiveGuysFixed
             _graphics.PreferredBackBufferWidth = 1280;
 
             collisionDetector = new CollisionDetector();
-            collisionHandler = new CollisionHandler();
         }
 
         // called once at game start and sets up states, controllers, etc

@@ -23,7 +23,6 @@ namespace FiveGuysFixed.LinkPlayer
 {
     public class Player : IPlayer
     {
-        private static CollisionHandler collisionHandler = new CollisionHandler();
         private LinkWalkAnimation linkSprite;
         private LinkSwordAnimation swordAnimation;
 
