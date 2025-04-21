@@ -59,7 +59,12 @@ namespace FiveGuysFixed
         private Texture2D heartTexture;
 
         private CollisionDetector collisionDetector;
-        private CollisionHandler collisionHandler;
+        private PlayerEnemyCollisionResolver playerEnemyCollisionResolver;
+        private PlayerBlockCollisionResolver playerBlockCollisionResolver;
+        private PlayerItemCollisionResolver playerItemCollisionResolver;
+        private ProjectileCollisionResolver projectileCollisionResolver;
+        private EnemyBlockCollisionResolver enemyBlockCollisionResolver;
+        private SwordEnemyCollisionResolver swordEnemyCollisionResolver;
 
         public int activeWeaponIndex;
         public int activeItemIndex;
@@ -83,7 +88,6 @@ namespace FiveGuysFixed
             _graphics.PreferredBackBufferWidth = 1280;
 
             collisionDetector = new CollisionDetector();
-            collisionHandler = new CollisionHandler();
         }
 
         // called once at game start and sets up states, controllers, etc
@@ -96,7 +100,6 @@ namespace FiveGuysFixed
             GameState.WindowHeight = 880;
             GameState.PlayerState = new PlayerState(new Vector2(GameState.WindowWidth / 2, GameState.WindowHeight / 2));
             GameState.roomManager = new RoomManager();
-            GameState.currentRoomContents = new CurrentRoomContents();
             GameState.contentLoader = new ContentLoader();
             GameState.currentRoomID = 1;
             GameState.Player = new Player(this);
@@ -199,17 +202,17 @@ namespace FiveGuysFixed
         {
             if (GameState.PendingBomb)
             {
-                GameState.currentRoomContents.Items.Add(new BombPlaced(GameState.contentLoader.bombTexture, GameState.PendingPos));
+                GameState.roomManager.getCurrentRoom().Items.Add(new BombPlaced(GameState.contentLoader.bombTexture, GameState.PendingPos));
                 GameState.PendingBomb = false;
             }
             
-            for (int i = 0; i < GameState.currentRoomContents.Items.Count; i++)
+            for (int i = 0; i < GameState.roomManager.getCurrentRoom().Items.Count; i++)
             {
-                var it = GameState.currentRoomContents.Items[i];
+                var it = GameState.roomManager.getCurrentRoom().Items[i];
                 it.Update(gameTime);
 
                 if (it is BombPlaced bp && bp.IsFinished)
-                    GameState.currentRoomContents.Items.RemoveAt(i--);
+                    GameState.roomManager.getCurrentRoom().Items.RemoveAt(i--);
             }
 
             mouseController.Update();
@@ -258,13 +261,13 @@ namespace FiveGuysFixed
         // updates projectiles in the current room and removes finished ones
         private void UpdateProjectiles(GameTime gameTime)
         {
-            for (int i = 0; i < GameState.currentRoomContents.Projectiles.Count; i++)
+            for (int i = 0; i < GameState.roomManager.getCurrentRoom().Projectiles.Count; i++)
             {
-                GameState.currentRoomContents.Projectiles[i].Update(gameTime);
+                GameState.roomManager.getCurrentRoom().Projectiles[i].Update(gameTime);
 
-                if (GameState.currentRoomContents.Projectiles[i].IsFinished())
+                if (GameState.roomManager.getCurrentRoom().Projectiles[i].IsFinished())
                 {
-                    GameState.currentRoomContents.Projectiles.RemoveAt(i);
+                    GameState.roomManager.getCurrentRoom().Projectiles.RemoveAt(i);
                     i--;
                 }
             }
@@ -294,10 +297,13 @@ namespace FiveGuysFixed
             //spriteBatch.Draw(GameState.contentLoader.blockTexture, new Rectangle(848, 11, 32, 17), new Rectangle(537, 0, 32*5, 17*5), Color.White);//up
             //spriteBatch.Draw(GameState.contentLoader.blockTexture, new Rectangle(848, 125, 32, 17), new Rectangle(537, 795, 32 * 5, 17 * 5), Color.White);//down
 
+            
+
+
             GameState.HUD.Draw(spriteBatch);
 
 
-            foreach (var projectile in GameState.currentRoomContents.Projectiles)
+            foreach (var projectile in GameState.roomManager.getCurrentRoom().Projectiles)
             {
                 projectile.Draw(spriteBatch);
             }
@@ -305,7 +311,7 @@ namespace FiveGuysFixed
             if (blocks.Count > 0)
                 blocks[activeBlockIndex].Draw(spriteBatch);
 
-            //foreach (var it in GameState.currentRoomContents.Items)
+            //foreach (var it in GameState.roomManager.getCurrentRoom().Items)
             //    it.Draw(spriteBatch);
         }
     }

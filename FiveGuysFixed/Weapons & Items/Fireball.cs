@@ -26,6 +26,11 @@ namespace FiveGuysFixed.Projectiles
             this.currentTime = 0;
         }
 
+        public bool isEnemyProjectile()
+        {
+            return true;
+        }
+
         public void Update(GameTime gameTime)
         {
             if (currentTime < flightTime)

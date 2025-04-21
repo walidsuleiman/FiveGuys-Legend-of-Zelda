@@ -26,16 +26,16 @@ namespace FiveGuysFixed.GameStates
         public static Player Player;
         public static int WindowHeight;
         public static int WindowWidth;
-        public static int currentRoomID;
+        public static int currentRoomID = 1;
         public static RoomManager roomManager;
         public static int RoomID;
-        public static CurrentRoomContents currentRoomContents;  // Global RoomContents
+        //public static RoomContents currentRoomContents;  // Global RoomContents
         public static ContentLoader contentLoader;  // Global Loader
 
         public static bool IsTransitioning = false;
         public static float transitionX = 0f;
         public static Dir transitionDir;
-        public static CurrentRoomContents previousRoomContents = new();
+        public static RoomContents previousRoomContents = new();
         public static TransitionManager transitionManager;
 
         public static bool ShouldSwitchRoom = false; // Default: No switch

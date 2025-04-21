@@ -113,7 +113,7 @@ namespace FiveGuysFixed.Weapons___Items
                 GameState.Player.TakeDamage(DMG);
             }
 
-            foreach (var e in GameState.currentRoomContents.Enemies.ToList())
+            foreach (var e in GameState.roomManager.getCurrentRoom().Enemies.ToList())
             {
                 if (Vector2.Distance(pixelPos, e.Position) < RADIUS)
                 {

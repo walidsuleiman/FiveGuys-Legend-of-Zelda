@@ -26,6 +26,11 @@ namespace FiveGuysFixed.Projectiles
         private bool isReturning = false;
         private const float SCALE = 5f;
 
+
+        public bool isEnemyProjectile()
+        {
+            return !isLinkBoomerang; // Boomerangs thrown by Goriya are enemy projectiles
+        }
         public Boomerang(Texture2D texture, float x, float y, Vector2 velocity, Goriya owner)
         {
             this.texture = texture;
