@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+//using System;
+//using System.Collections.Generic;
+//using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using FiveGuysFixed.Common;
@@ -45,5 +45,20 @@ namespace FiveGuysFixed.GameStates
         public static Game1 Game { get; set; }
         public static bool PendingBomb = false;
         public static Vector2 PendingPos;
+        public static EquippedItemSlot EquippedB;
+    }
+
+    public class EquippedItemSlot
+    {
+        public string Name;
+        public Func<int> GetCount;
+        public Action<int> SetCount;
+
+        public EquippedItemSlot(string name, Func<int> getter, Action<int> setter)
+        {
+            Name = name;
+            GetCount = getter;
+            SetCount = setter;
+        }
     }
 }

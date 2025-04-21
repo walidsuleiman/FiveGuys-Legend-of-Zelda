@@ -36,13 +36,13 @@ namespace FiveGuysFixed.Controls
 
             // Array of keys we care about.
             Keys[] movementKeys = { Keys.W, Keys.A, Keys.S, Keys.D, Keys.Up, Keys.Down, Keys.Left, Keys.Right };
-            Keys[] itemKeys = { Keys.U, Keys.I };
+            Keys[] itemKeys = { Keys.U, Keys.I, Keys.B };
             Keys[] weaponKeys = { Keys.D1, Keys.D2, Keys.D3 };
             Keys[] enemyKeys = { Keys.O, Keys.P };
             Keys[] gameKeys = { Keys.Q, Keys.R, Keys.Enter, Keys.C };
             Keys[] blockKeys = { Keys.T, Keys.Y };
             Keys[] combatKeys = { Keys.N, Keys.E };
-            Keys[] audioKeys = { Keys.B };
+            Keys[] audioKeys = { Keys.M };
             Keys[] boomerangKeys = { Keys.Z }; // New array for boomerang key
 
             //// Boomerang key handling
@@ -187,6 +187,32 @@ namespace FiveGuysFixed.Controls
                         case Keys.I:
                             new ItemSwitchCommand(game, false).Execute();
                             break;
+                        case Keys.B:
+                            var slot = GameState.EquippedB;
+                            if (slot == null) break;
+
+                            int count = slot.GetCount();
+                            if (count <= 0)
+                            {
+                                GameState.EquippedB = null;
+                                break;
+                            }
+                            switch (slot.Name)
+                            {
+                                case "Bomb":
+                                    GameState.PendingBomb = true;
+                                    GameState.PendingPos = GameState.PlayerState.position;
+                                    GameState.PlayerState.health--; // cost
+                                    break;
+                                case "Food":
+                                    GameState.PlayerState.health++;
+                                    break;
+                            }
+
+                            count--;
+                            slot.SetCount(count);
+                            if (count <= 0) GameState.EquippedB = null;
+                            break;
                     }
                 }
             }
@@ -239,7 +265,7 @@ namespace FiveGuysFixed.Controls
                 {
                     switch (audioKey)
                     {
-                        case Keys.B:
+                        case Keys.M:
                             game.isMuted = !game.isMuted;
                             if (game.isMuted)
                             {

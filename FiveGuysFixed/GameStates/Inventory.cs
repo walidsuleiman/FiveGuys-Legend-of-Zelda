@@ -204,6 +204,35 @@ namespace FiveGuysFixed.GameStates
 
             if (count <= 0) return;
 
+            if (itemName == "Bomb")
+            {
+                GameState.EquippedB = new EquippedItemSlot(
+                    "Bomb",
+                    () => ps.bombCount,
+                    count => ps.bombCount = count
+                );
+            }
+            else if (itemName == "Food")
+            {
+                GameState.EquippedB = new EquippedItemSlot(
+                    "Food",
+                    () => ps.foodCount,
+                    count => ps.foodCount = count
+                );
+            }
+            if (count <= 0)
+            {
+                itemCounts.Remove(itemName);
+                itemList = itemCounts.ToList();
+                if (selectedIndex >= itemList.Count) selectedIndex = itemList.Count - 1;
+            }
+
+            /* var ps = GameState.PlayerState;
+            string itemName = itemList[selectedIndex].Key;
+            int count = itemList[selectedIndex].Value;
+
+            if (count <= 0) return;
+
             count--;
 
             if (itemName == "Bomb")
@@ -224,7 +253,7 @@ namespace FiveGuysFixed.GameStates
                 itemCounts.Remove(itemName);
                 itemList = itemCounts.ToList();
                 if (selectedIndex >= itemList.Count) selectedIndex = itemList.Count - 1;
-            }
+            } */
         }
 
         private void DrawRectBorder(SpriteBatch spriteBatch, Rectangle rect, int thickness, Color color)
