@@ -13,7 +13,7 @@ namespace FiveGuysFixed.HUD
         private Rectangle bowSprite = new Rectangle(1, 185, 8, 16);
         private Rectangle boomerangSprite = new Rectangle(64, 185, 8, 16);
 
-        private Vector2 aItemPos = new Vector2(762, 1005);
+        private Vector2 aItemPos = new Vector2(642, 1005);
         private Vector2 bItemPos = new Vector2(10, GameState.WindowHeight - 20);
 
         public HeldItems() { }
