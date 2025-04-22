@@ -1,7 +1,7 @@
 # This is Group FiveGuys' 3902 Legend of Zelda Project
 
 **Legend of Zelda**\
-W to move forward
+W to move forward\
 A to move left
 S to move back
 D to move right
