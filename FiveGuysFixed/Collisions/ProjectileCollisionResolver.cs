@@ -36,6 +36,7 @@ public class ProjectileCollisionResolver
 
         if (collisionDetector.IsColliding(proj.BoundingBox, enemy.BoundingBox))
         {
+            GameState.roomManager.getCurrentRoom().Projectiles.Remove(proj);
             enemy.TakeDamage(1);
         }
         if (proj is Boomerang)

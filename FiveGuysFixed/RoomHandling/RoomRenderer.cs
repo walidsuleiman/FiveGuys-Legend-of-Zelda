@@ -12,6 +12,7 @@ using FiveGuysFixed.Items;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using FiveGuysFixed.DarkMode;
+using FiveGuysFixed.Projectiles;
 
 
 namespace FiveGuysFixed.RoomHandling
@@ -20,8 +21,7 @@ namespace FiveGuysFixed.RoomHandling
     {
         private static PlayerBlockCollisionResolver playerBlockCollisionResolver = new PlayerBlockCollisionResolver();
         private static ProjectileCollisionResolver projectileCollisionResolver = new ProjectileCollisionResolver();
-        private static PlayerEnemyCollisionResolver playerEnemyCollisionResolver = new PlayerEnemyCollisionResolver();
-        private static SwordEnemyCollisionResolver swordEnemyCollisionResolver = new SwordEnemyCollisionResolver();
+        //private static PlayerEnemyCollisionResolver playerEnemyCollisionResolver = new PlayerEnemyCollisionResolver();
         private static EnemyBlockCollisionResolver enemyBlockCollisionResolver = new EnemyBlockCollisionResolver();
         private static PlayerItemCollisionResolver playerItemCollisionResolver = new PlayerItemCollisionResolver();
 
@@ -138,12 +138,17 @@ namespace FiveGuysFixed.RoomHandling
                 playerBlockCollisionResolver.Resolve(GameState.Player, block);
             }
 
-            foreach (var projectile in GameState.roomManager.getCurrentRoom().Projectiles)
+            var projectiles = GameState.roomManager.getCurrentRoom().Projectiles;
+            for (int i = 0; i < projectiles.Count; i++)
             {
+                var projectile = projectiles[i];
                 projectile.Update(gameTime);
                 projectileCollisionResolver.ResolvePlayerHit(GameState.Player, projectile);
-                foreach (var e in GameState.roomManager.getCurrentRoom().Enemies.ToList())
+
+                var enemies = GameState.roomManager.getCurrentRoom().Enemies.ToList();
+                for (int j = 0; j < enemies.Count; j++)
                 {
+                    var e = enemies[j];
                     projectileCollisionResolver.ResolveEnemyHit(projectile, e);
                 }
             }
@@ -152,9 +157,7 @@ namespace FiveGuysFixed.RoomHandling
             foreach (IEnemy enemy in GameState.roomManager.getCurrentRoom().Enemies.ToList())
             {
                 enemy.Update(gameTime);
-                playerEnemyCollisionResolver.Resolve(GameState.Player, enemy);
-                swordEnemyCollisionResolver.HandleSwordEnemyCollision(GameState.Player, enemy);
-
+                //playerEnemyCollisionResolver.Resolve(GameState.Player, enemy);
 
                 foreach (var block in GameState.roomManager.getCurrentRoom().Blocks)
                 {

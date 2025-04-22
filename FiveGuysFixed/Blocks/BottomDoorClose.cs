@@ -18,7 +18,7 @@ namespace FiveGuysFixed.Blocks
 
         public BottomDoorClose(Texture2D texture, int x, int y)
         {
-            blockSprite = new Sprite(texture, 881, 110, 32, 32);
+            blockSprite = new Sprite(texture, 881 - 66, 110, 32, 32);
 
 
             this.x = x;
