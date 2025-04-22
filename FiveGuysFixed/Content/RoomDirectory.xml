@@ -108,7 +108,9 @@
 			<Item type="Food" x="12" y="3"/>
 			<Item type="GreenRupee" x="3" y="2"/>
 			<Item type="GreenRupee" x="3" y="6"/>
-			<Enemy type="Aquamentus" x="700" y="500"/>
+			<Enemy type="Aquamentus" x="700" y="300"/>
+			<Enemy type="Aquamentus" x="700" y="600"/>
+
 
 			<Block type="ClearBlock" x="3" y="2"/>
 			<Block type="ClearBlock" x="4" y="2"/>
@@ -184,7 +186,9 @@
 			<Enemy type="Gel" x="500" y="200"/>
 			<Enemy type="Gel" x="1000" y="300"/>
 			<Enemy type="Gel" x="400" y="700"/>
-
+			<Enemy type="Gel" x="600" y="400"/>
+			<Enemy type="Gel" x="200" y="400"/>
+			<Enemy type="Gel" x="900" y="600"/>
 
 
 
@@ -263,6 +267,8 @@
 
 			<Enemy type="Goriya" x="500" y="300"/>
 			<Enemy type="Goriya" x="950" y="600"/>
+			<Enemy type="Goriya" x="1000" y="200"/>
+			<Enemy type="Goriya" x="400" y="600"/>
 
 
 			<Block type="ClearBlock" x="3" y="2"/>
@@ -337,6 +343,7 @@
 
 			<Enemy type="Octorok" x="500" y="600"/>
 			<Enemy type="Octorok" x="500" y="250"/>
+			<Enemy type="Octorok" x="650" y="400"/>
 
 
 			<Block type="ClearBlock" x="3" y="2"/>
@@ -494,6 +501,9 @@
 
 			<Enemy type="Octorok" x="500" y="600"/>
 			<Enemy type="Octorok" x="300" y="250"/>
+			<Enemy type="Octorok" x="800" y="550"/>
+			<Enemy type="Octorok" x="1000" y="300"/>
+
 
 
 			<Item type="Bomb" x="10" y="1"/>
@@ -585,6 +595,8 @@
 
 			<Enemy type="Moblin" x="500" y="500"/>
 			<Enemy type="Moblin" x="1000" y="700"/>
+			<Enemy type="Moblin" x="600" y="300"/>
+
 
 
 
@@ -663,6 +675,9 @@
 			<Item type="BluePotion" x="7" y="4"/>
 
 			<Enemy type="Tektike" x="500" y="550"/>
+			<Enemy type="Tektike" x="700" y="300"/>
+			<Enemy type="Tektike" x="900" y="650"/>
+
 
 
 			<Block type="ClearBlock" x="3" y="2"/>
@@ -812,6 +827,10 @@
 			<Item type="GreenRupee" x="3" y="6"/>
 
 			<Enemy type="Goriya" x="500" y="300"/>
+			<Enemy type="Goriya" x="900" y="400"/>
+			<Enemy type="Goriya" x="300" y="600"/>
+			<Enemy type="Goriya" x="700" y="500"/>
+
 
 
 			<Block type="ClearBlock" x="3" y="2"/>
@@ -886,6 +905,11 @@
 			<Item type="BluePotion" x="9" y="5"/>
 
 			<Enemy type="Keese" x="500" y="400"/>
+			<Enemy type="Keese" x="900" y="250"/>
+			<Enemy type="Keese" x="1000" y="600"/>
+			<Enemy type="Keese" x="300" y="200"/>
+			<Enemy type="Keese" x="500" y="600"/>
+
 
 
 			<Item type="GreenRupee" x="6" y="3"/>
@@ -960,6 +984,10 @@
 			<Block type="Wall" x="640" y="440"/>
 			<Block type="Floor" x="0" y="0"/>
 
+			<Enemy type="Aquamentus" x="500" y="600"/>
+			<Enemy type="Aquamentus" x="800" y="300"/>
+
+
 			<Block type="GreenBlock" x="2" y="3"/>
 			<Block type="GreenBlock" x="2" y="5"/>
 			<Block type="GreenBlock" x="11" y="3"/>
@@ -1032,6 +1060,8 @@
 			<Block type="Wall" x="640" y="440"/>
 			<Block type="Floor" x="0" y="0"/>
 			<Enemy type="Aquamentus" x="900" y="400"/>
+			<Enemy type="Aquamentus" x="400" y="400"/>
+
 
 			<Block type="WhiteBlock" x="6" y="3"/>
 			<Block type="WhiteBlock" x="7" y="3"/>
@@ -1119,6 +1149,11 @@
 			<Item type="GreenRupee" x="10" y="7"/>
 
 			<Enemy type="Gel" x="500" y="200"/>
+			<Enemy type="Gel" x="300" y="400"/>
+			<Enemy type="Gel" x="350" y="650"/>
+			<Enemy type="Gel" x="900" y="600"/>
+			<Enemy type="Gel" x="1000" y="250"/>
+
 
 
 			<Block type="ClearBlock" x="3" y="2"/>
@@ -1198,7 +1233,11 @@
 			<Item type="RedRupee" x="7" y="4"/>
 			<Item type="RedRupee" x="8" y="4"/>
 
-			<Enemy type="Stalfos" x="500" y="700"/>
+			<Enemy type="Stalfos" x="500" y="600"/>
+			<Enemy type="Stalfos" x="300" y="500"/>
+			<Enemy type="Stalfos" x="900" y="300"/>
+			<Enemy type="Stalfos" x="600" y="300"/>
+
 
 
 
@@ -1268,8 +1307,10 @@
 			<Block type="Wall" x="640" y="440"/>
 			<Block type="Floor" x="0" y="0"/>
 
-			<Enemy type="Moblin" x="500" y="500"/>
-
+			<Enemy type="Moblin" x="500" y="600"/>
+			<Enemy type="Moblin" x="300" y="500"/>
+			<Enemy type="Moblin" x="900" y="300"/>
+			<Enemy type="Moblin" x="600" y="300"/>
 
 			<Block type="ClearBlock" x="3" y="2"/>
 			<Block type="ClearBlock" x="4" y="2"/>
