@@ -49,32 +49,68 @@ namespace FiveGuysFixed.Enemies
 
         private void SetAI()
         {
-
-            var rnd = new System.Random();
-            int decide = rnd.Next(1, 4);
-            switch (decide)
+            if (DifficultyManager.Instance.CurrentDifficulty == GameDifficulty.Hell)
             {
-                case 1:
-                    xAdjust = 0; yAdjust = 1;
-                    break;
-                case 2:
-                    xAdjust = 0; yAdjust = -1;
-                    break;
-                case 3:
-                    xAdjust = 0; yAdjust = 0;
+                Vector2 direction = EnemyAI.GetMovementDirection(Position);
+                float speed = EnemyAI.GetEnemySpeed();
+
+                xAdjust = direction.X * speed * 1.2f;
+                yAdjust = direction.Y * speed * 1.2f;
+
+                var rnd = new System.Random();
+                if (rnd.Next(100) < 15) // 15% chance to attack
+                {
                     Attack();
-                    break;
+                }
+            }
+            else
+            {
+                // original behavior for non-Hell Mode
+                var rnd = new System.Random();
+                int decide = rnd.Next(1, 4);
+                switch (decide)
+                {
+                    case 1:
+                        xAdjust = 0; yAdjust = 1;
+                        break;
+                    case 2:
+                        xAdjust = 0; yAdjust = -1;
+                        break;
+                    case 3:
+                        xAdjust = 0; yAdjust = 0;
+                        Attack();
+                        break;
+                }
             }
         }
         private void Attack()
         {
-            Fireball top = new Fireball(aquamentusAttackSprite.Texture, Position.X, Position.Y - 70, new Vector2(-2, 0));
-            Fireball mid = new Fireball(aquamentusAttackSprite.Texture, Position.X, Position.Y, new Vector2(-2, 0));
-            Fireball bot = new Fireball(aquamentusAttackSprite.Texture, Position.X, Position.Y + 70, new Vector2(-2, 0));
+            if (DifficultyManager.Instance.CurrentDifficulty == GameDifficulty.Hell)
+            {
+                // in Hell Mode, shoot 5 fireballs in a spread pattern
+                Fireball top = new Fireball(aquamentusAttackSprite.Texture, Position.X, Position.Y - 80, new Vector2(-2.5f, -0.5f));
+                Fireball topMid = new Fireball(aquamentusAttackSprite.Texture, Position.X, Position.Y - 40, new Vector2(-2.5f, -0.25f));
+                Fireball mid = new Fireball(aquamentusAttackSprite.Texture, Position.X, Position.Y, new Vector2(-2.5f, 0));
+                Fireball botMid = new Fireball(aquamentusAttackSprite.Texture, Position.X, Position.Y + 40, new Vector2(-2.5f, 0.25f));
+                Fireball bot = new Fireball(aquamentusAttackSprite.Texture, Position.X, Position.Y + 80, new Vector2(-2.5f, 0.5f));
 
-            projectiles.Add(top);
-            projectiles.Add(mid);
-            projectiles.Add(bot);
+                projectiles.Add(top);
+                projectiles.Add(topMid);
+                projectiles.Add(mid);
+                projectiles.Add(botMid);
+                projectiles.Add(bot);
+            }
+            else
+            {
+                // original behavior for non-Hell Mode
+                Fireball top = new Fireball(aquamentusAttackSprite.Texture, Position.X, Position.Y - 70, new Vector2(-2, 0));
+                Fireball mid = new Fireball(aquamentusAttackSprite.Texture, Position.X, Position.Y, new Vector2(-2, 0));
+                Fireball bot = new Fireball(aquamentusAttackSprite.Texture, Position.X, Position.Y + 70, new Vector2(-2, 0));
+
+                projectiles.Add(top);
+                projectiles.Add(mid);
+                projectiles.Add(bot);
+            }
         }
 
         public override Rectangle BoundingBox
