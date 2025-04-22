@@ -41,11 +41,11 @@ namespace FiveGuysFixed.Controls
             Keys[] itemKeys = { Keys.U, Keys.I, Keys.B };
             Keys[] weaponKeys = { Keys.D1, Keys.D2, Keys.D3 };
             Keys[] enemyKeys = { Keys.O, Keys.P };
-            Keys[] gameKeys = { Keys.Q, Keys.R, Keys.Enter, Keys.C, Keys.L };
+            Keys[] gameKeys = { Keys.Q, Keys.R, Keys.Enter, Keys.C, Keys.L, Keys.X };
             Keys[] blockKeys = { Keys.T, Keys.Y };
             Keys[] combatKeys = { Keys.N, Keys.E };
             Keys[] audioKeys = { Keys.M };
-            Keys[] boomerangKeys = { Keys.Z }; // New array for boomerang key
+            Keys[] boomerangKeys = { Keys.Z };
 
 
             //// Boomerang key handling
@@ -133,6 +133,16 @@ namespace FiveGuysFixed.Controls
                                 GameStateManager.SetState(new Inventory(game));
                             }
                             else if (GameStateManager.CurrentState is Inventory)
+                            {
+                                GameStateManager.SetState(new GamePlayState(game));
+                            }
+                            break;
+                        case Keys.X:
+                            if (GameStateManager.CurrentState is GamePlayState)
+                            {
+                                GameStateManager.SetState(new ShopState(game));
+                            }
+                            else if (GameStateManager.CurrentState is ShopState)
                             {
                                 GameStateManager.SetState(new GamePlayState(game));
                             }
