@@ -1,6 +1,7 @@
 ﻿using FiveGuysFixed.GameStates;
 using FiveGuysFixed.Common;
 using Microsoft.Xna.Framework;
+using FiveGuysFixed.Config;
 
 namespace FiveGuysFixed.RoomHandling
 {
@@ -18,19 +19,27 @@ namespace FiveGuysFixed.RoomHandling
             this.direction = dir;
             timer = 0f;
             active = true;
-
             GameState.IsTransitioning = true;
             GameState.transitionX = 0f;
             GameState.transitionDir = dir;
 
-            // Copy current room contents into "previous"
+            // copy current room contents into "previous"
             GameState.previousRoomContents.Clear();
             GameState.previousRoomContents.Blocks.AddRange(GameState.roomManager.getCurrentRoom().Blocks);
             GameState.previousRoomContents.Enemies.AddRange(GameState.roomManager.getCurrentRoom().Enemies);
             GameState.previousRoomContents.Items.AddRange(GameState.roomManager.getCurrentRoom().Items);
 
-            // Load next room into currentRoomContents
-            GameState.roomManager.SwitchRoom(destinationRoomId);
+            // use the difficulty-aware switching method
+            if (DifficultyManager.Instance.CurrentDifficulty == GameDifficulty.Hell)
+            {
+                // for Hell mode, use SwitchRoomWithDifficulty
+                GameState.roomManager.SwitchRoomWithDifficulty(destinationRoomId);
+            }
+            else
+            {
+                //fFor other modes, use normal SwitchRoom
+                GameState.roomManager.SwitchRoom(destinationRoomId);
+            }
         }
 
         public void Update(GameTime gameTime)
