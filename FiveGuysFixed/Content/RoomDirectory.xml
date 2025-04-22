@@ -64,9 +64,6 @@
 			<Block type="ClearBlock" x="7" y="0"/>
 			<Block type="ClearBlock" x="10" y="0"/>
 
-
-			<Item type="WoodSword" x="8" y="4"/>
-
 		</Objects>
 	</Room>
 
