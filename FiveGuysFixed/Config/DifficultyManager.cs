@@ -62,6 +62,7 @@ namespace FiveGuysFixed.Config
             {
                 GameState.Game.AquamentusModeEnabled = false;
             }
+
         }
 
         private void ApplyHellMode()
@@ -75,6 +76,9 @@ namespace FiveGuysFixed.Config
                 {
                     GameState.Game.ReplaceAllEnemiesWithAquamentus();
                 }
+
+                GameState.darkMode = true;
+
             }
         }
 
