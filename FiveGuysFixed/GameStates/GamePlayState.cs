@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Content;
+using FiveGuysFixed.Config;
 namespace FiveGuysFixed.GameStates
 {
     public class GamePlayState : IGameState
@@ -14,6 +15,12 @@ namespace FiveGuysFixed.GameStates
         public GamePlayState(Game1 game)
         {
             this.game = game;
+
+            // Apply Hell Mode if active
+            if (DifficultyManager.Instance.CurrentDifficulty == GameDifficulty.Hell)
+            {
+                game.ReplaceAllEnemiesWithAquamentus();
+            }
         }
 
         public void Update(GameTime gameTime)
@@ -26,4 +33,5 @@ namespace FiveGuysFixed.GameStates
             game.GameDrawLogic(spriteBatch);
         }
     }
+
 }

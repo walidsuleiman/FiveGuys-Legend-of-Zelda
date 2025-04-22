@@ -8,6 +8,7 @@ using FiveGuysFixed.Blocks;
 using System;
 using FiveGuysFixed.Common;
 using FiveGuysFixed.Projectiles;
+using FiveGuysFixed.Config;
 
 namespace FiveGuysFixed.RoomHandling
 {
@@ -16,6 +17,55 @@ namespace FiveGuysFixed.RoomHandling
         public Dictionary<int, RoomContents> rooms = new();
 
         public RoomContents getCurrentRoom() { return rooms[GameState.currentRoomID]; }
+
+        public void SwitchRoomWithDifficulty(int newRoomID)
+        {
+            if (!rooms.ContainsKey(newRoomID)) return;
+
+            // Clear projectiles from current room
+            rooms[GameState.currentRoomID].Projectiles.Clear();
+
+            // Set the new room ID
+            GameState.currentRoomID = newRoomID;
+
+            // Apply Hell Mode if enabled
+            if (DifficultyManager.Instance.CurrentDifficulty == GameDifficulty.Hell)
+            {
+                // Store original enemy positions before replacing
+                List<Vector2> enemyPositions = new List<Vector2>();
+                foreach (var enemy in rooms[newRoomID].Enemies)
+                {
+                    enemyPositions.Add(enemy.Position);
+                }
+
+                // Clear current enemies
+                rooms[newRoomID].Enemies.Clear();
+
+                // Create Aquamentus at each position
+                foreach (var position in enemyPositions)
+                {
+                    // Use the proper Animation namespace instead of Sprites
+                    var aquamentusSprite = new FiveGuysFixed.Animation.Sprite(
+                        GameState.contentLoader.BossTexture,
+                        64, 0, 32, 32, 4
+                    );
+
+                    var aquamentusAttackSprite = new FiveGuysFixed.Animation.Sprite(
+                        GameState.contentLoader.BossTexture,
+                        0, 0, 32, 32, 2
+                    );
+
+                    var aquamentus = new FiveGuysFixed.Enemies.Aquamentus(
+                        position,
+                        aquamentusSprite,
+                        aquamentusAttackSprite,
+                        rooms[newRoomID].Projectiles
+                    );
+
+                    rooms[newRoomID].Enemies.Add(aquamentus);
+                }
+            }
+        }
 
         public void LoadRoomsFromXML(string filePath)
         {

@@ -9,6 +9,7 @@ using FiveGuys.Controls;
 using FiveGuysFixed.Animation;
 using FiveGuysFixed.Commands;
 using FiveGuysFixed.Common;
+using FiveGuysFixed.Config;
 using FiveGuysFixed.GameStates;
 using FiveGuysFixed.LinkPlayer;
 using Microsoft.Xna.Framework;
@@ -45,6 +46,7 @@ namespace FiveGuysFixed.Controls
             Keys[] combatKeys = { Keys.N, Keys.E };
             Keys[] audioKeys = { Keys.M };
             Keys[] boomerangKeys = { Keys.Z }; // New array for boomerang key
+
 
             //// Boomerang key handling
             //foreach (Keys bKey in boomerangKeys)
@@ -87,6 +89,26 @@ namespace FiveGuysFixed.Controls
                 }
             }
 
+
+            if (currentState.IsKeyDown(Keys.F1) && !previousState.IsKeyDown(Keys.F1))
+            {
+                // Cycle through difficulties for testing
+                if (DifficultyManager.Instance.CurrentDifficulty == GameDifficulty.Easy)
+                {
+                    DifficultyManager.Instance.SetDifficulty(GameDifficulty.Hard);
+                    System.Diagnostics.Debug.WriteLine("Difficulty set to: Hard");
+                }
+                else if (DifficultyManager.Instance.CurrentDifficulty == GameDifficulty.Hard)
+                {
+                    DifficultyManager.Instance.SetDifficulty(GameDifficulty.Hell);
+                    System.Diagnostics.Debug.WriteLine("Difficulty set to: Hell");
+                }
+                else
+                {
+                    DifficultyManager.Instance.SetDifficulty(GameDifficulty.Easy);
+                    System.Diagnostics.Debug.WriteLine("Difficulty set to: Easy");
+                }
+            }
             foreach (Keys gKey in gameKeys)
             {
                 if (currentState.IsKeyDown(gKey) && !previousState.IsKeyDown(gKey))
