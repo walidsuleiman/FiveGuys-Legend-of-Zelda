@@ -86,7 +86,7 @@ namespace FiveGuysFixed.GameStates
             }
             else
             {
-                statusMessage = "Not enough green rupees!";
+                statusMessage = "Insufficient Funds!";
             }
 
             if(ps.redRupees >= item.Price)
@@ -98,7 +98,7 @@ namespace FiveGuysFixed.GameStates
             }
             else
             {
-                statusMessage = "Not enough red rupees!";
+                statusMessage = "Insufficient Funds!";
             }
             messageTimer = 2.0;
         }

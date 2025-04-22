@@ -43,9 +43,9 @@ namespace FiveGuysFixed.Controls
             Keys[] enemyKeys = { Keys.O, Keys.P };
             Keys[] gameKeys = { Keys.Q, Keys.R, Keys.Enter, Keys.C, Keys.L, Keys.X };
             Keys[] blockKeys = { Keys.T, Keys.Y };
-            Keys[] combatKeys = { Keys.N, Keys.E };
+            Keys[] combatKeys = { Keys.OemComma, Keys.E };
             Keys[] audioKeys = { Keys.M };
-            Keys[] boomerangKeys = { Keys.Z };
+            Keys[] boomerangKeys = { Keys.OemPeriod };
 
 
             //// Boomerang key handling
@@ -74,7 +74,7 @@ namespace FiveGuysFixed.Controls
 
                     switch (cKey)
                     {
-                        case Keys.N:
+                        case Keys.OemComma:
                             // Only use for sword attack
                             if (GameState.PlayerState.heldWeapon == WeaponType.WOODSWORD ||
                                 GameState.PlayerState.heldWeapon == WeaponType.WHITESWORD)
@@ -83,7 +83,7 @@ namespace FiveGuysFixed.Controls
                             }
                             break;
                         case Keys.E:
-                            GameState.Player.TakeDamage(1);
+                            //GameState.Player.TakeDamage(1);//Not Needed anymore, was used for sprint2
                             break;
                     }
                 }
@@ -199,10 +199,10 @@ namespace FiveGuysFixed.Controls
                     switch (eKey)
                     {
                         case Keys.P:
-                            new EnemySwitchCommand(game, true).Execute();
+                            //new EnemySwitchCommand(game, true).Execute();//Not Needed anymore, was used for sprint2
                             break;
                         case Keys.O:
-                            new EnemySwitchCommand(game, false).Execute();
+                            //new EnemySwitchCommand(game, false).Execute();//Not Needed anymore, was used for sprint2
                             break;
                     }
                 }
@@ -219,10 +219,10 @@ namespace FiveGuysFixed.Controls
                     switch (iKey)
                     {
                         case Keys.U:
-                            new ItemSwitchCommand(game, true).Execute();
+                            //new ItemSwitchCommand(game, true).Execute();//Not Needed anymore, was used for sprint2
                             break;
                         case Keys.I:
-                            new ItemSwitchCommand(game, false).Execute();
+                            //new ItemSwitchCommand(game, false).Execute();//Not Needed anymore, was used for sprint2
                             break;
                         case Keys.B:
                             var slot = GameState.EquippedB;
@@ -265,10 +265,10 @@ namespace FiveGuysFixed.Controls
                     switch (bKey)
                     {
                         case Keys.T:
-                            new BlockSwitchCommand(game, true).Execute();
+                            //new BlockSwitchCommand(game, true).Execute();//Not Needed anymore, was used for sprint2
                             break;
                         case Keys.Y:
-                            new BlockSwitchCommand(game, false).Execute();
+                            //new BlockSwitchCommand(game, false).Execute();//Not Needed anymore, was used for sprint2
                             break;
                     }
                 }
@@ -311,7 +311,7 @@ namespace FiveGuysFixed.Controls
                 {
                     switch (boomerangKey)
                     {
-                        case Keys.Z:
+                        case Keys.OemPeriod:
                             ThrowBoomerang();
                             break;
                     }
