@@ -30,6 +30,7 @@ namespace FiveGuysFixed.LinkPlayer
         private SoundEffect hitSound;    // hit sound
         public SoundEffect ItemPickupSound; // item pickup sound
 
+
         private bool isInvincible;
         private float invincibilityTimer;
 
@@ -69,7 +70,9 @@ namespace FiveGuysFixed.LinkPlayer
                 return; // Already attacking
 
             GameState.PlayerState.isAttacking = true;
-            hitSound.Play();
+
+            GameState.roomManager.getCurrentRoom().Projectiles.Add(swordAnimation.GetSwordProjectile(GameState.PlayerState.direction, GameState.PlayerState.position));
+            hitSound.Play(volume: 0.3f, pitch: 0.0f, pan: 0.0f);
 
             //    // Check if we can throw a boomerang
             //    if (canThrowBoomerang)
@@ -146,7 +149,7 @@ namespace FiveGuysFixed.LinkPlayer
             {
                 //Add switchcase for other weapons
                 swordAnimation.Draw(_spriteBatch);
-
+                
             }
             else
             {

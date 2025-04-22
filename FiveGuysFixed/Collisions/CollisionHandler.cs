@@ -12,6 +12,7 @@ using FiveGuysFixed.RoomHandling;
 using System.Diagnostics;
 using FiveGuysFixed.Projectiles;
 using System.Linq;
+using Microsoft.Xna.Framework.Media;
 
 public class CollisionHandler
 {

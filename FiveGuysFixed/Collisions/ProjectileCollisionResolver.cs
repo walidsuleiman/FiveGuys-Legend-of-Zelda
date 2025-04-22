@@ -17,7 +17,7 @@ public class ProjectileCollisionResolver
 
     public void ResolvePlayerHit(IPlayer player, IProjectile proj)
     {
-        if (proj is Boomerang b && b.IsLinkBoomerang) return;
+        if (!proj.isEnemyProjectile()) return;
 
         Rectangle playerRect = player.GetBoundingBox(80, 80);
         Rectangle projectileRect = proj.BoundingBox;

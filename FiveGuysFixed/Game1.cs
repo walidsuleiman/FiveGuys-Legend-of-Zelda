@@ -178,7 +178,7 @@ namespace FiveGuysFixed
         {
             backgroundMusic = Content.Load<Song>("Zelda_Bgm");
             MediaPlayer.IsRepeating = true;
-            MediaPlayer.Volume = 0.5f;
+            MediaPlayer.Volume = 0.3f;
             MediaPlayer.Play(backgroundMusic);
         }
 
