@@ -12,7 +12,7 @@ namespace FiveGuysFixed.Blocks
 {
     internal class ClearBlock : Block
     {
-        public ClearBlock(Texture2D texture, int x, int y) : base(texture, 0, 0, x, y) { 
+        public ClearBlock(Texture2D texture, int x, int y) : base(texture, 0, 0, x -2, y -2) { 
         
         }
 
