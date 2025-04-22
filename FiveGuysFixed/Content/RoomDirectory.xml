@@ -64,9 +64,6 @@
 			<Block type="ClearBlock" x="7" y="0"/>
 			<Block type="ClearBlock" x="10" y="0"/>
 
-			<Item type="WoodSword" x="11" y="3"/>
-			<Item type="WhiteSword" x="11" y="4"/>
-
 		</Objects>
 	</Room>
 
@@ -85,8 +82,10 @@
 			<Item type="Food" x="12" y="3"/>
 			<Item type="GreenRupee" x="3" y="2"/>
 			<Item type="GreenRupee" x="3" y="6"/>
-			<Enemy type="Aquamentus" x="700" y="300"/>
-			<Enemy type="Aquamentus" x="700" y="600"/>
+			<Enemy type="Stalfos" x="500" y="600"/>
+			<Enemy type="Stalfos" x="300" y="500"/>
+			<Enemy type="Stalfos" x="900" y="300"/>
+			<Enemy type="Stalfos" x="600" y="300"/>
 
 
 			<Block type="ClearBlock" x="3" y="2"/>
@@ -159,7 +158,6 @@
 
 			<Item type="BluePotion" x="10" y="7"/>
 			<Item type="RedRupee" x="5" y="4"/>
-			<Item type="RedRupee" x="6" y="5"/>
 			<Enemy type="Gel" x="500" y="200"/>
 			<Enemy type="Gel" x="1000" y="300"/>
 			<Enemy type="Gel" x="400" y="700"/>
@@ -388,18 +386,14 @@
 			<Block type="Wall" x="640" y="440"/>
 			<Block type="Floor" x="0" y="0"/>
 
-			<Item type="GreenRupee" x="5" y="3"/>
-			<Item type="GreenRupee" x="5" y="4"/>
-			<Item type="GreenRupee" x="5" y="5"/>
+
 			<Item type="GreenRupee" x="6" y="3"/>
 			<Item type="GreenRupee" x="6" y="4"/>
 			<Item type="GreenRupee" x="6" y="5"/>
 			<Item type="GreenRupee" x="7" y="3"/>
 			<Item type="GreenRupee" x="7" y="4"/>
 			<Item type="GreenRupee" x="7" y="5"/>
-			<Item type="GreenRupee" x="8" y="3"/>
-			<Item type="GreenRupee" x="8" y="4"/>
-			<Item type="GreenRupee" x="8" y="5"/>
+
 
 
 			<Block type="ClearBlock" x="3" y="2"/>
@@ -801,7 +795,6 @@
 			<Block type="Floor" x="0" y="0"/>
 
 			<Item type="Food" x="12" y="3"/>
-			<Item type="GreenRupee" x="3" y="6"/>
 
 			<Enemy type="Goriya" x="500" y="300"/>
 			<Enemy type="Goriya" x="900" y="400"/>
@@ -887,12 +880,6 @@
 			<Enemy type="Keese" x="300" y="200"/>
 			<Enemy type="Keese" x="500" y="600"/>
 
-
-
-			<Item type="GreenRupee" x="6" y="3"/>
-			<Item type="GreenRupee" x="6" y="4"/>
-			<Item type="GreenRupee" x="7" y="3"/>
-			<Item type="GreenRupee" x="7" y="4"/>
 
 
 			<Block type="ClearBlock" x="3" y="2"/>
@@ -1123,8 +1110,6 @@
 
 			<Item type="BluePotion" x="2" y="2"/>
 
-			<Item type="GreenRupee" x="10" y="7"/>
-
 			<Enemy type="Gel" x="500" y="200"/>
 			<Enemy type="Gel" x="300" y="400"/>
 			<Enemy type="Gel" x="350" y="650"/>
@@ -1205,10 +1190,6 @@
 			<Item type="RedRupee" x="6" y="3"/>
 			<Item type="RedRupee" x="7" y="3"/>
 			<Item type="RedRupee" x="8" y="3"/>
-			<Item type="RedRupee" x="5" y="4"/>
-			<Item type="RedRupee" x="6" y="4"/>
-			<Item type="RedRupee" x="7" y="4"/>
-			<Item type="RedRupee" x="8" y="4"/>
 
 			<Enemy type="Stalfos" x="500" y="600"/>
 			<Enemy type="Stalfos" x="300" y="500"/>

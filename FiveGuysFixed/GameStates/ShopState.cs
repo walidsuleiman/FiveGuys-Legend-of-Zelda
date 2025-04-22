@@ -34,10 +34,10 @@ namespace FiveGuysFixed.GameStates
         {
             shopItems = new List<ShopItem>
         {
-            new ShopItem("Bomb", 2, GameState.contentLoader.bombTexture),
-            new ShopItem("Food", 1, GameState.contentLoader.foodTexture),
-            new ShopItem("Wood Sword", 7, GameState.contentLoader.weaponTexture),
-            new ShopItem("White Sword", 10, GameState.contentLoader.weaponTexture)
+            new ShopItem("Bomb", 2, "Green", GameState.contentLoader.bombTexture),
+            new ShopItem("Food", 1, "Green", GameState.contentLoader.foodTexture),
+            new ShopItem("Wood Sword", 6, "Red", GameState.contentLoader.weaponTexture),
+            new ShopItem("White Sword", 9, "Red", GameState.contentLoader.weaponTexture)
         };
         }
 
@@ -82,16 +82,28 @@ namespace FiveGuysFixed.GameStates
                 ps.greenRupees -= item.Price;
                 if (item.Name == "Bomb") ps.bombCount++;
                 if (item.Name == "Food") ps.foodCount++;
+                statusMessage = "Item bought!";
+            }
+            else
+            {
+                statusMessage = "Insufficient Funds!";
+            }
+
+            if(ps.redRupees >= item.Price)
+            {
+                ps.redRupees -= item.Price;
                 if (item.Name == "Wood Sword") ps.heldWeapon = WeaponType.WOODSWORD;
                 if (item.Name == "White Sword") ps.heldWeapon = WeaponType.WHITESWORD;
                 statusMessage = "Item bought!";
             }
             else
             {
-                statusMessage = "Not enough funds!";
+                statusMessage = "Insufficient Funds!";
             }
             messageTimer = 2.0;
         }
+
+
 
         public void Draw(SpriteBatch spriteBatch)
         {
@@ -103,7 +115,7 @@ namespace FiveGuysFixed.GameStates
             {
                 var item = shopItems[i];
                 var pos = new Vector2(100, 100 + i * 60);
-                spriteBatch.DrawString(font, $"{item.Name} - {item.Price} Green Rupees", pos, i == selectedIndex ? Color.Yellow : Color.White);
+                spriteBatch.DrawString(font, $"{item.Name} - {item.Price} {item.Currency} Rupees", pos, i == selectedIndex ? Color.Yellow : Color.White);
                 if (item.Name == "Bomb")
                 {
                     Bomb bombIcon = new Bomb(GameState.contentLoader.bombTexture, 0, 0);
