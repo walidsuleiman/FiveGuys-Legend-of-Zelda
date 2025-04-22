@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using FiveGuysFixed.Animation;
+using FiveGuysFixed.Config;
 
 namespace FiveGuysFixed.Enemies
 {
@@ -31,7 +32,6 @@ namespace FiveGuysFixed.Enemies
                 currentTime = -1;
                 SetAI();
             }
-
             currentTime++;
             x = (int)Position.X;
             y = (int)Position.Y;
@@ -40,13 +40,29 @@ namespace FiveGuysFixed.Enemies
 
         private void SetAI()
         {
-            int decide = rnd.Next(1, 5);
-            switch (decide)
+            if (DifficultyManager.Instance.ShouldEnemiesTrackPlayer())
             {
-                case 1: velocity = new Vector2(0, 1); break;
-                case 2: velocity = new Vector2(0, -1); break;
-                case 3: velocity = new Vector2(1, 0); break;
-                case 4: velocity = new Vector2(-1, 0); break;
+                Vector2 direction = EnemyAI.GetMovementDirection(Position);
+                float speed = EnemyAI.GetEnemySpeed();
+
+                speed *= 1.2f;
+
+                velocity = direction * speed;
+            }
+            else
+            {
+                int decide = rnd.Next(1, 5);
+                float speed = EnemyAI.GetEnemySpeed();
+
+                speed *= 1.2f;
+
+                switch (decide)
+                {
+                    case 1: velocity = new Vector2(0, 1) * speed; break;
+                    case 2: velocity = new Vector2(0, -1) * speed; break;
+                    case 3: velocity = new Vector2(1, 0) * speed; break;
+                    case 4: velocity = new Vector2(-1, 0) * speed; break;
+                }
             }
         }
     }

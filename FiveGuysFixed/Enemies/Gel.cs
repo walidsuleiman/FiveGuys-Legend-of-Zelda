@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using FiveGuysFixed.Animation;
+using FiveGuysFixed.Config;
 
 namespace FiveGuysFixed.Enemies
 {
@@ -39,13 +40,29 @@ namespace FiveGuysFixed.Enemies
 
         private void SetAI()
         {
-            int decide = rnd.Next(1, 5);
-            switch (decide)
+            // use the difficulty-based AI system
+            if (DifficultyManager.Instance.ShouldEnemiesTrackPlayer())
             {
-                case 1: velocity = new Vector2(0, 1); break;
-                case 2: velocity = new Vector2(0, -1); break;
-                case 3: velocity = new Vector2(1, 0); break;
-                case 4: velocity = new Vector2(-1, 0); break;
+                // calculate direction to player for Hard/Hell mode
+                Vector2 direction = EnemyAI.GetMovementDirection(Position);
+                float speed = EnemyAI.GetEnemySpeed();
+
+                // set velocity based on direction and speed
+                velocity = direction * speed;
+            }
+            else
+            {
+                // easy mode - original random movement
+                int decide = rnd.Next(1, 5);
+                float speed = EnemyAI.GetEnemySpeed();
+
+                switch (decide)
+                {
+                    case 1: velocity = new Vector2(0, 1) * speed; break;
+                    case 2: velocity = new Vector2(0, -1) * speed; break;
+                    case 3: velocity = new Vector2(1, 0) * speed; break;
+                    case 4: velocity = new Vector2(-1, 0) * speed; break;
+                }
             }
         }
     }

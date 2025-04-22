@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using System;
 using FiveGuysFixed.Animation;
 using FiveGuysFixed.GameStates;
+using FiveGuysFixed.Config;
 
 namespace FiveGuysFixed.Enemies
 {
@@ -35,32 +36,69 @@ namespace FiveGuysFixed.Enemies
             currentTime++;
             x = (int)Position.X;
             y = (int)Position.Y;
-
-            // This is important for animation
             sprite.Update(gameTime);
         }
 
         private void SetAI()
         {
-            int decide = rnd.Next(1, 5);
-            switch (decide)
+            if (DifficultyManager.Instance.ShouldEnemiesTrackPlayer())
             {
-                case 1: // Down
-                    velocity = new Vector2(0, 1);
-                    sprite = new EnemySprite(GameState.contentLoader.enemyTexture, 16, 304, 16, 16, 2);
-                    break;
-                case 2: // Up
-                    velocity = new Vector2(0, -1);
-                    sprite = new EnemySprite(GameState.contentLoader.enemyTexture, 112, 304, 16, 16, 2);
-                    break;
-                case 3: // Right
-                    velocity = new Vector2(1, 0);
-                    sprite = new EnemySprite(GameState.contentLoader.enemyTexture, 80, 304, 16, 16, 2);
-                    break;
-                case 4: // Left
-                    velocity = new Vector2(-1, 0);
-                    sprite = new EnemySprite(GameState.contentLoader.enemyTexture, 48, 304, 16, 16, 2);
-                    break;
+                Vector2 direction = EnemyAI.GetMovementDirection(Position);
+                float speed = EnemyAI.GetEnemySpeed();
+
+                velocity = direction * speed;
+
+                if (Math.Abs(direction.Y) > Math.Abs(direction.X))
+                {
+                    if (direction.Y > 0)
+                    {
+                        // Down
+                        sprite = new EnemySprite(GameState.contentLoader.enemyTexture, 16, 304, 16, 16, 2);
+                    }
+                    else
+                    {
+                        // Up
+                        sprite = new EnemySprite(GameState.contentLoader.enemyTexture, 112, 304, 16, 16, 2);
+                    }
+                }
+                else
+                {
+                    if (direction.X > 0)
+                    {
+                        // Right
+                        sprite = new EnemySprite(GameState.contentLoader.enemyTexture, 80, 304, 16, 16, 2);
+                    }
+                    else
+                    {
+                        // Left
+                        sprite = new EnemySprite(GameState.contentLoader.enemyTexture, 48, 304, 16, 16, 2);
+                    }
+                }
+            }
+            else
+            {
+                int decide = rnd.Next(1, 5);
+                float speed = EnemyAI.GetEnemySpeed();
+
+                switch (decide)
+                {
+                    case 1: // Down
+                        velocity = new Vector2(0, 1) * speed;
+                        sprite = new EnemySprite(GameState.contentLoader.enemyTexture, 16, 304, 16, 16, 2);
+                        break;
+                    case 2: // Up
+                        velocity = new Vector2(0, -1) * speed;
+                        sprite = new EnemySprite(GameState.contentLoader.enemyTexture, 112, 304, 16, 16, 2);
+                        break;
+                    case 3: // Right
+                        velocity = new Vector2(1, 0) * speed;
+                        sprite = new EnemySprite(GameState.contentLoader.enemyTexture, 80, 304, 16, 16, 2);
+                        break;
+                    case 4: // Left
+                        velocity = new Vector2(-1, 0) * speed;
+                        sprite = new EnemySprite(GameState.contentLoader.enemyTexture, 48, 304, 16, 16, 2);
+                        break;
+                }
             }
         }
     }

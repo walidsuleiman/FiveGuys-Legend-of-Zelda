@@ -75,6 +75,7 @@ namespace FiveGuysFixed
         public Player Player { get; set; }
         public Song backgroundMusic;
         public bool isMuted = false; // if true, no background music
+        public bool AquamentusModeEnabled { get; set; } = false;
 
 
         public Game1()
@@ -195,9 +196,77 @@ namespace FiveGuysFixed
             GameStateManager.Update(gameTime);
 
             base.Update(gameTime);
+
+            if (GameState.ShouldSwitchRoom)
+            {
+                if (DifficultyManager.Instance.CurrentDifficulty == GameDifficulty.Hell)
+                {
+                    GameState.roomManager.SwitchRoomWithDifficulty(GameState.currentRoomID);
+                }
+                else
+                {
+                    GameState.roomManager.SwitchRoom(GameState.currentRoomID);
+                }
+                GameState.ShouldSwitchRoom = false;
+            }
         }
 
         // custom game logic per frame, called by the active GamePlayState
+
+        public void ReplaceAllEnemiesWithAquamentus()
+        {
+            // get current room
+            var currentRoom = GameState.roomManager.getCurrentRoom();
+
+            // log starting state
+            System.Diagnostics.Debug.WriteLine($"Replacing enemies with Aquamentus. Current enemy count: {currentRoom.Enemies.Count}");
+
+            // save original enemy positions
+            List<Vector2> enemyPositions = new List<Vector2>();
+            foreach (var enemy in currentRoom.Enemies)
+            {
+                enemyPositions.Add(enemy.Position);
+                System.Diagnostics.Debug.WriteLine($"Found enemy at position: {enemy.Position}");
+            }
+
+            // clear current enemies
+            currentRoom.Enemies.Clear();
+            System.Diagnostics.Debug.WriteLine("Cleared all enemies");
+
+            // create Aquamentus at each position
+            foreach (var position in enemyPositions)
+            {
+                try
+                {
+                    // use the proper Animation namespace instead of Sprites
+                    var aquamentusSprite = new FiveGuysFixed.Animation.Sprite(
+                        GameState.contentLoader.BossTexture,
+                        64, 0, 32, 32, 4
+                    );
+
+                    var aquamentusAttackSprite = new FiveGuysFixed.Animation.Sprite(
+                        GameState.contentLoader.BossTexture,
+                        0, 0, 32, 32, 2
+                    );
+
+                    var aquamentus = new FiveGuysFixed.Enemies.Aquamentus(
+                        position,
+                        aquamentusSprite,
+                        aquamentusAttackSprite,
+                        currentRoom.Projectiles
+                    );
+
+                    currentRoom.Enemies.Add(aquamentus);
+                    System.Diagnostics.Debug.WriteLine($"Added Aquamentus at position: {position}");
+                }
+                catch (Exception ex)
+                {
+                    System.Diagnostics.Debug.WriteLine($"Error creating Aquamentus: {ex.Message}");
+                }
+            }
+
+            System.Diagnostics.Debug.WriteLine($"Replacement complete. New enemy count: {currentRoom.Enemies.Count}");
+        }
         public void GameUpdateLogic(GameTime gameTime)
         {
             if (GameState.PendingBomb)
@@ -229,11 +298,11 @@ namespace FiveGuysFixed
 
             CheckTransition.CheckRoomExit();
 
-            if (GameState.ShouldSwitchRoom)
-            {
-                GameState.roomManager.SwitchRoom(GameState.currentRoomID);
-                GameState.ShouldSwitchRoom = false;
-            }
+            //if (GameState.ShouldSwitchRoom)
+            //{
+            //    GameState.roomManager.SwitchRoom(GameState.currentRoomID);
+            //    GameState.ShouldSwitchRoom = false;
+            //}
 
             RoomRenderer.Update(gameTime);
 

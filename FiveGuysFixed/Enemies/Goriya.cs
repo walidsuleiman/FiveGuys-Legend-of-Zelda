@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using FiveGuysFixed.Animation;
 using FiveGuysFixed.Projectiles;
 using FiveGuysFixed.GameStates;
+using FiveGuysFixed.Config;
 
 namespace FiveGuysFixed.Enemies
 {
@@ -15,19 +16,36 @@ namespace FiveGuysFixed.Enemies
         private Vector2 velocity;
         private List<IProjectile> projectiles;
         private int attackCooldown;
-        private const int attackCooldownMax = 120;
+        private int attackCooldownMax;
         private Random rnd;
         private Texture2D boomerangTexture;
 
         public Goriya(Vector2 position, Texture2D enemyTexture, Texture2D boomerangTexture, List<IProjectile> projectiles)
-
             : base(position, new EnemySprite(enemyTexture, 16, 48, 16, 16, 2))
         {
             this.boomerangTexture = boomerangTexture;
             this.projectiles = projectiles;
             currentTime = 0;
-            attackCooldown = 0;
             rnd = new Random();
+
+            // Adjust attack frequency based on difficulty
+            switch (DifficultyManager.Instance.CurrentDifficulty)
+            {
+                case GameDifficulty.Easy:
+                    attackCooldownMax = 200; // Less frequent attacks
+                    break;
+                case GameDifficulty.Hard:
+                    attackCooldownMax = 100; // More frequent attacks
+                    break;
+                case GameDifficulty.Hell:
+                    attackCooldownMax = 60; // Very frequent attacks
+                    break;
+                default:
+                    attackCooldownMax = 120; // Default
+                    break;
+            }
+
+            attackCooldown = attackCooldownMax;
             SetAI();
         }
 
@@ -46,9 +64,18 @@ namespace FiveGuysFixed.Enemies
             x = (int)Position.X;
             y = (int)Position.Y;
 
+            // Update attack cooldown
             if (attackCooldown > 0)
                 attackCooldown--;
-            if (attackCooldown <= 0 && projectiles != null && rnd.Next(100) < 1)
+
+            // Attack probability based on difficulty
+            int attackProbability = 1; // Default 1% chance per frame
+            if (DifficultyManager.Instance.CurrentDifficulty == GameDifficulty.Hard)
+                attackProbability = 2; // 2% chance
+            else if (DifficultyManager.Instance.CurrentDifficulty == GameDifficulty.Hell)
+                attackProbability = 4; // 4% chance
+
+            if (attackCooldown <= 0 && projectiles != null && rnd.Next(100) < attackProbability)
             {
                 Attack();
                 attackCooldown = attackCooldownMax;
@@ -59,66 +86,94 @@ namespace FiveGuysFixed.Enemies
 
         private void SetAI()
         {
-            int decide = rnd.Next(1, 5);
-            switch (decide)
+            if (DifficultyManager.Instance.ShouldEnemiesTrackPlayer())
             {
-                case 1:
-                    velocity = new Vector2(0, 1);
-                    sprite = new EnemySprite(GameState.contentLoader.enemyTexture, 16, 48, 16, 16, 2); // Down
-                    break;
-                case 2:
-                    velocity = new Vector2(0, -1);
-                    sprite = new EnemySprite(GameState.contentLoader.enemyTexture, 112, 48, 16, 16, 2); // Up
-                    break;
-                case 3:
-                    velocity = new Vector2(1, 0);
-                    sprite = new EnemySprite(GameState.contentLoader.enemyTexture, 48, 48, 16, 16, 2); // Right
-                    break;
-                case 4:
-                    velocity = new Vector2(-1, 0);
-                    sprite = new EnemySprite(GameState.contentLoader.enemyTexture, 80, 48, 16, 16, 2); // Left
-                    break;
+                Vector2 direction = EnemyAI.GetMovementDirection(Position);
+                float speed = EnemyAI.GetEnemySpeed();
+
+                velocity = direction * speed;
+
+                if (Math.Abs(direction.Y) > Math.Abs(direction.X))
+                {
+                    if (direction.Y > 0)
+                    {
+                        // Down
+                        sprite = new EnemySprite(GameState.contentLoader.enemyTexture, 16, 48, 16, 16, 2);
+                    }
+                    else
+                    {
+                        // Up
+                        sprite = new EnemySprite(GameState.contentLoader.enemyTexture, 112, 48, 16, 16, 2);
+                    }
+                }
+                else
+                {
+                    if (direction.X > 0)
+                    {
+                        // Right
+                        sprite = new EnemySprite(GameState.contentLoader.enemyTexture, 48, 48, 16, 16, 2);
+                    }
+                    else
+                    {
+                        // Left
+                        sprite = new EnemySprite(GameState.contentLoader.enemyTexture, 80, 48, 16, 16, 2);
+                    }
+                }
+            }
+            else
+            {
+                int decide = rnd.Next(1, 5);
+                float speed = EnemyAI.GetEnemySpeed();
+
+                switch (decide)
+                {
+                    case 1:
+                        velocity = new Vector2(0, 1) * speed;
+                        sprite = new EnemySprite(GameState.contentLoader.enemyTexture, 16, 48, 16, 16, 2); // Down
+                        break;
+                    case 2:
+                        velocity = new Vector2(0, -1) * speed;
+                        sprite = new EnemySprite(GameState.contentLoader.enemyTexture, 112, 48, 16, 16, 2); // Up
+                        break;
+                    case 3:
+                        velocity = new Vector2(1, 0) * speed;
+                        sprite = new EnemySprite(GameState.contentLoader.enemyTexture, 48, 48, 16, 16, 2); // Right
+                        break;
+                    case 4:
+                        velocity = new Vector2(-1, 0) * speed;
+                        sprite = new EnemySprite(GameState.contentLoader.enemyTexture, 80, 48, 16, 16, 2); // Left
+                        break;
+                }
             }
         }
 
         private void Attack()
         {
-            if (projectiles == null)
-            {
-                //System.Diagnostics.Debug.WriteLine("projectiles list is null!");
+            if (projectiles == null || boomerangTexture == null)
                 return;
-            }
 
-            if (boomerangTexture == null)
-            {
-                //System.Diagnostics.Debug.WriteLine("boomerangTexture is null!");
-                return;
-            }
-
-            // Get player position from GameState
             Vector2 playerPos = GameState.PlayerState.position;
 
-            // Calculate direction to player
             Vector2 direction = playerPos - Position;
 
-            // Make sure direction is normalized
             if (direction != Vector2.Zero)
             {
                 direction.Normalize();
             }
             else
             {
-                // If player is exactly at same position, throw in a default direction
                 direction = new Vector2(1, 0);
             }
 
-            // Scale by speed
-            direction *= 3;
+            float projectileSpeed = 3.0f;
+            if (DifficultyManager.Instance.CurrentDifficulty == GameDifficulty.Hard)
+                projectileSpeed = 4.0f;
+            else if (DifficultyManager.Instance.CurrentDifficulty == GameDifficulty.Hell)
+                projectileSpeed = 5.0f;
 
-            // Create the boomerang and add it to projectiles list
+            direction *= projectileSpeed;
+
             projectiles.Add(new Boomerang(boomerangTexture, Position.X, Position.Y, direction, this));
-
-            //System.Diagnostics.Debug.WriteLine("Goriya attacking! Created boomerang");
         }
     }
 }
