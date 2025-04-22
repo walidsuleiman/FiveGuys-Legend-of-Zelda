@@ -70,6 +70,7 @@ namespace FiveGuysFixed.LinkPlayer
 
             GameState.PlayerState.isAttacking = true;
             hitSound.Play();
+            GameState.roomManager.getCurrentRoom().Projectiles.Add(swordAnimation.GetSwordProjectile(GameState.PlayerState.direction, GameState.PlayerState.position));
 
             //    // Check if we can throw a boomerang
             //    if (canThrowBoomerang)
@@ -146,7 +147,7 @@ namespace FiveGuysFixed.LinkPlayer
             {
                 //Add switchcase for other weapons
                 swordAnimation.Draw(_spriteBatch);
-
+                
             }
             else
             {

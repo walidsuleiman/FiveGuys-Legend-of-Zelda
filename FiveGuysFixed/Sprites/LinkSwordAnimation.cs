@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using FiveGuysFixed.Common;
 using FiveGuysFixed.GameStates;
+using FiveGuysFixed.Projectiles;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Color = Microsoft.Xna.Framework.Color;
@@ -14,15 +15,6 @@ namespace FiveGuysFixed.Animation
     {
 
         private Rectangle sourceRect;
-        //private Rectangle[][][] woodenSprites = {
-        //    //Direction up
-        //    [
-        //        [new Rectangle(1, 109, 16, 16)],
-        //        [new Rectangle(18, 109, 16, 16), new Rectangle(21, 97, 8, 12)],
-        //        [new Rectangle(35, 109, 16, 16), new Rectangle(39, 98, 8, 11)],
-        //        [new Rectangle(52, 109, 16, 16), new Rectangle(56, 106, 8, 3)]
-        //    ]
-        //};
         private int currentFrameIndex;
 
         public new void Update(GameTime gt)
@@ -45,7 +37,6 @@ namespace FiveGuysFixed.Animation
 
         public void Draw(SpriteBatch _spriteBatch)
         {
-            //_spriteBatch.Draw(texture, GameState.PlayerState.position, sourceRect, Microsoft.Xna.Framework.Color.White, 0, new Vector2(0, 0), 1, SpriteEffects.None, 0f);
 
             List<Rectangle> swordSprites;
             if (GameState.PlayerState.heldWeapon == WeaponType.WOODSWORD)
@@ -146,19 +137,17 @@ namespace FiveGuysFixed.Animation
             return spritesReturnable;
         }
 
-        //public void animate()
-        //{
-        //    isAnimated = true;
-        //}
-        //public void idle()
-        //{
-        //    isAnimated = false;
-        //}
         public LinkSwordAnimation()
         {
             currentFrameIndex = 0;
             frameTime = 0.1;
             totalFrames = 4;
         }
+
+        public IProjectile GetSwordProjectile(Dir dir, Vector2 position)
+        {
+            return new LinkSwordProjectile(GameState.contentLoader.swordTexture, position.X, position.Y, dir);
+        }
+
     }
 }

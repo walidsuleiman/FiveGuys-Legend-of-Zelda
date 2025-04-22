@@ -11,6 +11,7 @@ namespace FiveGuysFixed.Sprites
         void Update(GameTime gameTime);
         void Draw(SpriteBatch spriteBatch, Vector2 position, Vector2? origin);
         void Draw(SpriteBatch _spriteBatch, Vector2 position, Vector2? origin, float scale);
+        void Draw(SpriteBatch _spriteBatch, Vector2 position, Vector2? origin, float scale, SpriteEffects se);
         int Height { get; }
         int Width { get; }
     }
