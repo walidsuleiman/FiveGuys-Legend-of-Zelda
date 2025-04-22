@@ -64,7 +64,6 @@ namespace FiveGuysFixed
         private PlayerItemCollisionResolver playerItemCollisionResolver;
         private ProjectileCollisionResolver projectileCollisionResolver;
         private EnemyBlockCollisionResolver enemyBlockCollisionResolver;
-        private SwordEnemyCollisionResolver swordEnemyCollisionResolver;
 
         public int activeWeaponIndex;
         public int activeItemIndex;

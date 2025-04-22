@@ -12,7 +12,7 @@ namespace FiveGuysFixed.Enemies
         public Vector2 Position { get; set; }
         protected ISprite sprite;
         public int x, y;
-        int health = 1;
+        public int health = 1;
         public float scale = 5.0f;
 
         public void TakeDamage(int damage)

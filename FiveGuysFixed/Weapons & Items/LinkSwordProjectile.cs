@@ -26,27 +26,51 @@ namespace FiveGuysFixed.Projectiles
             this.currentTime = 0;
             this.dir = dir;
 
-            // Initialize sprite based on direction
-            switch(dir)
+            if (GameState.PlayerState.heldWeapon == WeaponType.WOODSWORD)
             {
-                case Dir.UP:
-                    sprite = new Sprite(texture, 1, 154, 8, 16, 1); // Adjust sprite location for UP
-                    velocity = new Vector2(0, -5); // Move up
-                    break;
-                case Dir.DOWN:
-                    sprite = new Sprite(texture, 1, 154, 8, 16, 1); // but flip it vertically somehow
-                    velocity = new Vector2(0, 5); // Move down
-                    break;
-                case Dir.LEFT:
-                    sprite = new Sprite(texture, 10, 154, 16, 16, 1); // but flip it horizontally somehow
-                    velocity = new Vector2(-5, 0); // Move left
-                    break;
-                case Dir.RIGHT:
-                    sprite = new Sprite(texture, 10, 154, 16, 16, 1); // Adjust sprite location for RIGHT
-                    velocity = new Vector2(5, 0); // Move right
-                    break;
+                switch (dir)
+                {
+                    case Dir.UP:
+                        sprite = new Sprite(texture, 1, 154, 8, 16, 1); // Adjust sprite location for UP
+                        velocity = new Vector2(0, -5); // Move up
+                        break;
+                    case Dir.DOWN:
+                        sprite = new Sprite(texture, 1, 154, 8, 16, 1); // but flip it vertically somehow
+                        velocity = new Vector2(0, 5); // Move down
+                        break;
+                    case Dir.LEFT:
+                        sprite = new Sprite(texture, 10, 154, 16, 16, 1); // but flip it horizontally somehow
+                        velocity = new Vector2(-5, 0); // Move left
+                        break;
+                    case Dir.RIGHT:
+                        sprite = new Sprite(texture, 10, 154, 16, 16, 1); // Adjust sprite location for RIGHT
+                        velocity = new Vector2(5, 0); // Move right
+                        break;
+                }
             }
+            else if (GameState.PlayerState.heldWeapon == WeaponType.WHITESWORD)
+            {
+                switch (dir)
+                {
+                    case Dir.UP:
+                        sprite = new Sprite(texture, 36, 154, 8, 16, 1); // Adjust sprite location for UP
+                        velocity = new Vector2(0, -5); // Move up
+                        break;
+                    case Dir.DOWN:
+                        sprite = new Sprite(texture, 36, 154, 8, 16, 1); // but flip it vertically 
+                        velocity = new Vector2(0, 5); // Move down
+                        break;
+                    case Dir.LEFT:
+                        sprite = new Sprite(texture, 45, 154, 16, 16, 1); // but flip it horizontally 
+                        velocity = new Vector2(-5, 0); // Move left
+                        break;
+                    case Dir.RIGHT:
+                        sprite = new Sprite(texture, 45, 154, 16, 16, 1); // Adjust sprite location for RIGHT
+                        velocity = new Vector2(5, 0); // Move right
+                        break;
+                }
 
+            }
         }
 
         public bool isEnemyProjectile()

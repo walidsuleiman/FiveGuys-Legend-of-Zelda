@@ -18,7 +18,7 @@ namespace FiveGuysFixed.GameStates
         {
             "Easy Mode: Simple enemy movement",
             "Hard Mode: Enemies hunt you down",
-            "HELL MODE: All enemies are Aquamentus",
+            "HELL MODE: Link is in the dark and all enemies are Aquamentus",
             "Back to Title"
         };
 

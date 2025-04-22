@@ -106,6 +106,7 @@
 			<Block type="Floor" x="0" y="0"/>
 
 			<Item type="Food" x="12" y="3"/>
+			<Item type="GreenRupee" x="3" y="2"/>
 			<Item type="GreenRupee" x="3" y="6"/>
 			<Enemy type="Aquamentus" x="700" y="500"/>
 
@@ -181,6 +182,10 @@
 			<Item type="RedRupee" x="5" y="4"/>
 			<Item type="RedRupee" x="6" y="5"/>
 			<Enemy type="Gel" x="500" y="200"/>
+			<Enemy type="Gel" x="1000" y="300"/>
+			<Enemy type="Gel" x="400" y="700"/>
+
+
 
 
 			<Block type="ClearBlock" x="3" y="2"/>
@@ -257,7 +262,7 @@
 			<Item type="Bomb" x="7" y="4"/>
 
 			<Enemy type="Goriya" x="500" y="300"/>
-
+			<Enemy type="Goriya" x="950" y="600"/>
 
 
 			<Block type="ClearBlock" x="3" y="2"/>
@@ -325,13 +330,13 @@
 			<Block type="Wall" x="640" y="440"/>
 			<Block type="Floor" x="0" y="0"/>
 
-			<Item type="Triforce" x="7" y="4"/>
+			<Item type="Triforce" x="11" y="4"/>
 
 			<Item type="RedPotion" x="3" y="3"/>
 			<Item type="BluePotion" x="9" y="5"/>
 
 			<Enemy type="Octorok" x="500" y="600"/>
-
+			<Enemy type="Octorok" x="500" y="250"/>
 
 
 			<Block type="ClearBlock" x="3" y="2"/>
@@ -398,6 +403,19 @@
 
 			<Block type="Wall" x="640" y="440"/>
 			<Block type="Floor" x="0" y="0"/>
+
+			<Item type="GreenRupee" x="5" y="3"/>
+			<Item type="GreenRupee" x="5" y="4"/>
+			<Item type="GreenRupee" x="5" y="5"/>
+			<Item type="GreenRupee" x="6" y="3"/>
+			<Item type="GreenRupee" x="6" y="4"/>
+			<Item type="GreenRupee" x="6" y="5"/>
+			<Item type="GreenRupee" x="7" y="3"/>
+			<Item type="GreenRupee" x="7" y="4"/>
+			<Item type="GreenRupee" x="7" y="5"/>
+			<Item type="GreenRupee" x="8" y="3"/>
+			<Item type="GreenRupee" x="8" y="4"/>
+			<Item type="GreenRupee" x="8" y="5"/>
 
 
 			<Block type="ClearBlock" x="3" y="2"/>
@@ -475,6 +493,8 @@
 			<Block type="BlueBlock" x="7" y="4"/>
 
 			<Enemy type="Octorok" x="500" y="600"/>
+			<Enemy type="Octorok" x="300" y="250"/>
+
 
 			<Item type="Bomb" x="10" y="1"/>
 			<Item type="RedRupee" x="2" y="6"/>
@@ -564,6 +584,8 @@
 			<Block type="BlueBlock" x="11" y="6"/>
 
 			<Enemy type="Moblin" x="500" y="500"/>
+			<Enemy type="Moblin" x="1000" y="700"/>
+
 
 
 			<Block type="ClearBlock" x="3" y="2"/>

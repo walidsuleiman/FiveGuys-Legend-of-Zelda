@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using FiveGuysFixed.Projectiles;
 using FiveGuysFixed.Sprites;
 using FiveGuysFixed.Config;
+using FiveGuysFixed.GameStates;
+using FiveGuysFixed.HUD;
 
 namespace FiveGuysFixed.Enemies
 {
@@ -18,9 +20,11 @@ namespace FiveGuysFixed.Enemies
         public Aquamentus(Vector2 position, ISprite sprite, ISprite attackSprite, List<IProjectile> projectiles)
             : base(position, sprite, 5f)
         {
+            this.health = 10;
             this.aquamentusAttackSprite = attackSprite;
             this.projectiles = projectiles;
             this.currentTime = 0;
+
         }
 
         public override void Update(GameTime gameTime)
