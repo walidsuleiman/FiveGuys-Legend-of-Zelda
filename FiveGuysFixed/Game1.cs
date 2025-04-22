@@ -59,7 +59,7 @@ namespace FiveGuysFixed
         private Texture2D heartTexture;
 
         private CollisionDetector collisionDetector;
-        //private PlayerEnemyCollisionResolver playerEnemyCollisionResolver;
+        private PlayerEnemyCollisionResolver playerEnemyCollisionResolver;
         private PlayerBlockCollisionResolver playerBlockCollisionResolver;
         private PlayerItemCollisionResolver playerItemCollisionResolver;
         private ProjectileCollisionResolver projectileCollisionResolver;

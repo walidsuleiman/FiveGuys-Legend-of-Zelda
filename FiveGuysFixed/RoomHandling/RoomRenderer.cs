@@ -21,7 +21,7 @@ namespace FiveGuysFixed.RoomHandling
     {
         private static PlayerBlockCollisionResolver playerBlockCollisionResolver = new PlayerBlockCollisionResolver();
         private static ProjectileCollisionResolver projectileCollisionResolver = new ProjectileCollisionResolver();
-        //private static PlayerEnemyCollisionResolver playerEnemyCollisionResolver = new PlayerEnemyCollisionResolver();
+        private static PlayerEnemyCollisionResolver playerEnemyCollisionResolver = new PlayerEnemyCollisionResolver();
         private static EnemyBlockCollisionResolver enemyBlockCollisionResolver = new EnemyBlockCollisionResolver();
         private static PlayerItemCollisionResolver playerItemCollisionResolver = new PlayerItemCollisionResolver();
 
@@ -157,7 +157,7 @@ namespace FiveGuysFixed.RoomHandling
             foreach (IEnemy enemy in GameState.roomManager.getCurrentRoom().Enemies.ToList())
             {
                 enemy.Update(gameTime);
-                //playerEnemyCollisionResolver.Resolve(GameState.Player, enemy);
+                playerEnemyCollisionResolver.Resolve(GameState.Player, enemy);
 
                 foreach (var block in GameState.roomManager.getCurrentRoom().Blocks)
                 {
