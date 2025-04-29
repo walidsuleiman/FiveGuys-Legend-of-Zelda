@@ -3,9 +3,9 @@ using FiveGuysFixed.Animation;
 
 namespace FiveGuysFixed.Enemies
 {
-    public class EnemySprite : Sprite
+    public class EnemyCharacterSprite : Sprite
     {
-        public EnemySprite(Texture2D texture, int sourceX, int sourceY, int width, int height, int frames = 1)
+        public EnemyCharacterSprite(Texture2D texture, int sourceX, int sourceY, int width, int height, int frames = 1)
             : base(texture, sourceX, sourceY, width, height, frames)
         { }
     }

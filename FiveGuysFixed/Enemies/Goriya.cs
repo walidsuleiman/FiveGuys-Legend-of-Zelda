@@ -21,7 +21,7 @@ namespace FiveGuysFixed.Enemies
         private Texture2D boomerangTexture;
 
         public Goriya(Vector2 position, Texture2D enemyTexture, Texture2D boomerangTexture, List<IProjectile> projectiles)
-            : base(position, new EnemySprite(enemyTexture, 16, 48, 16, 16, 2))
+            : base(position, new EnemyCharacterSprite(enemyTexture, 16, 48, 16, 16, 2))
         {
             this.boomerangTexture = boomerangTexture;
             this.projectiles = projectiles;
@@ -98,12 +98,12 @@ namespace FiveGuysFixed.Enemies
                     if (direction.Y > 0)
                     {
                         // Down
-                        sprite = new EnemySprite(GameState.contentLoader.enemyTexture, 16, 48, 16, 16, 2);
+                        sprite = new EnemyCharacterSprite(GameState.contentLoader.enemyTexture, 16, 48, 16, 16, 2);
                     }
                     else
                     {
                         // Up
-                        sprite = new EnemySprite(GameState.contentLoader.enemyTexture, 112, 48, 16, 16, 2);
+                        sprite = new EnemyCharacterSprite(GameState.contentLoader.enemyTexture, 112, 48, 16, 16, 2);
                     }
                 }
                 else
@@ -111,12 +111,12 @@ namespace FiveGuysFixed.Enemies
                     if (direction.X > 0)
                     {
                         // Right
-                        sprite = new EnemySprite(GameState.contentLoader.enemyTexture, 48, 48, 16, 16, 2);
+                        sprite = new EnemyCharacterSprite(GameState.contentLoader.enemyTexture, 48, 48, 16, 16, 2);
                     }
                     else
                     {
                         // Left
-                        sprite = new EnemySprite(GameState.contentLoader.enemyTexture, 80, 48, 16, 16, 2);
+                        sprite = new EnemyCharacterSprite(GameState.contentLoader.enemyTexture, 80, 48, 16, 16, 2);
                     }
                 }
             }
@@ -129,19 +129,19 @@ namespace FiveGuysFixed.Enemies
                 {
                     case 1:
                         velocity = new Vector2(0, 1) * speed;
-                        sprite = new EnemySprite(GameState.contentLoader.enemyTexture, 16, 48, 16, 16, 2); // Down
+                        sprite = new EnemyCharacterSprite(GameState.contentLoader.enemyTexture, 16, 48, 16, 16, 2); // Down
                         break;
                     case 2:
                         velocity = new Vector2(0, -1) * speed;
-                        sprite = new EnemySprite(GameState.contentLoader.enemyTexture, 112, 48, 16, 16, 2); // Up
+                        sprite = new EnemyCharacterSprite(GameState.contentLoader.enemyTexture, 112, 48, 16, 16, 2); // Up
                         break;
                     case 3:
                         velocity = new Vector2(1, 0) * speed;
-                        sprite = new EnemySprite(GameState.contentLoader.enemyTexture, 48, 48, 16, 16, 2); // Right
+                        sprite = new EnemyCharacterSprite(GameState.contentLoader.enemyTexture, 48, 48, 16, 16, 2); // Right
                         break;
                     case 4:
                         velocity = new Vector2(-1, 0) * speed;
-                        sprite = new EnemySprite(GameState.contentLoader.enemyTexture, 80, 48, 16, 16, 2); // Left
+                        sprite = new EnemyCharacterSprite(GameState.contentLoader.enemyTexture, 80, 48, 16, 16, 2); // Left
                         break;
                 }
             }

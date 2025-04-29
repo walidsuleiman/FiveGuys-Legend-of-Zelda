@@ -14,7 +14,7 @@ namespace FiveGuysFixed.Enemies
         private Random rnd;
 
         public Stalfos(Vector2 position, Texture2D enemyTexture)
-            : base(position, new EnemySprite(enemyTexture, 16, 96, 16, 16, 2))
+            : base(position, new EnemyCharacterSprite(enemyTexture, 16, 96, 16, 16, 2))
         {
             currentTime = 0;
             rnd = new Random();

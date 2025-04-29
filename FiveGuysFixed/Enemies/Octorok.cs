@@ -15,7 +15,7 @@ namespace FiveGuysFixed.Enemies
         private Random rnd;
 
         public Octorok(Vector2 position, Texture2D enemyTexture)
-            : base(position, new EnemySprite(enemyTexture, 16, 304, 16, 16, 2))
+            : base(position, new EnemyCharacterSprite(enemyTexture, 16, 304, 16, 16, 2))
         {
             currentTime = 0;
             rnd = new Random();
@@ -53,12 +53,12 @@ namespace FiveGuysFixed.Enemies
                     if (direction.Y > 0)
                     {
                         // Down
-                        sprite = new EnemySprite(GameState.contentLoader.enemyTexture, 16, 304, 16, 16, 2);
+                        sprite = new EnemyCharacterSprite(GameState.contentLoader.enemyTexture, 16, 304, 16, 16, 2);
                     }
                     else
                     {
                         // Up
-                        sprite = new EnemySprite(GameState.contentLoader.enemyTexture, 112, 304, 16, 16, 2);
+                        sprite = new EnemyCharacterSprite(GameState.contentLoader.enemyTexture, 112, 304, 16, 16, 2);
                     }
                 }
                 else
@@ -66,12 +66,12 @@ namespace FiveGuysFixed.Enemies
                     if (direction.X > 0)
                     {
                         // Right
-                        sprite = new EnemySprite(GameState.contentLoader.enemyTexture, 80, 304, 16, 16, 2);
+                        sprite = new EnemyCharacterSprite(GameState.contentLoader.enemyTexture, 80, 304, 16, 16, 2);
                     }
                     else
                     {
                         // Left
-                        sprite = new EnemySprite(GameState.contentLoader.enemyTexture, 48, 304, 16, 16, 2);
+                        sprite = new EnemyCharacterSprite(GameState.contentLoader.enemyTexture, 48, 304, 16, 16, 2);
                     }
                 }
             }
@@ -84,19 +84,19 @@ namespace FiveGuysFixed.Enemies
                 {
                     case 1: // Down
                         velocity = new Vector2(0, 1) * speed;
-                        sprite = new EnemySprite(GameState.contentLoader.enemyTexture, 16, 304, 16, 16, 2);
+                        sprite = new EnemyCharacterSprite(GameState.contentLoader.enemyTexture, 16, 304, 16, 16, 2);
                         break;
                     case 2: // Up
                         velocity = new Vector2(0, -1) * speed;
-                        sprite = new EnemySprite(GameState.contentLoader.enemyTexture, 112, 304, 16, 16, 2);
+                        sprite = new EnemyCharacterSprite(GameState.contentLoader.enemyTexture, 112, 304, 16, 16, 2);
                         break;
                     case 3: // Right
                         velocity = new Vector2(1, 0) * speed;
-                        sprite = new EnemySprite(GameState.contentLoader.enemyTexture, 80, 304, 16, 16, 2);
+                        sprite = new EnemyCharacterSprite(GameState.contentLoader.enemyTexture, 80, 304, 16, 16, 2);
                         break;
                     case 4: // Left
                         velocity = new Vector2(-1, 0) * speed;
-                        sprite = new EnemySprite(GameState.contentLoader.enemyTexture, 48, 304, 16, 16, 2);
+                        sprite = new EnemyCharacterSprite(GameState.contentLoader.enemyTexture, 48, 304, 16, 16, 2);
                         break;
                 }
             }

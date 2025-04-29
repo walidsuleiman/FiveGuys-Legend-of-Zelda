@@ -10,13 +10,11 @@ namespace FiveGuysFixed.Commands
 {
     public class MovementCommand : ICommand
     {
-        private Game1 game;
         private Dir direction;
         private bool isKeyDown; // true for key down, false for key up
 
         public MovementCommand(Game1 game, Dir direction, bool isKeyDown)
         {
-            this.game = game;
             this.direction = direction;
             this.isKeyDown = isKeyDown;
         }
