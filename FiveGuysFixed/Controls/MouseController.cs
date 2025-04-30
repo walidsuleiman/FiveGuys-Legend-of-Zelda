@@ -27,13 +27,13 @@ namespace FiveGuysFixed.Controls
             // Check for a left mouse click (debounced)
             if (previousState.LeftButton == ButtonState.Released && currentState.LeftButton == ButtonState.Pressed)
             {
-                roomSwitch.Next();
+                 //roomSwitch.Next();
             }
 
             // Check for a right mouse click (debounced)
             else if (previousState.RightButton == ButtonState.Released && currentState.RightButton == ButtonState.Pressed)
             {
-                roomSwitch.Previous();
+                //roomSwitch.Previous();
             }
         }
     }
