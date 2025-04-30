@@ -127,8 +127,8 @@ namespace FiveGuysFixed.RoomHandling
                     case "Aquamentus":
                         Enemies.Add(new Aquamentus(
                             position,
-                            new EnemySprite(GameState.contentLoader.BossTexture, 0, 0, 32, 32, 2),
-                            new EnemySprite(GameState.contentLoader.BossTexture, 32, 0, 32, 32, 2),
+                            new EnemyCharacterSprite(GameState.contentLoader.BossTexture, 0, 0, 32, 32, 2),
+                            new EnemyCharacterSprite(GameState.contentLoader.BossTexture, 32, 0, 32, 32, 2),
                             Projectiles
                         ));
                         break;

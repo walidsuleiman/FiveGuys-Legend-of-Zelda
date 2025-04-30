@@ -14,7 +14,7 @@ namespace FiveGuysFixed.Enemies
         private Random rnd;
 
         public Gel(Vector2 position, Texture2D enemyTexture)
-            : base(position, new EnemySprite(enemyTexture, 16, 0, 16, 16, 2), 3.5f)
+            : base(position, new EnemyCharacterSprite(enemyTexture, 16, 0, 16, 16, 2), 3.5f)
         {
             currentTime = 0;
             rnd = new Random();

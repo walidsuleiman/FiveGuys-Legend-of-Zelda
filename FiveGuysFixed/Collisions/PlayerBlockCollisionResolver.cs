@@ -15,7 +15,7 @@ public class PlayerBlockCollisionResolver
 
     public void Resolve(IPlayer player, IBlock block)
     {
-        Rectangle playerRect = player.GetBoundingBox(80, 80);
+        Rectangle playerRect = player.GetBoundingBox(70, 70);
         Rectangle blockRect = block.BoundingBox;
 
         if (collisionDetector.IsColliding(playerRect, blockRect))
