@@ -19,10 +19,10 @@ namespace FiveGuysFixed.Config
         public ItemData Stalfos => new ItemData(_texture, 16, 96, 16, 2);
         public ItemData Gel => new ItemData(_texture, 16, 0, 16, 2);
 
-        public ItemData LeftMoblin => new ItemData(_texture, 80, 112, 16, 2);
-        public ItemData RightMoblin => new ItemData(_texture, 48, 112, 16, 2);
-        public ItemData DownMoblin => new ItemData(_texture, 16, 112, 16, 2);
-        public ItemData UpMoblin => new ItemData(_texture, 112, 112, 16, 2);
+        public ItemData LeftMoblin => new ItemData(_texture, 80, 48, 16, 2);
+        public ItemData RightMoblin => new ItemData(_texture, 48, 48, 16, 2);
+        public ItemData DownMoblin => new ItemData(_texture, 16, 48, 16, 2);
+        public ItemData UpMoblin => new ItemData(_texture, 112, 48, 16, 2);
         public ItemData LeftGoriya => new ItemData(_texture, 80, 48, 16, 2);
         public ItemData RightGoriya => new ItemData(_texture, 48, 48, 16, 2);
         public ItemData DownGoriya => new ItemData(_texture, 16, 48, 16, 2);
@@ -35,7 +35,7 @@ namespace FiveGuysFixed.Config
         public ItemData UpOctorok => new ItemData(_texture, 80, 160, 16, 2);
 
 
-        public ItemData Tektike => new ItemData(_texture, 16, 160, 16, 2);
+        public ItemData Tektike => new ItemData(_texture, 16, 80, 16, 2);
 
     }
 }
