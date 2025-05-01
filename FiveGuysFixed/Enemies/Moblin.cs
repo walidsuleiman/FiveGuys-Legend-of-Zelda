@@ -10,27 +10,29 @@ namespace FiveGuysFixed.Enemies
     public class Moblin : Enemy
     {
         private int currentTime;
-        private const int flightTime = 15, stillTime = 30;
+        private int flightTime, stillTime;
         private Vector2 velocity;
-        private Random rnd;
+        private readonly Random rnd;
 
-        public Moblin(Vector2 position, Texture2D enemyTexture)
-            : base(position, new EnemyCharacterSprite(enemyTexture, 16, 320, 16, 16, 2))
+        public Moblin(Vector2 position)
+            : base(position, EnemySpriteFactory.Instance.CreateMoblinSprite(Vector2.Zero))
         {
-            currentTime = 0;
             rnd = new Random();
+            flightTime = rnd.Next(10, 25);
+            stillTime = rnd.Next(20, 45);
+            currentTime = 0;
             SetAI();
         }
 
         public override void Update(GameTime gameTime)
         {
             if (currentTime < flightTime)
-            {
                 Position += velocity;
-            }
             else if (currentTime > flightTime + stillTime)
             {
                 currentTime = -1;
+                flightTime = rnd.Next(10, 25);
+                stillTime = rnd.Next(20, 45);
                 SetAI();
             }
             currentTime++;
@@ -41,65 +43,20 @@ namespace FiveGuysFixed.Enemies
 
         private void SetAI()
         {
+            float speed = EnemyAI.GetEnemySpeed();
             if (DifficultyManager.Instance.ShouldEnemiesTrackPlayer())
             {
-                Vector2 direction = EnemyAI.GetMovementDirection(Position);
-                float speed = EnemyAI.GetEnemySpeed();
-
-                velocity = direction * speed;
-
-                if (Math.Abs(direction.Y) > Math.Abs(direction.X))
-                {
-                    if (direction.Y > 0)
-                    {
-                        // Down
-                        sprite = new EnemyCharacterSprite(GameState.contentLoader.enemyTexture, 16, 320, 16, 16, 2);
-                    }
-                    else
-                    {
-                        // Up
-                        sprite = new EnemyCharacterSprite(GameState.contentLoader.enemyTexture, 48, 320, 16, 16, 2);
-                    }
-                }
+                if (rnd.Next(100) < 15)
+                    velocity = EnemyAI.GetOrbitDirection(Position, rnd.Next(2) == 0) * speed * 1.2f;
                 else
-                {
-                    if (direction.X > 0)
-                    {
-                        // Right
-                        sprite = new EnemyCharacterSprite(GameState.contentLoader.enemyTexture, 80, 320, 16, 16, 2);
-                    }
-                    else
-                    {
-                        // Left
-                        sprite = new EnemyCharacterSprite(GameState.contentLoader.enemyTexture, 112, 320, 16, 16, 2);
-                    }
-                }
+                    velocity = EnemyAI.GetMovementDirection(Position) * speed;
             }
             else
             {
-                int decide = rnd.Next(1, 5);
-                float speed = EnemyAI.GetEnemySpeed();
-
-                switch (decide)
-                {
-                    case 1:
-                        velocity = new Vector2(0, 1) * speed;
-                        sprite = new EnemyCharacterSprite(GameState.contentLoader.enemyTexture, 16, 320, 16, 16, 2); // down
-                        break;
-                    case 2:
-                        velocity = new Vector2(0, -1) * speed;
-                        sprite = new EnemyCharacterSprite(GameState.contentLoader.enemyTexture, 48, 320, 16, 16, 2); // up
-                        break;
-                    case 3:
-                        velocity = new Vector2(1, 0) * speed;
-                        sprite = new EnemyCharacterSprite(GameState.contentLoader.enemyTexture, 80, 320, 16, 16, 2); // right
-                        break;
-                    case 4:
-                        velocity = new Vector2(-1, 0) * speed;
-                        sprite = new EnemyCharacterSprite(GameState.contentLoader.enemyTexture, 112, 320, 16, 16, 2); // left
-                        break;
-                }
+                velocity = EnemyAI.GetRandomDirection(true) * speed;
             }
+
+            sprite = EnemySpriteFactory.Instance.CreateMoblinSprite(velocity);
         }
     }
 }

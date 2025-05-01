@@ -101,7 +101,7 @@ namespace FiveGuysFixed
             GameState.PlayerState = new PlayerState(new Vector2(GameState.WindowWidth / 2, GameState.WindowHeight / 2));
             GameState.roomManager = new RoomManager();
             GameState.contentLoader = new ContentLoader();
-            GameState.currentRoomID = 1;
+            GameState.currentRoomID = 16;
             GameState.Player = new Player(this);
             GameState.transitionManager = new TransitionManager();
             GameState.Game = this;
@@ -141,10 +141,16 @@ namespace FiveGuysFixed
 
             LoadTextures();
 
+            LoadItems itemData = new LoadItems(
+                GameState.contentLoader.weaponTexture,
+                GameState.contentLoader.enemyTexture,
+                GameState.contentLoader.BossTexture
+            );
+            EnemySpriteFactory.Instance.Initialize(itemData);
+
             LoadRoomData();
 
             LoadBackgroundMusic();
-
         }
 
         private void LoadTextures()

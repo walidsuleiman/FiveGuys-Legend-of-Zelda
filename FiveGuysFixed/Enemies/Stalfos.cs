@@ -9,27 +9,29 @@ namespace FiveGuysFixed.Enemies
     public class Stalfos : Enemy
     {
         private int currentTime;
-        private const int flightTime = 15, stillTime = 30;
+        private int flightTime, stillTime;
         private Vector2 velocity;
-        private Random rnd;
+        private readonly Random rnd;
 
-        public Stalfos(Vector2 position, Texture2D enemyTexture)
-            : base(position, new EnemyCharacterSprite(enemyTexture, 16, 96, 16, 16, 2))
+        public Stalfos(Vector2 position)
+            : base(position, EnemySpriteFactory.Instance.CreateStalfosSprite())
         {
-            currentTime = 0;
             rnd = new Random();
+            flightTime = rnd.Next(10, 25);
+            stillTime = rnd.Next(20, 45);
+            currentTime = 0;
             SetAI();
         }
 
         public override void Update(GameTime gameTime)
         {
             if (currentTime < flightTime)
-            {
                 Position += velocity;
-            }
             else if (currentTime > flightTime + stillTime)
             {
                 currentTime = -1;
+                flightTime = rnd.Next(10, 25);
+                stillTime = rnd.Next(20, 45);
                 SetAI();
             }
             currentTime++;
@@ -40,29 +42,16 @@ namespace FiveGuysFixed.Enemies
 
         private void SetAI()
         {
+            float speed = EnemyAI.GetEnemySpeed() * 0.9f;
             if (DifficultyManager.Instance.ShouldEnemiesTrackPlayer())
             {
-                Vector2 direction = EnemyAI.GetMovementDirection(Position);
-                float speed = EnemyAI.GetEnemySpeed();
-
-                speed *= 0.9f;
-
-                velocity = direction * speed;
+                velocity = EnemyAI.GetMovementDirection(Position) * speed;
+                if (rnd.Next(100) < 25)
+                    velocity = EnemyAI.GetOrbitDirection(Position, rnd.Next(2) == 0) * speed * 1.2f;
             }
             else
             {
-                int decide = rnd.Next(1, 5);
-                float speed = EnemyAI.GetEnemySpeed();
-
-                speed *= 0.9f;
-
-                switch (decide)
-                {
-                    case 1: velocity = new Vector2(0, 1) * speed; break;
-                    case 2: velocity = new Vector2(0, -1) * speed; break;
-                    case 3: velocity = new Vector2(1, 0) * speed; break;
-                    case 4: velocity = new Vector2(-1, 0) * speed; break;
-                }
+                velocity = EnemyAI.GetRandomDirection(true) * speed;
             }
         }
     }

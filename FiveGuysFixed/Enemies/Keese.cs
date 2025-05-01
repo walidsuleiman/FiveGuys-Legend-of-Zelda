@@ -13,8 +13,8 @@ namespace FiveGuysFixed.Enemies
         private Vector2 velocity;
         private Random rnd;
 
-        public Keese(Vector2 position, Texture2D enemyTexture)
-            : base(position, new EnemyCharacterSprite(enemyTexture, 16, 32, 16, 16, 2))
+        public Keese(Vector2 position)
+            : base(position, EnemySpriteFactory.Instance.CreateKeeseSprite())
         {
             currentTime = 0;
             rnd = new Random();
@@ -40,29 +40,33 @@ namespace FiveGuysFixed.Enemies
 
         private void SetAI()
         {
+            float speed = EnemyAI.GetEnemySpeed();
             if (DifficultyManager.Instance.ShouldEnemiesTrackPlayer())
             {
-                Vector2 direction = EnemyAI.GetMovementDirection(Position);
-                float speed = EnemyAI.GetEnemySpeed();
-
-                speed *= 1.2f;
-
-                velocity = direction * speed;
-            }
-            else
-            {
-                int decide = rnd.Next(1, 5);
-                float speed = EnemyAI.GetEnemySpeed();
-
-                speed *= 1.2f;
-
-                switch (decide)
+                if (rnd.Next(100) < 20)
                 {
-                    case 1: velocity = new Vector2(0, 1) * speed; break;
-                    case 2: velocity = new Vector2(0, -1) * speed; break;
-                    case 3: velocity = new Vector2(1, 0) * speed; break;
-                    case 4: velocity = new Vector2(-1, 0) * speed; break;
+                    bool clockwise = rnd.Next(2) == 0;
+                    velocity = EnemyAI.GetOrbitDirection(Position, clockwise) * speed * 1.3f;
                 }
+                else
+                {
+                    velocity = EnemyAI.GetMovementDirection(Position) * speed * 1.2f;
+                }
+                return;
+            }
+            int pattern = rnd.Next(3);
+            switch (pattern)
+            {
+                case 0:
+                    velocity = EnemyAI.GetRandomDirection(false) * speed;
+                    break;
+                case 1:
+                    velocity = EnemyAI.GetRandomDirection(true) * speed;
+                    break;
+                case 2:
+                    Vector2 dir = EnemyAI.GetRandomDirection(false);
+                    velocity = (dir + new Vector2(-dir.Y, dir.X) * 0.3f) * speed;
+                    break;
             }
         }
     }

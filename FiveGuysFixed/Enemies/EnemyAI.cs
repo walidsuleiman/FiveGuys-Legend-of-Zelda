@@ -7,50 +7,59 @@ namespace FiveGuysFixed.Enemies
 {
     public static class EnemyAI
     {
-        private static Random random = new Random();
+        private static readonly Random random = new Random();
+
+        private static readonly Vector2[] directions8 =
+        {
+            new Vector2( 1, 0), new Vector2(-1, 0),
+            new Vector2( 0, 1), new Vector2( 0,-1),
+            new Vector2( 1, 1), new Vector2(-1, 1),
+            new Vector2( 1,-1), new Vector2(-1,-1)
+        };
+
+        public static Vector2 GetRandomDirection(bool allowDiagonal = true)
+        {
+            var dir = directions8[random.Next(allowDiagonal ? 8 : 4)];
+            dir.Normalize();
+            return dir;
+        }
+
+        public static float JitterSpeed(float baseSpeed) =>
+            baseSpeed * (0.95f + (float)random.NextDouble() * 0.1f);
+
+        public static Vector2 GetOrbitDirection(Vector2 enemyPos, bool clockwise = true)
+        {
+            Vector2 toPlayer = GameState.PlayerState.position - enemyPos;
+            if (toPlayer == Vector2.Zero) toPlayer = new Vector2(1, 0);
+            toPlayer.Normalize();
+            return clockwise ? new Vector2(toPlayer.Y, -toPlayer.X)
+                             : new Vector2(-toPlayer.Y, toPlayer.X);
+        }
 
         public static Vector2 GetMovementDirection(Vector2 enemyPosition)
         {
-            // get player position
             Vector2 playerPosition = GameState.PlayerState.position;
 
-            // check if we should track the player based on difficulty
             if (DifficultyManager.Instance.ShouldEnemiesTrackPlayer())
             {
-                // calculate direction to player
                 Vector2 direction = playerPosition - enemyPosition;
-                if (direction != Vector2.Zero)
-                    direction.Normalize();
+                if (direction != Vector2.Zero) direction.Normalize();
 
                 if (DifficultyManager.Instance.CurrentDifficulty == GameDifficulty.Hard)
                 {
-                    // Add slight randomness to direction (80% towards player, 20% random)
-                    direction = direction * 0.8f + new Vector2(
-                        (float)(random.NextDouble() * 2 - 1),
-                        (float)(random.NextDouble() * 2 - 1)
-                    ) * 0.2f;
-
-                    if (direction != Vector2.Zero)
-                        direction.Normalize();
+                    direction = direction * 0.8f + GetRandomDirection() * 0.2f;
+                    if (direction != Vector2.Zero) direction.Normalize();
                 }
-
                 return direction;
             }
-            else
-            {
-                // easy mode - just move randomly
-                return new Vector2(
-                    (float)(random.NextDouble() * 2 - 1),
-                    (float)(random.NextDouble() * 2 - 1)
-                );
-            }
+            return GetRandomDirection();
         }
 
         public static float GetEnemySpeed()
         {
-            // base speed adjusted by difficulty
             float baseSpeed = 1.0f;
-            return baseSpeed * DifficultyManager.Instance.GetEnemySpeedMultiplier();
+            float speed = baseSpeed * DifficultyManager.Instance.GetEnemySpeedMultiplier();
+            return JitterSpeed(speed);          
         }
     }
 }
