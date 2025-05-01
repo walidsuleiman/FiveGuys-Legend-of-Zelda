@@ -25,7 +25,7 @@ namespace FiveGuysFixed.RoomHandling
         private static EnemyBlockCollisionResolver enemyBlockCollisionResolver = new EnemyBlockCollisionResolver();
         private static PlayerItemCollisionResolver playerItemCollisionResolver = new PlayerItemCollisionResolver();
 
-        private static DarkMode.DarkMode darkMode = new DarkMode.DarkMode();
+        private static DarkMode.DarkmodeForeground darkMode = new DarkMode.DarkmodeForeground();
 
         public static void Draw(SpriteBatch spriteBatch)
         {

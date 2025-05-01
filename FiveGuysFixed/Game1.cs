@@ -101,7 +101,7 @@ namespace FiveGuysFixed
             GameState.PlayerState = new PlayerState(new Vector2(GameState.WindowWidth / 2, GameState.WindowHeight / 2));
             GameState.roomManager = new RoomManager();
             GameState.contentLoader = new ContentLoader();
-            GameState.currentRoomID = 16;
+            GameState.currentRoomID = 1;
             GameState.Player = new Player(this);
             GameState.transitionManager = new TransitionManager();
             GameState.Game = this;
