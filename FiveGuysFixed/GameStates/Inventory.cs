@@ -49,23 +49,21 @@ namespace FiveGuysFixed.GameStates
 
         public void Update(GameTime gameTime)
         {
-            KeyboardState ks = Keyboard.GetState();
 
-            if (IsKeyPressed(ks, Keys.C))
+            if (game.IsKeyPress(Keys.C))
             {
                 GameStateManager.SetState(new GamePlayState(game));
                 return;
             }
 
-            if (IsKeyPressed(ks, Keys.N))
+            if (game.IsKeyPress(Keys.C))
             {
                 UseSelectedItem();
                 GameStateManager.SetState(new GamePlayState(game));
                 return;
             }
 
-            HandleNavigation(ks);
-            oldState = ks;
+            HandleNavigation();
         }
 
         public void Draw(SpriteBatch spriteBatch)
@@ -78,24 +76,24 @@ namespace FiveGuysFixed.GameStates
             miniMap.Draw(spriteBatch, cachedPlayerPos, cachedRoomID);
         }
 
-        private void HandleNavigation(KeyboardState ks)
+        private void HandleNavigation()
         {
-            if (IsKeyPressed(ks, Keys.W) || IsKeyPressed(ks, Keys.Up))
+            if (game.IsKeyPress(Keys.W) || game.IsKeyPress(Keys.Up))
             {
                 selectedIndex -= columns;
                 if (selectedIndex < 0) selectedIndex += itemList.Count;
             }
-            if (IsKeyPressed(ks, Keys.S) || IsKeyPressed(ks, Keys.Down))
+            if (game.IsKeyPress(Keys.S) || game.IsKeyPress(Keys.Down))
             {
                 selectedIndex += columns;
                 if (selectedIndex >= itemList.Count) selectedIndex -= itemList.Count;
             }
-            if (IsKeyPressed(ks, Keys.A) || IsKeyPressed(ks, Keys.Left))
+            if (game.IsKeyPress(Keys.A) || game.IsKeyPress(Keys.Left))
             {
                 selectedIndex--;
                 if (selectedIndex < 0) selectedIndex = itemList.Count - 1;
             }
-            if (IsKeyPressed(ks, Keys.D) || IsKeyPressed(ks, Keys.Right))
+            if (game.IsKeyPress(Keys.D) || game.IsKeyPress(Keys.Right))
             {
                 selectedIndex++;
                 if (selectedIndex >= itemList.Count) selectedIndex = 0;
@@ -215,11 +213,6 @@ namespace FiveGuysFixed.GameStates
             spriteBatch.Draw(whitePixel, new Rectangle(rect.X, rect.Y + rect.Height - thickness, rect.Width, thickness), color);
             spriteBatch.Draw(whitePixel, new Rectangle(rect.X, rect.Y, thickness, rect.Height), color);
             spriteBatch.Draw(whitePixel, new Rectangle(rect.X + rect.Width - thickness, rect.Y, thickness, rect.Height), color);
-        }
-
-        private bool IsKeyPressed(KeyboardState ks, Keys key)
-        {
-            return ks.IsKeyDown(key) && !oldState.IsKeyDown(key);
         }
 
         private void EnsureResourcesInitialized(GraphicsDevice graphicsDevice)

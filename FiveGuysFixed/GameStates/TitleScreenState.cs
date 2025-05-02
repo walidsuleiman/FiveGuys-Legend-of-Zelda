@@ -59,42 +59,35 @@ namespace FiveGuysFixed.GameStates
 
         public void Update(GameTime gameTime)
         {
-            KeyboardState currentKeyboard = Keyboard.GetState();
-
-            // Legacy support - Space to start with default difficulty
-            if (currentKeyboard.IsKeyDown(Keys.Space) && !previousKeyboardState.IsKeyDown(Keys.Space))
+            if (game.IsKeyPress(Keys.Space))
             {
                 GameStateManager.SetState(new GamePlayState(game));
             }
 
-            // Handle menu navigation
-            if (currentKeyboard.IsKeyDown(Keys.Up) && !previousKeyboardState.IsKeyDown(Keys.Up))
+            if (game.IsKeyPress(Keys.Up))
             {
                 selectedIndex = (selectedIndex > 0) ? selectedIndex - 1 : menuOptions.Count - 1;
             }
-            else if (currentKeyboard.IsKeyDown(Keys.Down) && !previousKeyboardState.IsKeyDown(Keys.Down))
+            else if (game.IsKeyPress(Keys.Down))
             {
                 selectedIndex = (selectedIndex < menuOptions.Count - 1) ? selectedIndex + 1 : 0;
             }
 
-            // Handle selection
-            if (currentKeyboard.IsKeyDown(Keys.Enter) && !previousKeyboardState.IsKeyDown(Keys.Enter))
+            if (game.IsKeyPress(Keys.Enter))
             {
                 switch (selectedIndex)
                 {
-                    case 0: // Start Game with current difficulty
+                    case 0:
                         GameStateManager.SetState(new GamePlayState(game));
                         break;
-                    case 1: // Select Difficulty
+                    case 1:
                         GameStateManager.SetState(new DifficultySelectState(game));
                         break;
-                    case 2: // Exit
+                    case 2:
                         game.Exit();
                         break;
                 }
             }
-
-            previousKeyboardState = currentKeyboard;
         }
 
         public void Draw(SpriteBatch spriteBatch)

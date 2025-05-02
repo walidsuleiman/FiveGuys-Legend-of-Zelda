@@ -38,11 +38,11 @@ namespace FiveGuysFixed
         private SpriteBatch _spriteBatch;
         public Vector2 centreScreen;
 
-        public List<IBlock> blocks;
-        public List<IEnemy> enemies;
-        public List<IItem> items;
-        public List<IItem> weapons;
-        public List<IProjectile> projectiles;
+        //public List<IBlock> blocks;
+        //public List<IEnemy> enemies;
+        //public List<IItem> items;
+        //public List<IItem> weapons;
+        //public List<IProjectile> projectiles;
 
         private Texture2D bossTexture;
         private Texture2D enemyTexture;
@@ -65,10 +65,10 @@ namespace FiveGuysFixed
         private ProjectileCollisionResolver projectileCollisionResolver;
         private EnemyBlockCollisionResolver enemyBlockCollisionResolver;
 
-        public int activeWeaponIndex;
-        public int activeItemIndex;
-        public int activeEnemyIndex;
-        public int activeBlockIndex;
+        //public int activeWeaponIndex;
+        //public int activeItemIndex;
+        //public int activeEnemyIndex;
+        //public int activeBlockIndex;
 
         private GameState gameState;
         public Player Player { get; set; }
@@ -76,8 +76,8 @@ namespace FiveGuysFixed
         public bool isMuted = false; // if true, no background music
         public bool AquamentusModeEnabled { get; set; } = false;
 
-        private KeyboardState previousState = Keyboard.GetState();
-
+        private KeyboardState previousState;
+        private KeyboardState currentState;
 
         public Game1()
         {
@@ -112,12 +112,16 @@ namespace FiveGuysFixed
             mouseController = new MouseController(this);
             gamepadController = new GamepadController(this);
 
-            InitializeEntityLists();
+            previousState = Keyboard.GetState();
+
+            //InitializeEntityLists();
 
             base.Initialize();
         }
 
         // sets up lists for enemies, blocks, items, etc
+        
+        /*
         private void InitializeEntityLists()
         {
             enemies = new List<IEnemy>();
@@ -131,6 +135,8 @@ namespace FiveGuysFixed
             items = new List<IItem>();
             activeItemIndex = 0;
         }
+        */
+        
 
         protected override void LoadContent()
         {
@@ -191,30 +197,27 @@ namespace FiveGuysFixed
         // called every frame by MonoGame and updates game logic or handles transitions
         protected override void Update(GameTime gameTime)
         {
+            currentState = Keyboard.GetState();
+
             if (GameState.IsTransitioning)
             {
                 GameState.transitionManager.Update(gameTime);
                 base.Update(gameTime);
+                previousState = currentState;
                 return;
             }
 
-            // let current GameState handle updates
             GameStateManager.Update(gameTime);
 
             base.Update(gameTime);
 
             if (GameState.ShouldSwitchRoom)
             {
-                if (DifficultyManager.Instance.CurrentDifficulty == GameDifficulty.Hell)
-                {
-                    GameState.roomManager.SwitchRoomWithDifficulty(GameState.currentRoomID);
-                }
-                else
-                {
-                    GameState.roomManager.SwitchRoom(GameState.currentRoomID);
-                }
+                GameState.roomManager.SwitchRoom(GameState.currentRoomID);
                 GameState.ShouldSwitchRoom = false;
             }
+
+            previousState = currentState;
         }
 
         // custom game logic per frame, called by the active GamePlayState
@@ -320,17 +323,16 @@ namespace FiveGuysFixed
         // updates one enemy, block, and item each, plus any projectiles in our own list
         private void UpdateActiveEntities(GameTime gameTime)
         {
-            if (enemies.Count > 0)
-                enemies[activeEnemyIndex].Update(gameTime);
+            var room = GameState.roomManager.getCurrentRoom();
 
-            if (blocks.Count > 0)
-                blocks[activeBlockIndex].Update(gameTime);
+            if (room.Enemies.Count > 0)
+                room.Enemies[0].Update(gameTime); // or loop through a few if needed
 
-            if (items.Count > 0)
-                items[activeItemIndex].Update(gameTime);
+            if (room.Blocks.Count > 0)
+                room.Blocks[0].Update(gameTime);
 
-            foreach (var proj in projectiles)
-                proj.Update(gameTime);
+            if (room.Items.Count > 0)
+                room.Items[0].Update(gameTime);
         }
 
         // updates projectiles in the current room and removes finished ones
@@ -377,14 +379,17 @@ namespace FiveGuysFixed
 
             GameState.HUD.Draw(spriteBatch);
 
-
+            
             foreach (var projectile in GameState.roomManager.getCurrentRoom().Projectiles)
             {
                 projectile.Draw(spriteBatch);
             }
+            
 
-            if (blocks.Count > 0)
-                blocks[activeBlockIndex].Draw(spriteBatch);
+            if (GameState.roomManager.getCurrentRoom().Blocks.Count > 0)
+            {
+                GameState.roomManager.getCurrentRoom().Blocks[0].Draw(spriteBatch);
+            }
 
             //foreach (var it in GameState.roomManager.getCurrentRoom().Items)
             //    it.Draw(spriteBatch);
@@ -392,10 +397,7 @@ namespace FiveGuysFixed
 
         public bool IsKeyPress(Keys key)
         {
-            KeyboardState current = Keyboard.GetState();
-            bool isNew = current.IsKeyDown(key) && !previousState.IsKeyDown(key);
-            previousState = current;
-            return isNew;
+            return currentState.IsKeyDown(key) && !previousState.IsKeyDown(key);
         }
     }
 }
