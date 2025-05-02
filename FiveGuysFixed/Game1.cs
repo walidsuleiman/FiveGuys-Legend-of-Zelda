@@ -143,10 +143,15 @@ namespace FiveGuysFixed
 
             LoadTextures();
 
+            var projectileLoader = new ProjectileLoader(GameState.contentLoader.weaponTexture);
+            var enemyLoader = new EnemyLoader(GameState.contentLoader.enemyTexture);
+            var bossLoader = new BossLoader(GameState.contentLoader.BossTexture);
+
+            EnemySpriteFactory.Instance.Initialize(projectileLoader, enemyLoader, bossLoader);
+
             LoadRoomData();
 
             LoadBackgroundMusic();
-
         }
 
         private void LoadTextures()

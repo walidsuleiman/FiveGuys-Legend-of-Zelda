@@ -1,18 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Principal;
-using System.Text;
-using System.Threading.Tasks;
-using FiveGuys.Controls;
-using FiveGuysFixed.Animation;
-using FiveGuysFixed.Commands;
-using FiveGuysFixed.Common;
-using FiveGuysFixed.GameStates;
-using FiveGuysFixed.LinkPlayer;
+using System.Diagnostics;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Media;
+using FiveGuysFixed.Animation;
+using FiveGuysFixed.Commands;
+using FiveGuysFixed.Common;
+using FiveGuysFixed.Config;
+using FiveGuysFixed.GameStates;
+using FiveGuys.Controls;
+using System.Linq;
 
 namespace FiveGuysFixed.Controls
 {
@@ -27,135 +25,212 @@ namespace FiveGuysFixed.Controls
             this.game = game;
             this.currentState = GamePad.GetState(PlayerIndex.One);
             this.previousState = GamePad.GetState(PlayerIndex.One);
-
         }
 
         public void Update()
         {
             currentState = GamePad.GetState(PlayerIndex.One);
 
-
-            Buttons[] movementButtons = { Buttons.DPadUp, Buttons.DPadDown, Buttons.DPadLeft, Buttons.DPadRight, Buttons.LeftThumbstickUp, Buttons.LeftThumbstickDown, Buttons.LeftThumbstickLeft, Buttons.LeftThumbstickRight };
-            Buttons[] actionButtons = { Buttons.A, Buttons.B, Buttons.X, Buttons.Y };
-            Buttons[] shoulderButtons = { Buttons.LeftShoulder, Buttons.RightShoulder };
-            Buttons[] triggerButtons = { Buttons.LeftTrigger, Buttons.RightTrigger };
-            Buttons[] gameButtons = { Buttons.Start, Buttons.Back };
-
-
-            foreach (Buttons mButton in movementButtons)
-            {
-                bool currentDown = currentState.IsButtonDown(mButton);
-                bool previousDown = previousState.IsButtonDown(mButton);
-
-                // Determine if the Button was just pressed or just released.
-                if (!currentDown && previousDown || !currentDown && previousDown)
-                {
-                    bool isButtonDown = currentDown;
-
-                    switch (mButton)
-                    {
-                        case Buttons.DPadUp:
-                        case Buttons.LeftThumbstickUp:
-                            new MovementCommand(game, Dir.UP, isButtonDown).Execute();
-                            break;
-
-                        case Buttons.DPadDown:
-                        case Buttons.LeftThumbstickDown:
-                            new MovementCommand(game, Dir.DOWN, isButtonDown).Execute();
-                            break;
-
-                        case Buttons.DPadLeft:
-                        case Buttons.LeftThumbstickLeft:
-                            new MovementCommand(game, Dir.LEFT, isButtonDown).Execute();
-                            break;
-                        case Buttons.DPadRight:
-                        case Buttons.LeftThumbstickRight:
-                            new MovementCommand(game, Dir.RIGHT, isButtonDown).Execute();
-                            break;
-
-                    }
-                }
-            }
-
-            foreach (Buttons aButton in actionButtons)
-            {
-                if (currentState.IsButtonDown(aButton))
-                {
-                    switch (aButton)
-                    {
-                        case Buttons.A:
-                            GameState.Player.Attack();
-                            break;
-                        case Buttons.B:
-                            GameState.Player.TakeDamage(1);
-                            break;
-                        case Buttons.X:
-                            new ItemSwitchCommand(game, true).Execute();
-                            break;
-                        case Buttons.Y:
-                            new ItemSwitchCommand(game, false).Execute();
-                            break;
-                    }
-                }
-            }
-
-            foreach (Buttons gButton in gameButtons)
-            {
-                if (currentState.IsButtonDown(gButton))
-                {
-                    switch (gButton)
-                    {
-                        case Buttons.Start:
-                            //Start Gane
-                            break;
-
-                        case Buttons.Back:
-                            game.Exit();
-                            break;
-
-                    }
-                }
-            }
-
-            foreach (Buttons sButton in shoulderButtons)
-            {
-                if (currentState.IsButtonDown(sButton))
-                {
-                    switch (sButton)
-                    {
-                        case Buttons.LeftShoulder:
-                            //Left Shoulder Action
-                            break;
-
-                        case Buttons.RightShoulder:
-                            //Right Shouder Action
-                            break;
-
-                    }
-                }
-            }
-
-            foreach (Buttons tButton in triggerButtons)
-            {
-                if (currentState.IsButtonDown(tButton))
-                {
-                    switch (tButton)
-                    {
-                        case Buttons.LeftTrigger:
-                            //Left Trigger Action
-                            break;
-
-                        case Buttons.RightTrigger:
-                            //Right Trigger Action
-                            break;
-
-                    }
-                }
-            }
+            HandleMovement();
+            HandleCombat();
+            HandleItems();
+            HandleGameControls();
+            HandleAudioToggle();
+            HandleBoomerang();
+            HandleDifficultyToggle();
 
             previousState = currentState;
+        }
 
+        private void HandleMovement()
+        {
+            Vector2 thumbstick = currentState.ThumbSticks.Left;
+            thumbstick.Y *= -1; // Invert Y axis for typical movement
+
+            if (thumbstick.Length() > 0.5f)
+            {
+                if (Math.Abs(thumbstick.X) > Math.Abs(thumbstick.Y))
+                {
+                    if (thumbstick.X > 0)
+                        new MovementCommand(game, Dir.RIGHT, true).Execute();
+                    else
+                        new MovementCommand(game, Dir.LEFT, true).Execute();
+                }
+                else
+                {
+                    if (thumbstick.Y > 0)
+                        new MovementCommand(game, Dir.DOWN, true).Execute();
+                    else
+                        new MovementCommand(game, Dir.UP, true).Execute();
+                }
+            }
+        }
+
+        private void HandleCombat()
+        {
+            if (Pressed(Buttons.A))
+            {
+                if (GameState.PlayerState.heldWeapon == WeaponType.WOODSWORD ||
+                    GameState.PlayerState.heldWeapon == WeaponType.WHITESWORD)
+                {
+                    GameState.Player.Attack();
+                }
+            }
+        }
+
+        private void HandleItems()
+        {
+            if (Pressed(Buttons.B))
+            {
+                var slot = GameState.EquippedB;
+                if (slot == null) return;
+
+                int count = slot.GetCount();
+                if (count <= 0)
+                {
+                    GameState.EquippedB = null;
+                    return;
+                }
+
+                switch (slot.Name)
+                {
+                    case "Bomb":
+                        GameState.PendingBomb = true;
+                        GameState.PendingPos = GameState.PlayerState.position;
+                        GameState.PlayerState.health--;
+                        break;
+                    case "Food":
+                        GameState.PlayerState.health++;
+                        break;
+                }
+
+                count--;
+                slot.SetCount(count);
+                if (count <= 0) GameState.EquippedB = null;
+            }
+        }
+
+        private void HandleGameControls()
+        {
+            if (Pressed(Buttons.Start))
+            {
+                if (GameStateManager.CurrentState is GamePlayState)
+                    GameStateManager.SetState(new PauseState(game));
+                else if (GameStateManager.CurrentState is PauseState)
+                    GameStateManager.SetState(new GamePlayState(game));
+            }
+
+            if (Pressed(Buttons.Back))
+            {
+                game.Exit();
+            }
+
+            if (Pressed(Buttons.LeftShoulder))
+            {
+                if (GameStateManager.CurrentState is GamePlayState)
+                    GameStateManager.SetState(new Inventory(game));
+                else if (GameStateManager.CurrentState is Inventory)
+                    GameStateManager.SetState(new GamePlayState(game));
+            }
+
+            if (Pressed(Buttons.RightShoulder))
+            {
+                if (GameStateManager.CurrentState is GamePlayState)
+                    GameStateManager.SetState(new ShopState(game));
+                else if (GameStateManager.CurrentState is ShopState)
+                    GameStateManager.SetState(new GamePlayState(game));
+            }
+        }
+
+        private void HandleAudioToggle()
+        {
+            if (Pressed(Buttons.Y))
+            {
+                game.isMuted = !game.isMuted;
+                MediaPlayer.Volume = game.isMuted ? 0f : 0.5f;
+
+                if (!game.isMuted && MediaPlayer.State != MediaState.Playing)
+                {
+                    MediaPlayer.Play(game.backgroundMusic);
+                }
+            }
+        }
+
+        private void HandleBoomerang()
+        {
+            if (Pressed(Buttons.X))
+            {
+                ThrowBoomerang();
+            }
+        }
+
+        private void HandleDifficultyToggle()
+        {
+            if (Pressed(Buttons.RightTrigger))
+            {
+                var dm = DifficultyManager.Instance;
+                if (dm.CurrentDifficulty == GameDifficulty.Easy)
+                {
+                    dm.SetDifficulty(GameDifficulty.Hard);
+                }
+                else if (dm.CurrentDifficulty == GameDifficulty.Hard)
+                {
+                    dm.SetDifficulty(GameDifficulty.Hell);
+                }
+                else
+                {
+                    dm.SetDifficulty(GameDifficulty.Easy);
+                }
+                Debug.WriteLine("Difficulty set to: " + dm.CurrentDifficulty);
+            }
+        }
+
+        private bool Pressed(Buttons button)
+        {
+            return currentState.IsButtonDown(button) && !previousState.IsButtonDown(button);
+        }
+
+        private void ThrowBoomerang()
+        {
+            Vector2 velocity = Vector2.Zero;
+            Vector2 startPos = GameState.PlayerState.position;
+
+            switch (GameState.PlayerState.direction)
+            {
+                case Dir.UP:
+                    velocity = new Vector2(0, -5);
+                    startPos.Y -= 20;
+                    break;
+                case Dir.DOWN:
+                    velocity = new Vector2(0, 5);
+                    startPos.Y += 20;
+                    break;
+                case Dir.LEFT:
+                    velocity = new Vector2(-5, 0);
+                    startPos.X -= 20;
+                    break;
+                case Dir.RIGHT:
+                    velocity = new Vector2(5, 0);
+                    startPos.X += 20;
+                    break;
+            }
+
+            bool boomerangExists = GameState.roomManager.getCurrentRoom().Projectiles
+                .Any(p => p is FiveGuysFixed.Projectiles.Boomerang);
+
+            if (!boomerangExists)
+            {
+                try
+                {
+                    Texture2D weaponTexture = game.Content.Load<Texture2D>("linkSprite");
+                    GameState.roomManager.getCurrentRoom().Projectiles.Add(
+                        new FiveGuysFixed.Projectiles.Boomerang(weaponTexture, startPos.X, startPos.Y, velocity));
+                }
+                catch (Exception ex)
+                {
+                    Debug.WriteLine("Boomerang creation error: " + ex.Message);
+                }
+            }
         }
     }
 }
-

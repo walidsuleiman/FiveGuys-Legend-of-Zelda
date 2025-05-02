@@ -36,8 +36,8 @@ namespace FiveGuysFixed.GameStates
         {
             new ShopItem("Bomb", 2, "Green", GameState.contentLoader.bombTexture),
             new ShopItem("Food", 1, "Green", GameState.contentLoader.foodTexture),
-            new ShopItem("Wood Sword", 6, "Red", GameState.contentLoader.weaponTexture),
-            new ShopItem("White Sword", 9, "Red", GameState.contentLoader.weaponTexture)
+            new ShopItem("Wood Sword", 4, "Red", GameState.contentLoader.weaponTexture),
+            new ShopItem("White Sword", 6, "Red", GameState.contentLoader.weaponTexture)
         };
         }
 

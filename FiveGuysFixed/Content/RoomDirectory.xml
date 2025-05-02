@@ -13,6 +13,7 @@
 			<Block type="Wall" x="640" y="440"/>
 			<Block type="Floor" x="0" y="0"/>
 
+
 			<Block type="ClearBlock" x="3" y="2"/>
 			<Block type="ClearBlock" x="4" y="2"/>
 			<Block type="ClearBlock" x="5" y="2"/>
@@ -63,6 +64,12 @@
 			<Block type="ClearBlock" x="10" y="1"/>
 			<Block type="ClearBlock" x="7" y="0"/>
 			<Block type="ClearBlock" x="10" y="0"/>
+
+			<Item type="RedRupee" x="5" y="1"/>
+			<Item type="RedRupee" x="6" y="1"/>
+			<Item type="RedRupee" x="7" y="1"/>
+			<Item type="Map" x="6" y="7"/>
+			
 
 		</Objects>
 	</Room>
@@ -157,7 +164,6 @@
 			<Block type="Floor" x="0" y="0"/>
 
 			<Item type="BluePotion" x="10" y="7"/>
-			<Item type="RedRupee" x="5" y="4"/>
 			<Enemy type="Gel" x="500" y="200"/>
 			<Enemy type="Gel" x="1000" y="300"/>
 			<Enemy type="Gel" x="400" y="700"/>
@@ -478,7 +484,6 @@
 
 
 			<Item type="Bomb" x="10" y="1"/>
-			<Item type="RedRupee" x="2" y="6"/>
 
 
 			<Block type="ClearBlock" x="3" y="2"/>

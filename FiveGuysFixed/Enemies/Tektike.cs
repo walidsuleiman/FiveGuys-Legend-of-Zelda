@@ -9,27 +9,29 @@ namespace FiveGuysFixed.Enemies
     public class Tektike : Enemy
     {
         private int currentTime;
-        private const int flightTime = 15, stillTime = 30;
+        private int flightTime, stillTime;
         private Vector2 velocity;
-        private Random rnd;
+        private readonly Random rnd;
 
-        public Tektike(Vector2 position, Texture2D enemyTexture)
-            : base(position, new EnemySprite(enemyTexture, 16, 80, 16, 16, 2))
+        public Tektike(Vector2 position)
+            : base(position, EnemySpriteFactory.Instance.CreateTektikeSprite())
         {
-            currentTime = 0;
             rnd = new Random();
+            flightTime = rnd.Next(10, 25);
+            stillTime = rnd.Next(20, 45);
+            currentTime = 0;
             SetAI();
         }
 
         public override void Update(GameTime gameTime)
         {
             if (currentTime < flightTime)
-            {
                 Position += velocity;
-            }
             else if (currentTime > flightTime + stillTime)
             {
                 currentTime = -1;
+                flightTime = rnd.Next(10, 25);
+                stillTime = rnd.Next(20, 45);
                 SetAI();
             }
             currentTime++;
@@ -40,29 +42,20 @@ namespace FiveGuysFixed.Enemies
 
         private void SetAI()
         {
+            float speed = EnemyAI.GetEnemySpeed();
             if (DifficultyManager.Instance.ShouldEnemiesTrackPlayer())
             {
-                Vector2 direction = EnemyAI.GetMovementDirection(Position);
-                float speed = EnemyAI.GetEnemySpeed();
-
                 if (DifficultyManager.Instance.CurrentDifficulty == GameDifficulty.Hell && rnd.Next(100) < 25)
-                {
                     speed *= 1.8f;
-                }
-
-                velocity = direction * speed;
+                velocity = EnemyAI.GetMovementDirection(Position) * speed;
             }
             else
             {
-                int decide = rnd.Next(1, 5);
-                float speed = EnemyAI.GetEnemySpeed();
-
-                switch (decide)
+                switch (rnd.Next(3))
                 {
-                    case 1: velocity = new Vector2(0, 1) * speed; break;
-                    case 2: velocity = new Vector2(0, -1) * speed; break;
-                    case 3: velocity = new Vector2(1, 0) * speed; break;
-                    case 4: velocity = new Vector2(-1, 0) * speed; break;
+                    case 0: velocity = EnemyAI.GetRandomDirection(false) * speed; break;
+                    case 1: velocity = EnemyAI.GetRandomDirection(true) * speed; break;
+                    case 2: velocity = EnemyAI.GetOrbitDirection(Position, rnd.Next(2) == 0) * speed; break;
                 }
             }
         }

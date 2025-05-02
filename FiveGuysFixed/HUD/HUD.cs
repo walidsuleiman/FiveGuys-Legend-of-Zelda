@@ -68,26 +68,31 @@ namespace FiveGuysFixed.HUD
 
                 spritebatch.DrawString(GameState.contentLoader.DefaultFont, $"x{count}", textPos, Color.White);
             }
-
-            if (miniMap == null)
+            if (GameState.PlayerState.mapHeld)
             {
-                miniMap = new MiniMap(
-                    spritebatch.GraphicsDevice,
-                    new Vector2(110, GameState.WindowHeight + 33), // position in bottom-left
-                    220, // width
-                    220  // height
-                );
+                if (miniMap == null)
+                {
+                    miniMap = new MiniMap(
+                        spritebatch.GraphicsDevice,
+                        new Vector2(110, GameState.WindowHeight + 33), // position in bottom-left
+                        220, // width
+                        220  // height
+                    );
 
 
-                miniMap.LoadContent(GameState.contentLoader.miniMapTexture);
+                    miniMap.LoadContent(GameState.contentLoader.miniMapTexture);
+                    }
+
+                miniMap.Draw(spritebatch);
+
             }
 
             Vector2 boomerangPos = slotPos + new Vector2(200, 44);
             Rectangle boomerangFrame = new Rectangle(80, 48, 6, 8);
             spritebatch.Draw(GameState.contentLoader.weaponTexture, boomerangPos, boomerangFrame, Color.White, 0f, Vector2.Zero, 6f, SpriteEffects.None, 0f);
 
-
-            miniMap.Draw(spritebatch);
+            
+            
         }
     }
 }

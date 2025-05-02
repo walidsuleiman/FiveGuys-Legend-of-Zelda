@@ -16,6 +16,7 @@ namespace FiveGuysFixed.LinkPlayer
         public WeaponType heldWeapon;
         public bool isAttacking;
         public int health;
+        public bool mapHeld;
 
         public int greenRupees;
         public int redRupees;
@@ -50,6 +51,7 @@ namespace FiveGuysFixed.LinkPlayer
             redRupees = 0;
             bombCount = 0;
             foodCount = 0;
+            mapHeld = false;
         }
     }
 }

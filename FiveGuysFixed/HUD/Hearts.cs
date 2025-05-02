@@ -2,67 +2,60 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using FiveGuysFixed.GameStates;
-using System.Diagnostics;
 
 namespace FiveGuysFixed.HUD
 {
-    public class Hearts : IHUDElement
+    public sealed class Hearts : IHUDElement
     {
-        private Rectangle fullHeartRectangle = new Rectangle(645, 117, 8, 8);
-        private Rectangle halfHeartRectangle = new Rectangle(636, 117, 8, 8);
-        private Rectangle emptyHeartRectangle = new Rectangle(627, 117, 8, 8);
-        private static int heartsPositionX = 935;
-        private static int heartsPositionY = 880 + 168;
-        private static int scale = 9;
-        Vector2 heart1Pos = new Vector2(heartsPositionX, heartsPositionY);
-        Vector2 heart2Pos = new Vector2(heartsPositionX + 8 * scale, heartsPositionY);
-        Vector2 heart3Pos = new Vector2(heartsPositionX + 16 * scale, heartsPositionY);
+        
+        private static readonly Rectangle Full = new Rectangle(645, 117, 8, 8);
+        private static readonly Rectangle Half = new Rectangle(636, 117, 8, 8);
+        private static readonly Rectangle Empty = new Rectangle(627, 117, 8, 8);
 
-        public Hearts() { }
+        
+        private const int Scale = 9;
+        private const int BaseX = 935;
+        private const int BaseY = 880 + 168;
+        private const int HeartStrideX = 8 * Scale;
+
+        
+        private static readonly Vector2[] Positions;
+
+        static Hearts()
+        {
+            Positions = new Vector2[3];
+            for (int i = 0; i < Positions.Length; i++)
+            {
+                Positions[i] = new Vector2(BaseX + HeartStrideX * i, BaseY);
+            }
+        }
 
         public void Draw(SpriteBatch spriteBatch)
         {
+            int hp = GameState.PlayerState.health;
+            if (hp < 0) hp = 0;
+            else if (hp > 6) hp = 6;
 
-            switch (GameState.PlayerState.health)
+            for (int i = 0; i < 3; i++)
             {
-                case 6: // Full health
-                    spriteBatch.Draw(GameState.contentLoader.HudTexture, heart1Pos, fullHeartRectangle, Color.White, 0, new Vector2(0, 0), scale, SpriteEffects.None, 0f);
-                    spriteBatch.Draw(GameState.contentLoader.HudTexture, heart2Pos, fullHeartRectangle, Color.White, 0, new Vector2(0, 0), scale, SpriteEffects.None, 0f);
-                    spriteBatch.Draw(GameState.contentLoader.HudTexture, heart3Pos, fullHeartRectangle, Color.White, 0, new Vector2(0, 0), scale, SpriteEffects.None, 0f);
-                    break;
-                case 5: // 5 health
-                    spriteBatch.Draw(GameState.contentLoader.HudTexture, heart1Pos, fullHeartRectangle, Color.White, 0, new Vector2(0, 0), scale, SpriteEffects.None, 0f);
-                    spriteBatch.Draw(GameState.contentLoader.HudTexture, heart2Pos, fullHeartRectangle, Color.White, 0, new Vector2(0, 0), scale, SpriteEffects.None, 0f);
-                    spriteBatch.Draw(GameState.contentLoader.HudTexture, heart3Pos, halfHeartRectangle, Color.White, 0, new Vector2(0, 0), scale, SpriteEffects.None, 0f);
-                    break;
-                case 4: // 4 health
-                    spriteBatch.Draw(GameState.contentLoader.HudTexture, heart1Pos, fullHeartRectangle, Color.White, 0, new Vector2(0, 0), scale, SpriteEffects.None, 0f);
-                    spriteBatch.Draw(GameState.contentLoader.HudTexture, heart2Pos, fullHeartRectangle, Color.White, 0, new Vector2(0, 0), scale, SpriteEffects.None, 0f);
-                    spriteBatch.Draw(GameState.contentLoader.HudTexture, heart3Pos, emptyHeartRectangle, Color.White, 0, new Vector2(0, 0), scale, SpriteEffects.None, 0f);
-                    break;
-                case 3: // 3 health
-                    spriteBatch.Draw(GameState.contentLoader.HudTexture, heart1Pos, fullHeartRectangle, Color.White, 0, new Vector2(0, 0), scale, SpriteEffects.None, 0f);
-                    spriteBatch.Draw(GameState.contentLoader.HudTexture, heart2Pos, halfHeartRectangle, Color.White, 0, new Vector2(0, 0), scale, SpriteEffects.None, 0f);
-                    spriteBatch.Draw(GameState.contentLoader.HudTexture, heart3Pos, emptyHeartRectangle, Color.White, 0, new Vector2(0, 0), scale, SpriteEffects.None, 0f);
-                    break;
-                case 2: // 2 health
-                    spriteBatch.Draw(GameState.contentLoader.HudTexture, heart1Pos, fullHeartRectangle, Color.White, 0, new Vector2(0, 0), scale, SpriteEffects.None, 0f);
-                    spriteBatch.Draw(GameState.contentLoader.HudTexture, heart2Pos, emptyHeartRectangle, Color.White, 0, new Vector2(0, 0), scale, SpriteEffects.None, 0f);
-                    spriteBatch.Draw(GameState.contentLoader.HudTexture, heart3Pos, emptyHeartRectangle, Color.White, 0, new Vector2(0, 0), scale, SpriteEffects.None, 0f);
-                    break;
-                case 1: // 1 health
-                    spriteBatch.Draw(GameState.contentLoader.HudTexture, heart1Pos, halfHeartRectangle, Color.White, 0, new Vector2(0, 0), scale, SpriteEffects.None, 0f);
-                    spriteBatch.Draw(GameState.contentLoader.HudTexture, heart2Pos, emptyHeartRectangle, Color.White, 0, new Vector2(0, 0), scale, SpriteEffects.None, 0f);
-                    spriteBatch.Draw(GameState.contentLoader.HudTexture, heart3Pos, emptyHeartRectangle, Color.White, 0, new Vector2(0, 0), scale, SpriteEffects.None, 0f);
-                    break;
+                int remaining = hp - i * 2;
+                Rectangle src = remaining switch
+                {
+                    >= 2 => Full,
+                    1 => Half,
+                    _ => Empty
+                };
 
+                spriteBatch.Draw(GameState.contentLoader.HudTexture,
+                                 Positions[i], src,
+                                 Color.White, 0f, Vector2.Zero,
+                                 Scale, SpriteEffects.None, 0f);
             }
-
         }
 
-        public void Update(GameTime gametime)
-        {
-            // No need to update anything for now.
+        public void Update(GameTime gameTime) 
+        { 
+            //nothing to update for now                                  
         }
     }
 }

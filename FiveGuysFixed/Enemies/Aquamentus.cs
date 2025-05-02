@@ -1,130 +1,93 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System;
 using System.Collections.Generic;
 using FiveGuysFixed.Projectiles;
 using FiveGuysFixed.Sprites;
 using FiveGuysFixed.Config;
 using FiveGuysFixed.GameStates;
-using FiveGuysFixed.HUD;
 
 namespace FiveGuysFixed.Enemies
 {
     public class Aquamentus : Enemy
     {
-        private ISprite aquamentusAttackSprite;
+        private readonly ISprite attackSprite;
+        private readonly List<IProjectile> projectiles;
         private int currentTime;
-        private const int flightTime = 15, stillTime = 30;
-        private double xAdjust, yAdjust;
-        private List<IProjectile> projectiles;
+        private int flightTime, stillTime;
+        private Vector2 velocity;
+        private readonly Random rnd = new Random();
 
         public Aquamentus(Vector2 position, ISprite sprite, ISprite attackSprite, List<IProjectile> projectiles)
             : base(position, sprite, 5f)
         {
             this.health = 10;
-            this.aquamentusAttackSprite = attackSprite;
+            this.attackSprite = attackSprite;
             this.projectiles = projectiles;
-            this.currentTime = 0;
-
+            flightTime = rnd.Next(10, 25);
+            stillTime = rnd.Next(20, 45);
+            currentTime = 0;
+            SetAI();
         }
 
         public override void Update(GameTime gameTime)
         {
             if (currentTime < flightTime)
-            {
-                Position += new Vector2((float)xAdjust, (float)yAdjust);
-            }
+                Position += velocity;
             else if (currentTime > flightTime + stillTime)
             {
                 currentTime = -1;
+                flightTime = rnd.Next(10, 25);
+                stillTime = rnd.Next(20, 45);
                 SetAI();
             }
-
             currentTime++;
             x = (int)Position.X;
             y = (int)Position.Y;
             sprite.Update(gameTime);
         }
 
-
-
         private void SetAI()
         {
-            if (DifficultyManager.Instance.CurrentDifficulty == GameDifficulty.Hell)
+            float speed = EnemyAI.GetEnemySpeed();
+            if (DifficultyManager.Instance.ShouldEnemiesTrackPlayer())
             {
-                Vector2 direction = EnemyAI.GetMovementDirection(Position);
-                float speed = EnemyAI.GetEnemySpeed();
-
-                xAdjust = direction.X * speed * 1.2f;
-                yAdjust = direction.Y * speed * 1.2f;
-
-                var rnd = new System.Random();
-                if (rnd.Next(100) < 15) // 15% chance to attack
-                {
-                    Attack();
-                }
+                if (rnd.Next(3) == 0)
+                    velocity = EnemyAI.GetOrbitDirection(Position, rnd.Next(2) == 0) * speed * 1.1f;
+                else
+                    velocity = EnemyAI.GetMovementDirection(Position) * speed;
+                if (rnd.Next(100) < 20) Attack();
             }
             else
             {
-                // original behavior for non-Hell Mode
-                var rnd = new System.Random();
-                int decide = rnd.Next(1, 4);
-                switch (decide)
+                switch (rnd.Next(3))
                 {
-                    case 1:
-                        xAdjust = 0; yAdjust = 1;
-                        break;
-                    case 2:
-                        xAdjust = 0; yAdjust = -1;
-                        break;
-                    case 3:
-                        xAdjust = 0; yAdjust = 0;
-                        Attack();
-                        break;
+                    case 0: velocity = EnemyAI.GetRandomDirection(false) * speed; break;
+                    case 1: velocity = EnemyAI.GetRandomDirection(true) * speed; break;
+                    case 2: velocity = EnemyAI.GetOrbitDirection(Position, rnd.Next(2) == 0) * speed; break;
                 }
+                if (rnd.Next(100) < 10) Attack();
             }
         }
+
         private void Attack()
         {
             if (DifficultyManager.Instance.CurrentDifficulty == GameDifficulty.Hell)
             {
-                // in Hell Mode, shoot 5 fireballs in a spread pattern
-                Fireball top = new Fireball(aquamentusAttackSprite.Texture, Position.X, Position.Y - 80, new Vector2(-2.5f, -0.5f));
-                Fireball topMid = new Fireball(aquamentusAttackSprite.Texture, Position.X, Position.Y - 40, new Vector2(-2.5f, -0.25f));
-                Fireball mid = new Fireball(aquamentusAttackSprite.Texture, Position.X, Position.Y, new Vector2(-2.5f, 0));
-                Fireball botMid = new Fireball(aquamentusAttackSprite.Texture, Position.X, Position.Y + 40, new Vector2(-2.5f, 0.25f));
-                Fireball bot = new Fireball(aquamentusAttackSprite.Texture, Position.X, Position.Y + 80, new Vector2(-2.5f, 0.5f));
-
-                projectiles.Add(top);
-                projectiles.Add(topMid);
-                projectiles.Add(mid);
-                projectiles.Add(botMid);
-                projectiles.Add(bot);
+                var dirs = new[] { -0.5f, -0.25f, 0, 0.25f, 0.5f };
+                foreach (var off in dirs)
+                    projectiles.Add(new Fireball(attackSprite.Texture, Position.X, Position.Y + off * 160, new Vector2(-2.5f, off)));
             }
             else
             {
-                // original behavior for non-Hell Mode
-                Fireball top = new Fireball(aquamentusAttackSprite.Texture, Position.X, Position.Y - 70, new Vector2(-2, 0));
-                Fireball mid = new Fireball(aquamentusAttackSprite.Texture, Position.X, Position.Y, new Vector2(-2, 0));
-                Fireball bot = new Fireball(aquamentusAttackSprite.Texture, Position.X, Position.Y + 70, new Vector2(-2, 0));
-
-                projectiles.Add(top);
-                projectiles.Add(mid);
-                projectiles.Add(bot);
+                var offs = new[] { -70f, 0f, 70f };
+                foreach (var off in offs)
+                    projectiles.Add(new Fireball(attackSprite.Texture, Position.X, Position.Y + off, new Vector2(-2f, 0)));
             }
         }
 
-        public override Rectangle BoundingBox
-        {
-            get
-            {
-                return new Rectangle((int)(Position.X - 32*2.5), (int)(Position.Y - 32*2.5), (int)(32*scale), (int)(32*scale));
-            }
-            set
-            {
-                x = value.X;
-                y = value.Y;
-            }
-        }
-
+        public override Rectangle BoundingBox => new Rectangle(
+            (int)(Position.X - 32 * 2.5), (int)(Position.Y - 32 * 2.5),
+            (int)(32 * scale), (int)(32 * scale));
     }
 }

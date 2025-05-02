@@ -16,8 +16,8 @@ namespace FiveGuysFixed.Projectiles
         private int currentTime;
         private Dir dir;
 
-        private const int flightTime = 70; // move for 70 frames
-        private const int stillTime = 20; // wait 20 frames, then vanish
+        private int flightTime; // move for 70 frames
+        private int stillTime = 10; // wait 20 frames, then vanish
 
         public LinkSwordProjectile(Texture2D texture, float startX, float startY, Dir dir)
         {
@@ -28,6 +28,7 @@ namespace FiveGuysFixed.Projectiles
 
             if (GameState.PlayerState.heldWeapon == WeaponType.WOODSWORD)
             {
+                this.flightTime = 20;
                 switch (dir)
                 {
                     case Dir.UP:
@@ -50,6 +51,7 @@ namespace FiveGuysFixed.Projectiles
             }
             else if (GameState.PlayerState.heldWeapon == WeaponType.WHITESWORD)
             {
+                this.flightTime = 70;
                 switch (dir)
                 {
                     case Dir.UP:

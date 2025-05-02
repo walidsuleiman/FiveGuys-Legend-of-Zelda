@@ -13,6 +13,7 @@ using FiveGuysFixed.Items;
 using FiveGuysFixed.Projectiles;
 using FiveGuysFixed.Weapons___Items;
 using Microsoft.Xna.Framework;
+using FiveGuysFixed.Animation;
 
 namespace FiveGuysFixed.RoomHandling
 {
@@ -33,6 +34,7 @@ namespace FiveGuysFixed.RoomHandling
             { "GreenRupee", (x, y) => new GreenRupee(GameState.contentLoader.rupeeTexture, x, y) },
             { "RedPotion",  (x, y) => new RedPotion(GameState.contentLoader.redPotionTexture, x, y) },
             { "RedRupee",   (x, y) => new RedRupee(GameState.contentLoader.rupeeTexture, x, y) },
+            { "Map",        (x, y) => new Map(GameState.contentLoader.HudTexture, x, y) },
             { "Triforce", (x, y) => new Triforce(GameState.contentLoader.triforceTexture, x, y) },
             { "WoodSword", (x, y) => new WoodSword(GameState.contentLoader.swordTexture, x, y) },
             { "WhiteSword", (x, y) => new WhiteSword(GameState.contentLoader.swordTexture, x, y) }
@@ -127,41 +129,41 @@ namespace FiveGuysFixed.RoomHandling
                     case "Aquamentus":
                         Enemies.Add(new Aquamentus(
                             position,
-                            new EnemySprite(GameState.contentLoader.BossTexture, 0, 0, 32, 32, 2),
-                            new EnemySprite(GameState.contentLoader.BossTexture, 32, 0, 32, 32, 2),
+                            EnemySpriteFactory.Instance.CreateAquamentusSprite(),
+                            EnemySpriteFactory.Instance.CreateAquamentusFireballSprite(),
                             Projectiles
                         ));
                         break;
 
                     case "Gel":
-                        Enemies.Add(new Gel(position, GameState.contentLoader.enemyTexture));
+                        Enemies.Add(new Gel(position));
                         break;
 
                     case "Goriya":
-                        Enemies.Add(new Goriya(position,
-                            GameState.contentLoader.enemyTexture,
+                        Enemies.Add(new Goriya(
+                            position,
                             GameState.contentLoader.weaponTexture,
                             Projectiles));
                         break;
 
                     case "Keese":
-                        Enemies.Add(new Keese(position, GameState.contentLoader.enemyTexture));
+                        Enemies.Add(new Keese(position));
                         break;
 
                     case "Moblin":
-                        Enemies.Add(new Moblin(position, GameState.contentLoader.enemyTexture));
+                        Enemies.Add(new Moblin(position));
                         break;
 
                     case "Octorok":
-                        Enemies.Add(new Octorok(position, GameState.contentLoader.enemyTexture));
+                        Enemies.Add(new Octorok(position));
                         break;
 
                     case "Stalfos":
-                        Enemies.Add(new Stalfos(position, GameState.contentLoader.enemyTexture));
+                        Enemies.Add(new Stalfos(position));
                         break;
 
                     case "Tektike":
-                        Enemies.Add(new Tektike(position, GameState.contentLoader.enemyTexture));
+                        Enemies.Add(new Tektike(position));
                         break;
                 }
             }

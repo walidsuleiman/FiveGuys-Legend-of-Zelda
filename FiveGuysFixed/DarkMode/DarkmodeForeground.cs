@@ -9,12 +9,12 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace FiveGuysFixed.DarkMode
 {
-    internal class DarkMode
+    internal class DarkmodeForeground
     {
 
 
 
-        public DarkMode() { }
+        public DarkmodeForeground() { }
 
         public void update()
         {
