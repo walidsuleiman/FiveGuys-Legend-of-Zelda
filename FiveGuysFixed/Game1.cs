@@ -76,6 +76,8 @@ namespace FiveGuysFixed
         public bool isMuted = false; // if true, no background music
         public bool AquamentusModeEnabled { get; set; } = false;
 
+        private KeyboardState previousState = Keyboard.GetState();
+
 
         public Game1()
         {
@@ -381,6 +383,14 @@ namespace FiveGuysFixed
 
             //foreach (var it in GameState.roomManager.getCurrentRoom().Items)
             //    it.Draw(spriteBatch);
+        }
+
+        public bool IsKeyPress(Keys key)
+        {
+            KeyboardState current = Keyboard.GetState();
+            bool isNew = current.IsKeyDown(key) && !previousState.IsKeyDown(key);
+            previousState = current;
+            return isNew;
         }
     }
 }

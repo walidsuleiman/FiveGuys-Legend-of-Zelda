@@ -14,14 +14,11 @@ namespace FiveGuysFixed.GameStates
             this.game = game;
         }
 
-        public void LoadContent(ContentManager content)
-        {
-            // Load any content needed for the Game Over state here
-        }
+        public void LoadContent(ContentManager content) { }
+
         public void Update(GameTime gameTime)
         {
-            var currentState = Keyboard.GetState();
-            if (currentState.IsKeyDown(Keys.R))
+            if (game.IsKeyPress(Keys.R))
             {
                 GameState.Player.Reset();
                 GameStateManager.SetState(new GamePlayState(game));
@@ -30,9 +27,7 @@ namespace FiveGuysFixed.GameStates
 
         public void Draw(SpriteBatch spriteBatch)
         {
-
             game.GameDrawLogic(spriteBatch);
-
             spriteBatch.DrawString(
                 GameState.contentLoader.DefaultFont,
                 "        Game Over!\nPress R to Restart",

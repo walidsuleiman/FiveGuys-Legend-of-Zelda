@@ -107,12 +107,12 @@ namespace FiveGuysFixed.Weapons___Items
 
 
         private void DealDamage()
-        {
+        {          
             if (Vector2.Distance(pixelPos, GameState.PlayerState.position) < RADIUS)
             {
                 GameState.Player.TakeDamage(DMG);
             }
-
+            
             foreach (var e in GameState.roomManager.getCurrentRoom().Enemies.ToList())
             {
                 if (Vector2.Distance(pixelPos, e.Position) < RADIUS)

@@ -33,7 +33,6 @@ namespace FiveGuysFixed.GameStates
         public Inventory(Game1 game)
         {
             this.game = game;
-
             hearts = new Hearts();
             rupees = new RupeeCount();
             oldState = Keyboard.GetState();
@@ -46,9 +45,8 @@ namespace FiveGuysFixed.GameStates
             }
         }
 
-        public void LoadContent(ContentManager content)
-        {
-        }
+        public void LoadContent(ContentManager content) { }
+
         public void Update(GameTime gameTime)
         {
             KeyboardState ks = Keyboard.GetState();
@@ -66,6 +64,22 @@ namespace FiveGuysFixed.GameStates
                 return;
             }
 
+            HandleNavigation(ks);
+            oldState = ks;
+        }
+
+        public void Draw(SpriteBatch spriteBatch)
+        {
+            EnsureResourcesInitialized(spriteBatch.GraphicsDevice);
+            DrawBackground(spriteBatch);
+            DrawHUD(spriteBatch);
+            DrawInventoryItems(spriteBatch);
+            DrawInstructions(spriteBatch);
+            miniMap.Draw(spriteBatch, cachedPlayerPos, cachedRoomID);
+        }
+
+        private void HandleNavigation(KeyboardState ks)
+        {
             if (IsKeyPressed(ks, Keys.W) || IsKeyPressed(ks, Keys.Up))
             {
                 selectedIndex -= columns;
@@ -86,107 +100,83 @@ namespace FiveGuysFixed.GameStates
                 selectedIndex++;
                 if (selectedIndex >= itemList.Count) selectedIndex = 0;
             }
-
-            oldState = ks;
         }
 
-        public void Draw(SpriteBatch spriteBatch)
+        private void DrawBackground(SpriteBatch spriteBatch)
         {
-
-            EnsureResourcesInitialized(spriteBatch.GraphicsDevice);
-
             spriteBatch.Draw(
                 whitePixel,
                 new Rectangle(0, 0, GameState.WindowWidth, GameState.WindowHeight),
                 Color.Black
             );
-
             spriteBatch.DrawString(font, "Inventory", new Vector2(50, 50), Color.White);
+        }
 
-            // draw HUD
-            spriteBatch.Draw(
-                blackPixel,
-                new Rectangle(0, 880, 1280, 280),
-                Color.Black
-            );
-            spriteBatch.Draw(
-                GameState.contentLoader.HudTexture,
-                new Rectangle(0, 880, 1280, 280),
-                new Rectangle(258, 11, 256, 55),
-                Color.White
-            );
-
+        private void DrawHUD(SpriteBatch spriteBatch)
+        {
+            spriteBatch.Draw(blackPixel, new Rectangle(0, 880, 1280, 280), Color.Black);
+            spriteBatch.Draw(GameState.contentLoader.HudTexture, new Rectangle(0, 880, 1280, 280), new Rectangle(258, 11, 256, 55), Color.White);
             hearts.Draw(spriteBatch);
             rupees.Draw(spriteBatch);
+        }
 
-            // draw the inventory
+        private void DrawInventoryItems(SpriteBatch spriteBatch)
+        {
             BuildItemList();
 
             if (itemList.Count == 0)
             {
                 spriteBatch.DrawString(font, "No Items", new Vector2(startX, startY), Color.White);
+                return;
             }
-            else
+
+            for (int i = 0; i < itemList.Count; i++)
             {
-                for (int i = 0; i < itemList.Count; i++)
+                string itemName = itemList[i].Key;
+                int count = itemList[i].Value;
+
+                int row = i / columns;
+                int col = i % columns;
+                int x = startX + col * slotWidth;
+                int y = startY + row * slotHeight;
+
+                Rectangle slotRect = new Rectangle(x, y, slotWidth - 10, slotHeight - 10);
+                Vector2 iconPos = new Vector2(slotRect.Right - 200, slotRect.Top - 40);
+
+                spriteBatch.Draw(whitePixel, slotRect, Color.Gray);
+
+                if (i == selectedIndex)
                 {
-                    string itemName = itemList[i].Key;
-                    int count = itemList[i].Value;
+                    DrawRectBorder(spriteBatch, slotRect, 2, Color.Red);
+                }
 
-                    int row = i / columns;
-                    int col = i % columns;
-                    int x = startX + col * slotWidth;
-                    int y = startY + row * slotHeight;
+                spriteBatch.DrawString(font, itemName, new Vector2(x + 10, y + 5), Color.White);
+                spriteBatch.DrawString(font, $"x {count}", new Vector2(x + 10, y + 30), Color.Yellow);
 
-                    Rectangle slotRect = new Rectangle(x, y, slotWidth - 10, slotHeight - 10);
-                    Vector2 iconPos = new Vector2(slotRect.Right - 200, slotRect.Top - 40);
-
-                    spriteBatch.Draw(whitePixel, slotRect, Color.Gray);
-
-                    if (i == selectedIndex)
-                    {
-                        DrawRectBorder(spriteBatch, slotRect, 2, Color.Red);
-                    }
-
-                    spriteBatch.DrawString(font, itemName, new Vector2(x + 10, y + 5), Color.White);
-                    spriteBatch.DrawString(font, $"x {count}", new Vector2(x + 10, y + 30), Color.Yellow);
-
-                    if (itemName == "Bomb")
-                    {
-                        Bomb bombIcon = new Bomb(GameState.contentLoader.bombTexture, 0, 0);
-                        bombIcon.Draw(spriteBatch, iconPos);
-                    }
-                    else if (itemName == "Food")
-                    {
-                        Food foodIcon = new Food(GameState.contentLoader.foodTexture, 0, 0);
-                        foodIcon.Draw(spriteBatch, iconPos);
-                    }
+                if (itemName == "Bomb")
+                {
+                    new Bomb(GameState.contentLoader.bombTexture, 0, 0).Draw(spriteBatch, iconPos);
+                }
+                else if (itemName == "Food")
+                {
+                    new Food(GameState.contentLoader.foodTexture, 0, 0).Draw(spriteBatch, iconPos);
                 }
             }
-
-            // draw prompt message
-            spriteBatch.DrawString(
-                font,
-                "[WASD/Arrows] Move | [N] Use | [C] Back",
-                new Vector2(50, GameState.WindowHeight - 40),
-                Color.White
-            );
-
-            // draw minimap
-            miniMap.Draw(spriteBatch, cachedPlayerPos, cachedRoomID);
         }
+
+        private void DrawInstructions(SpriteBatch spriteBatch)
+        {
+            spriteBatch.DrawString(font, "[WASD/Arrows] Move | [N] Use | [C] Back", new Vector2(50, GameState.WindowHeight - 40), Color.White);
+        }
+
         private void BuildItemList()
         {
             itemCounts = new Dictionary<string, int>();
-
             var ps = GameState.PlayerState;
             if (ps != null)
             {
-                if (ps.bombCount > 0)
-                    itemCounts["Bomb"] = ps.bombCount;
-
-                if (ps.foodCount > 0)
-                    itemCounts["Food"] = ps.foodCount;
+                if (ps.bombCount > 0) itemCounts["Bomb"] = ps.bombCount;
+                if (ps.foodCount > 0) itemCounts["Food"] = ps.foodCount;
             }
             itemList = itemCounts.ToList();
 
@@ -197,55 +187,18 @@ namespace FiveGuysFixed.GameStates
         private void UseSelectedItem()
         {
             if (itemList.Count == 0) return;
-
             var ps = GameState.PlayerState;
             string itemName = itemList[selectedIndex].Key;
             int count = itemList[selectedIndex].Value;
-
             if (count <= 0) return;
 
             if (itemName == "Bomb")
             {
-                GameState.EquippedB = new EquippedItemSlot(
-                    "Bomb",
-                    () => ps.bombCount,
-                    count => ps.bombCount = count
-                );
+                GameState.EquippedB = new EquippedItemSlot("Bomb", () => ps.bombCount, c => ps.bombCount = c);
             }
             else if (itemName == "Food")
             {
-                GameState.EquippedB = new EquippedItemSlot(
-                    "Food",
-                    () => ps.foodCount,
-                    count => ps.foodCount = count
-                );
-            }
-            if (count <= 0)
-            {
-                itemCounts.Remove(itemName);
-                itemList = itemCounts.ToList();
-                if (selectedIndex >= itemList.Count) selectedIndex = itemList.Count - 1;
-            }
-
-            /* var ps = GameState.PlayerState;
-            string itemName = itemList[selectedIndex].Key;
-            int count = itemList[selectedIndex].Value;
-
-            if (count <= 0) return;
-
-            count--;
-
-            if (itemName == "Bomb")
-            {
-                ps.bombCount = count;
-                GameState.PendingBomb = true;
-                GameState.PendingPos = new Vector2(ps.position.X, ps.position.Y - 150);
-            }
-            else if (itemName == "Food")
-            {
-                ps.foodCount = count;
-                //ContentLoader.eatSound.Play();
-                ps.health++;
+                GameState.EquippedB = new EquippedItemSlot("Food", () => ps.foodCount, c => ps.foodCount = c);
             }
 
             if (count <= 0)
@@ -253,7 +206,7 @@ namespace FiveGuysFixed.GameStates
                 itemCounts.Remove(itemName);
                 itemList = itemCounts.ToList();
                 if (selectedIndex >= itemList.Count) selectedIndex = itemList.Count - 1;
-            } */
+            }
         }
 
         private void DrawRectBorder(SpriteBatch spriteBatch, Rectangle rect, int thickness, Color color)
@@ -266,8 +219,7 @@ namespace FiveGuysFixed.GameStates
 
         private bool IsKeyPressed(KeyboardState ks, Keys key)
         {
-            bool pressed = ks.IsKeyDown(key) && !oldState.IsKeyDown(key);
-            return pressed;
+            return ks.IsKeyDown(key) && !oldState.IsKeyDown(key);
         }
 
         private void EnsureResourcesInitialized(GraphicsDevice graphicsDevice)
@@ -277,30 +229,21 @@ namespace FiveGuysFixed.GameStates
                 whitePixel = new Texture2D(graphicsDevice, 1, 1);
                 whitePixel.SetData(new[] { Color.White });
             }
-
             if (blackPixel == null)
             {
                 blackPixel = new Texture2D(graphicsDevice, 1, 1);
                 blackPixel.SetData(new[] { Color.Black });
             }
-
             if (font == null)
             {
                 font = GameState.contentLoader.DefaultFont;
             }
-
             if (miniMap == null)
             {
-                miniMap = new MiniMap(
-                    graphicsDevice,
-                    new Vector2(GameState.WindowWidth - 480, (GameState.WindowHeight - 440) / 2),
-                    440,
-                    440,
-                    true
-                );
+                miniMap = new MiniMap(graphicsDevice, new Vector2(GameState.WindowWidth - 480, (GameState.WindowHeight - 440) / 2), 440, 440, true);
                 miniMap.LoadContent(GameState.contentLoader.miniMapTexture);
             }
         }
-
     }
+
 }
