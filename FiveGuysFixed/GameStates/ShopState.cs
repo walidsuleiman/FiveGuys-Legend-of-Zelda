@@ -49,25 +49,30 @@ namespace FiveGuysFixed.GameStates
         }
 
         public void Update(GameTime gameTime)
+    {
+        var ks = Keyboard.GetState();
+
+        if (IsKeyPressed(ks, Keys.Up)) selectedIndex = (selectedIndex - 1 + shopItems.Count) % shopItems.Count;
+        if (IsKeyPressed(ks, Keys.Down)) selectedIndex = (selectedIndex + 1) % shopItems.Count;
+
+        if (messageTimer > 0)
         {
-            if (game.IsKeyPress(Keys.Up))
-                selectedIndex = (selectedIndex - 1 + shopItems.Count) % shopItems.Count;
-
-            if (game.IsKeyPress(Keys.Down))
-                selectedIndex = (selectedIndex + 1) % shopItems.Count;
-
-            if (messageTimer > 0)
-            {
-                messageTimer -= gameTime.ElapsedGameTime.TotalSeconds;
-                if (messageTimer < 0) messageTimer = 0;
-            }
-
-            if (game.IsKeyPress(Keys.Enter))
-                BuyItem(shopItems[selectedIndex]);
-
-            if (game.IsKeyPress(Keys.X))
-                GameStateManager.SetState(new GamePlayState(game));
+            messageTimer -= gameTime.ElapsedGameTime.TotalSeconds;
+            if (messageTimer < 0) messageTimer = 0;
         }
+
+        if (IsKeyPressed(ks, Keys.Enter))
+        {
+            BuyItem(shopItems[selectedIndex]);
+        }
+
+        if (IsKeyPressed(ks, Keys.X))
+        {
+            GameStateManager.SetState(new GamePlayState(game));
+        }
+
+        oldState = ks;
+    }
 
         private void BuyItem(ShopItem item)
         {
@@ -143,6 +148,11 @@ namespace FiveGuysFixed.GameStates
                 spriteBatch.DrawString(font, statusMessage, msgPos, Color.Yellow);
             }
 
+        }
+
+        private bool IsKeyPressed(KeyboardState ks, Keys key)
+        {
+            return ks.IsKeyDown(key) && !oldState.IsKeyDown(key);
         }
 
     }
